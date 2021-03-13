@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+}
+
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6,
+body p {
+  margin: 0;
+}
+
+.form-container {
+  width: 100vw;
+  height: 100vh;
+  background: -webkit-gradient(linear, left top, right top, from(#00d6e8), to(#7c00aa));
+  background: linear-gradient(to right, #00d6e8, #7c00aa);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.form-container .wrapper-form {
+  width: 400px;
+  height: auto;
+  margin: 1rem;
+}
+
+.form-container .wrapper-form form {
+  padding: 0;
+  background: #fff;
+}
+
+.form-container .wrapper-form form .header-form {
+  padding: 1.3rem;
+  text-align: center;
+  position: relative;
+  border-bottom: 1px solid #bebebe;
+}
+
+.form-container .wrapper-form form .header-form .item-icon-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.form-container .wrapper-form form .body-form .item-input {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 1rem 1.5rem;
+}
+
+.form-container .wrapper-form form .body-form .item-input label {
+  font-size: 1.3rem;
+}
+
+.form-container .wrapper-form form .body-form .item-input input {
+  width: 100%;
+  padding: 0.8rem 0.6rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #bebebe;
+}
+
+.form-container .wrapper-form form .body-form .item-input .btn-login {
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.7rem;
+  margin: auto;
+  border: none;
+  width: 100%;
+  background: -webkit-gradient(linear, left top, right top, from(#00d6e8), to(#7c00aa));
+  background: linear-gradient(to right, #00d6e8, #7c00aa);
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.form-container .wrapper-form form .footer-form {
+  border-top: 1px solid #bebebe;
+}
+
+.form-container .wrapper-form form .footer-form .item-text {
+  width: calc(100% - 10%);
+  height: auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+.form-container .wrapper-form form .footer-form .item-text a {
+  color: #0484da;
+  text-decoration: none;
+}
+/*# sourceMappingURL=index.css.map */
