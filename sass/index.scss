@@ -1,7 +1,16 @@
+//CONSTANT
+@import "./constant/fonts";
 @import "./constant/colors";
 @import "./constant/font-sizes";
 @import "./constant/media-query";
 @import "./constant/mixins";
 
-@import "./components/login";
+//GLOBALS CLASS
+@import "./constant/globals-class";
+
+//COMPONENTS
+@import "./components/notification";
+
+//PAGES
+@import "./pages/login";
 @import "./pages/register";

@@ -1,0 +1,36 @@
+@mixin input-primary {
+	width: 100%;
+	box-sizing: border-box;
+	background: setColor(light, darken-2);
+	border: none;
+	border-radius: 15px;
+	padding: 1.1rem 1.3rem;
+	margin: 0.7rem 0;
+	font-size: 18px;
+	font-weight: 600;
+	outline: none;
+	color: setColor(txt_color, primary);
+}
+
+@mixin btn-primary(
+	$bg: setColor(primary),
+	$bgHover: setColor(primary, state),
+	$color: setColor(light),
+	$fontSize: 18px
+) {
+	width: 100%;
+	box-sizing: border-box;
+	background: $bg;
+	border: none;
+	border-radius: 15px;
+	padding: 1.1rem 1.3rem;
+	margin: 0.7rem 0;
+	font-size: $fontSize;
+	font-weight: bold;
+	cursor: pointer;
+	color: $color;
+	outline: none;
+	&:hover {
+		background: $bgHover;
+	}
+}

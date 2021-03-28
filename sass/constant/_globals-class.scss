@@ -1,0 +1,50 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	color: setColor(txt_color);
+	font-family: "Lato", sans-serif;
+}
+
+h1 {
+	font-size: $xxl;
+}
+h2 {
+	font-size: $xl;
+}
+h3 {
+	font-size: $lg;
+}
+h4 {
+	font-size: $md;
+}
+h5 {
+	font-size: $sm;
+}
+h6 {
+	font-size: $xs;
+}
+
+p {
+	font-size: $sm;
+}
+
+a {
+	color: setColor(extra2);
+	text-decoration: none;
+	&:hover {
+		color: setColor(extra2, state);
+	}
+}
+
+.item-link {
+	font-size: $sm;
+	color: setColor(extra2);
+	text-decoration: none;
+	&:hover {
+		color: setColor(extra2, state);
+	}
+}
