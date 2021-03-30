@@ -1,9 +1,9 @@
 // Scheme of colors
 $colorscheme: (
 	primary: (
-		state: #d94169,
-		base: #d62756,
-		rgba: rgba(217, 65, 105, 0.8),
+		state: #ee2229,
+		base: #d81f26,
+		rgba: #d81f25ab,
 	),
 	secondary: (
 		state: #9137f5,
@@ -65,9 +65,13 @@ $colorscheme: (
 		darken-11: #8f8f8f,
 		darken-12: #858585, */
 	),
+	background: (
+		base: #1e1e1e,
+		primary: #161616,
+	),
 	txt_color: (
-		base: #323232,
-		primary: #3a3a3a,
+		base: #ffffff,
+		primary: #808080,
 		secondary: #535353,
 	),
 );
