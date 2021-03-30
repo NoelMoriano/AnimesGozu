@@ -12,13 +12,12 @@
 		margin: 1rem;
 		form {
 			padding: 0;
-			background: setColor(light);
 			border-radius: 7px;
+			background: setColor(bg);
 			.header-form {
 				padding: 1.4rem 1rem;
 				text-align: center;
 				position: relative;
-				border-bottom: 1px solid setColor(light, darken-2);
 				color: setColor(txt_color);
 				.item-icon-close {
 					position: absolute;
@@ -52,7 +51,6 @@
 			}
 
 			.footer-form {
-				border-top: 1px solid setColor(light, darken-2);
 				display: grid;
 				grid-template-columns: 1fr 10px 1fr;
 				align-items: center;

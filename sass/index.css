@@ -7,7 +7,8 @@
 }
 
 body {
-  color: #323232;
+  background: #1e1e1e;
+  color: #ffffff;
   font-family: "Lato", sans-serif;
 }
 
@@ -61,8 +62,8 @@ a:hover {
 .form-container {
   width: 100vw;
   height: 100vh;
-  background: -webkit-gradient(linear, left top, right top, from(#0484da), to(#d94169));
-  background: linear-gradient(to right, #0484da, #d94169);
+  background: -webkit-gradient(linear, left top, right top, from(#0484da), to(#e41f26));
+  background: linear-gradient(to right, #0484da, #e41f26);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -82,16 +83,15 @@ a:hover {
 
 .form-container .wrapper-form form {
   padding: 0;
-  background: #ffffff;
   border-radius: 7px;
+  background: #1e1e1e;
 }
 
 .form-container .wrapper-form form .header-form {
   padding: 1.4rem 1rem;
   text-align: center;
   position: relative;
-  border-bottom: 1px solid #ebebeb;
-  color: #323232;
+  color: #ffffff;
 }
 
 .form-container .wrapper-form form .header-form .item-icon-close {
@@ -127,14 +127,14 @@ a:hover {
   font-size: 18px;
   font-weight: 600;
   outline: none;
-  color: #3a3a3a;
+  color: #808080;
 }
 
 .form-container .wrapper-form form .body-form .inputs-wrapper input:last-child {
   width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background: #d62756;
+  background: #d81f26;
   border: none;
   border-radius: 15px;
   padding: 1.1rem 1.3rem;
@@ -147,7 +147,7 @@ a:hover {
 }
 
 .form-container .wrapper-form form .body-form .inputs-wrapper input:last-child:hover {
-  background: #d94169;
+  background: #e41f26;
 }
 
 .form-container .wrapper-form form .body-form .item-text {
@@ -156,7 +156,6 @@ a:hover {
 }
 
 .form-container .wrapper-form form .footer-form {
-  border-top: 1px solid #ebebeb;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 10px 1fr;
@@ -318,14 +317,14 @@ a:hover {
   font-size: 18px;
   font-weight: 600;
   outline: none;
-  color: #3a3a3a;
+  color: #808080;
 }
 
 .register-container .wrapper-right .r-body-section .body-content form input:last-child {
   width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background: #d62756;
+  background: #d81f26;
   border: none;
   border-radius: 15px;
   padding: 1.1rem 1.3rem;
@@ -338,6 +337,6 @@ a:hover {
 }
 
 .register-container .wrapper-right .r-body-section .body-content form input:last-child:hover {
-  background: #d94169;
+  background: #e41f26;
 }
 /*# sourceMappingURL=index.css.map */
