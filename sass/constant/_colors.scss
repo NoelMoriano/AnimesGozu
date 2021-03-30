@@ -1,41 +1,49 @@
 // Scheme of colors
 $colorscheme: (
 	primary: (
+		//BUTTONS, CARDS, ETC
 		state: #e41f26,
 		base: #d81f26,
 		rgba: #d81f25ab,
 	),
 	secondary: (
+		//BUTTONS, CARDS, ETC
 		state: #9137f5,
 		base: #8525f1,
 		rgba: rgba(145, 55, 245, 0.8),
 	),
 	tertiary: (
+		//BUTTONS, CARDS, ETC
 		state: #00deda,
 		base: #00c7c4,
 		rgba: rgba(0, 222, 218, 0.8),
 	),
 	extra: (
+		//BUTTONS, CARDS, ETC
 		state: #f2e205,
 		base: #ddce00,
 		rgba: rgba(224, 210, 4, 0.8),
 	),
 	extra2: (
+		//BUTTONS, CARDS, ETC
 		state: #0484da,
 		base: #047fd1,
 		rgba: rgba(4, 132, 218, 0.8),
 	),
 	danger: (
+		//BUTTONS, CARDS, ETC
 		state: #ff0005,
 		base: #e40105,
 		rgba: rgba(255, 0, 5, 0.8),
 	),
 	success: (
+		//BUTTONS, CARDS, ETC
 		state: #20ca42,
 		base: #10b932,
 		rgba: rgba(32, 202, 66, 0.8),
 	),
 	dark: (
+		//BUTTONS, CARDS, BG ETC
 		/* lighten-12: #7a7a7a,
 		lighten-11: #707070,
 		lighten-10: #666666,
@@ -51,6 +59,7 @@ $colorscheme: (
 		base: #000000,
 	),
 	light: (
+		//BUTTONS, CARDS, BG ETC
 		base: #ffffff,
 		darken-1: #f5f5f5,
 		darken-2: #ebebeb,
@@ -66,10 +75,12 @@ $colorscheme: (
 		darken-12: #858585, */
 	),
 	bg: (
+		//BACKGROUNDS
 		base: #1e1e1e,
 		primary: #161616,
 	),
 	txt_color: (
+		//TEXTS, ICONS ETC
 		base: #ffffff,
 		primary: #808080,
 		secondary: #535353,
