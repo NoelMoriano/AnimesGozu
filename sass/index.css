@@ -13,11 +13,11 @@ body {
 }
 
 h1 {
-  font-size: 1.9rem;
+  font-size: 3.9rem;
 }
 
 h2 {
-  font-size: 1.7rem;
+  font-size: 2rem;
 }
 
 h3 {
@@ -338,5 +338,296 @@ a:hover {
 
 .register-container .wrapper-right .r-body-section .body-content form input:last-child:hover {
   background: #e41f26;
+}
+
+.home-container {
+  display: -ms-grid;
+  display: grid;
+  height: auto;
+  min-height: 100vh;
+  width: 100%;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 1125px) {
+  .home-container {
+    -ms-grid-columns: 20% 1fr;
+        grid-template-columns: 20% 1fr;
+  }
+}
+
+.home-container .content-left {
+  background: #141414;
+  color: #ffffff;
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media screen and (min-width: 1125px) {
+  .home-container .content-left {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+.home-container .content-left .menu a {
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.home-container .content-left .menu a img {
+  margin: 2.5rem 0;
+}
+
+.home-container .content-left .menu .perfil {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.home-container .content-left .menu .perfil img {
+  width: 180px;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin: 0.5rem 0;
+  border-radius: 50%;
+}
+
+.home-container .content-left .menu .list a {
+  margin: 2rem 0;
+  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #ffffff;
+}
+
+.home-container .content-right .banner-wrapper {
+  width: 100%;
+  height: 75vh;
+  background: #000000;
+  background-image: url("/images/home/banner/image1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.home-container .content-right .banner-wrapper .gradient {
+  width: 100%;
+  height: 100%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#070707), color-stop(#e66aa800), to(#070707));
+  background-image: linear-gradient(#070707, #e66aa800, #070707);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.home-container .content-right .banner-wrapper .gradient .banner {
+  text-align: center;
+}
+
+.home-container .content-right .banner-wrapper .gradient .banner h2 {
+  margin: 2% 10%;
+}
+
+.home-container .content-right .animes-wrapper {
+  background: #1f1f1f;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+}
+
+.home-container .content-right .animes-wrapper .category-card {
+  margin: 1rem;
+  position: relative;
+  overflow-x: auto;
+  height: auto;
+  min-height: 350px;
+}
+
+.home-container .content-right .animes-wrapper .category-card h2 {
+  margin: 1rem;
+}
+
+.home-container .content-right .animes-wrapper .category-card .category {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  left: 0;
+}
+
+.home-container .content-right .animes-wrapper .category-card .category img {
+  margin: 1rem;
+  width: 304px;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 1rem;
+}
+
+.movie-grid {
+  background: lightcoral;
+  display: -ms-grid;
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  -ms-grid-columns: 20% 1fr 1fr;
+      grid-template-columns: 20% 1fr 1fr;
+  -ms-grid-rows: 80% 1fr;
+      grid-template-rows: 80% 1fr;
+  overflow-x: hidden;
+}
+
+.movie-grid .item-grid:nth-child(1) {
+  -ms-grid-row-span: 2;
+      grid-row-end: span 2;
+  background: #141414;
+  color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.movie-grid .item-grid:nth-child(2) {
+  -ms-grid-column-span: 2;
+      grid-column-end: span 2;
+  background: black;
+  background-image: url(/images/home/animes/accion/image4.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: SetColor(txt_color);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.movie-grid .item-grid:nth-child(2) .gradient {
+  width: 100%;
+  height: 100%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#070707), color-stop(#e66aa800), to(#070707));
+  background-image: linear-gradient(#070707, #e66aa800, #070707);
+}
+
+.movie-grid .item-grid:nth-child(2) .gradient .banner {
+  text-align: left;
+  margin: 3%;
+  display: inline-block;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+}
+
+.movie-grid .item-grid:nth-child(2) .gradient .banner p {
+  margin-right: 60%;
+}
+
+.movie-grid .item-grid:nth-child(2) .gradient .banner a {
+  display: inline-block;
+  background: #e41f26;
+  font-size: 1.3rem;
+  color: #ffffff;
+  padding: 1rem;
+  border-radius: 50px;
+}
+
+.movie-grid .item-grid:nth-child(2) .gradient .banner a i {
+  margin-right: 10px;
+}
+
+.movie-grid .item-grid:nth-child(3) {
+  -ms-grid-column-span: 2;
+      grid-column-end: span 2;
+  background: #1e1e1e;
+}
+
+.movie-grid .item-grid:nth-child(3) .capitulos {
+  margin: 2%;
+}
+
+.movie-grid .menu a {
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.movie-grid .menu a img {
+  margin: 2.5rem 0;
+}
+
+.movie-grid .menu .perfil {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.movie-grid .menu .perfil img {
+  width: 180px;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin: 0.5rem 0;
+  border-radius: 50%;
+}
+
+.movie-grid .menu .list a {
+  margin: 2rem 0;
+  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #ffffff;
 }
 /*# sourceMappingURL=index.css.map */
