@@ -1,108 +1,193 @@
-.movie-grid {
-	background: lightcoral;
+.movie-container {
 	display: grid;
-	height: 100vh;
-	width: 100vw;
-	grid-template-columns: 20% 1fr 1fr;
-	grid-template-rows: 80% 1fr;
-    overflow-x: hidden;
+	height: auto;
+	min-height: 100vh;
+	width: 100%;
+	grid-template-columns: 1fr;
 
-    .item-grid:nth-child(1) {
-        grid-row-end: span 2;
+	@include mediaQuery(tablet) {
+		grid-template-columns: 20% 1fr;
+	}
+
+	.content-left {
 		background: setColor(dark, lighten-2);
 		color: setColor(txt_color);
-		display: flex;
+		display: none;
 		justify-content: center;
-    }
-    
-        .item-grid:nth-child(2) {
-            grid-column-end: span 2;
-            background: black;
-            background-image: url(/images/home/animes/accion/image4.png);
-            background-repeat: no-repeat;
-            background-size: cover;
-            color: SetColor(txt_color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
 
-            .gradient {
-                width: 100%;
-                height: 100%;
-                background-image: linear-gradient(#070707, #e66aa800, #070707);
+		@include mediaQuery(tablet) {
+			display: flex;
+		}
 
-                
-                        .banner {
-                            text-align: left;
-                            margin: 3%;
-                            display: inline-block;
-                            align-self: end;
+		.menu {
+			a {
+				text-decoration: none;
+				display: flex;
+				align-content: center;
 
-                            p{
-                                margin-right: 60%;
-                            }
+				img {
+					margin: 2.5rem 0;
+				}
+			}
 
-                            a{
-                                display: inline-block;
-                                background: setColor(primary, state);
-                                font-size: 1.3rem;
-                                color: setColor(txt_color);
-                                padding: 1rem;
-                                border-radius: 50px;
-                            
-                            i{
-                                margin-right: 10px;
-                            }
-                
-                            }
-                        }
-                    }
-        }
+			.perfil {
+				display: flex;
+				align-content: center;
+				justify-content: center;
 
-        .item-grid:nth-child(3) {
-            grid-column-end: span 2;
-            background: #1e1e1e;
+				img {
+					width: 180px;
+					height: auto;
+					object-fit: cover;
+					margin: 0.5rem 0;
+					border-radius: 50%;
+				}
+			}
 
-            .capitulos {
-                margin: 2%;
-            }
-            
-        }
+			.list a {
+				margin: 2rem 0;
+				display: block;
+				display: flex;
+				justify-content: center;
+				color: setColor(txt_color);
+			}
+		}
+	}
 
-        .menu{
-		
-            a{
-                text-decoration: none;
-                display: flex;
-                align-content: center;
-    
-                img{
-                    margin: 2.5rem 0 ;
-                }
-            }
-    
-            .perfil{
-                display: flex;
-                align-content: center;
-                justify-content: center;
-                
-    
-                img{
-                    width: 180px;
-                    height: auto;
-                    object-fit: cover;
-                    margin: 0.5rem 0;
-                    border-radius: 50%;
-                }
-            }
-    
-            .list a {
-                margin: 2rem 0;
-                display: block;
-                display: flex;
-                justify-content: center;
-                color: setColor(txt_color);
-        }
+	.content-right {
+		.banner-wrapper {
+			width: 100%;
+			height: 75vh;
+			background: setColor(dark);
+			background-image: url(/images/home/animes/accion/image4.png);
+			background-repeat: no-repeat;
+			background-size: cover;
+			color: SetColor(txt_color);
+			display: flex;
+			justify-content: center;
+			align-items: center;
 
-    }
+			.gradient {
+				width: 100%;
+				height: 100%;
+				background-image: linear-gradient(#070707, #e66aa800, #070707);
+				display: flex;
+				align-items: flex-end;
+
+				.banner {
+					padding: 2rem;
+					.category {
+						display: flex;
+						img {
+							width: 30px;
+							height: 30px;
+							object-fit: cover;
+							border-radius: 1rem;
+						}
+
+						h3 {
+							margin: 0 0.5rem;
+						}
+					}
+
+					.title {
+						margin: 0.5rem 0;
+					}
+
+					.plot {
+						width: 450px;
+					}
+
+					.button {
+						margin: 1.5rem 0;
+
+						a {
+							display: inline-block;
+							background: setColor(primary, state);
+							color: setColor(txt_color);
+							padding: 1rem;
+							border-radius: 50px;
+							font-size: 1.3rem;
+
+							span {
+								margin: 0 1rem 0 0;
+							}
+
+							i {
+								margin: 0 1rem;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.acordion-wrapper {
+			background: setColor(dark, lighten-3);
+			height: auto;
+			margin: 2rem;
+			box-shadow: 0 0 18px #0000004f;
+			border: 5rem;
+
+			.label {
+				position: relative;
+				width: 100%;
+				display: flex;
+				padding: 1.5rem;
+				cursor: pointer;
+				transition: background 0.1s;
+				background: #070707af;
+
+				.icon-collapse {
+					position: absolute;
+					top: 35%;
+					right: 1.5rem;
+				}
+			}
+
+			.content {
+				line-height: 1.6;
+				display: none;
+
+				section {
+					padding: 1rem;
+					border-bottom: 1px solid white;
+
+					a {
+						position: relative;
+						width: 100%;
+						display: flex;
+						padding: 0.1rem;
+						color: setColor(txt_color);
+
+						span {
+							margin: 0 0.5rem;
+						}
+
+						.play-icon {
+							position: absolute;
+							top: 10%;
+							right: 0.5rem;
+						}
+					}
+				}
+			}
+
+			section:hover {
+				background: #07070738;
+			}
+
+			.input {
+				display: none;
+			}
+
+			.input:checked ~ .content {
+				display: block;
+			}
+
+			.input:checked ~ .label::after {
+				transform: translateY(-50%) rotate(0.5turn);
+			}
+		}
+	}
 }

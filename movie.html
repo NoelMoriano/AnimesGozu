@@ -12,14 +12,14 @@
 		/>
 		<link rel="stylesheet" href="./sass/index.css" />
 		<title>Anime-flix | Movie</title>
-        </head>
+	</head>
 	<body>
-		<div class="movie-grid">
-			<div class="item-grid">
+		<div class="movie-container">
+			<div class="content-left">
 				<div class="menu">
-					<a href=""><img src="/images/home/icon/Vector.png" alt=""></a>
+					<a href=""><img src="/images/home/icon/Vector.png" alt="" /></a>
 					<div class="perfil">
-						<img src="/images/home/perfil/perfil.jpg" alt="">
+						<img src="/images/home/perfil/perfil.jpg" alt="" />
 					</div>
 					<div class="list">
 						<a><h4>SERIES</h4></a>
@@ -29,26 +29,139 @@
 					</div>
 				</div>
 			</div>
-			<div class="item-grid">
-				<div class="gradient">
-					<div class="banner">
-						<h3>SERIE</h3>
-						<h1>NARUTO SHIPPUDEN</h1>
-						<p
-							>'Naruto Shippuden' se trata de la segunda parte del anime 'Naruto' cuando Naruto
-							regresa a La Aldea Oculta de la hoja (Konoha), tras haber estado dos años y media
-							entrenando con uno de los tres legendarios ninja.</p
-						>
-						<a href=""><i class="fas fa-play"></i>REPRODUCIR</a>
+			<div class="content-right">
+				<div class="banner-wrapper">
+					<div class="gradient">
+						<div class="banner">
+							<section class="category">
+								<img src="/images/home/icon/icon2.jpg" alt="" />
+								<h3>SERIE</h3>
+							</section>
+							<section class="title"><h1>NARUTO SHIPPUDEN</h1></section>
+							<section class="plot">
+								<p>
+									'Naruto Shippuden' se trata de la segunda parte del anime 'Naruto' cuando Naruto
+									regresa a La Aldea Oculta de la hoja (Konoha), tras haber estado dos años y media
+									entrenando con uno de los tres legendarios ninja.
+								</p>
+							</section>
+							<section class="button">
+								<a href="">
+									<i class="fas fa-play"></i>
+									<span>REPRODUCIR</span>
+								</a>
+							</section>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="item-grid">
-				<div class="capitulos">
-					<h1>CAPITULOS</h1>
-					<div class="temporada-1">
-						<h2>Temporada 1</h2>
+				<div class="acordion-wrapper">
+					<div class="title">
+						<h2>CAPITULOS</h2>
 					</div>
+					<div>
+						<input type="checkbox" id="first-season" class="input" />
+						<label for="first-season" class="label"
+							>Temporada 1
+							<div class="icon-collapse">
+								<i class="fas fa-chevron-up"> </i>
+							</div>
+						</label>
+						<div class="content">
+							<section>
+								<a href="#">
+									<span>01</span>
+									<span>Naruto Shippuden</span>
+									<div class="play-icon">
+										<i class="fas fa-play-circle"></i>
+									</div>
+								</a>
+							</section>
+							<section>
+								<a href="#">
+									<span>01</span>
+									<span>Naruto Shippuden</span>
+									<div class="play-icon">
+										<i class="fas fa-play-circle"></i>
+									</div>
+								</a>
+							</section>
+							<section>
+								<a href="#">
+									<span>01</span>
+									<span>Naruto Shippuden</span>
+									<div class="play-icon">
+										<i class="fas fa-play-circle"></i>
+									</div>
+								</a>
+							</section>
+						</div>
+					</div>
+					<div>
+						<input type="checkbox" id="second-season" class="input" />
+						<label for="second-season" class="label">Temporada 2<div class="icon-collapse">
+							<i class="fas fa-chevron-up"> </i>
+						</div></label>
+						<div class="content">
+							<section>
+								<a href="#">
+									<span>01</span>
+									<span>Naruto Shippuden</span>
+									<div class="play-icon">
+										<i class="fas fa-play-circle"></i>
+									</div>
+								</a>
+							</section>
+							<section>
+								<a href="#">
+									<span>02</span>
+									<span>Naruto Shippuden</span>
+									<div class="play-icon">
+										<i class="fas fa-play-circle"></i>
+									</div>
+								</a>
+							</section>
+							<section>
+								<a href="#">
+									<span>03</span>
+									<span>Naruto Shippuden</span>
+									<div class="play-icon">
+										<i class="fas fa-play-circle"></i>
+									</div>
+								</a>
+							</section>
+						</div>
+						<input type="checkbox" id="thrid-season" class="input" />
+						<label for="thrid-season" class="label">Temporada 3<div class="icon-collapse">
+							<i class="fas fa-chevron-up"> </i>
+						</div></label>
+						<div class="content">
+							<section>
+								<a href="#">
+									<span>01</span>
+									<span>Naruto Shippuden</span>
+								</a>
+							</section>
+							<section>
+								<a href="#">
+									<span>02</span>
+									<span>Naruto Shippuden</span>
+									<div class="play-icon">
+										<i class="fas fa-play-circle"></i>
+									</div>
+								</a>
+							</section>
+							<section>
+								<a href="#">
+									<span>03</span>
+									<span>Naruto Shippuden</span>
+									<div class="play-icon">
+										<i class="fas fa-play-circle"></i>
+									</div>
+								</a>
+							</section>
+						</div>
+					</div>
+					<div>
 				</div>
 			</div>
 		</div>
