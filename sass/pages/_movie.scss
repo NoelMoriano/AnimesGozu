@@ -78,14 +78,16 @@
 					padding: 2rem;
 					.category {
 						display: flex;
+						align-items: center;
 						img {
-							width: 30px;
-							height: 30px;
+							width: 20px;
+							height: 20px;
 							object-fit: cover;
 							border-radius: 1rem;
 						}
 
-						h3 {
+						span {
+							font-size: x-large;
 							margin: 0 0.5rem;
 						}
 					}
@@ -99,22 +101,21 @@
 					}
 
 					.button {
-						margin: 1.5rem 0;
+						margin: 1rem 0;
 
 						a {
 							display: inline-block;
 							background: setColor(primary, state);
 							color: setColor(txt_color);
-							padding: 1rem;
+							padding: 1rem 0.5rem;
 							border-radius: 50px;
-							font-size: 1.3rem;
-
+							font-size: 1.2rem;
 							span {
-								margin: 0 1rem 0 0;
+								margin: 0 0.5rem 0 0;
 							}
 
 							i {
-								margin: 0 1rem;
+								margin: 0 0.5rem;
 							}
 						}
 					}
@@ -122,71 +123,77 @@
 			}
 		}
 
-		.acordion-wrapper {
-			background: setColor(dark, lighten-3);
-			height: auto;
-			margin: 2rem;
-			box-shadow: 0 0 18px #0000004f;
-			border: 5rem;
-
-			.label {
-				position: relative;
-				width: 100%;
-				display: flex;
-				padding: 1.5rem;
-				cursor: pointer;
-				transition: background 0.1s;
-				background: #070707af;
-
-				.icon-collapse {
-					position: absolute;
-					top: 35%;
-					right: 1.5rem;
-				}
+		.chapters {
+			.title {
+				margin: 2rem;
 			}
 
-			.content {
-				line-height: 1.6;
-				display: none;
+			.acordion-wrapper {
+				background: setColor(dark, lighten-3);
+				height: auto;
+				margin: 2rem;
+				box-shadow: 0 0 18px #0000004f;
+				border: 5rem;
 
-				section {
-					padding: 1rem;
-					border-bottom: 1px solid white;
+				.label {
+					position: relative;
+					width: 100%;
+					display: flex;
+					padding: 1.5rem;
+					cursor: pointer;
+					transition: background 0.1s;
+					background: #070707af;
 
-					a {
-						position: relative;
-						width: 100%;
-						display: flex;
-						padding: 0.1rem;
-						color: setColor(txt_color);
+					.icon-collapse {
+						position: absolute;
+						top: 35%;
+						right: 1.5rem;
+					}
+				}
 
-						span {
-							margin: 0 0.5rem;
-						}
+				.content {
+					line-height: 1.6;
+					display: none;
 
-						.play-icon {
-							position: absolute;
-							top: 10%;
-							right: 0.5rem;
+					section {
+						padding: 1rem;
+						border-bottom: 1px solid white;
+
+						a {
+							position: relative;
+							width: 100%;
+							display: flex;
+							padding: 0.1rem;
+							color: setColor(txt_color);
+
+							span {
+								margin: 0 0.5rem;
+							}
+
+							.play-icon {
+								position: absolute;
+								top: 10%;
+								right: 0.5rem;
+							}
 						}
 					}
 				}
-			}
 
-			section:hover {
-				background: #07070738;
-			}
+				section:hover {
+					background: #07070738;
+				}
 
-			.input {
-				display: none;
-			}
+				.input {
+					display: none;
+				}
 
-			.input:checked ~ .content {
-				display: block;
-			}
+				.input:checked ~ .content {
+					display: block;
+				}
 
-			.input:checked ~ .label::after {
-				transform: translateY(-50%) rotate(0.5turn);
+				.input:checked ~ .label::after {
+					transform: translateY(-50%) rotate(0.5turn);
+				}
 			}
 		}
 	}

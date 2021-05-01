@@ -617,17 +617,21 @@ a:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .movie-container .content-right .banner-wrapper .gradient .banner .category img {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 1rem;
 }
 
-.movie-container .content-right .banner-wrapper .gradient .banner .category h3 {
+.movie-container .content-right .banner-wrapper .gradient .banner .category span {
+  font-size: x-large;
   margin: 0 0.5rem;
 }
 
@@ -640,27 +644,31 @@ a:hover {
 }
 
 .movie-container .content-right .banner-wrapper .gradient .banner .button {
-  margin: 1.5rem 0;
+  margin: 1rem 0;
 }
 
 .movie-container .content-right .banner-wrapper .gradient .banner .button a {
   display: inline-block;
   background: #e41f26;
   color: #ffffff;
-  padding: 1rem;
+  padding: 1rem 0.5rem;
   border-radius: 50px;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 .movie-container .content-right .banner-wrapper .gradient .banner .button a span {
-  margin: 0 1rem 0 0;
+  margin: 0 0.5rem 0 0;
 }
 
 .movie-container .content-right .banner-wrapper .gradient .banner .button a i {
-  margin: 0 1rem;
+  margin: 0 0.5rem;
 }
 
-.movie-container .content-right .acordion-wrapper {
+.movie-container .content-right .chapters .title {
+  margin: 2rem;
+}
+
+.movie-container .content-right .chapters .acordion-wrapper {
   background: #1f1f1f;
   height: auto;
   margin: 2rem;
@@ -669,7 +677,7 @@ a:hover {
   border: 5rem;
 }
 
-.movie-container .content-right .acordion-wrapper .label {
+.movie-container .content-right .chapters .acordion-wrapper .label {
   position: relative;
   width: 100%;
   display: -webkit-box;
@@ -682,23 +690,23 @@ a:hover {
   background: #070707af;
 }
 
-.movie-container .content-right .acordion-wrapper .label .icon-collapse {
+.movie-container .content-right .chapters .acordion-wrapper .label .icon-collapse {
   position: absolute;
   top: 35%;
   right: 1.5rem;
 }
 
-.movie-container .content-right .acordion-wrapper .content {
+.movie-container .content-right .chapters .acordion-wrapper .content {
   line-height: 1.6;
   display: none;
 }
 
-.movie-container .content-right .acordion-wrapper .content section {
+.movie-container .content-right .chapters .acordion-wrapper .content section {
   padding: 1rem;
   border-bottom: 1px solid white;
 }
 
-.movie-container .content-right .acordion-wrapper .content section a {
+.movie-container .content-right .chapters .acordion-wrapper .content section a {
   position: relative;
   width: 100%;
   display: -webkit-box;
@@ -708,29 +716,29 @@ a:hover {
   color: #ffffff;
 }
 
-.movie-container .content-right .acordion-wrapper .content section a span {
+.movie-container .content-right .chapters .acordion-wrapper .content section a span {
   margin: 0 0.5rem;
 }
 
-.movie-container .content-right .acordion-wrapper .content section a .play-icon {
+.movie-container .content-right .chapters .acordion-wrapper .content section a .play-icon {
   position: absolute;
   top: 10%;
   right: 0.5rem;
 }
 
-.movie-container .content-right .acordion-wrapper section:hover {
+.movie-container .content-right .chapters .acordion-wrapper section:hover {
   background: #07070738;
 }
 
-.movie-container .content-right .acordion-wrapper .input {
+.movie-container .content-right .chapters .acordion-wrapper .input {
   display: none;
 }
 
-.movie-container .content-right .acordion-wrapper .input:checked ~ .content {
+.movie-container .content-right .chapters .acordion-wrapper .input:checked ~ .content {
   display: block;
 }
 
-.movie-container .content-right .acordion-wrapper .input:checked ~ .label::after {
+.movie-container .content-right .chapters .acordion-wrapper .input:checked ~ .label::after {
   -webkit-transform: translateY(-50%) rotate(0.5turn);
           transform: translateY(-50%) rotate(0.5turn);
 }
