@@ -105,8 +105,9 @@
 						a {
 							display: inline-block;
 							background: setColor(primary, state);
+							box-shadow: 0px 0px 30px rgba(216, 31, 38, 0.5);
 							color: setColor(txt_color);
-							padding: 0.5rem 0.5rem;
+							padding: 0.8em 1em;
 							border-radius: 50px;
 							font-size: 1rem;
 							span {
@@ -140,7 +141,7 @@
 					display: flex;
 					padding: 1.5rem;
 					cursor: pointer;
-					transition: background 0.1s;
+					transition: 0.3s;
 					background: #070707af;
 
 					.icon-collapse {
@@ -148,6 +149,10 @@
 						top: 35%;
 						right: 1.5rem;
 					}
+				}
+
+				.input:checked ~ .label .icon-collapse {
+					transform: rotate(180deg);
 				}
 
 				.content {
@@ -188,10 +193,6 @@
 
 				.input:checked ~ .content {
 					display: block;
-				}
-
-				.input:checked ~ .label::after {
-					transform: translateY(-50%) rotate(0.5turn);
 				}
 			}
 		}
