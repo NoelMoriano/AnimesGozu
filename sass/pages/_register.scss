@@ -2,6 +2,7 @@
 	background: red;
 	height: 100vh;
 	width: 100vw;
+
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: 100%;
@@ -11,7 +12,7 @@
 	}
 
 	.wrapper-left {
-		background: setColor(extra, rgba);
+		background: setColor(bg, primary);
 		display: none;
 		align-items: center;
 		justify-content: center;
@@ -20,27 +21,28 @@
 			display: flex;
 		}
 		img {
-			height: 100%;
-			width: auto;
+			width: 100%;
+			height: auto;
+			object-fit: cover;
 		}
 	}
 
 	.wrapper-right {
-		background: purple;
+		background: setColor(bg);
 		display: grid;
-		grid-template-rows: 20% 1fr;
+		grid-template-rows: 15% 1fr;
 
 		.r-head-section {
-			background: wheat;
+			background: setColor(primary, base);
 
 			.head-content {
-				padding: 2rem 1rem;
+				padding: 1rem 1rem;
 				display: flex;
 				justify-content: space-between;
 
 				.link-sing-in {
 					text-decoration: none;
-					color: #000;
+					color: setColor(txt_color);
 				}
 
 				.item-sign-in {
@@ -59,7 +61,7 @@
 				width: 100%;
 				h2 {
 					text-align: center;
-					color: aqua;
+					color: setColor(txt_color);
 					margin: 2rem 0;
 					font-weight: 800;
 				}

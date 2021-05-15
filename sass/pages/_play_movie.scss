@@ -192,7 +192,7 @@
 				}
 
 				.input:checked ~ .label::after {
-					transform: translateY(-50%) rotate(0.5turn);
+					transform: rotate(180deg);
 				}
 			}
 		}
