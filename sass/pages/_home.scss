@@ -88,12 +88,9 @@
 			background: setColor(dark, lighten-3);
 			width: 100%;
 			height: auto;
-			min-height: 100%;
-
 			.category-card {
 				margin: 1rem;
 				position: relative;
-				overflow-x: auto;
 				height: auto;
 				min-height: 350px;
 
@@ -104,6 +101,8 @@
 				.category {
 					display: flex;
 					position: absolute;
+					overflow-x: auto;
+					max-width: 100%;
 					left: 0;
 
 					img {
@@ -113,6 +112,11 @@
 						object-fit: cover;
 						border-radius: 1rem;
 					}
+					&::-webkit-scrollbar {
+						display: none;
+					}
+					-ms-overflow-style: none; /* IE and Edge */
+					scrollbar-width: none; /* Firefox */
 				}
 			}
 		}
