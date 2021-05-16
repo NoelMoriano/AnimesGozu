@@ -167,6 +167,7 @@
 							position: relative;
 							width: 100%;
 							display: flex;
+							justify-content: space-between;
 							padding: 0.1rem;
 							color: setColor(txt_color);
 
@@ -175,9 +176,9 @@
 							}
 
 							.play-icon {
-								position: absolute;
-								top: 10%;
-								right: 0.5rem;
+								i {
+									font-size: 1.5em;
+								}
 							}
 						}
 					}

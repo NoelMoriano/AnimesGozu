@@ -1,5 +1,5 @@
 .register-container {
-	background: red;
+	background: setColor(bg, primary);
 	height: 100vh;
 	width: 100vw;
 
@@ -12,7 +12,6 @@
 	}
 
 	.wrapper-left {
-		background: setColor(bg, primary);
 		display: none;
 		align-items: center;
 		justify-content: center;
@@ -22,32 +21,32 @@
 		}
 		img {
 			width: 100%;
-			height: auto;
+			height: 100%;
 			object-fit: cover;
 		}
 	}
 
 	.wrapper-right {
-		background: setColor(bg);
 		display: grid;
 		grid-template-rows: 15% 1fr;
 
 		.r-head-section {
-			background: setColor(primary, base);
-
 			.head-content {
-				padding: 1rem 1rem;
+				padding: 1em 2em 0 2em;
 				display: flex;
 				justify-content: space-between;
 
 				.link-sing-in {
 					text-decoration: none;
 					color: setColor(txt_color);
+					display: flex;
+					align-items: center;
 				}
 
 				.item-sign-in {
 					font-size: 1.3rem;
 					font-weight: bold;
+					margin-left: 0.5em;
 				}
 			}
 		}
