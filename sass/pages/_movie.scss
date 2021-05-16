@@ -36,8 +36,8 @@
 				justify-content: center;
 
 				img {
-					width: 180px;
-					height: auto;
+					width: 160px;
+					height: 160px;
 					object-fit: cover;
 					margin: 0.5rem 0;
 					border-radius: 50%;
@@ -97,6 +97,9 @@
 
 					.plot {
 						width: 450px;
+						p {
+							font-weight: 400;
+						}
 					}
 
 					.button {
@@ -105,7 +108,7 @@
 						a {
 							display: inline-block;
 							background: setColor(primary, state);
-							box-shadow: 0px 0px 30px rgba(216, 31, 38, 0.5);
+							box-shadow: 0 0.3rem 1.2rem rgba(216, 31, 38, 0.5);
 							color: setColor(txt_color);
 							padding: 0.8em 1em;
 							border-radius: 50px;
@@ -139,15 +142,16 @@
 					position: relative;
 					width: 100%;
 					display: flex;
+					font-size: $md;
 					padding: 1.5rem;
 					cursor: pointer;
-					transition: 0.3s;
 					background: #070707af;
 
 					.icon-collapse {
 						position: absolute;
 						top: 35%;
 						right: 1.5rem;
+						transition: -webkit-transform 0.2s ease-in;
 					}
 				}
 
