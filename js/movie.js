@@ -12,6 +12,14 @@ const animeChaptersData = [
 				number: 2,
 				title: "Naruto Shippuden",
 			},
+			{
+				number: 3,
+				title: "Naruto Shippuden",
+			},
+			{
+				number: 4,
+				title: "Naruto Shippuden",
+			},
 		],
 	},
 	{
@@ -29,28 +37,33 @@ const animeChaptersData = [
 	},
 ];
 
-animeChaptersData.map(
+const mapChapters = animeChaptersData.map(
 	(animeChapter, index) =>
-		(accordionWrapper.innerHTML += `<div id="item-list" key="${index}">
+		`<div id="item-list" key="${index}">
 <input type="checkbox" id="season-${index}" class="input" />
 <label for="season-${index}" class="label">
     ${animeChapter.temporada}
     <div class="icon-collapse">
-        <i class="fas fa-chevron-up"> </i>
+        <i class="fas fa-chevron-up"></i>
     </div>
     </label>
     <div class="content" id="content-chapters-temporada">
-	<section>
-    <a href="#">
-        <div>
-            <span>${index + 1}</span>
-            <span>${animeChapter.chapters[0].title}</span>
-        </div>
-        <div class="play-icon">
-            <i class="fas fa-play-circle"></i>
-        </div>
-    </a>
-</section>
+		${animeChapter.chapters.map(
+			(chapter, index) =>
+				`<section key="${index + 1}">
+					<a href="#">
+						<div>
+							<span>${chapter.number}</span>
+							<span>${chapter.title}</span>
+						</div>
+						<div class="play-icon">
+							<i class="fas fa-play-circle"></i>
+						</div>
+					</a>
+			</section>`
+		)}
     </div>
-</div>`)
+</div>`
 );
+
+mapChapters.map((chapter) => (accordionWrapper.innerHTML += chapter));
