@@ -1,19 +1,25 @@
 .form-container {
 	width: 100vw;
 	height: 100vh;
-	background: linear-gradient(to right, setColor(extra2, state), setColor(primary, state));
+	background-blend-mode: multiply;
+	/* background: linear-gradient(to top, setColor(extra2, state), setColor(primary, state)); */
+	background: url("../images/resources/bg1.gif"),
+		linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: top top;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 
 	.wrapper-form {
-		width: 600px;
+		width: 38em;
 		height: auto;
 		margin: 1rem;
 		form {
 			padding: 0;
-			border-radius: 7px;
-			background: setColor(bg);
+			border-radius: 1em;
+			background: rgba(0, 0, 0, 0.7);
 			.header-form {
 				padding: 1.4rem 1rem 0 1rem;
 				text-align: center;
