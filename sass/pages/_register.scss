@@ -1,7 +1,8 @@
 .register-container {
 	background: setColor(bg, primary);
-	height: 100vh;
 	width: 100vw;
+	min-height: 100vh;
+	height: auto;
 
 	display: grid;
 	grid-template-columns: 1fr;
@@ -27,9 +28,6 @@
 	}
 
 	.wrapper-right {
-		display: grid;
-		grid-template-rows: 15% 1fr;
-
 		.r-head-section {
 			.head-content {
 				padding: 1em 2em 0 2em;
@@ -51,6 +49,7 @@
 			}
 		}
 		.r-body-section {
+			padding: 2em 0;
 			.body-content {
 				display: flex;
 				flex-direction: column;
