@@ -49,5 +49,6 @@ a {
 	text-decoration: none;
 	&:hover {
 		color: setColor(extra2, state);
+		text-shadow: 0 0 5px setColor(extra2, rgba);
 	}
 }
