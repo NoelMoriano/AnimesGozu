@@ -66,4 +66,6 @@ const mapChapters = animeChaptersData.map(
 </div>`
 );
 
+console.log("mapChapters->", mapChapters);
+
 mapChapters.map((chapter) => (accordionWrapper.innerHTML += chapter));

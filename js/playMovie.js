@@ -9,6 +9,8 @@ const fetchEpisodes = async () => {
 
 	const resultData = await responseJson;
 
+	console.log("resultData->", resultData);
+
 	resultData.episodes.map(
 		(episode, index) =>
 			(containerEpisodes.innerHTML += `<section key="${index + 1}">
