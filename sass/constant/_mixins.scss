@@ -81,6 +81,7 @@
 //MENU DRAWER
 @mixin menu-drawer() {
 	.menu {
+		width: 100%;
 		position: relative;
 		@include mediaQuery(tablet) {
 			position: fixed;
@@ -88,8 +89,9 @@
 		a {
 			text-decoration: none;
 			display: flex;
-			align-content: center;
+			justify-content: center;
 			cursor: pointer;
+			width: 100%;
 			img {
 				margin: 2.5rem 0;
 			}

@@ -30,7 +30,15 @@ const imagesAventura = [
 const setImageCategories = (imagesData, categoryType) => {
 	imagesData.map(
 		(imageAccion, index) =>
-			(categoryType.innerHTML += `<a href="movie.html" key="${index}"><img src="images/home/animes/${imageAccion}" alt="image" /></a>`)
+			(categoryType.innerHTML += `<a href="movie.html" key="${index}">
+				<div class="item-anime">
+					<img src="images/home/animes/${imageAccion}" alt="image" />
+					<div class="hover-effect">
+						<h3>Los siete pecados capitales</h3>
+						<p>Lorem ipsum, Magnam asperiores, quam doloremque deleniti amet facere dolore tempore natus dignissimos voluptates illo animi doloribus! Quis sint eveniet, quibusdam in amet error, quibusdam in amet error bla bla bla bla</p>	
+					</div>
+				</div>	
+			</a>`)
 	);
 };
 

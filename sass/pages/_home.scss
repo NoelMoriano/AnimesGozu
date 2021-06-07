@@ -165,7 +165,7 @@
 			.category-card {
 				position: relative;
 				height: auto;
-				min-height: 300px;
+				min-height: 380px;
 				margin: 1.5em 0;
 
 				h2 {
@@ -178,23 +178,69 @@
 					overflow-x: auto;
 					max-width: 100%;
 					left: 0;
-
-					img {
-						margin: 1rem;
-						width: 11em;
-						height: 14em;
-						object-fit: cover;
-						border-radius: 1rem;
-						transform: scale(1);
-						transition: transform 0.5s cubic-bezier(0.34, 1.61, 0.7, 1);
-						&:hover {
-							transform: scale(1.1);
-							-webkit-transition: transform 0.5s cubic-bezier(0.34, 1.61, 0.7, 1);
+					a {
+						.item-anime {
+							position: relative;
+							margin: 1rem;
+							border-radius: 1rem;
+							width: 14em;
+							height: 17em;
+							overflow: hidden;
+							transform: scale(1);
 							transition: transform 0.5s cubic-bezier(0.34, 1.61, 0.7, 1);
-						}
-						@include mediaQuery(tablet) {
-							width: 19em;
-							height: 13em;
+							&:hover {
+								transform: scale(1.1);
+							}
+							@include mediaQuery(tablet) {
+								width: 22em;
+								height: 13em;
+							}
+							img {
+								width: 100%;
+								height: 100%;
+								object-fit: cover;
+							}
+							.hover-effect {
+								width: 100%;
+								height: 100%;
+								position: absolute;
+								top: 0;
+								left: 0;
+								right: 0;
+								bottom: 0;
+								transform: translateY(100%);
+								-webkit-transition: transform ease-in-out 0.3s;
+								transition: transform ease-in-out 0.3s;
+								display: flex;
+								flex-direction: column;
+								align-items: flex-start;
+								justify-content: flex-end;
+								color: setColor(light);
+								padding: 0.7em;
+								p {
+									font-size: small;
+									height: auto;
+									width: 95%;
+									text-align: left;
+									display: -webkit-box;
+									-webkit-line-clamp: 4; /*define how many line you want to show */
+									-webkit-box-orient: vertical;
+									overflow: hidden;
+									text-overflow: ellipsis;
+								}
+							}
+							&:hover {
+								.hover-effect {
+									background: rgb(0, 0, 0);
+									background: linear-gradient(
+										2deg,
+										rgba(0, 0, 0, 1) 0%,
+										rgba(25, 25, 42, 0.6685049019607843) 30%,
+										rgba(255, 255, 255, 0) 72%
+									);
+									transform: translateY(0%);
+								}
+							}
 						}
 					}
 
