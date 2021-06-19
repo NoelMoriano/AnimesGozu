@@ -99,15 +99,18 @@
 
 		.perfil {
 			display: flex;
-			align-content: center;
+			align-items: center;
 			justify-content: center;
+			flex-direction: column;
 
-			img {
-				width: 160px;
-				height: 160px;
-				object-fit: cover;
-				margin: 0.5rem 0;
-				border-radius: 50%;
+			.img-perfil {
+				img {
+					width: 160px;
+					height: 160px;
+					object-fit: cover;
+					margin: 0.5rem 0;
+					border-radius: 50%;
+				}
 			}
 		}
 
