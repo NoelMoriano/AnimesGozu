@@ -30,7 +30,7 @@ const imagesAventura = [
 const setImageCategories = (imagesData, categoryType) => {
 	imagesData.map(
 		(imageAccion, index) =>
-			(categoryType.innerHTML += `<a href="movie.html" key="${index}">
+			(categoryType.innerHTML += `<a href="anime.html" key="${index}">
 				<div class="item-anime">
 					<img src="images/home/animes/${imageAccion}" alt="image" />
 					<div class="hover-effect">

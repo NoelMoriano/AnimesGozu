@@ -101,22 +101,29 @@
 								grid-template-columns: 1fr 90% 1fr;
 								margin-bottom: 1em;
 
-								label {
-									float: right;
-									i {
-										color: setColor(light);
-										font-size: x-large;
-										cursor: pointer;
+								div {
+									label {
+										float: right;
+										i {
+											color: setColor(light);
+											font-size: x-large;
+											cursor: pointer;
+										}
 									}
-								}
-								a {
-									text-decoration: none;
-									display: flex;
-									align-content: center;
-									justify-content: center;
-									cursor: pointer;
-									img {
-										width: 60%;
+									a {
+										text-decoration: none;
+										display: flex;
+										align-content: center;
+										justify-content: center;
+										cursor: pointer;
+										img {
+											width: 60%;
+											height: auto;
+											object-fit: cover;
+											@include mediaQuery(mobilexs) {
+												width: 15rem;
+											}
+										}
 									}
 								}
 							}
@@ -170,6 +177,9 @@
 				height: auto;
 				min-height: 380px;
 				margin: 1.5em 0;
+				@include mediaQuery(tablet) {
+					min-height: 315px;
+				}
 
 				h2 {
 					margin: 0 1.2rem 1.2rem 1.2rem;
@@ -187,7 +197,7 @@
 							margin: 1rem;
 							border-radius: 1rem;
 							width: 14em;
-							height: 17em;
+							height: 18em;
 							overflow: hidden;
 							transform: scale(1);
 							transition: transform 0.5s cubic-bezier(0.34, 1.61, 0.7, 1);
@@ -212,13 +222,14 @@
 								right: 0;
 								bottom: 0;
 								transform: translateY(100%);
-								-webkit-transition: transform ease-in-out 0.3s;
-								transition: transform ease-in-out 0.3s;
+								-webkit-transition: transform ease-in-out 0.5s;
+								transition: transform ease-in-out 0.5s;
 								display: flex;
 								flex-direction: column;
 								align-items: flex-start;
 								justify-content: flex-end;
 								color: setColor(light);
+								opacity: 0;
 								padding: 0.7em;
 								p {
 									font-size: small;
@@ -234,14 +245,23 @@
 							}
 							&:hover {
 								.hover-effect {
+									opacity: 5;
 									background: rgb(0, 0, 0);
 									background: linear-gradient(
 										2deg,
 										rgba(0, 0, 0, 1) 0%,
 										rgba(25, 25, 42, 0.6685049019607843) 30%,
-										rgba(255, 255, 255, 0) 72%
+										rgba(255, 255, 255, 0) 42%
 									);
 									transform: translateY(0%);
+									@include mediaQuery(tablet) {
+										background: linear-gradient(
+											2deg,
+											rgba(0, 0, 0, 1) 0%,
+											rgba(25, 25, 42, 0.6685049019607843) 30%,
+											rgba(255, 255, 255, 0) 72%
+										);
+									}
 								}
 							}
 						}

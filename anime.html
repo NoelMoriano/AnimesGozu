@@ -11,19 +11,19 @@
 			crossorigin="anonymous"
 		/>
 		<link rel="stylesheet" href="./css/index.css" />
-		<title>Anime-flix | Anime</title>
+		<title>AnimexFlix | Anime</title>
 	</head>
 	<body>
 		<div class="movie-container">
 			<div class="content-left">
 				<div class="menu">
-					<a href="./home.html"><img src="/images/home/icon/Vector.png" alt="" /></a>
+					<a href="./index.html"><img src="/images/home/icon/Vector.png" alt="" /></a>
 					<div class="perfil">
 						<div class="img-perfil">
 							<img src="/images/home/perfil/perfil.jpg" alt="" />
 						</div>
 						<div class="name-perfil">
-							<h4>USER NAME</h4>
+							<h4>Fiona</h4>
 						</div>
 					</div>
 					<div class="list">
@@ -50,7 +50,7 @@
 								</p>
 							</section>
 							<section class="item-button">
-								<a href="./play_movie.html">
+								<a href="./episode.html">
 									<i class="fas fa-play"></i>
 									<span>REPRODUCIR</span>
 								</a>
@@ -62,10 +62,21 @@
 					<div class="title">
 						<h2>CAPITULOS</h2>
 					</div>
-					<div class="acordion-wrapper" id="accordion-wrapper"></div>
+					<div class="acordion-wrapper">
+						<div id="item-list">
+							<input type="checkbox" id="season-1" class="input" />
+							<label for="season-1" class="label">
+								Temporada 1
+								<div class="icon-collapse">
+									<i class="fas fa-chevron-up"></i>
+								</div>
+							</label>
+							<div class="content" id="episodes-wrapper"></div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<script src="./js/movie.js"></script>
+		<script src="./js/anime.js"></script>
 	</body>
 </html>
