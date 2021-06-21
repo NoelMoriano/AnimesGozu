@@ -43,6 +43,13 @@ a {
 	}
 }
 
+.container {
+	margin: 2rem 0.7rem;
+	@include mediaQuery(tablet) {
+		margin: 2rem;
+	}
+}
+
 .item-link {
 	font-size: $sm;
 	color: setColor(extra2);

@@ -44,7 +44,7 @@
 				align-items: flex-end;
 
 				.banner {
-					padding: 2rem;
+					padding: 2rem 0.7rem;
 					.category {
 						display: flex;
 						align-items: center;
@@ -62,10 +62,17 @@
 
 					.title {
 						margin: 0.5rem 0;
+						font-size: 0.7rem;
+						@include mediaQuery(tablet) {
+							font-size: 1rem;
+						}
 					}
 
 					.plot {
-						width: 450px;
+						width: 100%;
+						@include mediaQuery(tablet) {
+							width: 450px;
+						}
 						p {
 							font-weight: 400;
 						}
@@ -82,14 +89,18 @@
 		}
 
 		.chapters {
-			.title {
+			margin: 2rem 0.7rem;
+			@include mediaQuery(tablet) {
 				margin: 2rem;
+			}
+			.title {
+				margin: 2rem 0;
 			}
 
 			.acordion-wrapper {
 				background: setColor(dark, lighten-3);
 				height: auto;
-				margin: 2rem;
+				margin: 2rem 0;
 				box-shadow: 0 0 18px #0000004f;
 				border: 5rem;
 
