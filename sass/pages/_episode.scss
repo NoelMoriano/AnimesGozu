@@ -9,5 +9,28 @@
 				height: 100%;
 			}
 		}
+		.servers {
+			width: 100%;
+			display: grid;
+			grid-template-columns: auto auto auto auto auto auto;
+			height: 2em;
+		}
+		.style-server {
+			position: relative;
+			display: flex;
+			justify-content: center;
+			background-color: #070707af;
+			@include mediaQuery(tablet) {
+				width: auto;
+			}
+
+			:hover {
+				font-weight: bolder;
+				border-bottom: solid 2px red;
+			}
+			p {
+				padding: 1em;
+			}
+		}
 	}
 }

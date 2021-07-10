@@ -162,7 +162,7 @@
 					display: none;
 				}
 
-				.input:checked ~ .content {
+				.input ~ .content {
 					display: block;
 				}
 			}
