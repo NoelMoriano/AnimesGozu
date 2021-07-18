@@ -1,35 +1,28 @@
 const episodesWrapper = document.querySelector("#episodes-wrapper");
 
-const episodesData = [
-	{
-		number: 1,
-		title: "Naruto Shippuden",
-	},
-	{
-		number: 2,
-		title: "Naruto Shippuden",
-	},
-	{
-		number: 3,
-		title: "Naruto Shippuden",
-	},
-	{
-		number: 4,
-		title: "Naruto Shippuden",
-	},
-];
+const fetchPost = async (url) => {
+	const response = await fetch(url);
+	const users = await response.json();
 
-episodesData.map(
-	(episode, index) =>
-		(episodesWrapper.innerHTML += `<section key="${index + 1}">
-		<a href="#">
-			<div>
-				<span>${episode.number}</span>
-				<span>${episode.title}</span>
-			</div>
-			<div class="play-icon">
-				<i class="fas fa-play-circle"></i>
-			</div>
-		</a>
-	</section>`)
-);
+	console.log(users);
+
+	filterUsers(users).map(
+		(user) =>
+			(episodesWrapper.innerHTML += `<section key=${user.id}>
+	<a href="#">
+		<div>
+		<span>${user.id}</span>
+			<span>${user.username}</span>
+			<span>${user.email}</span>
+		</div>
+		<div class="play-icon">
+			<i class="fas fa-play-circle"></i>
+		</div>
+	</a>
+</section>`)
+	);
+};
+
+const filterUsers = (users) => users.filter((user) => user.email !== "Sincere@april.biz");
+
+fetchPost("https://jsonplaceholder.typicode.com/users");
