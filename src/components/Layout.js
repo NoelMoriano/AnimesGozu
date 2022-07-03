@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import React from "react";
-import "../styles/index.css";
 
-export const Layout = (props) => {
+export const Layout = ({ children }) => {
   return (
     <div className="layout">
       <div className="header">
@@ -18,7 +17,7 @@ export const Layout = (props) => {
           </li>
         </ul>
       </div>
-      <div className="body">{props.children}</div>
+      <div className="body">{children}</div>
       <div className="footer">
         <p>Todos los derechos reservados - Agencia Servitec</p>
       </div>
