@@ -1,11 +1,8 @@
 import {Route, Switch} from 'react-router-dom';
-import {Home} from '../pages/Home'
-import {Nosotros} from '../pages/Nosotros'
-import {User} from "../pages/User";
-import {Users} from "../pages/Users";
 import {Layout} from "../components/Layout";
 import {Redirect} from "react-router";
 import {Page404} from "../components/Page404";
+import {Home, Login, Register} from "../pages";
 
 
 export const Router = () => {
@@ -17,28 +14,14 @@ export const Router = () => {
         />
         <Route
             exact
-            path="/nosotros"
-        >
-            <Layout>
-                <Nosotros/>
-            </Layout>
-        </Route>
+            path="/login"
+            render={() => <Layout> <Login/> </Layout>}
+        />
         <Route
             exact
-            path="/users"
-        >
-            <Layout>
-                <Users/>
-            </Layout>
-        </Route>
-        <Route
-            exact
-            path="/users/:userEmail"
-        >
-            <Layout>
-                <User/>
-            </Layout>
-        </Route>
+            path="/register"
+            render={() => <Layout> <Register/> </Layout>}
+        />
         <Route path="*" component={Page404} />
         <Redirect to="/" />
     </Switch>

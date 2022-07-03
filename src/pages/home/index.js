@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { SearchGift } from "../components/home/SearchGift";
-import { CardGift } from "../components/home/CardGift";
+import { SearchGift } from "../../components/home/SearchGift";
+import { CardGift } from "../../components/home/CardGift";
 
 const apiUrL =
   "https://api.giphy.com/v1/gifs/search?api_key=yubnbZvSyRw75BEY0eFOd1XQ9YLnxTmA";
@@ -17,7 +17,7 @@ export const Home = () => {
 
   const initialize = async () => {
     setLoading(true);
-    const response = await fetch(`${apiUrL}&q=${search || "girl"}&limit=10`);
+    const response = await fetch(`${apiUrL}&q=${search || "girl"}`);
     const jsonData = await response.json();
     setGifts(jsonData.data);
     setLoading(false);
