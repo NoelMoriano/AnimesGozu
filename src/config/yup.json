@@ -1,0 +1,43 @@
+{
+  "en": {
+    "mixed": {
+      "required": "Required field."
+    },
+    "string": {
+      "email": "Invalid email address.",
+      "min": "Required minimum ${min} characters.",
+      "length": "Number must be exactly ${length} characters.",
+      "typeError": "Invalid data"
+    },
+    "number": {
+      "required": "Required field.",
+      "min": "Amount must be greater than or equal to ${min}.",
+      "max": "Amount must be less than or equal to ${max}.",
+      "integer": "Amount must be an integer."
+    },
+    "array": {
+      "min": "Required minimum ${min} elements."
+    }
+  },
+  "es": {
+    "mixed": {
+      "required": "Campo requerido."
+    },
+    "string": {
+      "email": "Dirección de correo inválida.",
+      "min": "Se requiere mínimo ${min} caracteres.",
+      "length": "El número debe tener exactamente ${length} caracteres.",
+      "typeError": "Dato inválido"
+    },
+    "number": {
+      "required": "Campo requerido.",
+      "min": "La cantidad debe ser mayor o igual a ${min}.",
+      "max": "La cantidad debe ser menor o igual a ${max}.",
+      "integer": "La cantidad debe ser un número entero.",
+      "typeError": "Campo requerido."
+    },
+    "array": {
+      "min": "Se requiere mínimo ${min} caracteres."
+    }
+  }
+}
