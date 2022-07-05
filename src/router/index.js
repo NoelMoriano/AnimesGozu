@@ -15,24 +15,8 @@ export const Router = () => {
           </Layout>
         )}
       />
-      <Route
-        exact
-        path="/login"
-        render={() => (
-          <Layout>
-            <Login />
-          </Layout>
-        )}
-      />
-      <Route
-        exact
-        path="/register"
-        render={() => (
-          <Layout>
-            <Register />
-          </Layout>
-        )}
-      />
+      <Route exact path="/login" render={() => <Login />} />
+      <Route exact path="/register" render={() => <Register />} />
       <Route path="*" component={<h1>404</h1>} />
       <Redirect to="/" />
     </Switch>

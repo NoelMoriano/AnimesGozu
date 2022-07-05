@@ -29,6 +29,7 @@ export const Button = ({
   width = "auto",
   loading = false,
   disabled = false,
+  block = false,
 }) => {
   const btnStyle = buttonsType[type];
   return (
@@ -39,6 +40,7 @@ export const Button = ({
       color={btnStyle.color}
       border={btnStyle.border}
       disabled={disabled}
+      block={block}
     >
       <div className="content-button">
         {loading && (
@@ -55,8 +57,8 @@ export const Button = ({
 };
 
 const Container = styled.button`
-  ${({ background, color, border, width }) => css`
-    width: ${width};
+  ${({ background, color, border, width, block }) => css`
+    width: ${block ? "100%" : width};
     border: ${border};
     background: ${background};
     color: ${color};

@@ -26,7 +26,7 @@ const global = css`
   h4,
   h5,
   h6 {
-    font-family: "MontserratRegular", serif;
+    font-family: "Arial", sans-serif;
     line-height: 2.3rem;
   }
 

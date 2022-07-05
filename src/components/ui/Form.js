@@ -12,5 +12,4 @@ export const Form = ({ children, ...props }) => {
 const FormContainer = styled.form`
   display: grid;
   grid-row-gap: 1rem;
-  padding: 0 1rem;
 `;
