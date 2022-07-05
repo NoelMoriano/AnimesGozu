@@ -1,8 +1,11 @@
 import React from "react";
 import { Button, Form, Input, InputPassword } from "../../components";
 import styled from "styled-components";
+import { useNavigate } from "react-router";
 
 export const Login = () => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <div className="wrapper-login">
@@ -15,7 +18,9 @@ export const Login = () => {
             placeHolder="Ingrese usuario"
           />
 
-          <Button block>Iniciar sesión</Button>
+          <Button block onClick={() => navigate("/")}>
+            Iniciar sesión
+          </Button>
         </Form>
 
         <div className="item-text">

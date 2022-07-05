@@ -1,24 +1,22 @@
-import { Route, Switch } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { Layout } from "../components";
-import { Redirect } from "react-router";
 import { Home, Login, Register } from "../pages";
 
 export const Router = () => {
   return (
-    <Switch>
+    <Routes>
       <Route
         exact
         path="/"
-        render={() => (
+        element={
           <Layout>
             <Home />
           </Layout>
-        )}
+        }
       />
-      <Route exact path="/login" render={() => <Login />} />
-      <Route exact path="/register" render={() => <Register />} />
-      <Route path="*" component={<h1>404</h1>} />
-      <Redirect to="/" />
-    </Switch>
+      <Route exact path="/login" element={<Login />} />
+      <Route exact path="/register" element={<Register />} />
+      <Route path="*" element={<h1>404</h1>} />
+    </Routes>
   );
 };
