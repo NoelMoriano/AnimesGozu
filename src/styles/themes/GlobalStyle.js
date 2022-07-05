@@ -16,6 +16,7 @@ const global = css`
     overflow-x: hidden;
     font-size: 16px;
     background: #161515;
+    color: #fff;
     font-family: "Lato", sans-serif;
   }
 

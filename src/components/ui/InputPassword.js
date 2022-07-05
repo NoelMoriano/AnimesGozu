@@ -12,7 +12,7 @@ export const InputPassword = ({
     <Container>
       {label && (
         <label>
-          {label}:{required && <span>*</span>}
+          {label} {required && <span>*</span>}
         </label>
       )}
 

@@ -11,7 +11,7 @@ export const Input = ({
     <Container>
       {label && (
         <label>
-          {label}:{required && <span>*</span>}
+          {label} {required && <span>*</span>}
         </label>
       )}
 

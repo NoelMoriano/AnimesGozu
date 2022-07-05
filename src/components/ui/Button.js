@@ -62,7 +62,6 @@ const Container = styled.button`
     color: ${color};
     text-transform: uppercase;
     cursor: pointer;
-    transition: 0.5s;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     border: none;
@@ -73,15 +72,13 @@ const Container = styled.button`
     font-weight: bold;
     letter-spacing: 0.5px;
     outline: none;
-    transition: transform 0.3s cubic-bezier(0.34, 1.61, 0.7, 1),
-      -webkit-transform 0.3s cubic-bezier(0.34, 1.61, 0.7, 1);
+    transition: all ease-in-out 0.2s;
     ${mediaQuery.minTablet} {
       font-size: 1.4rem;
     }
 
     &:hover {
-      transition: transform 0.3s cubic-bezier(0.34, 1.61, 0.7, 1),
-        -webkit-transform 0.3s cubic-bezier(0.34, 1.61, 0.7, 1);
+      transition: all ease-in-out 0.2s;
       background: ${background};
       box-shadow: 1px 3px 30px -8px ${background};
     }
