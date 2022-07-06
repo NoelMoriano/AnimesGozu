@@ -9,7 +9,7 @@ export const Login = () => {
   return (
     <Container>
       <div className="wrapper-login">
-        <h1>ANIME-FLIX</h1>
+        <h1>AnimeGozu</h1>
         <Form>
           <Input label="Usuario" required placeHolder="Ingrese usuario" />
           <InputPassword

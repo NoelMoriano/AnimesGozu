@@ -27,7 +27,6 @@ const global = css`
   h5,
   h6 {
     font-family: "Arial", sans-serif;
-    line-height: 2.3rem;
   }
 
   h1 {
