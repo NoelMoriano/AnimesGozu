@@ -2,13 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { Avatar } from "../ui";
+import { Header } from "./Header";
+import { NavbarList } from "../ui/NavbarList";
 
 export const Layout = ({ children }) => (
   <LayoutContainer>
-    <div className="header">HEADER</div>
+    <Header />
+    {/*<div className="header">HEADER</div>*/}
     <div className="navbar">
       <ContentNavbar>
         <Avatar />
+        <NavbarList />
       </ContentNavbar>
     </div>
     <div className="body">{children}</div>
@@ -29,21 +33,22 @@ const LayoutContainer = styled.div`
   ${mediaQuery.minTablet} {
     grid-template-columns: 20vw 1fr;
   }
-  .header {
+  /* .header {
     grid-column: span 2;
     background: red;
     position: sticky;
     top: 0;
-  }
+  }*/
   .navbar {
     width: 100%;
     height: 100%;
     grid-column: span 1;
     grid-row: span 1;
-    background: orange;
+    background: #1e1e1e;
     display: none;
     position: sticky;
     top: 10vh;
+    border-right: 1px solid #414040;
     ${mediaQuery.minTablet} {
       display: inherit;
     }
