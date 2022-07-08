@@ -3,22 +3,24 @@ import styled from "styled-components";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { Avatar } from "../ui";
 import { Header } from "./Header";
-import { NavbarList } from "../ui/NavbarList";
+import { NavbarList } from "./NavbarList";
+import { Footer } from "./Footer";
 
-export const Layout = ({ children }) => (
-  <LayoutContainer>
-    <Header />
-    {/*<div className="header">HEADER</div>*/}
-    <div className="navbar">
-      <ContentNavbar>
-        <Avatar />
-        <NavbarList />
-      </ContentNavbar>
-    </div>
-    <div className="body">{children}</div>
-    <div className="footer">Todos los derechos reservados - AnimeGozu</div>
-  </LayoutContainer>
-);
+export const Layout = ({ children }) => {
+  return (
+    <LayoutContainer>
+      <Header />
+      <div className="navbar">
+        <ContentNavbar>
+          <Avatar />
+          <NavbarList />
+        </ContentNavbar>
+      </div>
+      <div className="body">{children}</div>
+      <Footer />
+    </LayoutContainer>
+  );
+};
 
 const LayoutContainer = styled.div`
   width: 100vw;
@@ -33,12 +35,7 @@ const LayoutContainer = styled.div`
   ${mediaQuery.minTablet} {
     grid-template-columns: 20vw 1fr;
   }
-  /* .header {
-    grid-column: span 2;
-    background: red;
-    position: sticky;
-    top: 0;
-  }*/
+
   .navbar {
     width: 100%;
     height: 100%;
@@ -60,14 +57,6 @@ const LayoutContainer = styled.div`
     ${mediaQuery.minTablet} {
       grid-column: span 1;
     }
-  }
-  .footer {
-    grid-column: span 2;
-    grid-row: span 3;
-    background: mediumpurple;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 `;
 

@@ -21,26 +21,41 @@ const buttonsType = {
     color: "#fff",
   },
 };
+const buttonsSize = {
+  medium: {
+    fontSize: "1.1em",
+    padding: ".8rem 1rem",
+  },
+  large: {
+    fontSize: "1.4em",
+    padding: "1.1rem 1.3rem",
+  },
+};
 
 export const Button = ({
   children,
   type = "primary",
+  size = "large",
   onClick,
   width = "auto",
   loading = false,
   disabled = false,
   block = false,
+  padding = " 1.1rem 1.3rem",
 }) => {
-  const btnStyle = buttonsType[type];
+  const btnType = buttonsType[type];
+  const btnSize = buttonsSize[size];
   return (
     <Container
       onClick={onClick}
       width={width}
-      background={btnStyle.background}
-      color={btnStyle.color}
-      border={btnStyle.border}
+      background={btnType.background}
+      color={btnType.color}
+      border={btnType.border}
       disabled={disabled}
       block={block}
+      padding={btnSize.padding}
+      fontSize={btnSize.fontSize}
     >
       <div className="content-button">
         {loading && (
@@ -57,7 +72,7 @@ export const Button = ({
 };
 
 const Container = styled.button`
-  ${({ background, color, border, width, block }) => css`
+  ${({ background, color, border, width, block, padding, fontSize }) => css`
     width: ${block ? "100%" : width};
     border: ${border};
     background: ${background};
@@ -68,16 +83,13 @@ const Container = styled.button`
     box-sizing: border-box;
     border: none;
     border-radius: 1em;
-    padding: 1.1rem 1.3rem;
+    padding: ${padding};
     margin: 0.7rem 0;
-    font-size: 1em;
+    font-size: ${fontSize};
     font-weight: bold;
     letter-spacing: 0.5px;
     outline: none;
     transition: all ease-in-out 0.2s;
-    ${mediaQuery.minTablet} {
-      font-size: 1.4rem;
-    }
 
     &:hover {
       transition: all ease-in-out 0.2s;
