@@ -16,6 +16,7 @@ export const Avatar = () => (
 );
 
 const Container = styled.div`
+  color: ${({ theme }) => theme.colors.font1};
   .profile {
     display: flex;
     align-items: center;
@@ -24,7 +25,6 @@ const Container = styled.div`
     .img-avatar {
       width: 7rem;
       height: 7rem;
-      -o-object-fit: cover;
       object-fit: cover;
       margin: 0.5rem 0;
       border-radius: 50%;

@@ -13,11 +13,11 @@ const global = css`
   }
 
   body {
-    overflow-x: hidden;
     font-size: 16px;
-    background: #161515;
-    color: #fff;
     font-family: "Lato", sans-serif;
+    background: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.font1};
+    overflow-x: hidden;
   }
 
   h1,

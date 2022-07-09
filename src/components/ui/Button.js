@@ -1,6 +1,5 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 

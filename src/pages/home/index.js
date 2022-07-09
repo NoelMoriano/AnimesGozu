@@ -36,6 +36,7 @@ export const Home = () => (
 const Container = styled.div`
   width: 100%;
   height: auto;
+  background: ${({ theme }) => theme.colors.secondary};
   .home-banner {
     width: 100%;
     height: 100%;
@@ -45,7 +46,7 @@ const Container = styled.div`
 const WrapperHomeBanner = styled.div`
   width: 100%;
   height: 70vh;
-  background: black;
+  max-height: 40em;
   .home-banner {
     width: 100%;
     height: 100%;
@@ -54,7 +55,6 @@ const WrapperHomeBanner = styled.div`
 `;
 
 const WrapperAnimesContent = styled.div`
-  background: #1f1f1f;
   width: 100%;
   height: auto;
   padding-top: 2em;
