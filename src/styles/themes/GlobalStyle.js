@@ -6,6 +6,7 @@ const global = css`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: ${({ theme }) => theme.colors.font1};
   }
 
   html {
@@ -15,8 +16,6 @@ const global = css`
   body {
     font-size: 16px;
     font-family: "Lato", sans-serif;
-    background: ${({ theme }) => theme.colors.secondary};
-    color: ${({ theme }) => theme.colors.font1};
     overflow-x: hidden;
   }
 
@@ -26,7 +25,7 @@ const global = css`
   h4,
   h5,
   h6 {
-    font-family: "Arial", sans-serif;
+    font-family: "Lato", sans-serif;
   }
 
   h1 {

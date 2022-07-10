@@ -37,6 +37,7 @@ const Container = styled.div`
   width: 100%;
   height: auto;
   background: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.font1};
   .home-banner {
     width: 100%;
     height: 100%;
@@ -78,6 +79,9 @@ const WrapperAnimesContent = styled.div`
       overflow-x: auto;
       max-width: 100%;
       left: 0;
+      //transform: translate3d(-1327px, 0px, 0px);
+      transition: all 0.25s ease 0s;
+      touch-action: manipulation;
     }
   }
 `;

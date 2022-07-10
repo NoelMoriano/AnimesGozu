@@ -20,6 +20,7 @@ const buttonsType = {
     color: "#fff",
   },
 };
+
 const buttonsSize = {
   medium: {
     fontSize: "1.1em",
@@ -40,7 +41,6 @@ export const Button = ({
   loading = false,
   disabled = false,
   block = false,
-  padding = " 1.1rem 1.3rem",
 }) => {
   const btnType = buttonsType[type];
   const btnSize = buttonsSize[size];

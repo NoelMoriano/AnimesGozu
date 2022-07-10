@@ -8,7 +8,10 @@ export const Footer = () => {
     <Container>
       <div className="wrapper-content">
         <div>
-          © Copyright 2022 - AnimeGozu / Desarrollado con
+          AnimeGozu - Ningún vídeo se encuentra alojado en nuestros servidores.
+        </div>
+        <div>
+          Desarrollado con
           <FontAwesomeIcon icon={faHeart} color="red" className="item-icon" />
           para el mundo
         </div>
@@ -36,6 +39,9 @@ const Container = styled.div`
       .item-icon {
         margin: 0 0.3rem;
       }
+    }
+    div:last-child {
+      margin-top: 0.4rem;
     }
   }
 `;

@@ -31,6 +31,7 @@ const Container = styled.div`
     transform: scale(1);
     transition: transform 0.5s cubic-bezier(0.34, 1.61, 0.7, 1);
     cursor: pointer;
+    touch-action: pan-y;
 
     &:hover {
       transform: scale(1.1);
@@ -62,9 +63,9 @@ const Container = styled.div`
       flex-direction: column;
       align-items: flex-start;
       justify-content: flex-end;
-      color: setColor(light);
       opacity: 0;
       padding: 0.7em;
+      color: ${({ theme }) => theme.colors.font1};
 
       p {
         font-size: small;
