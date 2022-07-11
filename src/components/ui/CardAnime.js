@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { ImgAnime } from "../../images";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 
-export const CardAnime = () => (
-  <Container>
+export const CardAnime = ({ onNavigateAnime }) => (
+  <Container onClick={() => onNavigateAnime("naruto")}>
     <div className="item-anime">
       <img src={ImgAnime} alt="image" />
       <div className="hover-effect">

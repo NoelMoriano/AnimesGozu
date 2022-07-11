@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "../components";
-import { Home, Login, Register } from "../pages";
+import { Anime, Home, Login, Register } from "../pages";
 
 export const Router = () => (
   <Routes>
@@ -10,6 +10,15 @@ export const Router = () => (
       element={
         <Layout>
           <Home />
+        </Layout>
+      }
+    />
+    <Route
+      exact
+      path="/:animeId"
+      element={
+        <Layout>
+          <Anime />
         </Layout>
       }
     />

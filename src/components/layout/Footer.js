@@ -36,12 +36,11 @@ const Container = styled.div`
     align-items: center;
     flex-direction: column;
     ${mediaQuery.minTablet} {
-      justify-content: center;
       flex-direction: row;
+      justify-content: space-between;
     }
 
     div {
-      width: 100%;
       font-size: 0.8rem;
       font-weight: 500;
       text-align: center;
@@ -61,7 +60,7 @@ const Container = styled.div`
       text-align: center;
       margin-top: 0.4rem;
       ${mediaQuery.minTablet} {
-        text-align: left;
+        text-align: right;
       }
     }
   }
