@@ -9,7 +9,7 @@ export const Anime = () => {
 
   return (
     <Container>
-      <WrapperHomeBanner>
+      <WrapperHomeBanner bgBanner="https://firebasestorage.googleapis.com/v0/b/animes-dev.appspot.com/o/resources%2Fimage%201.jpg?alt=media&token=7836560d-1e2b-4682-92da-309c0b422241">
         <div className="banner-wrapper">
           <div className="gradient">
             <div className="banner">
@@ -42,9 +42,7 @@ const WrapperHomeBanner = styled.div`
     width: 100%;
     height: 70vh;
     max-height: 40em;
-    background: #000
-      url(https://noelmoriano.github.io/AnimeGozu//images/home/banner/image1.png)
-      no-repeat;
+    background: #000 url(${({ bgBanner }) => bgBanner}) no-repeat;
     background-size: cover;
     color: #fff;
     display: flex;

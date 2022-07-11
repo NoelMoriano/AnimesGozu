@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { ImgHomeBanner } from "../../images";
 import { CardAnime } from "../../components";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { useNavigate } from "react-router";
@@ -13,12 +12,6 @@ export const Home = () => {
   return (
     <Container>
       <WrapperHomeBanner>
-        {/*<img*/}
-        {/*  src={ImgHomeBanner}*/}
-        {/*  alt="Banner AnimeGozu"*/}
-        {/*  className="home-banner"*/}
-        {/*/>*/}
-
         <div className="banner-wrapper">
           <div className="gradient">
             <div className="banner">

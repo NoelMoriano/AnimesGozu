@@ -7,12 +7,17 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
+import { useNavigate } from "react-router";
 
 export const Header = () => {
+  const navigate = useNavigate();
+
+  const navigateAnime = (url) => navigate(url);
+
   return (
     <Container>
       <div className="content-left">
-        <img src={ImgLogo} alt="" />
+        <img src={ImgLogo} alt="" onClick={() => navigateAnime("/")} />
       </div>
       <div className="content-right">
         <InputSearch>
@@ -20,7 +25,6 @@ export const Header = () => {
           <input type="text" placeholder="¿Que quieres ver hoy?" />
           <FontAwesomeIcon className="icon-clear" icon={faXmark} />
         </InputSearch>
-
         <div className="item-open-drawer">
           <FontAwesomeIcon className="icon-clear" icon={faBars} />
         </div>
@@ -57,6 +61,7 @@ const Container = styled.div`
     img {
       width: auto;
       height: 2.2em;
+      cursor: pointer;
     }
   }
   .content-right {
@@ -105,20 +110,6 @@ const InputSearch = styled.div`
     outline: none;
     font-size: ${({ theme }) => theme.font_sizes.small};
   }
-  //.item-icon {
-  //  display: flex;
-  //  align-items: center;
-  //  justify-content: center;
-  //}
-  //.icon-color,
-  //.icon-clear {
-  //  color: inherit;
-  //  margin: 0.5em;
-  //}
-  //
-  //.item-icon-close {
-  //  display: none;
-  //}
 
   .icon-search,
   .icon-clear {
