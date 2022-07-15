@@ -3,19 +3,25 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
+import {
+  faFacebook,
+  faInstagram,
+  faTiktok,
+} from "@fortawesome/free-brands-svg-icons";
 
 export const Footer = () => {
   return (
     <Container>
-      <div className="wrapper-content">
-        <div>
-          AnimeGozu - Ningún vídeo se encuentra alojado en nuestros servidores.
+      <div className="social-container">
+        <h3>Siguenos en:</h3>
+        <div className="socials-list">
+          <FontAwesomeIcon icon={faFacebook} size="2x" />
+          <FontAwesomeIcon icon={faTiktok} size="2x" />
+          <FontAwesomeIcon icon={faInstagram} size="2x" />
         </div>
-        <div>
-          Desarrollado con
-          <FontAwesomeIcon icon={faHeart} color="red" className="item-icon" />
-          para el mundo
-        </div>
+      </div>
+      <div>
+        AnimeGozu - Ningun vídeo se encuentra alojado en nuestros servidores.
       </div>
     </Container>
   );
@@ -24,10 +30,21 @@ export const Footer = () => {
 const Container = styled.div`
   grid-column: span 2;
   grid-row: span 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: #0e0e0e;
   z-index: 9999;
+  color: #fff;
+
+  .social-container {
+    padding: 1.5rem 3rem;
+    h3 {
+      font-size: 2rem;
+    }
+    .socials-list {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+
   .wrapper-content {
     width: 100%;
     padding: 1.5rem;

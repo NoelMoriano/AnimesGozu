@@ -5,3 +5,4 @@ export * from "./InputPassword";
 export * from "./Avatar";
 export * from "./CardAnime";
 export * from "./WrapperContainer";
+export * from "./SeasonList";

@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { useParams } from "react-router";
+import { SeasonList } from "../../components";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 export const Anime = () => {
   const { animeId } = useParams();
@@ -20,7 +22,11 @@ export const Anime = () => {
         </div>
       </WrapperHomeBanner>
       <WrapperEpisodesContent>
-        <h1>Capitulos</h1>
+        <h2>CAPITULOS</h2>
+
+        <SeasonList title="Tempodara 1" icon={faAngleDown} />
+        <SeasonList title="Tempodara 1" icon={faAngleDown} />
+        <SeasonList title="Tempodara 1" icon={faAngleDown} />
       </WrapperEpisodesContent>
     </Container>
   );
@@ -84,4 +90,7 @@ const WrapperEpisodesContent = styled.div`
   padding-top: 2em;
   overflow: hidden;
   position: relative;
+  h2 {
+    padding: 0 1rem;
+  }
 `;
