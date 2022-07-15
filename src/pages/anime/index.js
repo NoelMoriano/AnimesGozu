@@ -1,8 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 import { useParams } from "react-router";
-import { SeasonList } from "../../components";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { EpisodeList } from "../../components";
+
+const episodes = [
+  {
+    number: 1,
+    title: "Naruto",
+    image:
+      "https://storage.googleapis.com/animes-dev-animes/animes/dumucB9YLN054VySLlu6/episodes/mUmBShtFWxSiskrJNOa2/episodeImage.jpeg",
+  },
+  {
+    number: 2,
+    title: "Naruto",
+    image:
+      "https://storage.googleapis.com/animes-dev-animes/animes/dumucB9YLN054VySLlu6/episodes/mUmBShtFWxSiskrJNOa2/episodeImage.jpeg",
+  },
+];
 
 export const Anime = () => {
   const { animeId } = useParams();
@@ -21,13 +35,7 @@ export const Anime = () => {
           </div>
         </div>
       </WrapperHomeBanner>
-      <WrapperEpisodesContent>
-        <h2>CAPITULOS</h2>
-
-        <SeasonList title="Tempodara 1" icon={faAngleDown} />
-        <SeasonList title="Tempodara 1" icon={faAngleDown} />
-        <SeasonList title="Tempodara 1" icon={faAngleDown} />
-      </WrapperEpisodesContent>
+      <EpisodeList episodes={episodes} />
     </Container>
   );
 };
@@ -82,12 +90,4 @@ const WrapperHomeBanner = styled.div`
       }
     }
   }
-`;
-
-const WrapperEpisodesContent = styled.div`
-  width: 100%;
-  height: auto;
-  padding: 2em 1em;
-  overflow: hidden;
-  position: relative;
 `;
