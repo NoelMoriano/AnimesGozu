@@ -20,8 +20,15 @@ export const Footer = () => {
           <FontAwesomeIcon icon={faInstagram} size="2x" />
         </div>
       </div>
-      <div>
-        AnimeGozu - Ningun vídeo se encuentra alojado en nuestros servidores.
+      <div className="wrapper-content">
+        <div>
+          AnimeGozu - Ningun vídeo se encuentra alojado en nuestros servidores.
+        </div>
+        <div>
+          Desarrollado con
+          <FontAwesomeIcon icon={faHeart} color="red" className="item-icon" />
+          para el mundo
+        </div>
       </div>
     </Container>
   );
@@ -35,13 +42,22 @@ const Container = styled.div`
   color: #fff;
 
   .social-container {
-    padding: 1.5rem 3rem;
+    padding: 1.5rem;
+    text-align: center;
+    ${mediaQuery.minTablet} {
+      text-align: left;
+    }
     h3 {
       font-size: 2rem;
     }
     .socials-list {
       display: flex;
-      gap: 1rem;
+      margin-top: 1rem;
+      gap: 1.7rem;
+      justify-content: center;
+      ${mediaQuery.minTablet} {
+        justify-content: left;
+      }
     }
   }
 

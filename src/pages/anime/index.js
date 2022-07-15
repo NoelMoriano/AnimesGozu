@@ -87,10 +87,7 @@ const WrapperHomeBanner = styled.div`
 const WrapperEpisodesContent = styled.div`
   width: 100%;
   height: auto;
-  padding-top: 2em;
+  padding: 2em 1em;
   overflow: hidden;
   position: relative;
-  h2 {
-    padding: 0 1rem;
-  }
 `;

@@ -16,8 +16,8 @@ const Container = styled.div`
   justify-content: space-between;
   padding: 1.2rem 3rem;
   background: #0e0e0e;
-  margin: 1em 2em;
-  &&:hover {
+  margin: 1em 0;
+  &:hover {
     cursor: pointer;
   }
   h3 {
