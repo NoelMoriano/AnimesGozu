@@ -3,20 +3,7 @@ import styled from "styled-components";
 import { useParams } from "react-router";
 import { EpisodeList } from "../../components";
 
-const episodes = [
-  {
-    number: 1,
-    title: "Naruto",
-    image:
-      "https://storage.googleapis.com/animes-dev-animes/animes/dumucB9YLN054VySLlu6/episodes/mUmBShtFWxSiskrJNOa2/episodeImage.jpeg",
-  },
-  {
-    number: 2,
-    title: "Naruto",
-    image:
-      "https://storage.googleapis.com/animes-dev-animes/animes/dumucB9YLN054VySLlu6/episodes/mUmBShtFWxSiskrJNOa2/episodeImage.jpeg",
-  },
-];
+const episodes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
 export const Anime = () => {
   const { animeId } = useParams();

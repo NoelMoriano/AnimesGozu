@@ -15,7 +15,7 @@ export const EpisodeItem = ({
     <div className="item-center">
       <div className="titles">
         <h4>{title}</h4>
-        <h4>Episodio {number}</h4>
+        <h3>Episodio {number}</h3>
       </div>
     </div>
     <div className="item-right">
@@ -43,8 +43,8 @@ const Container = styled.div`
     justify-content: center;
     img {
       width: 7rem;
-      height: 4rem;
-      object-fit: contain;
+      height: 3.5rem;
+      object-fit: cover;
     }
   }
   .item-center {

@@ -22,6 +22,10 @@ const buttonsType = {
 };
 
 const buttonsSize = {
+  small: {
+    fontSize: ".8em",
+    padding: ".5rem .7rem",
+  },
   medium: {
     fontSize: "1.1em",
     padding: ".8rem 1rem",
