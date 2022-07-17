@@ -26,6 +26,7 @@ const global = css`
   h5,
   h6 {
     font-family: "MontserratRegular", sans-serif;
+    color: ${({ theme }) => theme.colors.font1};
   }
 
   h1 {
