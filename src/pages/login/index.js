@@ -76,12 +76,6 @@ const Container = styled.div`
     .item-text {
       text-align: left;
       margin: 1em auto;
-      .item-link {
-        font-size: 1em;
-        color: ${({ theme }) => theme.colors.tertiary};
-        text-decoration: none;
-        cursor: pointer;
-      }
     }
     .footer-card {
       display: grid;

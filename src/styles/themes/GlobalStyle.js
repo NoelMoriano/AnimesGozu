@@ -15,7 +15,7 @@ const global = css`
 
   body {
     font-size: 16px;
-    font-family: "Lato", sans-serif;
+    font-family: "MontserratRegular", sans-serif;
     overflow-x: hidden;
   }
 
@@ -25,7 +25,7 @@ const global = css`
   h4,
   h5,
   h6 {
-    font-family: "Lato", sans-serif;
+    font-family: "MontserratRegular", sans-serif;
   }
 
   h1 {
@@ -70,6 +70,12 @@ const global = css`
   h2,
   h3 {
     line-height: 2.7rem;
+  }
+
+  .item-link {
+    color: ${({ theme }) => theme.colors.quinary};
+    cursor: pointer;
+    text-decoration: none;
   }
 `;
 
