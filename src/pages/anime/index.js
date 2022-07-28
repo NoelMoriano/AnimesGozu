@@ -9,9 +9,7 @@ import { faPlay } from "@fortawesome/free-solid-svg-icons";
 const episodes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
 export const Anime = () => {
-  const { animeId } = useParams();
-
-  console.log("animeId->", animeId);
+  const animeId = useParams();
 
   return (
     <Container>
@@ -43,7 +41,7 @@ export const Anime = () => {
           </div>
         </div>
       </WrapperHomeBanner>
-      <EpisodeList episodes={episodes} />
+      <EpisodeList episodes={episodes} animeId={animeId} />
     </Container>
   );
 };
