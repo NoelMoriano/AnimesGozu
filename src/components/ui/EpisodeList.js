@@ -4,39 +4,45 @@ import { EpisodeItem } from "./EpisodeItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDownShortWide } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "./Button";
+import { useNavigate } from "react-router";
 
-export const EpisodeList = ({ episodes = [] }) => (
-  <Container>
-    <WrapperHeader>
-      <div className="item-title">
-        <h2>Lista de episodios</h2>
-      </div>
-      <div className="item-filters">
-        <ul>
-          <li>
-            <Button size="small">
-              Mayor o menor &nbsp;
-              <FontAwesomeIcon icon={faArrowDownShortWide} size="lg" />
-            </Button>
-          </li>
-        </ul>
-      </div>
-    </WrapperHeader>
-    <WrapperEpisodes>
-      {episodes.map((episode, index) => (
-        <EpisodeItem
-          key={index}
-          title={episodes.title || "Naruto"}
-          number={episode.number || index + 1}
-          image={
-            episode.image ||
-            "https://storage.googleapis.com/animes-dev-animes/animes/dumucB9YLN054VySLlu6/episodes/mUmBShtFWxSiskrJNOa2/episodeImage.jpeg"
-          }
-        />
-      ))}
-    </WrapperEpisodes>
-  </Container>
-);
+export const EpisodeList = ({ episodes = [] }) => {
+  const navigate = useNavigate();
+
+  return (
+    <Container>
+      <WrapperHeader>
+        <div className="item-title">
+          <h2>Lista de episodios</h2>
+        </div>
+        <div className="item-filters">
+          <ul>
+            <li>
+              <Button size="small">
+                Mayor o menor &nbsp;
+                <FontAwesomeIcon icon={faArrowDownShortWide} size="lg" />
+              </Button>
+            </li>
+          </ul>
+        </div>
+      </WrapperHeader>
+      <WrapperEpisodes>
+        {episodes.map((episode, index) => (
+          <EpisodeItem
+            key={index}
+            title={episodes.title || "Naruto"}
+            number={episode.number || index + 1}
+            image={
+              episode.image ||
+              "https://storage.googleapis.com/animes-dev-animes/animes/dumucB9YLN054VySLlu6/episodes/mUmBShtFWxSiskrJNOa2/episodeImage.jpeg"
+            }
+            onClick={() => navigate(`${episode}`)}
+          />
+        ))}
+      </WrapperEpisodes>
+    </Container>
+  );
+};
 
 const Container = styled.div`
   width: 100%;

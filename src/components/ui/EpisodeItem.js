@@ -7,9 +7,10 @@ export const EpisodeItem = ({
   title = "Naruto",
   number,
   image = "https://storage.googleapis.com/animes-dev-animes/animes/dumucB9YLN054VySLlu6/episodes/mUmBShtFWxSiskrJNOa2/episodeImage.jpeg",
+  onClick,
 }) => (
   <Container>
-    <div className="item-left">
+    <div className="item-left" onClick={() => onClick()}>
       <img src={image} alt={`episode ${number}`} />
     </div>
     <div className="item-center">
@@ -19,7 +20,12 @@ export const EpisodeItem = ({
       </div>
     </div>
     <div className="item-right">
-      <FontAwesomeIcon className="icon-search" icon={faCirclePlay} size="2x" />
+      <FontAwesomeIcon
+        className="icon-search"
+        icon={faCirclePlay}
+        size="2x"
+        onClick={() => onClick()}
+      />
     </div>
   </Container>
 );
