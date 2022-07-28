@@ -2,6 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { borderRadius } from "polished";
 
 const buttonsType = {
   primary: {
@@ -45,6 +46,7 @@ export const Button = ({
   loading = false,
   disabled = false,
   block = false,
+  borderRadius = "1em",
 }) => {
   const btnType = buttonsType[type];
   const btnSize = buttonsSize[size];
@@ -59,6 +61,7 @@ export const Button = ({
       block={block}
       padding={btnSize.padding}
       fontSize={btnSize.fontSize}
+      borderRadius={borderRadius}
     >
       <div className="content-button">
         {loading && (
@@ -75,7 +78,16 @@ export const Button = ({
 };
 
 const Container = styled.button`
-  ${({ background, color, border, width, block, padding, fontSize }) => css`
+  ${({
+    background,
+    color,
+    border,
+    width,
+    block,
+    padding,
+    fontSize,
+    borderRadius,
+  }) => css`
     width: ${block ? "100%" : width};
     border: ${border};
     background: ${background};
@@ -85,7 +97,7 @@ const Container = styled.button`
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     border: none;
-    border-radius: 1em;
+    border-radius: ${borderRadius};
     padding: ${padding};
     margin: 0.7rem 0;
     font-size: ${fontSize};
