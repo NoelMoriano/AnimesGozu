@@ -2,7 +2,6 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import { borderRadius } from "polished";
 
 const buttonsType = {
   primary: {
@@ -43,6 +42,7 @@ export const Button = ({
   size = "large",
   onClick,
   width = "auto",
+  height = "auto",
   loading = false,
   disabled = false,
   block = false,
@@ -54,6 +54,7 @@ export const Button = ({
     <Container
       onClick={onClick}
       width={width}
+      height={height}
       background={btnType.background}
       color={btnType.color}
       border={btnType.border}
@@ -83,12 +84,14 @@ const Container = styled.button`
     color,
     border,
     width,
+    height,
     block,
     padding,
     fontSize,
     borderRadius,
   }) => css`
     width: ${block ? "100%" : width};
+    height: ${block ? "auto" : height};
     border: ${border};
     background: ${background};
     color: ${color};
