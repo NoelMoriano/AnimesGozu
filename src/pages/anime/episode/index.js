@@ -1,6 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { useParams } from "react-router";
+import { Button, EpisodeList } from "../../../components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
+
+const episodes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
 export const Episode = () => {
   const { animeId, episodeId } = useParams();
@@ -9,7 +14,25 @@ export const Episode = () => {
 
   return (
     <Container>
-      <h1>EPISODES</h1>
+      <WrapperHomeBanner bgBanner="https://firebasestorage.googleapis.com/v0/b/animes-dev.appspot.com/o/resources%2Fimage%201.jpg?alt=media&token=7836560d-1e2b-4682-92da-309c0b422241">
+        <div className="banner-wrapper">
+          <div className="gradient">
+            <div className="content-banner">
+              <div className="item-play">
+                <Button
+                  size="medium"
+                  borderRadius="50%"
+                  width="4rem"
+                  height="4rem"
+                >
+                  <FontAwesomeIcon icon={faPlay} size="2x" />
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </WrapperHomeBanner>
+      <EpisodeList episodes={episodes} />
     </Container>
   );
 };
@@ -19,4 +42,45 @@ const Container = styled.div`
   height: auto;
   background: ${({ theme }) => theme.colors.secondary};
   color: ${({ theme }) => theme.colors.font1};
+`;
+
+const WrapperHomeBanner = styled.div`
+  width: 100%;
+  height: 70vh;
+  max-height: 40em;
+  position: relative;
+  .banner-wrapper {
+    width: 100%;
+    height: 70vh;
+    max-height: 40em;
+    background: #000 url(${({ bgBanner }) => bgBanner}) no-repeat;
+    background-size: cover;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .gradient {
+      width: 100%;
+      height: 100%;
+      background-image: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        from(#070707),
+        color-stop(#e66aa800),
+        to(#070707)
+      );
+      background-image: linear-gradient(#070707, #e66aa800, #070707);
+      .content-banner {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .item-play {
+        }
+      }
+    }
+  }
 `;
