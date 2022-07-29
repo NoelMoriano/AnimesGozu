@@ -32,6 +32,18 @@ export const Episode = () => {
           </div>
         </div>
       </WrapperHomeBanner>
+      <div className="wrapper-servers">
+        <div className="item-servers">
+          <ul>
+            <li>option 1</li>
+            <li>option 1</li>
+            <li>option 1</li>
+            <li>option 1</li>
+            <li>option 1</li>
+            <li>option 1</li>
+          </ul>
+        </div>
+      </div>
       <EpisodeList episodes={episodes} />
     </Container>
   );
@@ -42,6 +54,34 @@ const Container = styled.div`
   height: auto;
   background: ${({ theme }) => theme.colors.secondary};
   color: ${({ theme }) => theme.colors.font1};
+
+  .wrapper-servers {
+    width: 100%;
+    max-width: 100%;
+    background: ${({ theme }) => theme.colors.tertiary};
+    .item-servers {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+      ul {
+        width: 100%;
+        overflow-x: scroll;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        list-style: none;
+        li {
+          width: auto;
+          min-width: 7rem;
+          padding: 0.5em 1em;
+          &:first-child {
+            border-bottom: 3px solid ${({ theme }) => theme.colors.primary};
+          }
+        }
+      }
+    }
+  }
 `;
 
 const WrapperHomeBanner = styled.div`
