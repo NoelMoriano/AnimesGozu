@@ -4,10 +4,17 @@ import { Button, EpisodeList } from "../../components";
 import { Imalogo } from "../../images";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
-
-const episodes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+import { useParams } from "react-router";
+import { EpisodesData } from "../../data-list";
 
 export const Anime = () => {
+  const { animeId } = useParams();
+
+  const episodes = EpisodesData.find(
+    (episodeData) => episodeData.animeId === animeId
+  );
+  console.log("episodes/->", episodes);
+
   return (
     <Container>
       <WrapperHomeBanner bgBanner="https://firebasestorage.googleapis.com/v0/b/animes-dev.appspot.com/o/resources%2Fimage%201.jpg?alt=media&token=7836560d-1e2b-4682-92da-309c0b422241">
@@ -38,7 +45,7 @@ export const Anime = () => {
           </div>
         </div>
       </WrapperHomeBanner>
-      <EpisodeList episodes={episodes} />
+      <EpisodeList episodes={episodes.episodes} />
     </Container>
   );
 };

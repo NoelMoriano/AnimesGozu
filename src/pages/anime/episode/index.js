@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router";
 import { Button, EpisodeList } from "../../../components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
-
-const episodes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+import { EpisodesData } from "../../../data-list";
+import { defaultTo } from "lodash";
 
 export const Episode = () => {
   const { animeId, episodeId } = useParams();
 
-  console.log("IDs->", animeId, " => ", episodeId);
+  const [servers, setServers] = useState([]);
+  const [serverView, setServerView] = useState(null);
+
+  const animeEpisodes = EpisodesData.find(
+    (episodeData) => episodeData.animeId === animeId
+  );
+
+  console.log("episodes->", animeEpisodes.episodes);
+
+  useEffect(() => {
+    setServers(animeEpisodes.episodes[episodeId].servers || []);
+  }, []);
+
+  const viewEpisode = (url) => setServerView(url);
+
+  console.log("serverView=>", serverView);
 
   return (
     <Container>
@@ -18,16 +33,23 @@ export const Episode = () => {
         <div className="banner-wrapper">
           <div className="gradient">
             <div className="content-banner">
-              <div className="item-play">
-                <Button
-                  size="medium"
-                  borderRadius="50%"
-                  width="4rem"
-                  height="4rem"
-                >
-                  <FontAwesomeIcon icon={faPlay} size="2x" />
-                </Button>
-              </div>
+              <iframe
+                className="iframe-episode"
+                src={defaultTo(serverView, "")}
+                frameborder="0"
+                scrolling="no"
+                allowfullscreen
+              ></iframe>
+              {/*<div className="item-play">*/}
+              {/*  <Button*/}
+              {/*    size="medium"*/}
+              {/*    borderRadius="50%"*/}
+              {/*    width="4rem"*/}
+              {/*    height="4rem"*/}
+              {/*  >*/}
+              {/*    <FontAwesomeIcon icon={faPlay} size="2x" />*/}
+              {/*  </Button>*/}
+              {/*</div>*/}
             </div>
           </div>
         </div>
@@ -35,16 +57,15 @@ export const Episode = () => {
       <div className="wrapper-servers">
         <div className="item-servers">
           <ul>
-            <li>option 1</li>
-            <li>option 1</li>
-            <li>option 1</li>
-            <li>option 1</li>
-            <li>option 1</li>
-            <li>option 1</li>
+            {servers.map((server, index) => (
+              <li key={index} onClick={() => viewEpisode(server.url)}>
+                {server.name}
+              </li>
+            ))}
           </ul>
         </div>
       </div>
-      <EpisodeList episodes={episodes} />
+      <EpisodeList episodes={animeEpisodes.episodes} />
     </Container>
   );
 };
@@ -66,12 +87,13 @@ const Container = styled.div`
       overflow: hidden;
       ul {
         width: 100%;
-        overflow-x: scroll;
+        //overflow-x: scroll;
         margin: 0;
         padding: 0;
         display: flex;
         list-style: none;
         li {
+          cursor: pointer;
           width: auto;
           min-width: 7rem;
           padding: 0.5em 1em;
@@ -118,7 +140,9 @@ const WrapperHomeBanner = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        .item-play {
+        .iframe-episode {
+          width: 100%;
+          height: 100%;
         }
       }
     }

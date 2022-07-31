@@ -3,11 +3,13 @@ import styled from "styled-components";
 import { CardAnime } from "../../components";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { useNavigate } from "react-router";
+import { AnimesData } from "../../data-list";
 
 export const Home = () => {
   const navigate = useNavigate();
+  console.log(AnimesData);
 
-  const navigateAnime = (url) => navigate(url);
+  const navigateAnime = (animeId) => navigate(`/${animeId}`);
 
   return (
     <Container>
@@ -24,21 +26,16 @@ export const Home = () => {
 
       <WrapperAnimesContent>
         <div className="category-card">
-          <h2>Acción:</h2>
+          <h2>Categoria:</h2>
           <div className="category">
-            <CardAnime onNavigateAnime={navigateAnime} />
-            <CardAnime onNavigateAnime={navigateAnime} />
-            <CardAnime onNavigateAnime={navigateAnime} />
-            <CardAnime onNavigateAnime={navigateAnime} />
-          </div>
-        </div>
-        <div className="category-card">
-          <h2>Aventura:</h2>
-          <div className="category">
-            <CardAnime onNavigateAnime={navigateAnime} />
-            <CardAnime onNavigateAnime={navigateAnime} />
-            <CardAnime onNavigateAnime={navigateAnime} />
-            <CardAnime onNavigateAnime={navigateAnime} />
+            {AnimesData.map((animeData, index) => (
+              <CardAnime
+                key={index}
+                onNavigateAnime={() => navigateAnime(animeData.id)}
+                title={animeData.name}
+                synopsis={animeData.synopsis}
+              />
+            ))}
           </div>
         </div>
       </WrapperAnimesContent>
