@@ -4,10 +4,12 @@ import { EpisodeItem } from "./EpisodeItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDownShortWide } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "./Button";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 export const EpisodeList = ({ episodes = [] }) => {
   const navigate = useNavigate();
+
+  const { animeId } = useParams();
 
   return (
     <Container>
@@ -30,13 +32,13 @@ export const EpisodeList = ({ episodes = [] }) => {
         {episodes.map((episode, index) => (
           <EpisodeItem
             key={index}
-            title={episodes.title || "Naruto"}
+            title={episode.title || "Naruto"}
             number={episode.number || index + 1}
             image={
               episode.image ||
               "https://storage.googleapis.com/animes-dev-animes/animes/dumucB9YLN054VySLlu6/episodes/mUmBShtFWxSiskrJNOa2/episodeImage.jpeg"
             }
-            onClick={() => navigate(`${episode}`)}
+            onClick={() => navigate(`/${animeId}/${episode.number}`)}
           />
         ))}
       </WrapperEpisodes>

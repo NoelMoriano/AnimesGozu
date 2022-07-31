@@ -3,18 +3,18 @@ import styled from "styled-components";
 import { ImgAnime } from "../../images";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 
-export const CardAnime = ({ onNavigateAnime }) => (
-  <Container onClick={() => onNavigateAnime("naruto")}>
+export const CardAnime = ({
+  onNavigateAnime,
+  title = "no found",
+  imgAnime = ImgAnime,
+  synopsis = "no found",
+}) => (
+  <Container onClick={() => onNavigateAnime()}>
     <div className="item-anime">
-      <img src={ImgAnime} alt="image" />
+      <img src={imgAnime} alt="image" />
       <div className="hover-effect">
-        <h3>Titulo del anime</h3>
-        <p>
-          Lorem ipsum, Magnam asperiores, quam doloremque deleniti amet facere
-          dolore tempore natus dignissimos voluptates illo animi doloribus! Quis
-          sint eveniet, quibusdam in amet error, quibusdam in amet error bla bla
-          bla bla
-        </p>
+        <h3>{title.toUpperCase()}</h3>
+        <p>{synopsis}</p>
       </div>
     </div>
   </Container>
