@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "../components";
-import { Anime, Episode, Home, Login, Register } from "../pages";
+import { Anime, Episode, Home, Login, Register, SearchResult } from "../pages";
 
 export const Router = () => (
   <Routes>
@@ -28,6 +28,15 @@ export const Router = () => (
       element={
         <Layout>
           <Episode />
+        </Layout>
+      }
+    />
+    <Route
+      exact
+      path="/search-result"
+      element={
+        <Layout>
+          <SearchResult />
         </Layout>
       }
     />
