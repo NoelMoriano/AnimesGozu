@@ -4,16 +4,20 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Button, Form, Input, InputPassword } from "../../components";
+import { ImgBackground } from "../../images";
+import { mediaQuery } from "../../styles/constants/mediaQuery";
 
 export const Register = () => {
   return (
-    <Container>
+    <Container imgBackground={ImgBackground}>
       <div className="background-section"></div>
       <div className="form-section">
         <div className="title-item">
-          <h1>AnimeFlix</h1>
+          <Link to="/">
+            <h1>AnimeFlix</h1>
+          </Link>
           <h2>
-            <Link to="/">
+            <Link to="/login">
               <FontAwesomeIcon icon={faArrowLeft} className="item-icon" />
               <span>Login</span>
             </Link>
@@ -49,6 +53,20 @@ const Container = styled.section`
   width: 100%;
   height: 100%;
   color: #fff;
+  display: grid;
+  grid-template-columns: 1fr;
+  ${mediaQuery.minTablet} {
+    grid-template-columns: 60% 1fr;
+  }
+  .background-section {
+    background-blend-mode: multiply;
+    background-image: url(${({ imgBackground }) => imgBackground});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    background-attachment: scroll;
+    width: 100%;
+  }
   .title-item {
     padding: 1.5rem 1rem;
     display: flex;
