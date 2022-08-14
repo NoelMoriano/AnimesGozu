@@ -12,17 +12,17 @@ import { useNavigate } from "react-router";
 export const Header = () => {
   const navigate = useNavigate();
 
-  const navigateAnime = (url) => navigate(url);
+  const onNavigate = (url) => navigate(url);
 
   return (
     <Container>
       <div className="content-left">
-        <img src={ImgLogo} alt="" onClick={() => navigateAnime("/")} />
+        <img src={ImgLogo} alt="" onClick={() => onNavigate("/")} />
       </div>
       <div className="content-right">
         <InputSearch>
           <FontAwesomeIcon className="icon-search" icon={faMagnifyingGlass} />
-          <input type="text" placeholder="¿Que quieres ver hoy?" />
+          <input type="text" placeholder="¿Que quieres ver hoy?" onClick={()=> onNavigate("/search")}/>
           <FontAwesomeIcon className="icon-clear" icon={faXmark} />
         </InputSearch>
         <div className="item-open-drawer">
