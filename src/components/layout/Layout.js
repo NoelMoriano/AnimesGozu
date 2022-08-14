@@ -1,26 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
-import { Avatar, WrapperContainer } from "../ui";
+import { WrapperContainer } from "../ui";
 import { Header } from "./Header";
-import { NavbarList } from "./NavbarList";
 import { Footer } from "./Footer";
+import { Drawer } from "./Drawer";
+import { DrawerMobile } from "./DrawerMobile";
 
-export const Layout = ({ children }) => (
-  <LayoutContainer>
-    <WrapperContainer>
-      <LayoutContent>
-        <Header />
-        <div className="navbar">
-          <Avatar />
-          <NavbarList />
-        </div>
-        <div className="body">{children}</div>
-        <Footer />
-      </LayoutContent>
-    </WrapperContainer>
-  </LayoutContainer>
-);
+export const Layout = ({ children }) => {
+  const [visibleDrawer, setvisibleDrawer] = useState(false);
+
+  return (
+    <LayoutContainer>
+      <DrawerMobile
+        onSetVisibleDrawer={setvisibleDrawer}
+        visibleDrawer={visibleDrawer}
+      />
+      <WrapperContainer>
+        <LayoutContent>
+          <Header onSetVisibleDrawer={setvisibleDrawer} />
+          <div className="navbar">
+            <Drawer />
+          </div>
+          <div className="body">{children}</div>
+          <Footer />
+        </LayoutContent>
+      </WrapperContainer>
+    </LayoutContainer>
+  );
+};
 
 const LayoutContainer = styled.div`
   width: 100vw;
