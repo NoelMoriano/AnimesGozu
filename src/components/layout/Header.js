@@ -9,7 +9,7 @@ import {
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { useNavigate } from "react-router";
 
-export const Header = () => {
+export const Header = ({ onSetVisibleDrawer }) => {
   const navigate = useNavigate();
 
   const onNavigate = (url) => navigate(url);
@@ -22,11 +22,19 @@ export const Header = () => {
       <div className="content-right">
         <InputSearch>
           <FontAwesomeIcon className="icon-search" icon={faMagnifyingGlass} />
-          <input type="text" placeholder="¿Que quieres ver hoy?" onClick={()=> onNavigate("/search")}/>
+          <input
+            type="text"
+            placeholder="¿Que quieres ver hoy?"
+            onClick={() => onNavigate("/search")}
+          />
           <FontAwesomeIcon className="icon-clear" icon={faXmark} />
         </InputSearch>
         <div className="item-open-drawer">
-          <FontAwesomeIcon className="icon-clear" icon={faBars} />
+          <FontAwesomeIcon
+            className="icon-clear"
+            icon={faBars}
+            onClick={() => onSetVisibleDrawer(true)}
+          />
         </div>
       </div>
     </Container>
@@ -42,7 +50,7 @@ const Container = styled.div`
   background: ${({ theme }) => theme.colors.tertiary};
   border-bottom: 2px solid ${({ theme }) => theme.colors.tertiary};
   box-sizing: border-box;
-  z-index: 9999;
+  z-index: 900;
   ${mediaQuery.minTablet} {
     grid-template-columns: 17em 1fr;
   }
