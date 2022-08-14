@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { ImgCardOnePiece } from "../../images";
 
-export const CardAnimeSecondary = () => {
+export const CardAnimeSecondary = ({ title, image }) => {
   return (
     <Container>
-      <img src={ImgCardOnePiece} alt="" />
-      <h2>One Piece</h2>
+      <img src={image} alt={title} />
+      <h2>{title}</h2>
     </Container>
   );
 };
@@ -32,6 +32,7 @@ const Container = styled.div`
     z-index: -10;
   }
   h2 {
+    padding-top: 1rem;
     text-align: center;
   }
 `;
