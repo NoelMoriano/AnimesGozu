@@ -1,12 +1,71 @@
 [
-  { "id": "naruto", "name": "naruto", "synopsis": "Naruto, un aprendiz de ninja de la Aldea Oculta de Konoha es un chico travieso que desea llegar a ser el Hokage de la aldea para demostrar a todos lo que vale. Lo que descubre al inicio de la historia es que la gente le mira con desconfianza porque en su interior está encerrado el demonio Kyubi que una vez destruyó la aldea, y que el anterior líder de la misma tuvo que encerrar en su cuerpo siendo aún muy pequeño, a coste de su vida. Aunque sus compañeros no saben esto, tampoco le aprecian porque es mal estudiante y siempre está haciendo bromas. Sin embargo, la forma de actuar y la determinación de Naruto demuestran a los demás que puede llegar muy lejos, y el recelo de los otros chicos se va disipando. Naruto y sus compañeros Sakura y Sasuke, junto a su maestro Kakashi tendrán que enfrentarse a una serie de combates y misiones a lo largo de la historia que les permitirán mejorar y crecer. Naruto se vera enfrentado a sus principales enemigos Akatsuki, Itachi y Kisame.", "gender": "aventura" },
-  { "id": "one-piece", "name": "one piece", "synopsis": ".....", "gender": "aventura" },
-  {"id" :  "86-eighty-six", "name": "86 eighty six","sypnosis": "...","gender": "acción"},
-  {"id" :  "dragon-ball-super-latino", "name": "dragon ball super latino","sypnosis": "...","gender": "acción"},
-  {"id" :  "naruto-shippuden-hd", "name": "naruto shippuden","sypnosis": "...","gender": "artes marciales"},
-  {"id" :  "overlord", "name": "overlord","sypnosis": "...","gender": "acción"},
-  {"id" :  "death-note", "name": "death note","sypnosis": "...","gender": "misterio"},
-  {"id" :  "spy-x-family", "name": "spy x family","sypnosis": "...","gender": "acción"},
-  {"id" :  "another", "name": "another","sypnosis": "...","gender": "escolares"},
-  {"id" :  "date-a-live-iv", "name": "date a live iv","sypnosis": "...","gender": "escolares"}
+  {
+    "id": "naruto",
+    "animeCoverImage": "https://firebasestorage.googleapis.com/v0/b/animes-dev.appspot.com/o/resources%2Fimage%201.jpg?alt=media&token=7836560d-1e2b-4682-92da-309c0b422241",
+    "name": "naruto",
+    "synopsis": "Naruto, un aprendiz de ninja de la Aldea Oculta de Konoha es un chico travieso que desea llegar a ser el Hokage de la aldea para demostrar a todos lo que vale. Lo que descubre al inicio de la historia es que la gente le mira con desconfianza porque en su interior está encerrado el demonio Kyubi que una vez destruyó la aldea, y que el anterior líder de la misma tuvo que encerrar en su cuerpo siendo aún muy pequeño, a coste de su vida. Aunque sus compañeros no saben esto, tampoco le aprecian porque es mal estudiante y siempre está haciendo bromas. Sin embargo, la forma de actuar y la determinación de Naruto demuestran a los demás que puede llegar muy lejos, y el recelo de los otros chicos se va disipando. Naruto y sus compañeros Sakura y Sasuke, junto a su maestro Kakashi tendrán que enfrentarse a una serie de combates y misiones a lo largo de la historia que les permitirán mejorar y crecer. Naruto se vera enfrentado a sus principales enemigos Akatsuki, Itachi y Kisame.",
+    "gender": "aventura"
+  },
+  {
+    "id": "one-piece",
+    "animeCoverImage": "https://storage.googleapis.com/animes-dev-animes/animes/kscgCTDc7lr1sD0BslAN/animePicture.jpeg",
+    "name": "one piece",
+    "synopsis": ".....",
+    "gender": "aventura"
+  },
+  {
+    "id": "86-eighty-six",
+    "animeCoverImage": "https://storage.googleapis.com/animes-dev-animes/animes/kr98gPP2iVB1y7Cbyzdq/animePicture.jpeg",
+    "name": "86 eighty six",
+    "sypnosis": "...",
+    "gender": "acción"
+  },
+  {
+    "id": "dragon-ball-super-latino",
+    "name": "dragon ball super latino",
+    "sypnosis": "...",
+    "gender": "acción"
+  },
+  {
+    "id": "naruto-shippuden-hd",
+    "animeCoverImage": "https://storage.googleapis.com/animes-dev-animes/animes/dumucB9YLN054VySLlu6/animeCoverImage.jpeg",
+    "name": "naruto shippuden",
+    "sypnosis": "...",
+    "gender": "artes marciales"
+  },
+  {
+    "id": "overlord",
+    "animeCoverImage": "https://storage.googleapis.com/animes-dev-animes/animes/dq9jkDRTAy0o3m6TyUDT/animePicture.jpeg",
+    "name": "overlord",
+    "sypnosis": "...",
+    "gender": "acción"
+  },
+  {
+    "id": "death-note",
+    "animeCoverImage": "https://storage.googleapis.com/animes-dev-animes/animes/KFyRxLHGtzlGlCZmL8Np/animePicture.jpeg",
+    "name": "death note",
+    "sypnosis": "...",
+    "gender": "misterio"
+  },
+  {
+    "id": "spy-x-family",
+    "animeCoverImage": "https://storage.googleapis.com/animes-dev-animes/animes/ykedSwBupIHJWv0FYfOj/animePicture.jpeg",
+    "name": "spy x family",
+    "sypnosis": "...",
+    "gender": "acción"
+  },
+  {
+    "id": "another",
+    "animeCoverImage": "https://storage.googleapis.com/animes-dev-animes/animes/y4qxoiMiDAvgEQq8stoe/animePicture.jpeg",
+    "name": "another",
+    "sypnosis": "...",
+    "gender": "escolares"
+  },
+  {
+    "id": "date-a-live-iv",
+    "animeCoverImage": "https://storage.googleapis.com/animes-dev-animes/animes/kSorsGJHUhUNDpmuJSwE/animePicture.jpeg",
+    "name": "date a live iv",
+    "sypnosis": "...",
+    "gender": "escolares"
+  }
 ]

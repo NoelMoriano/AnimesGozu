@@ -6,12 +6,13 @@ import { mediaQuery } from "../../styles/constants/mediaQuery";
 export const CardAnime = ({
   onNavigateAnime,
   title = "no found",
+  image,
   imgAnime = ImgAnime,
   synopsis = "no found",
 }) => (
   <Container onClick={() => onNavigateAnime()}>
     <div className="item-anime">
-      <img src={imgAnime} alt="image" />
+      <img src={image || imgAnime} alt="image" />
       <div className="hover-effect">
         <h3>{title.toUpperCase()}</h3>
         <p>{synopsis}</p>
@@ -69,7 +70,7 @@ const Container = styled.div`
 
       p {
         font-size: small;
-        height: auto;
+        height: 30px;
         width: 95%;
         text-align: left;
         overflow: hidden;
