@@ -3,11 +3,17 @@ import styled from "styled-components";
 import { CardAnime } from "../../components";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { useNavigate } from "react-router";
-import { AnimesData } from "../../data-list";
+import { useAnimes } from "../../providers/Animes";
 
 export const Home = () => {
   const navigate = useNavigate();
-  console.log("img ->", AnimesData);
+
+  const { animes } = useAnimes();
+
+  console.log("ObtenerListDeAnimes->", animes);
+
+  const animesCategory = animes.filter((anime) => anime.category === "anime");
+  const ovasCategory = animes.filter((anime) => anime.category === "ova");
 
   const navigateAnime = (animeId) => navigate(`/${animeId}`);
 
@@ -26,15 +32,29 @@ export const Home = () => {
 
       <WrapperAnimesContent>
         <div className="category-card">
-          <h2>Categoria:</h2>
+          <h2>ANIMES:</h2>
           <div className="category">
-            {AnimesData.map((animeData, index) => (
+            {animesCategory.map((anime, index) => (
               <CardAnime
                 key={index}
-                onNavigateAnime={() => navigateAnime(animeData.id)}
-                title={animeData.name}
-                image={animeData.animeCoverImage}
-                synopsis={animeData.synopsis}
+                onNavigateAnime={() => navigateAnime(anime.id)}
+                title={anime.name}
+                image={anime.animePicture.url}
+                synopsis={anime.synopsis}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="category-card">
+          <h2>OVAS:</h2>
+          <div className="category">
+            {ovasCategory.map((anime, index) => (
+              <CardAnime
+                key={index}
+                onNavigateAnime={() => navigateAnime(anime.id)}
+                title={anime.name}
+                image={anime.animePicture.url}
+                synopsis={anime.synopsis}
               />
             ))}
           </div>
@@ -103,10 +123,9 @@ const WrapperAnimesContent = styled.div`
   .category-card {
     position: relative;
     height: auto;
-    min-height: 430px;
+    min-height: 470px;
     margin-bottom: 3rem;
     ${mediaQuery.minTablet} {
-      min-height: 315px;
       margin: 1.5rem 0;
     }
     h2 {

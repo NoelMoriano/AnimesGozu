@@ -13,7 +13,6 @@ export const Anime = () => {
   const episodes = EpisodesData.find(
     (episodeData) => episodeData.animeId === animeId
   );
-  console.log("episodes/->", episodes);
 
   return (
     <Container>
