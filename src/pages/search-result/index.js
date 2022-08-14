@@ -3,8 +3,15 @@ import { faFilter, faList } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Button, CardAnimeSecondary, Select } from "../../components";
+import { useAnimes } from "../../providers/Animes";
+import { useNavigate } from "react-router";
 
 export const SearchResult = () => {
+  const navigate = useNavigate();
+  const { animes } = useAnimes();
+  const navigateAnime = (animeId) => navigate(`/${animeId}`);
+
+  console.log(animes);
   return (
     <Container>
       <h1>
@@ -22,8 +29,13 @@ export const SearchResult = () => {
         </Button>
       </div>
       <div className="section-anime">
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value, index, array) => (
-          <CardAnimeSecondary key={index} />
+        {animes.map((anime, index, array) => (
+          <CardAnimeSecondary
+            key={index}
+            onNavigateAnime={() => navigateAnime(anime.id)}
+            title={anime.name}
+            image={anime.animePicture.url}
+          />
         ))}
       </div>
     </Container>
@@ -50,9 +62,11 @@ const Container = styled.main`
       align-items: center;
     }
     .section-anime {
-      display: flex;
-      gap: 1.2rem;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+      gap: 1rem;
+      margin: auto;
+      text-align: center;
     }
   `}
 `;
