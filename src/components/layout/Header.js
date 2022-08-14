@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ImgLogo } from "../../images";
+import { ImgLogoAnimeGozu } from "../../images";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -17,7 +17,11 @@ export const Header = ({ onSetVisibleDrawer }) => {
   return (
     <Container>
       <div className="content-left">
-        <img src={ImgLogo} alt="" onClick={() => onNavigate("/")} />
+        <img
+          src={ImgLogoAnimeGozu}
+          alt="Anime Gozu"
+          onClick={() => onNavigate("/")}
+        />
       </div>
       <div className="content-right">
         <InputSearch>
