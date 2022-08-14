@@ -7,7 +7,7 @@ import { AnimesData } from "../../data-list";
 
 export const Home = () => {
   const navigate = useNavigate();
-  console.log(AnimesData);
+  console.log("img ->", AnimesData);
 
   const navigateAnime = (animeId) => navigate(`/${animeId}`);
 
@@ -33,6 +33,7 @@ export const Home = () => {
                 key={index}
                 onNavigateAnime={() => navigateAnime(animeData.id)}
                 title={animeData.name}
+                image={animeData.animeCoverImage}
                 synopsis={animeData.synopsis}
               />
             ))}
