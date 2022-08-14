@@ -33,7 +33,7 @@ export const Router = () => (
     />
     <Route
       exact
-      path="/search-result"
+      path="/search"
       element={
         <Layout>
           <SearchResult />
