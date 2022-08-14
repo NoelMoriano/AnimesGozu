@@ -1,22 +1,22 @@
 import React from "react";
 import styled from "styled-components";
-import { Button, EpisodeList } from "../../components";
+import { Button } from "../../components";
 import { Imalogo } from "../../images";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router";
-import { EpisodesData } from "../../data-list";
+import { useAnimes } from "../../providers/Animes";
 
 export const Anime = () => {
   const { animeId } = useParams();
 
-  const episodes = EpisodesData.find(
-    (episodeData) => episodeData.animeId === animeId
-  );
+  const { animes } = useAnimes();
+
+  const anime = animes.find((anime) => anime.id === animeId);
 
   return (
     <Container>
-      <WrapperHomeBanner bgBanner="https://firebasestorage.googleapis.com/v0/b/animes-dev.appspot.com/o/resources%2Fimage%201.jpg?alt=media&token=7836560d-1e2b-4682-92da-309c0b422241">
+      <WrapperHomeBanner bgBanner={anime.animeCoverImage.url}>
         <div className="banner-wrapper">
           <div className="gradient">
             <div className="content-banner">
@@ -25,15 +25,10 @@ export const Anime = () => {
                 <span>SERIE</span>
               </div>
               <div className="anime-title">
-                <h1> NARUTO SHIPPUDEN</h1>
+                <h1>{anime.name}</h1>
               </div>
               <div className="synopsis-anime">
-                <p>
-                  'Naruto Shippuden' se trata de la segunda parte del anime
-                  'Naruto' cuando Naruto regresa a La Aldea Oculta de la hoja
-                  (Konoha), tras haber estado dos años y media entrenando con
-                  uno de los tres legendarios ninja.
-                </p>
+                <p>{anime.synopsis}</p>
               </div>
               <div className="content-button">
                 <Button size="medium" borderRadius="7rem">
@@ -44,7 +39,6 @@ export const Anime = () => {
           </div>
         </div>
       </WrapperHomeBanner>
-      <EpisodeList episodes={episodes.episodes} />
     </Container>
   );
 };
