@@ -2,14 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import { Layout } from "../components";
 import { Anime, Episode, Home, Login, Register, SearchResult } from "../pages";
 
-export const Router = () => (
+export const Router = (animes) => (
   <Routes>
     <Route
       exact
       path="/"
       element={
         <Layout>
-          <Home />
+          <Home animes={animes} />
         </Layout>
       }
     />

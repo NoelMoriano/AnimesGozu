@@ -1,0 +1,62 @@
+{
+  "common": {
+    "app-data": {
+      "name": "Cobiene app",
+      "emails": {
+        "contact": "info@cobiene-app.com"
+      },
+      "numbers": {
+        "phone": ["950 425 945", "931 981 314"],
+        "wsp": ["950 425 945", "931 981 314"]
+      },
+      "socialLinks": {
+        "facebook": "https://www.facebook.com/cobiene-app",
+        "instagram": "https://www.instagram.com/cobiene-app/",
+        "whatsapp": "https://api.whatsapp.com/send/?phone=+51950425945&text=Estoy+interesado+en+su+producto+%2F+servicio&app_absent=0",
+        "messenger": "https://m.me/GamontLlantas"
+      },
+      "directions": {
+        "local1": "Av. Guardia Civil 257 – Chorrillos",
+        "local2": "Av. Huaylas 2691 – Chorrillos"
+      },
+      "poweredBy": {
+        "name": "Cobiene app",
+        "webUrl": "https://cobiene.app"
+      }
+    }
+  },
+  "development": {
+    "version": "0.0.1",
+    "googleAnalytics": {
+      "trackingId": "-"
+    },
+    "firebaseApp": {
+      "apiKey": "-",
+      "authDomain": "-",
+      "projectId": "-",
+      "storageBucket": "-",
+      "messagingSenderId": "-",
+      "appId": "-",
+      "measurementId": "-"
+    },
+    "buckets": {},
+    "animeServerApi": "https://us-central1-animes-dev.cloudfunctions.net/api"
+  },
+  "production": {
+    "version": "0.0.1",
+    "googleAnalytics": {
+      "trackingId": "-"
+    },
+    "firebaseApp": {
+      "apiKey": "-",
+      "authDomain": "-",
+      "projectId": "-",
+      "storageBucket": "-",
+      "messagingSenderId": "-",
+      "appId": "-",
+      "measurementId": "-"
+    },
+    "buckets": {},
+    "animeServerApi": "https://us-central1-animes-dev.cloudfunctions.net/api"
+  }
+}
