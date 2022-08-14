@@ -39,8 +39,8 @@ const Container = styled.div`
     }
 
     ${mediaQuery.minTablet} {
-      width: 22em;
-      height: 13em;
+      width: 17em;
+      height: 23em;
     }
 
     img {
