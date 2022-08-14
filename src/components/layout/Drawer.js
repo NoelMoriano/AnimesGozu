@@ -4,7 +4,7 @@ import { Avatar, Button } from "../ui";
 import { useNavigate } from "react-router";
 import React from "react";
 
-export const NavbarList = () => {
+export const Drawer = () => {
   const navigate = useNavigate();
   return (
     <Container>
