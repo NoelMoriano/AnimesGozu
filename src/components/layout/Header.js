@@ -72,7 +72,7 @@ const Container = styled.div`
     }
     img {
       width: auto;
-      height: 2.2em;
+      height: 2.7em;
       cursor: pointer;
     }
   }
