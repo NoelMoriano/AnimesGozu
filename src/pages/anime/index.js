@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router";
 import { useAnimes } from "../../providers/Animes";
+import { mediaQuery } from "../../styles/constants/mediaQuery";
 
 export const Anime = () => {
   const { animeId } = useParams();
@@ -103,8 +104,11 @@ const WrapperHomeBanner = styled.div`
         .anime-title {
           margin: 0.3rem 0;
           h1 {
-            font-size: 3em;
+            font-size: 2.3em;
             font-weight: 900;
+            ${mediaQuery.minTablet} {
+              font-size: 3em;
+            }
           }
         }
         .synopsis-anime {

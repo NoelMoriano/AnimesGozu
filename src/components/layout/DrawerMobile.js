@@ -66,7 +66,7 @@ const Container = styled.div`
     }
   }
   .menu-mobile-list {
-    padding: 1.5rem 0;
+    margin: 1.5rem 0;
   }
   .wrapper-buttons {
     display: flex;

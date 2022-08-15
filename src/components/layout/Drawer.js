@@ -9,9 +9,11 @@ export const Drawer = () => {
   return (
     <Container>
       <Avatar />
-      <MenuList title="Inicio" linkTo="./" />
-      <MenuList title="Animes" linkTo="./" />
-      <MenuList title="En Emisión" linkTo="./" />
+      <div className="menu-list">
+        <MenuList title="Inicio" linkTo="./" />
+        <MenuList title="Animes" linkTo="./" />
+        <MenuList title="En Emisión" linkTo="./" />
+      </div>
       <div className="wrapper-buttons">
         <Button size="medium" onClick={() => navigate("/login")}>
           Iniciar sesion
@@ -30,6 +32,9 @@ export const Drawer = () => {
 
 const Container = styled.div`
   padding: 1rem 0;
+  .menu-list {
+    margin: 1.5rem 0;
+  }
   .wrapper-buttons {
     margin-top: 1em;
     display: flex;
