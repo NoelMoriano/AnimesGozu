@@ -78,12 +78,13 @@ const WrapperHomeBanner = styled.div`
     max-height: 40em;
     background: #000
       url(https://noelmoriano.github.io/AnimeGozu//images/home/banner/image1.png)
-      no-repeat;
+      no-repeat center center;
     background-size: cover;
     color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
+
     .gradient {
       width: 100%;
       height: 100%;
@@ -118,28 +119,23 @@ const WrapperAnimesContent = styled.div`
   width: 100%;
   height: auto;
   padding-top: 2em;
-  overflow: hidden;
   position: relative;
   .category-card {
     position: relative;
+    width: 100%;
     height: auto;
-    min-height: 470px;
     margin-bottom: 3rem;
     ${mediaQuery.minTablet} {
       margin: 1.5rem 0;
     }
     h2 {
-      margin: 0 1.2rem 1.2rem 1.2rem;
+      margin: 1rem 1.2rem 2.6rem 1.2rem;
     }
     .category {
-      display: flex;
-      position: absolute;
-      overflow-x: auto;
-      max-width: 100%;
-      left: 0;
-      //transform: translate3d(-1327px, 0px, 0px);
-      transition: all 0.25s ease 0s;
-      touch-action: manipulation;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(16rem, auto));
+      gap: 2.1rem;
+      justify-content: space-around;
     }
   }
 `;

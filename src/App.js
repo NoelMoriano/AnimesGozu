@@ -6,7 +6,7 @@ import { ThemeProvider } from "styled-components";
 import { yup } from "./config";
 import { setLocale } from "yup";
 import { theme } from "./styles";
-import { AnimesProvider, useAnimes } from "./providers/Animes";
+import { AnimesProvider } from "./providers/Animes";
 
 export const App = () => {
   useEffect(() => {

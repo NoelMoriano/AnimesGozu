@@ -54,7 +54,7 @@ export const theme = {
     error: "rgb(246, 70, 93)",
 
     black: "#090B0D",
-    white: "#EAECEF",
+    white: "#fff",
     dark: "#090B0D",
     light: "#d7d8d9",
 

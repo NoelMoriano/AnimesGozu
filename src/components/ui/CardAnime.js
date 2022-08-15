@@ -22,25 +22,18 @@ export const CardAnime = ({
 );
 
 const Container = styled.div`
+  cursor: pointer;
+
   .item-anime {
     position: relative;
-    margin: 1rem;
     border-radius: 1rem;
-    width: 16rem;
-    height: 22rem;
     overflow: hidden;
     transform: scale(1);
     transition: transform 0.5s cubic-bezier(0.34, 1.61, 0.7, 1);
     cursor: pointer;
-    touch-action: pan-y;
 
     &:hover {
       transform: scale(1.1);
-    }
-
-    ${mediaQuery.minTablet} {
-      width: 17em;
-      height: 23em;
     }
 
     img {
@@ -70,10 +63,10 @@ const Container = styled.div`
 
       p {
         font-size: small;
-        height: 30px;
+        height: 81px;
         width: 95%;
         text-align: left;
-        overflow: hidden;
+        overflow-y: hidden;
         text-overflow: ellipsis;
       }
     }
