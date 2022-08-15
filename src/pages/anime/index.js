@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Button } from "../../components";
 import { Imalogo } from "../../images";
@@ -14,6 +14,10 @@ export const Anime = () => {
 
   const anime = animes.find((anime) => anime.id === animeId);
 
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
   return (
     <Container>
       <WrapperHomeBanner bgBanner={anime.animeCoverImage.url}>
@@ -25,7 +29,7 @@ export const Anime = () => {
                 <span>SERIE</span>
               </div>
               <div className="anime-title">
-                <h1>{anime.name}</h1>
+                <h1>{anime.name.toUpperCase()}</h1>
               </div>
               <div className="synopsis-anime">
                 <p>{anime.synopsis}</p>
@@ -108,7 +112,10 @@ const WrapperHomeBanner = styled.div`
           p {
             width: 100%;
             max-width: 40em;
+            max-height: 7rem;
             font-weight: 300;
+            text-overflow: ellipsis;
+            overflow: hidden;
           }
         }
       }
