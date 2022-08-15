@@ -1,17 +1,44 @@
+import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import { faFilter, faList } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
 import { Button, CardAnimeSecondary, Select } from "../../components";
 import { useAnimes } from "../../providers/Animes";
 import { useNavigate } from "react-router";
+import { includes } from "lodash";
 
 export const SearchResult = () => {
+  const [animesData, setAnimesData] = useState([]);
+  const [category, setCategory] = useState("all");
+  const [animeState, setAnimeState] = useState("all");
+  const [gender, setGender] = useState("all");
+
   const navigate = useNavigate();
   const { animes } = useAnimes();
+
   const navigateAnime = (animeId) => navigate(`/${animeId}`);
 
-  console.log(animes);
+  useEffect(() => {
+    filterAnimes();
+  }, [category, gender, animeState]);
+
+  const filterAnimes = () => {
+    const filterAnime = animes
+      .filter((anime) =>
+        category === "all" ? true : anime.category === category
+      )
+      .filter((anime) =>
+        gender === "all" ? true : includes(anime.gender, gender)
+      )
+      .filter((anime) =>
+        animeState === "all" ? true : includes(anime.state, animeState)
+      );
+
+    setAnimesData(filterAnime);
+  };
+  console.log("gender", gender);
+  console.log(category);
+  console.log("filterAnime", animes);
   return (
     <Container>
       <h1>
@@ -19,17 +46,45 @@ export const SearchResult = () => {
         Lista de Animes
       </h1>
       <div className="section-select">
-        <Select title="Genero: Todos" />
-        <Select title="Tipo: Todos" />
-        <Select title="Orden: Por defecto" />
-        <Select title="Año: Todos" />
+        <Select
+          title="Genero: Todos"
+          onFilterAnimes={setGender}
+          options={[
+            { label: "Shounen", value: "shounen" },
+            { label: "Comedia", value: "comedia" },
+          ]}
+        />
+        <Select
+          title="Categoria: Todos"
+          onFilterAnimes={setCategory}
+          options={[
+            { label: "Anime", value: "anime" },
+            { label: "Ova", value: "ova" },
+          ]}
+        />
+        <Select
+          title="Estado: Todos"
+          onFilterAnimes={setAnimeState}
+          options={[
+            { label: "Finalizado", value: "finalizado" },
+            { label: "Emisión", value: "emision" },
+          ]}
+        />
+        {/*<Select*/}
+        {/*  title="Año: Todos"*/}
+        {/*  onFilterAnimes={setCategory}*/}
+        {/*  options={[*/}
+        {/*    { label: "Anime", value: "anime" },*/}
+        {/*    { label: "Ova", value: "ova" },*/}
+        {/*  ]}*/}
+        {/*/>*/}
         <Button type="primary" size="small" borderRadius=".5em">
           <FontAwesomeIcon icon={faFilter} className="item-icon" />
           Filtrar
         </Button>
       </div>
       <div className="section-anime">
-        {animes.map((anime, index, array) => (
+        {animesData.map((anime, index, array) => (
           <CardAnimeSecondary
             key={index}
             onNavigateAnime={() => navigateAnime(anime.id)}
