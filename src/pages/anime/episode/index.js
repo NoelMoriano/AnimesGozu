@@ -5,31 +5,57 @@ import { Button, EpisodeList } from "../../../components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { EpisodesData } from "../../../data-list";
-import { defaultTo } from "lodash";
+import { defaultTo, orderBy } from "lodash";
+import { currentConfig } from "../../../firebase";
 
 export const Episode = () => {
   const { animeId, episodeId } = useParams();
 
   const [servers, setServers] = useState([]);
   const [serverView, setServerView] = useState(null);
-
-  const animeEpisodes = EpisodesData.find(
-    (episodeData) => episodeData.animeId === animeId
-  );
-
-  console.log("episodes->", animeEpisodes.episodes);
+  const [episode, setEpisode] = useState(null);
+  const [episodes, setEspisodes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setServers(animeEpisodes.episodes[episodeId].servers || []);
-  }, []);
+    fetchEpisode();
+    fetchEpisodes();
+  }, [episodeId]);
 
+  const fetchEpisode = async () => {
+    try {
+      const url = `${currentConfig.animeServerApi}/episode/${animeId}/${episodeId}`;
+      const response = await fetch(url);
+      const result = await response.json();
+      const episodeData = result[0];
+      setServers(episodeData.servers["SUB"]);
+      setEpisode(episodeData);
+    } catch (error) {
+      console.error("errorFetchEpisode->", error);
+    } finally {
+      setLoading(false);
+    }
+  };
   const viewEpisode = (url) => setServerView(url);
 
-  console.log("serverView=>", serverView);
+  const fetchEpisodes = async () => {
+    try {
+      const url = `${currentConfig.animeServerApi}/episodes/${animeId}`;
+      const response = await fetch(url);
+      const result = await response.json();
+      setEspisodes(result);
+    } catch (error) {
+      console.error("errorFetchEpisodes->", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  // console.log("serverView=>", serverView);
+  if (loading) return "loading...";
   return (
     <Container>
-      <WrapperHomeBanner bgBanner="https://firebasestorage.googleapis.com/v0/b/animes-dev.appspot.com/o/resources%2Fimage%201.jpg?alt=media&token=7836560d-1e2b-4682-92da-309c0b422241">
+      <WrapperHomeBanner bgBanner={episode.episodeImage.url}>
         <div className="banner-wrapper">
           <div className="gradient">
             <div className="content-banner">
@@ -58,14 +84,17 @@ export const Episode = () => {
         <div className="item-servers">
           <ul>
             {servers.map((server, index) => (
-              <li key={index} onClick={() => viewEpisode(server.url)}>
-                {server.name}
+              <li
+                key={index}
+                onClick={() => viewEpisode(server.url || server.code)}
+              >
+                {server.title}
               </li>
             ))}
           </ul>
         </div>
       </div>
-      <EpisodeList episodes={animeEpisodes.episodes} />
+      <EpisodeList episodes={orderBy(episodes, ["episodeNumber"], ["asc"])} />
     </Container>
   );
 };
