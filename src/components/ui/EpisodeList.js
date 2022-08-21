@@ -32,13 +32,13 @@ export const EpisodeList = ({ episodes = [] }) => {
         {episodes.map((episode, index) => (
           <EpisodeItem
             key={index}
-            title={episode.title || "Naruto"}
-            number={episode.number || index + 1}
+            title={episode.title || ""}
+            number={episode.episodeNumber || index + 1}
             image={
-              episode.image ||
+              episode.episodeImage.url ||
               "https://storage.googleapis.com/animes-dev-animes/animes/dumucB9YLN054VySLlu6/episodes/mUmBShtFWxSiskrJNOa2/episodeImage.jpeg"
             }
-            onClick={() => navigate(`/${animeId}/${episode.number}`)}
+            onClick={() => navigate(`/${animeId}/${episode.episodeNumber}`)}
           />
         ))}
       </WrapperEpisodes>

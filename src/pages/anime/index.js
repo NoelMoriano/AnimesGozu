@@ -1,15 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Button } from "../../components";
+import { Button, EpisodeList, Spinner } from "../../components";
 import { Imalogo } from "../../images";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router";
 import { useAnimes } from "../../providers/Animes";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
+import { currentConfig } from "../../firebase";
+import { orderBy } from "lodash";
 
 export const Anime = () => {
   const { animeId } = useParams();
+
+  const [episodes, setEspisodes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const { animes } = useAnimes();
 
@@ -17,7 +22,24 @@ export const Anime = () => {
 
   useEffect(() => {
     window.scroll(0, 0);
+
+    fetchEpisodes();
   }, []);
+
+  const fetchEpisodes = async () => {
+    try {
+      const url = `${currentConfig.animeServerApi}/episodes/${animeId}`;
+      const response = await fetch(url);
+      const result = await response.json();
+      setEspisodes(result);
+    } catch (error) {
+      console.log("error->", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) return <Spinner height="90vh" />;
 
   return (
     <Container>
@@ -44,6 +66,7 @@ export const Anime = () => {
           </div>
         </div>
       </WrapperHomeBanner>
+      <EpisodeList episodes={orderBy(episodes, ["episodeNumber"], ["asc"])} />
     </Container>
   );
 };

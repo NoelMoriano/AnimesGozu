@@ -10,8 +10,6 @@ export const Home = () => {
 
   const { animes } = useAnimes();
 
-  console.log("ObtenerListDeAnimes->", animes);
-
   const animesCategory = animes.filter((anime) => anime.category === "anime");
   const ovasCategory = animes.filter((anime) => anime.category === "ova");
 
