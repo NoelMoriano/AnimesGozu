@@ -20,7 +20,7 @@ export const Episode = () => {
   useEffect(() => {
     fetchEpisode();
     fetchEpisodes();
-  }, [episodeId, serverView]);
+  }, [episodeId]);
 
   const fetchEpisode = async () => {
     try {
