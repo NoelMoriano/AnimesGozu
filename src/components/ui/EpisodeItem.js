@@ -14,7 +14,7 @@ export const EpisodeItem = ({
       <img src={image} alt={`episode ${number}`} />
     </div>
     <div className="item-center">
-      <div className="titles">
+      <div className="titles" onClick={() => onClick()}>
         <h4>{title}</h4>
         <h3>Episodio {number}</h3>
       </div>

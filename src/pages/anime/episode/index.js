@@ -20,7 +20,7 @@ export const Episode = () => {
   useEffect(() => {
     fetchEpisode();
     fetchEpisodes();
-  }, [episodeId]);
+  }, [episodeId, serverView]);
 
   const fetchEpisode = async () => {
     try {
@@ -28,15 +28,27 @@ export const Episode = () => {
       const response = await fetch(url);
       const result = await response.json();
       const episodeData = result[0];
+
+      const serverDefault = episodeData.servers["SUB"].find(
+        (server) => server.server === "sb"
+      );
+
+      console.log("serverDefault", serverDefault);
+
       setServers(episodeData.servers["SUB"]);
       setEpisode(episodeData);
+      setServerView(serverDefault.url);
     } catch (error) {
       console.error("errorFetchEpisode->", error);
     } finally {
       setLoading(false);
     }
   };
-  const viewEpisode = (url) => setServerView(url);
+
+  const viewEpisode = (url) => {
+    setServerView(null);
+    setServerView(url);
+  };
 
   const fetchEpisodes = async () => {
     try {
@@ -55,17 +67,20 @@ export const Episode = () => {
   if (loading) return "loading...";
   return (
     <Container>
-      <WrapperHomeBanner bgBanner={episode.episodeImage.url}>
+      <WrapperHomeBanner bgBanner={episode?.episodeImage?.url || ""}>
         <div className="banner-wrapper">
           <div className="gradient">
             <div className="content-banner">
-              <iframe
-                className="iframe-episode"
-                src={defaultTo(serverView, "")}
-                frameborder="0"
-                scrolling="no"
-                allowfullscreen
-              ></iframe>
+              {episodeId && (
+                <iframe
+                  key={episodeId}
+                  className="iframe-episode"
+                  src={defaultTo(serverView, "")}
+                  frameborder="0"
+                  scrolling="no"
+                  allowfullscreen
+                ></iframe>
+              )}
               {/*<div className="item-play">*/}
               {/*  <Button*/}
               {/*    size="medium"*/}
