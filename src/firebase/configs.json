@@ -27,34 +27,26 @@
   },
   "development": {
     "version": "0.0.1",
-    "googleAnalytics": {
-      "trackingId": "-"
-    },
     "firebaseApp": {
-      "apiKey": "-",
-      "authDomain": "-",
-      "projectId": "-",
-      "storageBucket": "-",
-      "messagingSenderId": "-",
-      "appId": "-",
-      "measurementId": "-"
+      "apiKey": "AIzaSyDcUy6vQ0owB5jmpqZZnW6O9V61NdBtC8s",
+      "authDomain": "animes-dev.firebaseapp.com",
+      "projectId": "animes-dev",
+      "storageBucket": "animes-dev.appspot.com",
+      "messagingSenderId": "781421769413",
+      "appId": "1:781421769413:web:0c88ab11860dd589b676ac"
     },
     "buckets": {},
     "animeServerApi": "https://us-central1-animes-dev.cloudfunctions.net/api"
   },
   "production": {
     "version": "0.0.1",
-    "googleAnalytics": {
-      "trackingId": "-"
-    },
     "firebaseApp": {
-      "apiKey": "-",
-      "authDomain": "-",
-      "projectId": "-",
-      "storageBucket": "-",
-      "messagingSenderId": "-",
-      "appId": "-",
-      "measurementId": "-"
+      "apiKey": "AIzaSyDcUy6vQ0owB5jmpqZZnW6O9V61NdBtC8s",
+      "authDomain": "animes-dev.firebaseapp.com",
+      "projectId": "animes-dev",
+      "storageBucket": "animes-dev.appspot.com",
+      "messagingSenderId": "781421769413",
+      "appId": "1:781421769413:web:0c88ab11860dd589b676ac"
     },
     "buckets": {},
     "animeServerApi": "https://us-central1-animes-dev.cloudfunctions.net/api"

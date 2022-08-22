@@ -1,29 +1,41 @@
 import React from "react";
 import { Button, Form, Input, InputPassword } from "../../components";
 import styled from "styled-components";
-import { useNavigate } from "react-router";
+import { useForm } from "react-hook-form";
+import { useAuthentication } from "../../providers/Authentication";
 
 export const Login = () => {
-  const navigate = useNavigate();
+  const { register, handleSubmit } = useForm();
+
+  const { onSetFormData } = useAuthentication();
+
+  const onSubmitLogin = (formData) => {
+    console.log("formData->", formData);
+    return onSetFormData("login", formData);
+  };
 
   return (
     <Container>
       <div className="wrapper-login">
         <h1>AnimeGozu</h1>
-        <Form>
-          <Input label="Usuario" required placeHolder="Ingrese usuario" />
+        <Form onSubmit={handleSubmit(onSubmitLogin)}>
+          <Input
+            label="Usuario"
+            required
+            placeHolder="Ingrese usuario"
+            register={{ ...register("email") }}
+          />
           <InputPassword
             label="Contraseña"
             required
             placeHolder="Ingrese usuario"
+            register={{ ...register("password") }}
           />
 
-          <Button block onClick={() => navigate("/")}>
-            Iniciar sesión
-          </Button>
+          <Button block>Iniciar sesión</Button>
         </Form>
 
-        <div className="item-text">
+        {/*        <div className="item-text">
           <span className="item-link">Registrarse</span>
         </div>
 
@@ -39,7 +51,7 @@ export const Login = () => {
               Facebook
             </Button>
           </div>
-        </div>
+        </div>*/}
       </div>
     </Container>
   );
@@ -69,6 +81,7 @@ const Container = styled.div`
     padding: 1.7rem;
     border-radius: 1em;
     background: rgba(0, 0, 0, 0.7);
+    color: white;
     h1 {
       margin-bottom: 1em;
       text-align: center;

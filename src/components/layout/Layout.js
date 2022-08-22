@@ -40,7 +40,7 @@ const LayoutContent = styled.div`
   min-height: 100vh;
   height: auto;
   display: grid;
-  grid-template-columns: 17em 1fr;
+  grid-template-columns: 15em 1fr;
   grid-template-rows: auto 1fr 1fr auto;
   background: inherit;
 

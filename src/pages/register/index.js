@@ -6,15 +6,23 @@ import React from "react";
 import { Button, Form, Input, InputPassword } from "../../components";
 import { ImgBackground } from "../../images";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
+import { useForm } from "react-hook-form";
+import { useAuthentication } from "../../providers/Authentication";
 
 export const Register = () => {
+  const { register, handleSubmit } = useForm();
+
+  const { onSetFormData } = useAuthentication();
+
+  const onSubmitRegister = (formData) => onSetFormData("register", formData);
+
   return (
     <Container imgBackground={ImgBackground}>
       <div className="background-section"></div>
       <div className="form-section">
         <div className="title-item">
           <Link to="/">
-            <h1>AnimeFlix</h1>
+            <h1>AnimeGozu</h1>
           </Link>
           <h2>
             <Link to="/login">
@@ -25,21 +33,39 @@ export const Register = () => {
         </div>
         <div className="form-item">
           <h2>Bienvenido</h2>
-          <Form>
-            <Input label="Nombres" required placeHolder="Ingrese nombres" />
-            <Input label="Apellidos" required placeHolder="Ingrese apellidos" />
-            <Input label="Teléfono" required placeHolder="Ingrese teléfono" />
-            <Input label="Email" required placeHolder="Ingrese email" />
+          <Form onSubmit={handleSubmit(onSubmitRegister)}>
+            <Input
+              label="Nombres"
+              required
+              placeHolder="Ingrese nombres"
+              register={{ ...register("firstName") }}
+            />
+            <Input
+              label="Apellidos"
+              required
+              placeHolder="Ingrese apellidos"
+              register={{ ...register("lastName") }}
+            />
+            <Input
+              label="Teléfono"
+              required
+              placeHolder="Ingrese teléfono"
+              register={{ ...register("phoneNumber") }}
+            />
+            <Input
+              label="Email"
+              type="email"
+              required
+              placeHolder="Ingrese email"
+              register={{ ...register("email") }}
+            />
             <InputPassword
               label="Contraseña"
               required
               placeHolder="Ingrese contraseña"
+              register={{ ...register("password") }}
             />
-            <InputPassword
-              label="Repetir contraseña"
-              required
-              placeHolder="Repetir contraseña"
-            />
+
             <Button block>Iniciar sesión</Button>
           </Form>
         </div>
@@ -52,6 +78,7 @@ const Container = styled.section`
   background: #161616;
   width: 100%;
   height: 100%;
+  min-height: 100vh;
   color: #fff;
   display: grid;
   grid-template-columns: 1fr;
@@ -72,6 +99,7 @@ const Container = styled.section`
     display: flex;
     justify-content: space-between;
     h1 {
+      color: #fff;
       font-size: 1.8rem;
     }
     a {

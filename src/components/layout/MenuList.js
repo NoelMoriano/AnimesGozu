@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const MenuList = ({ linkTo, title }) => (
-  <Container>
+export const MenuList = ({ linkTo, title, onClick }) => (
+  <Container onClick={onClick}>
     <Link to={linkTo} className="link-section">
       <h3>{title}</h3>
     </Link>

@@ -1,13 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-export const Form = ({ children, ...props }) => {
-  return (
-    <FormContainer noValidate autoComplete="off" {...props}>
-      {children}
-    </FormContainer>
-  );
-};
+export const Form = ({ children, ...props }) => (
+  <FormContainer noValidate autoComplete="off" {...props}>
+    <div>{children}</div>
+  </FormContainer>
+);
 
 const FormContainer = styled.form`
   display: grid;

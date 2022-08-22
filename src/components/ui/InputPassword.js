@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const InputPassword = ({
   placeHolder,
+  register,
   label,
   required = false,
   error = false,
@@ -20,6 +21,7 @@ export const InputPassword = ({
         type={showPassword ? "text" : "password"}
         className="item-input"
         placeholder={placeHolder}
+        {...register}
       />
       <div className="checkbox-item">
         <span onClick={() => setShowPassword(!showPassword)}>

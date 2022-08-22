@@ -7,6 +7,7 @@ import { yup } from "./config";
 import { setLocale } from "yup";
 import { theme } from "./styles";
 import { AnimesProvider } from "./providers/Animes";
+import { AuthenticationProvider } from "./providers/Authentication";
 
 export const App = () => {
   useEffect(() => {
@@ -15,12 +16,14 @@ export const App = () => {
 
   return (
     <BrowserRouter>
-      <AnimesProvider>
-        <ThemeProvider theme={theme}>
-          <GlobalStyles />
-          <Router />
-        </ThemeProvider>
-      </AnimesProvider>
+      <AuthenticationProvider>
+        <AnimesProvider>
+          <ThemeProvider theme={theme}>
+            <GlobalStyles />
+            <Router />
+          </ThemeProvider>
+        </AnimesProvider>
+      </AuthenticationProvider>
     </BrowserRouter>
   );
 };

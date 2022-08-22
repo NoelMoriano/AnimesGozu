@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 export const Input = ({
   placeHolder,
+  register,
+  type = "text",
   label,
   required = false,
   error = false,
@@ -15,7 +17,12 @@ export const Input = ({
         </label>
       )}
 
-      <input type="text" className="item-input" placeholder={placeHolder} />
+      <input
+        type={type}
+        className="item-input"
+        placeholder={placeHolder}
+        {...register}
+      />
       {error && <span className="error-item">Campo Requerido</span>}
     </Container>
   );
