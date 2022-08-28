@@ -8,6 +8,7 @@ import { BgLogin } from "../../images";
 import { faList } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -42,11 +43,15 @@ export const Login = () => {
             register={{ ...register("password") }}
           />
 
+          <div className="link-wrapper">
+            <Link to="/register">Registrarme</Link>
+          </div>
+
           <Button
             block
             loading={loginLoading}
             disabled={loginLoading}
-            margin={0}
+            margin="0 0 .2em 0"
           >
             <div className="content-button">Iniciar sesión</div>
           </Button>
@@ -122,6 +127,16 @@ const Container = styled.div`
       text-align: left;
       margin: 1em auto;
     }
+
+    .link-wrapper {
+      width: 100%;
+      margin: 0.7em 0;
+      text-align: left;
+      a {
+        color: ${({ theme }) => theme.colors.quinary};
+      }
+    }
+
     .content-button {
       display: flex;
       align-items: center;
