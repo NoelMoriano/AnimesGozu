@@ -47,6 +47,7 @@ export const Button = ({
   disabled = false,
   block = false,
   borderRadius = "1em",
+  margin = "0.7rem 0",
 }) => {
   const btnType = buttonsType[type];
   const btnSize = buttonsSize[size];
@@ -63,6 +64,7 @@ export const Button = ({
       padding={btnSize.padding}
       fontSize={btnSize.fontSize}
       borderRadius={borderRadius}
+      margin={margin}
     >
       <div className="content-button">
         {loading && (
@@ -89,6 +91,7 @@ const Container = styled.button`
     padding,
     fontSize,
     borderRadius,
+    margin,
   }) => css`
     width: ${block ? "100%" : width};
     height: ${block ? "auto" : height};
@@ -102,7 +105,7 @@ const Container = styled.button`
     border: none;
     border-radius: ${borderRadius};
     padding: ${padding};
-    margin: 0.7rem 0;
+    margin: ${margin};
     font-size: ${fontSize};
     font-weight: bold;
     letter-spacing: 0.5px;
