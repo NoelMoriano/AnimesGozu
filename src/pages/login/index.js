@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useAuthentication } from "../../providers/Authentication";
 import { useNavigate } from "react-router";
 import { BgLogin } from "../../images";
-import { faList } from "@fortawesome/free-solid-svg-icons";
+import { faSignIn } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
@@ -53,21 +53,20 @@ export const Login = () => {
             disabled={loginLoading}
             margin="0 0 .2em 0"
           >
-            <div className="content-button">Iniciar sesión</div>
+            <div className="content-button">
+              <FontAwesomeIcon icon={faSignIn} className="item-icon" />
+              Iniciar sesión
+            </div>
           </Button>
           <Button
             block
             loading={loginLoading}
             disabled={loginLoading}
-            margin={0}
+            margin="0"
           >
             <div className="content-button">
-              <FontAwesomeIcon
-                icon={faGoogle}
-                size="1x"
-                className="item-icon"
-              />
-              Iniciar sesión con Google
+              <FontAwesomeIcon icon={faGoogle} className="item-icon" />
+              Continuar con Google
             </div>
           </Button>
         </Form>
@@ -118,7 +117,8 @@ const Container = styled.div`
     padding: 1.7rem;
     border-radius: 1em;
     background: rgba(0, 0, 0, 0.7);
-    color: white;
+    color: ${({ theme }) => theme.colors.font1};
+    margin: 1em;
     h1 {
       margin-bottom: 1em;
       text-align: center;
@@ -141,10 +141,10 @@ const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.9em;
+      font-size: 0.8em;
       .item-icon {
-        margin-right: 0.7em;
-        font-size: 1.1em;
+        margin-right: 0.5em;
+        font-size: 1.5em;
       }
     }
     .footer-card {
