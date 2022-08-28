@@ -4,6 +4,10 @@ import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { useAuthentication } from "../../providers/Authentication";
 import { useNavigate } from "react-router";
+import { BgLogin } from "../../images";
+import { faList } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -13,7 +17,6 @@ export const Login = () => {
   const onChangeAuthUser = () => navigate("/");
 
   useMemo(() => {
-    console.log("authUser->", authUser);
     authUser && onChangeAuthUser(authUser);
   }, [authUser]);
 
@@ -22,7 +25,7 @@ export const Login = () => {
   const onSubmitLogin = ({ email, password }) => login(email, password);
 
   return (
-    <Container>
+    <Container BgLogin={BgLogin}>
       <div className="wrapper-login">
         <h1>AnimeGozu</h1>
         <Form onSubmit={handleSubmit(onSubmitLogin)}>
@@ -39,8 +42,28 @@ export const Login = () => {
             register={{ ...register("password") }}
           />
 
-          <Button block loading={loginLoading} disabled={loginLoading}>
-            Iniciar sesión
+          <Button
+            block
+            loading={loginLoading}
+            disabled={loginLoading}
+            margin={0}
+          >
+            <div className="content-button">Iniciar sesión</div>
+          </Button>
+          <Button
+            block
+            loading={loginLoading}
+            disabled={loginLoading}
+            margin={0}
+          >
+            <div className="content-button">
+              <FontAwesomeIcon
+                icon={faGoogle}
+                size="1x"
+                className="item-icon"
+              />
+              Iniciar sesión con Google
+            </div>
           </Button>
         </Form>
 
@@ -70,7 +93,7 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background-blend-mode: multiply;
-  background: url(https://noelmoriano.github.io/anime-flix/images/resources/bg1.gif),
+  background: url(${({ BgLogin }) => BgLogin}),
     linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
   background-size: cover;
   background-repeat: no-repeat;
@@ -98,6 +121,16 @@ const Container = styled.div`
     .item-text {
       text-align: left;
       margin: 1em auto;
+    }
+    .content-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9em;
+      .item-icon {
+        margin-right: 0.7em;
+        font-size: 1.1em;
+      }
     }
     .footer-card {
       display: grid;

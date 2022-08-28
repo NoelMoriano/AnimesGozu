@@ -2,17 +2,26 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useMemo } from "react";
 import { Button, Form, Input, InputPassword } from "../../components";
 import { ImgBackground } from "../../images";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { useForm } from "react-hook-form";
 import { useAuthentication } from "../../providers/Authentication";
+import { useNavigate } from "react-router";
 
 export const Register = () => {
-  const { registerAuthUser, loginLoading } = useAuthentication();
+  const navigate = useNavigate();
+
+  const { authUser, registerAuthUser, loginLoading } = useAuthentication();
 
   const { register, handleSubmit } = useForm();
+
+  const onChangeAuthUser = () => navigate("/");
+
+  useMemo(() => {
+    authUser && onChangeAuthUser(authUser);
+  }, [authUser]);
 
   const onSubmitRegister = ({ email, password }) =>
     registerAuthUser(email, password);
@@ -22,9 +31,6 @@ export const Register = () => {
       <div className="background-section"></div>
       <div className="form-section">
         <div className="title-item">
-          <Link to="/">
-            <h1>AnimeGozu</h1>
-          </Link>
           <h2>
             <Link to="/login">
               <FontAwesomeIcon icon={faArrowLeft} className="item-icon" />
@@ -98,13 +104,9 @@ const Container = styled.section`
     width: 100%;
   }
   .title-item {
-    padding: 1.5rem 1rem;
+    padding: 1rem;
     display: flex;
-    justify-content: space-between;
-    h1 {
-      color: #fff;
-      font-size: 1.8rem;
-    }
+    justify-content: end;
     a {
       color: #fff;
       text-decoration: none;
@@ -115,7 +117,7 @@ const Container = styled.section`
     }
   }
   .form-item {
-    padding-top: 4rem;
+    padding-top: 1rem;
     width: 90%;
     margin: 0 auto;
     h2 {
