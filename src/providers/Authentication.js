@@ -122,15 +122,13 @@ export const AuthenticationProvider = ({ children }) => {
 
       console.log("response->", response);
 
-      const [authUser] = response.user.providerData;
-
-      console.log("authUser->", authUser);
-      console.log("objext->", { id: authUser.uid, providerData: authUser });
+      const [providerData] = response.user.providerData;
+      const uid = response.user.uid;
 
       await firestore
         .collection("users")
-        .doc(authUser.uid)
-        .set(assign({}, { id: authUser.uid }));
+        .doc(uid)
+        .set(assign({}, { id: uid }));
 
       await login(email, password);
     } catch (e) {
