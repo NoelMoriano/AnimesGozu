@@ -30,7 +30,7 @@ export const Input = ({
 
 const Container = styled.div`
   label {
-    font-size: 1.1em;
+    font-size: 1em;
     color: #fff;
     span {
       color: red;

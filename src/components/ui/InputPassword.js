@@ -36,7 +36,7 @@ export const InputPassword = ({
 
 const Container = styled.div`
   label {
-    font-size: 1.1em;
+    font-size: 1em;
     color: #fff;
     span {
       color: red;
@@ -67,6 +67,7 @@ const Container = styled.div`
       margin: 0.7rem 0;
       display: flex;
       justify-content: start;
+      font-size: 0.9em;
       input {
         margin-right: 1rem;
       }
