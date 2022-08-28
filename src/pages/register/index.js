@@ -10,11 +10,12 @@ import { useForm } from "react-hook-form";
 import { useAuthentication } from "../../providers/Authentication";
 
 export const Register = () => {
+  const { registerAuthUser, loginLoading } = useAuthentication();
+
   const { register, handleSubmit } = useForm();
 
-  const { onSetFormData } = useAuthentication();
-
-  const onSubmitRegister = (formData) => onSetFormData("register", formData);
+  const onSubmitRegister = ({ email, password }) =>
+    registerAuthUser(email, password);
 
   return (
     <Container imgBackground={ImgBackground}>
@@ -66,7 +67,9 @@ export const Register = () => {
               register={{ ...register("password") }}
             />
 
-            <Button block>Iniciar sesión</Button>
+            <Button block loading={loginLoading} disabled={loginLoading}>
+              Iniciar sesión
+            </Button>
           </Form>
         </div>
       </div>
