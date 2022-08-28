@@ -1,6 +1,11 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { auth } from "../firebase";
-import { useNavigate } from "react-router";
 
 export const AuthenticationContext = createContext({
   formData: null,
@@ -10,8 +15,6 @@ export const AuthenticationContext = createContext({
 });
 
 export const AuthenticationProvider = ({ children }) => {
-  const navigate = useNavigate();
-
   const [formData, setFormData] = useState(null);
   const [authUser, setAuthUser] = useState(null);
   const [type, setType] = useState(null);
@@ -35,16 +38,10 @@ export const AuthenticationProvider = ({ children }) => {
     try {
       const { email, password } = formData;
 
-      const response = await auth.createUserWithEmailAndPassword(
+      await auth.createUserWithEmailAndPassword(
         email.toLowerCase().trim(),
         password.toLowerCase().trim()
       );
-
-      const authUser_ = response.user.providerData[0];
-
-      setAuthUser(authUser_);
-
-      return navigate("/");
     } catch (e) {
       console.error("Register email and pass:", e);
     }
@@ -54,28 +51,26 @@ export const AuthenticationProvider = ({ children }) => {
     try {
       const { email, password } = formData;
 
-      const response = await auth.signInWithEmailAndPassword(
+      await auth.signInWithEmailAndPassword(
         email.toLowerCase().trim(),
         password.toLowerCase().trim()
       );
-
-      const authUser_ = response.user.providerData[0];
-
-      setAuthUser(authUser_);
-
-      return navigate("/");
     } catch (e) {
       console.error("Login email and pass:", e);
     }
   };
 
-  /*  auth.onAuthStateChanged((user) => {
-    if (user) {
-      return navigate("/");
-    } else {
-      console.error("Error on auth state changed!");
-    }
-  });*/
+  console.log("authUser->", authUser);
+
+  useMemo(() => {
+    auth.onAuthStateChanged((currentUser) => {
+      if (currentUser) {
+        setAuthUser(currentUser);
+      } else {
+        console.error("Error on auth state changed!");
+      }
+    });
+  }, []);
 
   return (
     <AuthenticationContext.Provider

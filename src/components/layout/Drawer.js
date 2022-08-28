@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { Avatar, Button } from "../ui";
-import { useNavigate } from "react-router";
 import React from "react";
 import { useAuthentication } from "../../providers/Authentication";
 import { auth } from "../../firebase";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 export const Drawer = () => {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ export const Drawer = () => {
 
   return (
     <Container>
-      {!existsAuthUser ? (
+      {existsAuthUser ? (
         <>
           <Avatar />
           <div className="menu-list">
