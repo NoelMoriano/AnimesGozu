@@ -1,23 +1,18 @@
+import React from "react";
 import styled from "styled-components";
 import { Avatar, Button } from "../ui";
-import { useNavigate } from "react-router";
-import React from "react";
 import { useAuthentication } from "../../providers/Authentication";
-import { auth } from "../../firebase";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 export const Drawer = () => {
   const navigate = useNavigate();
 
-  const { existsAuthUser } = useAuthentication();
-
-  const onSingUp = async () => {
-    await auth.signOut();
-  };
+  const { authUser, logout } = useAuthentication();
 
   return (
     <Container>
-      {!existsAuthUser ? (
+      {authUser ? (
         <>
           <Avatar />
           <div className="menu-list">
@@ -27,7 +22,7 @@ export const Drawer = () => {
             <Link to="/search" className="link-section">
               <h3>Animes</h3>
             </Link>
-            <a className="link-section" onClick={() => onSingUp()}>
+            <a className="link-section" onClick={() => logout()}>
               <h3>Logout</h3>
             </a>
           </div>

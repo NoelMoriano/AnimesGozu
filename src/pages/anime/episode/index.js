@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router";
-import { Button, EpisodeList } from "../../../components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay } from "@fortawesome/free-solid-svg-icons";
-import { EpisodesData } from "../../../data-list";
+import { EpisodeList } from "../../../components";
 import { defaultTo, orderBy } from "lodash";
 import { currentConfig } from "../../../firebase";
 
@@ -76,11 +73,17 @@ export const Episode = () => {
                   key={episodeId}
                   className="iframe-episode"
                   src={defaultTo(serverView, "")}
-                  frameborder="0"
+                  frameBorder="0"
                   scrolling="no"
-                  allowfullscreen
+                  allowFullScreen
+                  marginHeight="0"
+                  marginWidth="0"
+                  width="100%"
+                  height="100%"
+                  scrolling="auto"
                 ></iframe>
               )}
+
               {/*<div className="item-play">*/}
               {/*  <Button*/}
               {/*    size="medium"*/}

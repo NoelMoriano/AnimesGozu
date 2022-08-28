@@ -1,94 +1,175 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { auth } from "../firebase";
-import { useNavigate } from "react-router";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+import { auth, firestore } from "../firebase";
+import { firebase } from "../firebase/config";
+import { assign, isError } from "lodash";
+import { useDocument } from "react-firebase-hooks/firestore";
+import { Spinner } from "../components";
 
-export const AuthenticationContext = createContext({
-  formData: null,
-  onSetFormData: () => null,
+// interface Context {
+//   authUser: AuthUser | null;
+//   login: (email: string, password: string) => Promise<void>;
+//   loginLoading: boolean;
+//   logout: () => Promise<void>;
+// }
+
+const AuthenticationContext = createContext({
   authUser: null,
-  existsAuthUser: false,
+  registerAuthUser: () =>
+    Promise.reject("Unable to find AuthenticationProvider."),
+  login: () => Promise.reject("Unable to find AuthenticationProvider."),
+  logout: () => Promise.reject("Unable to find AuthenticationProvider."),
+  loginLoading: false,
 });
 
+export const useAuthentication = () => useContext(AuthenticationContext);
+
 export const AuthenticationProvider = ({ children }) => {
-  const navigate = useNavigate();
-
-  const [formData, setFormData] = useState(null);
+  const [authenticating, setAuthenticating] = useState(true);
   const [authUser, setAuthUser] = useState(null);
-  const [type, setType] = useState(null);
+  const [firebaseUser, setFirebaseUser] = useState(null);
+  const [loginLoading, setLoginLoading] = useState(false);
 
-  const onSetFormData = (type = null, formData = null) => {
-    setFormData(formData);
-    setType(type);
-  };
+  const [userSnapshot, loadingUser, errorUser] = useDocument(
+    firebaseUser ? firestore.collection("users").doc(firebaseUser.uid) : null
+  );
+
+  console.log("firebaseUser.uid->", firebaseUser?.uid);
+  console.log("userSnapshot->", userSnapshot);
+
+  useMemo(() => {
+    auth.onAuthStateChanged((currentUser) =>
+      currentUser ? setFirebaseUser(currentUser) : onLogout()
+    );
+  }, []);
 
   useEffect(() => {
-    if (formData) {
-      console.log("type->", type);
+    !loadingUser && userSnapshot && !errorUser && onLogin(userSnapshot?.data());
+  }, [loadingUser, userSnapshot]);
 
-      type === "login"
-        ? onLoginUserEmailAndPassword()
-        : onRegisterUserEmailAndPassword();
-    }
-  }, [formData]);
+  const onLogout = async () => {
+    setAuthenticating(true);
 
-  const onRegisterUserEmailAndPassword = async () => {
+    setAuthUser(null);
+    setFirebaseUser(null);
+    setAuthenticating(false);
+    setLoginLoading(false);
+  };
+
+  const onLogin = async (user) => {
     try {
-      const { email, password } = formData;
+      if (!user) throw new Error("User doesn't exists");
+
+      setAuthUser(user);
+      setLoginLoading(false);
+      setAuthenticating(false);
+    } catch (error) {
+      console.error("Login", error);
+
+      if (isError(error)) {
+        alert(
+          JSON.stringify({
+            type: "error",
+            title: "Login error",
+            description: `${error.message}`,
+          })
+        );
+      }
+
+      await logout();
+    }
+  };
+
+  const login = async (email, password) => {
+    try {
+      setLoginLoading(true);
+
+      await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+
+      await auth.signInWithEmailAndPassword(email, password);
+    } catch (e) {
+      const error = isError(e) ? e : undefined;
+
+      console.error("singInUser:", e);
+
+      alert(
+        JSON.stringify({
+          type: "error",
+          title: "Login error",
+          description: error?.message,
+        })
+      );
+    } finally {
+      setLoginLoading(false);
+    }
+  };
+
+  const registerAuthUser = async (email, password) => {
+    try {
+      setLoginLoading(true);
+
+      await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 
       const response = await auth.createUserWithEmailAndPassword(
-        email.toLowerCase().trim(),
-        password.toLowerCase().trim()
+        email,
+        password
       );
 
-      const authUser_ = response.user.providerData[0];
+      console.log("response->", response);
 
-      setAuthUser(authUser_);
+      const [authUser] = response.user.providerData;
 
-      return navigate("/");
+      console.log("authUser->", authUser);
+      console.log("objext->", { id: authUser.uid, providerData: authUser });
+
+      await firestore
+        .collection("users")
+        .doc(authUser.uid)
+        .set(assign({}, { id: authUser.uid }));
+
+      await login(email, password);
     } catch (e) {
-      console.error("Register email and pass:", e);
+      const error = isError(e) ? e : undefined;
+
+      console.error("singUpUser:", e);
+
+      alert(
+        JSON.stringify({
+          type: "error",
+          title: "Register error",
+          description: error?.message,
+        })
+      );
+    } finally {
+      setLoginLoading(false);
     }
   };
 
-  const onLoginUserEmailAndPassword = async () => {
-    try {
-      const { email, password } = formData;
+  const logout = async () => {
+    sessionStorage.clear();
+    localStorage.clear();
 
-      const response = await auth.signInWithEmailAndPassword(
-        email.toLowerCase().trim(),
-        password.toLowerCase().trim()
-      );
-
-      const authUser_ = response.user.providerData[0];
-
-      setAuthUser(authUser_);
-
-      return navigate("/");
-    } catch (e) {
-      console.error("Login email and pass:", e);
-    }
+    return auth.signOut();
   };
 
-  /*  auth.onAuthStateChanged((user) => {
-    if (user) {
-      return navigate("/");
-    } else {
-      console.error("Error on auth state changed!");
-    }
-  });*/
+  if (authenticating) return <Spinner fullscreen />;
 
   return (
     <AuthenticationContext.Provider
       value={{
-        authUser: authUser,
-        existsAuthUser: !!authUser,
-        onSetFormData: onSetFormData,
-        formData: formData,
+        authUser,
+        registerAuthUser,
+        login,
+        logout,
+        loginLoading,
       }}
     >
       {children}
     </AuthenticationContext.Provider>
   );
 };
-
-export const useAuthentication = () => useContext(AuthenticationContext);

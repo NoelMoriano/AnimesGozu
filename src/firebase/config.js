@@ -15,6 +15,7 @@ const currentConfig = configs[currentEnvironment];
 firebase.initializeApp(currentConfig.firebaseApp);
 
 const auth = firebase.auth();
+const firestore = firebase.firestore();
 
 const common = configs.common;
 const contactData = configs.common.contactData;
@@ -31,4 +32,5 @@ export {
   common,
   contactData,
   auth,
+  firestore,
 };

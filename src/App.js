@@ -15,15 +15,15 @@ export const App = () => {
   }, []);
 
   return (
-    <BrowserRouter>
-      <AuthenticationProvider>
+    <AuthenticationProvider>
+      <BrowserRouter>
         <AnimesProvider>
           <ThemeProvider theme={theme}>
             <GlobalStyles />
             <Router />
           </ThemeProvider>
         </AnimesProvider>
-      </AuthenticationProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </AuthenticationProvider>
   );
 };

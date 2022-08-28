@@ -4,7 +4,7 @@ import { Button, EpisodeList, Spinner } from "../../components";
 import { Imalogo } from "../../images";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useAnimes } from "../../providers/Animes";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { currentConfig } from "../../firebase";
@@ -12,6 +12,7 @@ import { orderBy } from "lodash";
 
 export const Anime = () => {
   const { animeId } = useParams();
+  const navigate = useNavigate();
 
   const [episodes, setEspisodes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -58,7 +59,11 @@ export const Anime = () => {
                 <p>{anime.synopsis}</p>
               </div>
               <div className="content-button">
-                <Button size="medium" borderRadius="7rem">
+                <Button
+                  size="medium"
+                  borderRadius="7rem"
+                  onClick={() => navigate(`/${animeId}/1`)}
+                >
                   <FontAwesomeIcon icon={faPlay} size="lg" /> &nbsp; REPRODUCIR
                 </Button>
               </div>

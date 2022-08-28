@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Button, Form, Input, InputPassword } from "../../components";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { useAuthentication } from "../../providers/Authentication";
+import { useNavigate } from "react-router";
 
 export const Login = () => {
+  const navigate = useNavigate();
+
+  const { authUser, login, loginLoading } = useAuthentication();
+
+  const onChangeAuthUser = () => navigate("/");
+
+  useMemo(() => {
+    console.log("authUser->", authUser);
+    authUser && onChangeAuthUser(authUser);
+  }, [authUser]);
+
   const { register, handleSubmit } = useForm();
 
-  const { onSetFormData } = useAuthentication();
-
-  const onSubmitLogin = (formData) => {
-    console.log("formData->", formData);
-    return onSetFormData("login", formData);
-  };
+  const onSubmitLogin = ({ email, password }) => login(email, password);
 
   return (
     <Container>
@@ -32,7 +39,9 @@ export const Login = () => {
             register={{ ...register("password") }}
           />
 
-          <Button block>Iniciar sesión</Button>
+          <Button block loading={loginLoading} disabled={loginLoading}>
+            Iniciar sesión
+          </Button>
         </Form>
 
         {/*        <div className="item-text">
