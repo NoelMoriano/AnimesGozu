@@ -27,6 +27,9 @@ const Container = styled.section`
     height: ${height || (fullscreen ? "100%" : " calc(100% - 90px)")};
     opacity: 90%;
   `}
+  
+  
+  
 `;
 
 const IconStyled = styled(FontAwesomeIcon)`
