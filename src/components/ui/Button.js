@@ -39,6 +39,7 @@ const buttonsSize = {
 export const Button = ({
   children,
   type = "primary",
+  htmlType = "button",
   size = "large",
   onClick,
   width = "auto",
@@ -53,7 +54,7 @@ export const Button = ({
   const btnSize = buttonsSize[size];
   return (
     <Container
-      onClick={onClick}
+      onClick={() => onClick()}
       width={width}
       height={height}
       background={btnType.background}
@@ -65,6 +66,7 @@ export const Button = ({
       fontSize={btnSize.fontSize}
       borderRadius={borderRadius}
       margin={margin}
+      type={htmlType}
     >
       <div className="content-button">
         {loading && (

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faSignIn } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useMemo } from "react";
 import { Button, Form, Input, InputPassword } from "../../components";
@@ -9,11 +9,13 @@ import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { useForm } from "react-hook-form";
 import { useAuthentication } from "../../providers/Authentication";
 import { useNavigate } from "react-router";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 export const Register = () => {
   const navigate = useNavigate();
 
-  const { authUser, registerAuthUser, loginLoading } = useAuthentication();
+  const { authUser, registerAuthUser, loginWithGoogle, loginLoading } =
+    useAuthentication();
 
   const { register, handleSubmit } = useForm();
 
@@ -22,6 +24,8 @@ export const Register = () => {
   useMemo(() => {
     authUser && onChangeAuthUser(authUser);
   }, [authUser]);
+
+  const registerGoogle = () => loginWithGoogle();
 
   const onSubmitRegister = ({ email, password }) =>
     registerAuthUser(email, password);
@@ -73,8 +77,28 @@ export const Register = () => {
               register={{ ...register("password") }}
             />
 
-            <Button block loading={loginLoading} disabled={loginLoading}>
-              Iniciar sesión
+            <Button
+              block
+              loading={loginLoading}
+              disabled={loginLoading}
+              margin="0"
+              htmlType="submit"
+            >
+              <div className="content-button">
+                <FontAwesomeIcon icon={faSignIn} className="item-icon" />
+                Registrarme
+              </div>
+            </Button>
+            <Button
+              block
+              disabled={loginLoading}
+              margin=".2em 0 0 0"
+              onClick={registerGoogle}
+            >
+              <div className="content-button">
+                <FontAwesomeIcon icon={faGoogle} className="item-icon" />
+                Registrarme con Google
+              </div>
             </Button>
           </Form>
         </div>
@@ -117,13 +141,23 @@ const Container = styled.section`
     }
   }
   .form-item {
-    padding-top: 1rem;
+    padding-top: 0.6rem;
     width: 90%;
     margin: 0 auto;
     h2 {
       font-size: 2rem;
       text-align: center;
-      padding-bottom: 2rem;
+      padding-bottom: 1rem;
+    }
+    .content-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8em;
+      .item-icon {
+        margin-right: 0.5em;
+        font-size: 1.5em;
+      }
     }
   }
 `;

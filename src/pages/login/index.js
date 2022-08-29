@@ -13,7 +13,8 @@ import { Link } from "react-router-dom";
 export const Login = () => {
   const navigate = useNavigate();
 
-  const { authUser, login, loginLoading } = useAuthentication();
+  const { authUser, login, loginWithGoogle, loginLoading } =
+    useAuthentication();
 
   const onChangeAuthUser = () => navigate("/");
 
@@ -22,6 +23,8 @@ export const Login = () => {
   }, [authUser]);
 
   const { register, handleSubmit } = useForm();
+
+  const googleLogin = () => loginWithGoogle();
 
   const onSubmitLogin = ({ email, password }) => login(email, password);
 
@@ -51,7 +54,8 @@ export const Login = () => {
             block
             loading={loginLoading}
             disabled={loginLoading}
-            margin="0 0 .2em 0"
+            margin="0"
+            htmlType="submit"
           >
             <div className="content-button">
               <FontAwesomeIcon icon={faSignIn} className="item-icon" />
@@ -60,9 +64,9 @@ export const Login = () => {
           </Button>
           <Button
             block
-            loading={loginLoading}
             disabled={loginLoading}
-            margin="0"
+            margin=".2em 0 0 0"
+            onClick={googleLogin}
           >
             <div className="content-button">
               <FontAwesomeIcon icon={faGoogle} className="item-icon" />
