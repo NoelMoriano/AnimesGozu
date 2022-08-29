@@ -44,6 +44,8 @@ export const AuthenticationProvider = ({ children }) => {
     const uid = currentUser.uid;
     const [providerData] = currentUser.providerData;
 
+    console.log("currentUser->", currentUser);
+
     const userExists = (
       await firestore.collection("users").doc(uid).get()
     ).data();
@@ -53,7 +55,9 @@ export const AuthenticationProvider = ({ children }) => {
     await firestore
       .collection("users")
       .doc(uid)
-      .set(assign({}, { id: uid }));
+      .set(
+        assign({}, { id: uid, providerData: mapProviderData(providerData) })
+      );
 
     return setFirebaseUser(currentUser);
   };
@@ -61,6 +65,15 @@ export const AuthenticationProvider = ({ children }) => {
   useEffect(() => {
     !loadingUser && userSnapshot && !errorUser && onLogin(userSnapshot?.data());
   }, [loadingUser, userSnapshot]);
+
+  const mapProviderData = (providerData) => ({
+    displayName: providerData?.displayName || null,
+    email: providerData?.email || null,
+    phoneNumber: providerData?.phoneNumber || null,
+    photoURL: providerData?.photoURL || null,
+    providerId: providerData.providerId,
+    uid: providerData.uid,
+  });
 
   const onLogout = async () => {
     setAuthenticating(true);
@@ -124,8 +137,8 @@ export const AuthenticationProvider = ({ children }) => {
       setLoginLoading(true);
 
       await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-
       const provider = new firebase.auth.GoogleAuthProvider();
+      provider.addScope("https://www.googleapis.com/auth/plus.login");
 
       await auth.signInWithPopup(provider);
     } catch (e) {

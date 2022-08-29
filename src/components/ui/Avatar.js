@@ -1,19 +1,26 @@
 import React from "react";
 import styled from "styled-components";
-import { ImgAvatar } from "../../images";
+import { AvatarDefault } from "../../images";
 
-export const Avatar = () => (
-  <Container>
-    <div className="profile">
-      <div className="img-profile">
-        <img src={ImgAvatar} alt="Avatar image" className="img-avatar" />
+export const Avatar = ({ ImgAvatar, fullName = "User" }) => {
+  console.log("ImgAvatar->", ImgAvatar);
+  return (
+    <Container>
+      <div className="profile">
+        <div className="img-profile">
+          <img
+            src={ImgAvatar || AvatarDefault}
+            alt="Avatar image"
+            className="img-avatar"
+          />
+        </div>
+        <div className="name-profile">
+          <h4>{fullName}</h4>
+        </div>
       </div>
-      <div className="name-profile">
-        <h4>Fiona</h4>
-      </div>
-    </div>
-  </Container>
-);
+    </Container>
+  );
+};
 
 const Container = styled.div`
   color: ${({ theme }) => theme.colors.font1};
@@ -28,6 +35,9 @@ const Container = styled.div`
       object-fit: cover;
       margin: 0.5rem 0;
       border-radius: 50%;
+    }
+    .name-profile {
+      text-transform: capitalize;
     }
   }
 `;

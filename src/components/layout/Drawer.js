@@ -16,7 +16,10 @@ export const Drawer = () => {
     <Container>
       {authUser ? (
         <>
-          <Avatar />
+          <Avatar
+            ImgAvatar={authUser.providerData?.photoURL}
+            fullName={authUser.providerData.displayName || authUser?.fullName}
+          />
           <div className="menu-list">
             <Link to="/" className="link-section">
               <h3>Inicio</h3>
