@@ -1,6 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "../components";
-import { Anime, Episode, Home, Login, Register, SearchResult } from "../pages";
+import {
+  Anime,
+  Episode,
+  Home,
+  Login,
+  Register,
+  SearchResult,
+  Page404,
+} from "../pages";
 
 export const Router = () => (
   <Routes>
@@ -15,7 +23,7 @@ export const Router = () => (
     />
     <Route
       exact
-      path="/:animeId"
+      path="/animes/:animeId"
       element={
         <Layout>
           <Anime />
@@ -24,7 +32,7 @@ export const Router = () => (
     />
     <Route
       exact
-      path="/:animeId/:episodeId"
+      path="/animes/:animeId/:episodeId"
       element={
         <Layout>
           <Episode />
@@ -42,6 +50,13 @@ export const Router = () => (
     />
     <Route exact path="/login" element={<Login />} />
     <Route exact path="/register" element={<Register />} />
-    <Route path="*" element={<h1 style={{ color: "#000" }}>404</h1>} />
+    <Route
+      path="*"
+      element={
+        <Layout>
+          <Page404 />
+        </Layout>
+      }
+    />
   </Routes>
 );
