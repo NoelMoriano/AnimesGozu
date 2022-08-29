@@ -44,7 +44,7 @@ export const Anime = () => {
 
   return (
     <Container>
-      <WrapperHomeBanner bgBanner={anime.animeCoverImage.url}>
+      <WrapperHomeBanner bgBanner={anime?.animeCoverImage?.url}>
         <div className="banner-wrapper">
           <div className="gradient">
             <div className="content-banner">
@@ -92,7 +92,8 @@ const WrapperHomeBanner = styled.div`
     width: 100%;
     height: 70vh;
     max-height: 40em;
-    background: #000 url(${({ bgBanner }) => bgBanner}) no-repeat;
+    background: #000 url(${({ bgBanner }) => bgBanner || "transparent"})
+      no-repeat;
     background-size: cover;
     color: #fff;
     display: flex;

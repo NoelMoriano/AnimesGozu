@@ -42,6 +42,6 @@ export const Router = () => (
     />
     <Route exact path="/login" element={<Login />} />
     <Route exact path="/register" element={<Register />} />
-    <Route path="*" element={<h1>404</h1>} />
+    <Route path="*" element={<h1 style={{ color: "#000" }}>404</h1>} />
   </Routes>
 );

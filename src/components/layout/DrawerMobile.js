@@ -1,12 +1,19 @@
+import React from "react";
 import styled, { css } from "styled-components";
 import { Avatar, Button } from "../ui";
 import { MenuList } from "./MenuList";
 import { useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
+import { useAuthentication } from "../../providers/Authentication";
 
 export const DrawerMobile = ({ visibleDrawer, onSetVisibleDrawer }) => {
   const navigate = useNavigate();
+
+  const { authUser, logout } = useAuthentication();
+
+  const onHiddenDrawerMobile = () => onSetVisibleDrawer(!visibleDrawer);
+
   return (
     <Container visibleDrawer={visibleDrawer}>
       <div className="drawer-header">
@@ -14,28 +21,52 @@ export const DrawerMobile = ({ visibleDrawer, onSetVisibleDrawer }) => {
           <FontAwesomeIcon
             icon={faClose}
             size="2x"
-            onClick={() => onSetVisibleDrawer(!visibleDrawer)}
+            onClick={() => onHiddenDrawerMobile()}
           />
         </div>
       </div>
-      <Avatar />
-      <div className="menu-mobile-list">
-        <MenuList title="Inicio" linkTo="./" />
-        <MenuList title="Animes" linkTo="./" />
-        <MenuList title="En Emisión" linkTo="./" />
-      </div>
-      <div className="wrapper-buttons">
-        <Button size="medium" onClick={() => navigate("/login")}>
-          Iniciar sesion
-        </Button>
-        <Button
-          size="medium"
-          type="tertiary"
-          onClick={() => navigate("/register")}
-        >
-          Registrarse
-        </Button>
-      </div>
+
+      {authUser ? (
+        <>
+          <Avatar />
+          <div className="menu-mobile-list">
+            <MenuList
+              title="Inicio"
+              linkTo="/"
+              className="link-section"
+              onClick={() => onHiddenDrawerMobile()}
+            />
+            <MenuList
+              title="Animes"
+              linkTo="/search"
+              className="link-section"
+              onClick={() => onHiddenDrawerMobile()}
+            />
+            <a
+              className="link-section"
+              onClick={() => {
+                onHiddenDrawerMobile();
+                return logout();
+              }}
+            >
+              <h3>Logout</h3>
+            </a>
+          </div>
+        </>
+      ) : (
+        <div className="wrapper-buttons">
+          <Button size="medium" onClick={() => navigate("/login")}>
+            Iniciar sesion
+          </Button>
+          <Button
+            size="medium"
+            type="tertiary"
+            onClick={() => navigate("/register")}
+          >
+            Registrarse
+          </Button>
+        </div>
+      )}
     </Container>
   );
 };
@@ -67,6 +98,18 @@ const Container = styled.div`
   }
   .menu-mobile-list {
     margin: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    .link-section {
+      text-decoration: none;
+      text-transform: uppercase;
+      color: #fff;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
   }
   .wrapper-buttons {
     display: flex;
