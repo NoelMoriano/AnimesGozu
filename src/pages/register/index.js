@@ -27,8 +27,7 @@ export const Register = () => {
 
   const registerGoogle = () => loginWithGoogle();
 
-  const onSubmitRegister = ({ email, password }) =>
-    registerAuthUser(email, password);
+  const onSubmitRegister = (formData) => registerAuthUser(formData);
 
   return (
     <Container imgBackground={ImgBackground}>

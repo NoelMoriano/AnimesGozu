@@ -38,7 +38,9 @@ export const EpisodeList = ({ episodes = [] }) => {
               episode.episodeImage.url ||
               "https://storage.googleapis.com/animes-dev-animes/animes/dumucB9YLN054VySLlu6/episodes/mUmBShtFWxSiskrJNOa2/episodeImage.jpeg"
             }
-            onClick={() => navigate(`/${animeId}/${episode.episodeNumber}`)}
+            onClick={() =>
+              navigate(`/animes/${animeId}/${episode.episodeNumber}`)
+            }
           />
         ))}
       </WrapperEpisodes>

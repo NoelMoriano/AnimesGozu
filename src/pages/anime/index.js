@@ -62,7 +62,7 @@ export const Anime = () => {
                 <Button
                   size="medium"
                   borderRadius="7rem"
-                  onClick={() => navigate(`/${animeId}/1`)}
+                  onClick={() => navigate(`/animes/${animeId}/1`)}
                 >
                   <FontAwesomeIcon icon={faPlay} size="lg" /> &nbsp; REPRODUCIR
                 </Button>

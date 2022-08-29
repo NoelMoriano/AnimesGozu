@@ -13,7 +13,7 @@ export const Home = () => {
   const animesCategory = animes.filter((anime) => anime.category === "anime");
   const ovasCategory = animes.filter((anime) => anime.category === "ova");
 
-  const navigateAnime = (animeId) => navigate(`/${animeId}`);
+  const navigateAnime = (animeId) => navigate(`/animes/${animeId}`);
 
   return (
     <Container>
@@ -122,18 +122,25 @@ const WrapperAnimesContent = styled.div`
     position: relative;
     width: 100%;
     height: auto;
-    margin-bottom: 3rem;
+    margin-bottom: 3em;
+    padding: 1em;
     ${mediaQuery.minTablet} {
-      margin: 1.5rem 0;
+      margin-bottom: 5em;
     }
     h2 {
       margin: 1rem 1.2rem 2.6rem 1.2rem;
+      ${mediaQuery.minTablet} {
+        margin: 1em 1.2em 1.5em 0;
+      }
     }
     .category {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(16rem, auto));
-      gap: 2.1rem;
-      justify-content: space-around;
+      grid-template-columns: repeat(auto-fit, minmax(11em, auto));
+      gap: 2em;
+      justify-content: center;
+      ${mediaQuery.minTablet} {
+        justify-content: start;
+      }
     }
   }
 `;
