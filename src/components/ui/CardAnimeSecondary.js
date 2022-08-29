@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { ImgCardOnePiece } from "../../images";
+import { capitalize } from "lodash";
 
 export const CardAnimeSecondary = ({ title, image }) => {
   return (
     <Container>
       <img src={image} alt={title} />
-      <h2>{title}</h2>
+      <h3>{capitalize(title)}</h3>
     </Container>
   );
 };
@@ -27,12 +27,13 @@ const Container = styled.div`
   }
 
   img {
-    width: 12rem;
-    border-radius: 0.5rem;
+    width: 12em;
+    border-radius: 0.5em;
     z-index: -10;
   }
-  h2 {
-    padding-top: 1rem;
+  h3 {
+    padding-top: 1em;
     text-align: center;
+    font-size: 1em;
   }
 `;

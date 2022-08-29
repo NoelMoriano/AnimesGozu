@@ -21,7 +21,7 @@ const Container = styled.div`
       border: none;
       color: ${theme.colors.font1};
       background: ${theme.colors.quaternary};
-      padding: 0.6rem;
+      padding: 0.5rem;
       border-radius: 0.5em;
     }
   `}

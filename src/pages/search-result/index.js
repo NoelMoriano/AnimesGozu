@@ -6,6 +6,7 @@ import { Button, CardAnimeSecondary, Select } from "../../components";
 import { useAnimes } from "../../providers/Animes";
 import { useNavigate } from "react-router";
 import { includes } from "lodash";
+import { mediaQuery } from "../../styles/constants/mediaQuery";
 
 export const SearchResult = () => {
   const [animesData, setAnimesData] = useState([]);
@@ -16,7 +17,7 @@ export const SearchResult = () => {
   const navigate = useNavigate();
   const { animes } = useAnimes();
 
-  const navigateAnime = (animeId) => navigate(`/${animeId}`);
+  const navigateAnime = (animeId) => navigate(`animes/${animeId}`);
 
   useEffect(() => {
     filterAnimes();
@@ -36,9 +37,7 @@ export const SearchResult = () => {
 
     setAnimesData(filterAnime);
   };
-  console.log("gender", gender);
-  console.log(category);
-  console.log("filterAnime", animes);
+
   return (
     <Container>
       <h1>
@@ -110,18 +109,22 @@ const Container = styled.main`
       }
     }
     .section-select {
-      padding: 2rem 1rem;
+      padding: 2rem 0;
       display: flex;
-      gap: 1rem;
+      grid-column-gap: 1em;
       flex-wrap: wrap;
       align-items: center;
     }
     .section-anime {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-      gap: 1rem;
-      margin: auto;
+      grid-template-columns: repeat(auto-fit, minmax(11em, auto));
+      gap: 1.5em;
+      justify-content: center;
       text-align: center;
+      margin: auto;
+      ${mediaQuery.minTablet} {
+        justify-content: start;
+      }
     }
   `}
 `;
