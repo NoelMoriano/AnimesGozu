@@ -11,13 +11,6 @@ import { assign, isError } from "lodash";
 import { useDocument } from "react-firebase-hooks/firestore";
 import { Spinner } from "../components";
 
-// interface Context {
-//   authUser: AuthUser | null;
-//   login: (email: string, password: string) => Promise<void>;
-//   loginLoading: boolean;
-//   logout: () => Promise<void>;
-// }
-
 const AuthenticationContext = createContext({
   authUser: null,
   registerAuthUser: () =>
@@ -41,35 +34,29 @@ export const AuthenticationProvider = ({ children }) => {
     firebaseUser ? firestore.collection("users").doc(firebaseUser.uid) : null
   );
 
-  console.log("firebaseUser.uid->", firebaseUser?.uid);
-  console.log("userSnapshot->", userSnapshot);
-
   useMemo(() => {
-    auth.onAuthStateChanged(async (currentUser) => {
-      if (currentUser) {
-        const [providerData] = currentUser.providerData;
-        const typeProvider = providerData.providerId;
-        const uid = providerData.uid;
-
-        console.log("currentUser->", currentUser);
-
-        const userExists = await firestore.collection("users").doc(uid).get();
-        if (userExists) {
-          if (typeProvider === "password") {
-            await login(providerData.email, providerData.password);
-          }
-          setFirebaseUser(currentUser);
-        } else {
-          await firestore
-            .collection("users")
-            .doc(uid)
-            .set(assign({}, { id: uid }));
-        }
-      }
-
-      await onLogout();
-    });
+    auth.onAuthStateChanged(async (currentUser) =>
+      currentUser ? previusAuthenticationUser(currentUser) : onLogout()
+    );
   }, []);
+
+  const previusAuthenticationUser = async (currentUser) => {
+    const uid = currentUser.uid;
+    const [providerData] = currentUser.providerData;
+
+    const userExists = (
+      await firestore.collection("users").doc(uid).get()
+    ).data();
+
+    if (userExists) return setFirebaseUser(currentUser);
+
+    await firestore
+      .collection("users")
+      .doc(uid)
+      .set(assign({}, { id: uid }));
+
+    return setFirebaseUser(currentUser);
+  };
 
   useEffect(() => {
     !loadingUser && userSnapshot && !errorUser && onLogin(userSnapshot?.data());

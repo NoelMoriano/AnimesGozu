@@ -10,6 +10,8 @@ export const Drawer = () => {
 
   const { authUser, logout } = useAuthentication();
 
+  console.log("authUser->", authUser);
+
   return (
     <Container>
       {authUser ? (

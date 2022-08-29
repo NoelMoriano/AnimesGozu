@@ -32,7 +32,7 @@ export const Register = () => {
 
   return (
     <Container imgBackground={ImgBackground}>
-      <div className="background-section"></div>
+      <div className="background-section" />
       <div className="form-section">
         <div className="title-item">
           <h2>
@@ -115,8 +115,10 @@ const Container = styled.section`
   color: #fff;
   display: grid;
   grid-template-columns: 1fr;
+  padding: 1em 0;
   ${mediaQuery.minTablet} {
     grid-template-columns: 60% 1fr;
+    padding-bottom: 0;
   }
   .background-section {
     background-blend-mode: multiply;
@@ -141,7 +143,7 @@ const Container = styled.section`
     }
   }
   .form-item {
-    padding-top: 0.6rem;
+    padding: 0.4rem;
     width: 90%;
     margin: 0 auto;
     h2 {
