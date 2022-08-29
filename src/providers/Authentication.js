@@ -10,6 +10,7 @@ import { firebase } from "../firebase/config";
 import { assign, isError } from "lodash";
 import { useDocument } from "react-firebase-hooks/firestore";
 import { Spinner } from "../components";
+import { timeoutPromise } from "../utils";
 
 const AuthenticationContext = createContext({
   authUser: null,
@@ -44,11 +45,11 @@ export const AuthenticationProvider = ({ children }) => {
     const uid = currentUser.uid;
     const [providerData] = currentUser.providerData;
 
-    console.log("currentUser->", currentUser);
-
     const userExists = (
       await firestore.collection("users").doc(uid).get()
     ).data();
+
+    await timeoutPromise(1000);
 
     if (userExists) return setFirebaseUser(currentUser);
 
@@ -56,8 +57,14 @@ export const AuthenticationProvider = ({ children }) => {
       .collection("users")
       .doc(uid)
       .set(
-        assign({}, { id: uid, providerData: mapProviderData(providerData) })
+        assign(
+          {},
+          { id: firebaseUser.uid, providerData: mapProviderData(providerData) }
+        ),
+        { merge: true }
       );
+
+    await timeoutPromise(2000);
 
     return setFirebaseUser(currentUser);
   };
@@ -158,13 +165,23 @@ export const AuthenticationProvider = ({ children }) => {
     }
   };
 
-  const registerAuthUser = async (email, password) => {
+  const registerAuthUser = async (formData) => {
     try {
       setLoginLoading(true);
 
       await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 
-      await auth.createUserWithEmailAndPassword(email, password);
+      const response = await auth.createUserWithEmailAndPassword(
+        formData.email,
+        formData.password
+      );
+
+      console.log("response->", response);
+
+      // await firestore
+      //   .collection("users")
+      //   .doc(firebaseUser.uid)
+      //   .set(assign({}, formData, { id: firebaseUser.uid }));
     } catch (e) {
       const error = isError(e) ? e : undefined;
 
