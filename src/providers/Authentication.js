@@ -23,6 +23,8 @@ const AuthenticationContext = createContext({
   registerAuthUser: () =>
     Promise.reject("Unable to find AuthenticationProvider."),
   login: () => Promise.reject("Unable to find AuthenticationProvider."),
+  loginWithGoogle: () =>
+    Promise.reject("Unable to find AuthenticationProvider."),
   logout: () => Promise.reject("Unable to find AuthenticationProvider."),
   loginLoading: false,
 });
@@ -43,9 +45,30 @@ export const AuthenticationProvider = ({ children }) => {
   console.log("userSnapshot->", userSnapshot);
 
   useMemo(() => {
-    auth.onAuthStateChanged((currentUser) =>
-      currentUser ? setFirebaseUser(currentUser) : onLogout()
-    );
+    auth.onAuthStateChanged(async (currentUser) => {
+      if (currentUser) {
+        const [providerData] = currentUser.providerData;
+        const typeProvider = providerData.providerId;
+        const uid = providerData.uid;
+
+        console.log("currentUser->", currentUser);
+
+        const userExists = await firestore.collection("users").doc(uid).get();
+        if (userExists) {
+          if (typeProvider === "password") {
+            await login(providerData.email, providerData.password);
+          }
+          setFirebaseUser(currentUser);
+        } else {
+          await firestore
+            .collection("users")
+            .doc(uid)
+            .set(assign({}, { id: uid }));
+        }
+      }
+
+      await onLogout();
+    });
   }, []);
 
   useEffect(() => {
@@ -109,28 +132,39 @@ export const AuthenticationProvider = ({ children }) => {
     }
   };
 
+  const loginWithGoogle = async () => {
+    try {
+      setLoginLoading(true);
+
+      await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+
+      const provider = new firebase.auth.GoogleAuthProvider();
+
+      await auth.signInWithPopup(provider);
+    } catch (e) {
+      const error = isError(e) ? e : undefined;
+
+      console.error("singInUser:", e);
+
+      alert(
+        JSON.stringify({
+          type: "error",
+          title: "Login error",
+          description: error?.message,
+        })
+      );
+    } finally {
+      setLoginLoading(false);
+    }
+  };
+
   const registerAuthUser = async (email, password) => {
     try {
       setLoginLoading(true);
 
       await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 
-      const response = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-
-      console.log("response->", response);
-
-      const [providerData] = response.user.providerData;
-      const uid = response.user.uid;
-
-      await firestore
-        .collection("users")
-        .doc(uid)
-        .set(assign({}, { id: uid }));
-
-      await login(email, password);
+      await auth.createUserWithEmailAndPassword(email, password);
     } catch (e) {
       const error = isError(e) ? e : undefined;
 
@@ -163,6 +197,7 @@ export const AuthenticationProvider = ({ children }) => {
         authUser,
         registerAuthUser,
         login,
+        loginWithGoogle,
         logout,
         loginLoading,
       }}
