@@ -11,6 +11,7 @@ export const InputPassword = ({
   disabled,
   required = false,
   hidden = false,
+  onChange,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
@@ -29,6 +30,7 @@ export const InputPassword = ({
             className="item-input"
             placeholder={placeHolder}
             value={value}
+            onChange={onChange}
             allowClear={!disabled}
             disabled={disabled}
           />

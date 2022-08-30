@@ -25,7 +25,6 @@ export const ComponentContainer = ({
         <div className="error-item">
           <ErrorItem
             fontColor={(theme) => (error ? theme.colors.error : undefined)}
-            fontSize="small"
             error={error}
           >
             {helperText}
@@ -82,7 +81,7 @@ const Container = styled.div`
 `;
 
 const ErrorItem = styled.div`
-  ${({ theme, fontColor, fontSize = "small", error }) => css`
+  ${({ theme, fontColor, fontSize = "x_small", error }) => css`
     font-size: ${theme.font_sizes[fontSize]};
     ${fontColor &&
     css`
