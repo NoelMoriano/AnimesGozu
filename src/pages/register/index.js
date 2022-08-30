@@ -6,10 +6,13 @@ import React, { useMemo } from "react";
 import { Button, Form, Input, InputPassword } from "../../components";
 import { ImgBackground } from "../../images";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { useAuthentication } from "../../providers/Authentication";
 import { useNavigate } from "react-router";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useFormUtils } from "../../hooks";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -17,7 +20,21 @@ export const Register = () => {
   const { authUser, registerAuthUser, loginWithGoogle, loginLoading } =
     useAuthentication();
 
-  const { register, handleSubmit } = useForm();
+  const schema = yup.object({
+    firstName: yup.string().required(),
+    lastName: yup.string().required(),
+    phoneNumber: yup.number().required(),
+    email: yup.string().required().email(),
+    password: yup.string().required(),
+  });
+
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
+
+  const { required, error, errorMessage } = useFormUtils({ errors, schema });
 
   const onChangeAuthUser = () => navigate("/");
 
@@ -44,38 +61,91 @@ export const Register = () => {
         <div className="form-item">
           <h2>Bienvenido</h2>
           <Form onSubmit={handleSubmit(onSubmitRegister)}>
-            <Input
-              label="Nombres"
-              required
-              placeHolder="Ingrese nombres"
-              register={{ ...register("firstName") }}
+            <Controller
+              name="firstName"
+              control={control}
+              defaultValue=""
+              render={({ field: { onChange, value, name } }) => (
+                <Input
+                  label="Nombres"
+                  placeHolder="Ingrese nombres"
+                  onChange={onChange}
+                  value={value}
+                  name={name}
+                  error={error(name)}
+                  helperText={errorMessage(name)}
+                  required={required(name)}
+                />
+              )}
             />
-            <Input
-              label="Apellidos"
-              required
-              placeHolder="Ingrese apellidos"
-              register={{ ...register("lastName") }}
+            <Controller
+              name="lastName"
+              control={control}
+              defaultValue=""
+              render={({ field: { onChange, value, name } }) => (
+                <Input
+                  label="Apellidos"
+                  placeHolder="Ingrese apellidos"
+                  onChange={onChange}
+                  value={value}
+                  name={name}
+                  error={error(name)}
+                  helperText={errorMessage(name)}
+                  required={required(name)}
+                />
+              )}
             />
-            <Input
-              label="Teléfono"
-              required
-              placeHolder="Ingrese teléfono"
-              register={{ ...register("phoneNumber") }}
+            <Controller
+              name="phoneNumber"
+              control={control}
+              defaultValue=""
+              render={({ field: { onChange, value, name } }) => (
+                <Input
+                  label="Teléfono"
+                  placeHolder="Ingrese teléfono"
+                  onChange={onChange}
+                  value={value}
+                  name={name}
+                  error={error(name)}
+                  helperText={errorMessage(name)}
+                  required={required(name)}
+                />
+              )}
             />
-            <Input
-              label="Email"
-              type="email"
-              required
-              placeHolder="Ingrese email"
-              register={{ ...register("email") }}
+            <Controller
+              name="email"
+              control={control}
+              defaultValue=""
+              render={({ field: { onChange, value, name } }) => (
+                <Input
+                  label="Email"
+                  placeHolder="Ingrese email"
+                  onChange={onChange}
+                  value={value}
+                  name={name}
+                  error={error(name)}
+                  helperText={errorMessage(name)}
+                  required={required(name)}
+                />
+              )}
             />
-            <InputPassword
-              label="Contraseña"
-              required
-              placeHolder="Ingrese contraseña"
-              register={{ ...register("password") }}
+            <Controller
+              name="password"
+              control={control}
+              defaultValue=""
+              render={({ field: { onChange, value, name } }) => (
+                <InputPassword
+                  label="Contraseña"
+                  placeHolder="Ingrese usuario"
+                  onChange={onChange}
+                  value={value}
+                  name={name}
+                  error={error(name)}
+                  helperText={errorMessage(name)}
+                  required={required(name)}
+                />
+              )}
             />
-
             <Button
               block
               loading={loginLoading}
