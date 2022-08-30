@@ -179,7 +179,7 @@ export const Register = () => {
               block
               disabled={loginLoading}
               margin=".2em 0 0 0"
-              onClick={registerGoogle}
+              onClick={() => registerGoogle()}
             >
               <div className="content-button">
                 <FontAwesomeIcon icon={faGoogle} className="item-icon" />

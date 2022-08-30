@@ -61,7 +61,7 @@ export const AuthenticationProvider = ({ children }) => {
         assign(
           {},
           {
-            id: firebaseUser.uid,
+            id: uid,
             providerData: mapProviderData(providerData),
             ...(registerAuthUserData && registerAuthUserData),
           }
