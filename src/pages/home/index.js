@@ -4,6 +4,7 @@ import { CardAnime } from "../../components";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { useNavigate } from "react-router";
 import { useAnimes } from "../../providers/Animes";
+import { videoBanner } from "../../images";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -20,9 +21,12 @@ export const Home = () => {
       <WrapperHomeBanner>
         <div className="banner-wrapper">
           <div className="gradient">
-            <div className="banner">
-              <h1>ANIME FOREVER</h1>
-              <h2>Tenemos todo tipos de animes para todo tipo de gustos</h2>
+            <video src={videoBanner} autoPlay loop muted type="Video/mp4" />
+            <div className="description-banner">
+              <div className="description">
+                <h1>ANIME FOREVER</h1>
+                <h2>"Tenemos todo tipos de animes para todo tipo de gustos"</h2>
+              </div>
             </div>
           </div>
         </div>
@@ -45,7 +49,7 @@ export const Home = () => {
         </div>
         <div className="category-card">
           <h2>OVAS:</h2>
-          <div className="category">
+          <div className="category ">
             {ovasCategory.map((anime, index) => (
               <CardAnime
                 key={index}
@@ -71,21 +75,37 @@ const Container = styled.div`
 
 const WrapperHomeBanner = styled.div`
   .banner-wrapper {
+    z-index: 3;
     width: 100%;
     height: 70vh;
     max-height: 40em;
-    background: #000
-      url(https://noelmoriano.github.io/AnimeGozu//images/home/banner/image1.png)
-      no-repeat center center;
-    background-size: cover;
+    //background: #000
+    //  url(https://noelmoriano.github.io/AnimeGozu//images/home/banner/image1.png)
+    //  no-repeat center center;
+    //background-size: cover;
     color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    position: relative;
+
+    video {
+      width: 100%;
+      height: 100%;
+      -o-object-fit: cover;
+      object-fit: cover;
+      background: #232a34;
+    }
 
     .gradient {
       width: 100%;
       height: 100%;
+      postion: absolute;
+      top: 0;
+      left: 0;
+      bot: 0;
+      right: 0;
       background-image: -webkit-gradient(
         linear,
         left top,
@@ -95,6 +115,22 @@ const WrapperHomeBanner = styled.div`
         to(#070707)
       );
       background-image: linear-gradient(#070707, #e66aa800, #070707);
+
+      .description-banner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+
+        .description {
+          font-size: 25px;
+        }
+      }
 
       .banner {
         width: 100%;

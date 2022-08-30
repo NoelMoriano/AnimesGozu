@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { useAuthentication } from "../../providers/Authentication";
 import { useNavigate } from "react-router";
-import { BgLogin } from "../../images";
+import { BgLogin, ImgLogoAnimeGozu } from "../../images";
 import { faSignIn } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 
 export const Login = () => {
   const navigate = useNavigate();
-
+  const onNavigate = (url) => navigate(url);
   const { authUser, login, loginWithGoogle, loginLoading } =
     useAuthentication();
 
@@ -31,7 +31,13 @@ export const Login = () => {
   return (
     <Container BgLogin={BgLogin}>
       <div className="wrapper-login">
-        <h1>AnimeGozu</h1>
+        <div className="wrapper-logo">
+          <img
+            src={ImgLogoAnimeGozu}
+            alt="Anime Gozu"
+            onClick={() => onNavigate("/")}
+          />
+        </div>
         <Form onSubmit={handleSubmit(onSubmitLogin)}>
           <Input
             label="Usuario"
@@ -101,7 +107,7 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background-blend-mode: multiply;
-  background: url(${({ BgLogin }) => BgLogin}),
+  background-image: url(${({ BgLogin }) => BgLogin}),
     linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
   background-size: cover;
   background-repeat: no-repeat;
@@ -123,6 +129,14 @@ const Container = styled.div`
     background: rgba(0, 0, 0, 0.7);
     color: ${({ theme }) => theme.colors.font1};
     margin: 1em;
+
+    .wrapper-logo {
+      text-align: center;
+      img {
+        width: 50%;
+      }
+    }
+
     h1 {
       margin-bottom: 1em;
       text-align: center;
