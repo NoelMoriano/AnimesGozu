@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import { faFilter, faList } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, CardAnimeSecondary, Select } from "../../components";
+import {
+  Button,
+  CardAnime,
+  CardAnimeSecondary,
+  Select,
+} from "../../components";
 import { useAnimes } from "../../providers/Animes";
 import { useNavigate } from "react-router";
 import { includes } from "lodash";
@@ -17,7 +22,7 @@ export const SearchResult = () => {
   const navigate = useNavigate();
   const { animes } = useAnimes();
 
-  const navigateAnime = (animeId) => navigate(`animes/${animeId}`);
+  const navigateAnime = (animeId) => navigate(`/animes/${animeId}`);
 
   useEffect(() => {
     filterAnimes();
@@ -83,12 +88,13 @@ export const SearchResult = () => {
         </Button>
       </div>
       <div className="section-anime">
-        {animesData.map((anime, index, array) => (
-          <CardAnimeSecondary
+        {animesData.map((anime, index) => (
+          <CardAnime
             key={index}
             onNavigateAnime={() => navigateAnime(anime.id)}
             title={anime.name}
             image={anime.animePicture.url}
+            synopsis={anime.synopsis}
           />
         ))}
       </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ImgAnime } from "../../images";
-import { mediaQuery } from "../../styles/constants/mediaQuery";
+import { capitalize } from "lodash";
 
 export const CardAnime = ({
   onNavigateAnime,
@@ -14,27 +14,27 @@ export const CardAnime = ({
     <div className="item-anime">
       <img src={image || imgAnime} alt="image" />
       <div className="hover-effect">
-        <h3>{title.toUpperCase()}</h3>
-        <p>{synopsis}</p>
+        <div className="synopsis">{synopsis}</div>
       </div>
     </div>
+    <h4 className="title-anime">{capitalize(title)}</h4>
   </Container>
 );
 
 const Container = styled.div`
   cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.5s cubic-bezier(0.34, 1.61, 0.7, 1);
+
+  &:hover {
+    transform: scale(1.1);
+  }
 
   .item-anime {
     position: relative;
     border-radius: 1rem;
     overflow: hidden;
-    transform: scale(1);
-    transition: transform 0.5s cubic-bezier(0.34, 1.61, 0.7, 1);
     cursor: pointer;
-
-    &:hover {
-      transform: scale(1.1);
-    }
 
     img {
       width: 100%;
@@ -54,20 +54,28 @@ const Container = styled.div`
       -webkit-transition: transform ease-in-out 0.5s;
       transition: transform ease-in-out 0.5s;
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-end;
+      align-items: flex-end;
+      justify-content: flex-start;
       opacity: 0;
       padding: 0.7em;
       color: ${({ theme }) => theme.colors.font1};
 
-      p {
+      .synopsis {
         font-size: small;
-        height: 81px;
-        width: 95%;
-        text-align: left;
-        overflow-y: hidden;
-        text-overflow: ellipsis;
+        width: auto;
+        height: auto;
+        line-height: 1rem;
+        word-break: break-all;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -moz-box-orient: vertical;
+        -ms-box-orient: vertical;
+        box-orient: vertical;
+        -webkit-line-clamp: 11;
+        -moz-line-clamp: 11;
+        -ms-line-clamp: 11;
+        line-clamp: 11;
+        overflow: hidden;
       }
     }
 
@@ -78,19 +86,16 @@ const Container = styled.div`
         background: linear-gradient(
           2deg,
           rgba(0, 0, 0, 1) 0%,
-          rgba(25, 25, 42, 0.6685049019607843) 30%,
-          rgba(255, 255, 255, 0) 42%
+          rgb(25 25 42 / 57%) 66%,
+          rgba(0, 0, 0, 0) 90%
         );
         transform: translateY(0%);
-        ${mediaQuery.minTablet} {
-          background: linear-gradient(
-            2deg,
-            rgba(0, 0, 0, 1) 0%,
-            rgba(25, 25, 42, 0.6685049019607843) 30%,
-            rgba(255, 255, 255, 0) 72%
-          );
-        }
       }
     }
+  }
+
+  .title-anime {
+    margin: 1em auto;
+    text-align: center;
   }
 `;

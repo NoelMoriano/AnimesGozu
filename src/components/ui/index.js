@@ -8,5 +8,4 @@ export * from "./WrapperContainer";
 export * from "./EpisodeList";
 export * from "./EpisodeItem";
 export * from "./Select";
-export * from "./CardAnimeSecondary";
 export * from "./Spinner";
