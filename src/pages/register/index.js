@@ -13,6 +13,7 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useFormUtils } from "../../hooks";
+import { assign, toNumber } from "lodash";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export const Register = () => {
   const schema = yup.object({
     firstName: yup.string().required(),
     lastName: yup.string().required(),
-    phoneNumber: yup.number().required(),
+    phoneNumber: yup.string().required(),
     email: yup.string().required().email(),
     password: yup.string().required(),
   });
@@ -44,7 +45,22 @@ export const Register = () => {
 
   const registerGoogle = () => loginWithGoogle();
 
-  const onSubmitRegister = (formData) => registerAuthUser(formData);
+  const onSubmitRegister = (formData) => registerAuthUser(mapUser(formData));
+
+  const mapUser = (formData) =>
+    assign(
+      {},
+      {
+        firstName: formData.firstName.toLowerCase(),
+        lastName: formData.lastName.toLowerCase(),
+        phone: {
+          countryCode: "+51",
+          number: toNumber(formData.phoneNumber),
+        },
+        email: formData.email.toLowerCase(),
+        password: formData.password,
+      }
+    );
 
   return (
     <Container imgBackground={ImgBackground}>
@@ -102,6 +118,7 @@ export const Register = () => {
               render={({ field: { onChange, value, name } }) => (
                 <Input
                   label="Teléfono"
+                  type="number"
                   placeHolder="Ingrese teléfono"
                   onChange={onChange}
                   value={value}
