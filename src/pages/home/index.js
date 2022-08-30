@@ -20,12 +20,12 @@ export const Home = () => {
     <Container>
       <WrapperHomeBanner>
         <div className="banner-wrapper">
+          <video src={videoBanner} autoPlay loop muted type="Video/mp4" />
           <div className="gradient">
-            <video src={videoBanner} autoPlay loop muted type="Video/mp4" />
             <div className="description-banner">
               <div className="description">
                 <h1>ANIME FOREVER</h1>
-                <h2>"Tenemos todo tipos de animes para todo tipo de gustos"</h2>
+                <h3>"Tenemos todo tipos de animes para todo tipo de gustos"</h3>
               </div>
             </div>
           </div>
@@ -79,10 +79,6 @@ const WrapperHomeBanner = styled.div`
     width: 100%;
     height: 70vh;
     max-height: 40em;
-    //background: #000
-    //  url(https://noelmoriano.github.io/AnimeGozu//images/home/banner/image1.png)
-    //  no-repeat center center;
-    //background-size: cover;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -101,11 +97,12 @@ const WrapperHomeBanner = styled.div`
     .gradient {
       width: 100%;
       height: 100%;
-      postion: absolute;
+      position: absolute;
       top: 0;
       left: 0;
-      bot: 0;
+      bottom: 0;
       right: 0;
+      z-index: 500;
       background-image: -webkit-gradient(
         linear,
         left top,
@@ -123,9 +120,12 @@ const WrapperHomeBanner = styled.div`
         bottom: 0;
         left: 0;
         display: flex;
+        align-items: center;
+        justify-content: center;
         text-align: center;
         width: 100%;
         height: 100%;
+        z-index: 700;
 
         .description {
           font-size: 25px;
