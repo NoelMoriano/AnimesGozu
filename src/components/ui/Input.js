@@ -11,6 +11,7 @@ export const Input = ({
   disabled,
   required = false,
   hidden = false,
+  type = "text",
   onChange,
 }) => {
   return (
@@ -24,7 +25,7 @@ export const Input = ({
     >
       <Container disabled={disabled}>
         <input
-          type="text"
+          type={type}
           className="item-input"
           placeholder={placeHolder}
           value={value}
