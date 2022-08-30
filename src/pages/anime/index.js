@@ -143,6 +143,9 @@ const WrapperHomeBanner = styled.div`
           justify-content: start;
           align-items: center;
           img {
+            width: 1.7em;
+            height: auto;
+            object-fit: contain;
             margin-right: 0.4rem;
           }
         }
