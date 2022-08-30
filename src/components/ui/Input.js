@@ -1,57 +1,58 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { ComponentContainer } from "./ComponentContainer";
 
 export const Input = ({
-  placeHolder,
-  register,
-  type = "text",
   label,
+  value,
+  placeHolder,
+  error,
+  helperText,
+  disabled,
   required = false,
-  error = false,
+  hidden = false,
+  onChange,
 }) => {
   return (
-    <Container>
-      {label && (
-        <label>
-          {label} {required && <span>*</span>}
-        </label>
-      )}
-
-      <input
-        type={type}
-        className="item-input"
-        placeholder={placeHolder}
-        {...register}
-      />
-      {error && <span className="error-item">Campo Requerido</span>}
-    </Container>
+    <ComponentContainer
+      label={label}
+      required={required}
+      helperText={helperText}
+      error={error}
+      disabled={disabled}
+      hidden={hidden}
+    >
+      <Container disabled={disabled}>
+        <input
+          type="text"
+          className="item-input"
+          placeholder={placeHolder}
+          value={value}
+          onChange={onChange}
+          allowClear={!disabled}
+          disabled={disabled}
+        />
+      </Container>
+    </ComponentContainer>
   );
 };
 
 const Container = styled.div`
-  label {
-    font-size: 1em;
-    color: #fff;
-    span {
-      color: red;
+  ${({ theme, disabled }) => css`
+    input {
+      width: 100%;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      border: none;
+      padding: 1.1rem 1.3rem;
+      font-size: 1em;
+      font-weight: 600;
+      outline: none;
+      color: ${theme.colors.dark};
+      ${disabled &&
+      css`
+        pointer-events: none;
+      `}
     }
-  }
-  input {
-    width: 100%;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    background: #ebebeb;
-    border: none;
-    border-radius: 1em;
-    padding: 1.1rem 1.3rem;
-    margin: 0.3rem 0;
-    font-size: 1em;
-    font-weight: 600;
-    outline: none;
-    color: #3a3030;
-  }
-  .error-item {
-    color: red;
-    font-size: 0.8em;
-  }
+  `};
 `;
