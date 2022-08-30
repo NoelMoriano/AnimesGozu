@@ -1,7 +1,9 @@
 import React, { useMemo } from "react";
 import { Button, Form, Input, InputPassword } from "../../components";
 import styled from "styled-components";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useAuthentication } from "../../providers/Authentication";
 import { useNavigate } from "react-router";
 import { BgLogin } from "../../images";
@@ -9,6 +11,7 @@ import { faSignIn } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
+import { useFormUtils } from "../../hooks";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -22,31 +25,65 @@ export const Login = () => {
     authUser && onChangeAuthUser(authUser);
   }, [authUser]);
 
-  const { register, handleSubmit } = useForm();
+  const schema = yup.object({
+    email: yup.string().required().email(),
+    password: yup.string().required(),
+  });
+
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
+
+  const { required, error, errorMessage } = useFormUtils({ errors, schema });
 
   const googleLogin = () => loginWithGoogle();
 
-  const onSubmitLogin = ({ email, password }) => {
-    return console.log("formData->", email, password);
-    /*return login(email, password);*/
-  };
+  const onSubmitLogin = ({ email, password }) => login(email, password);
 
   return (
     <Container BgLogin={BgLogin}>
       <div className="wrapper-login">
         <h1>AnimeGozu</h1>
         <Form onSubmit={handleSubmit(onSubmitLogin)}>
-          <Input label="Usuario" placeHolder="Ingrese usuario" required />
-          <InputPassword
-            label="Contraseña"
-            placeHolder="Ingrese usuario"
-            required
+          <Controller
+            name="email"
+            control={control}
+            defaultValue=""
+            render={({ field: { onChange, value, name } }) => (
+              <Input
+                label="Usuario"
+                placeHolder="Ingrese usuario"
+                onChange={onChange}
+                value={value}
+                name={name}
+                error={error(name)}
+                helperText={errorMessage(name)}
+                required={required(name)}
+              />
+            )}
           />
-
+          <Controller
+            name="password"
+            control={control}
+            defaultValue=""
+            render={({ field: { onChange, value, name } }) => (
+              <InputPassword
+                label="Contraseña"
+                placeHolder="Ingrese usuario"
+                onChange={onChange}
+                value={value}
+                name={name}
+                error={error(name)}
+                helperText={errorMessage(name)}
+                required={required(name)}
+              />
+            )}
+          />
           <div className="link-wrapper">
             <Link to="/register">Registrarme</Link>
           </div>
-
           <Button
             block
             loading={loginLoading}
@@ -71,24 +108,6 @@ export const Login = () => {
             </div>
           </Button>
         </Form>
-
-        {/*        <div className="item-text">
-          <span className="item-link">Registrarse</span>
-        </div>
-
-        <div className="footer-card">
-          <div className="left-wrapper">
-            <Button type="tertiary" block>
-              Google
-            </Button>
-          </div>
-          <div className="center-wrapper">O</div>
-          <div className="right-wrapper">
-            <Button type="tertiary" block>
-              Facebook
-            </Button>
-          </div>
-        </div>*/}
       </div>
     </Container>
   );
@@ -146,16 +165,6 @@ const Container = styled.div`
       .item-icon {
         margin-right: 0.5em;
         font-size: 1.5em;
-      }
-    }
-    .footer-card {
-      display: grid;
-      grid-template-columns: 1fr 2em 1fr;
-      .center-wrapper {
-        margin: auto 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
       }
     }
   }
