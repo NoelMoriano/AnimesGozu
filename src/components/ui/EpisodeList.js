@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { EpisodeItem } from "./EpisodeItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowDownShortWide } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowDownShortWide,
+  faArrowUpShortWide,
+} from "@fortawesome/free-solid-svg-icons";
 import { Button } from "./Button";
 import { useNavigate, useParams } from "react-router";
+import { orderBy } from "lodash";
 
 export const EpisodeList = ({ episodes = [] }) => {
   const navigate = useNavigate();
 
+  const [isAscEpisodes, setIsAscEpisodes] = useState(false);
+
   const { animeId } = useParams();
+
+  const episodesView = () =>
+    orderBy(episodes, ["episodeNumber"], [isAscEpisodes ? "asc" : "desc"]);
+
+  useEffect(() => {
+    episodesView();
+  }, [isAscEpisodes]);
 
   return (
     <Container>
@@ -20,16 +33,24 @@ export const EpisodeList = ({ episodes = [] }) => {
         <div className="item-filters">
           <ul>
             <li>
-              <Button size="small">
+              <Button
+                size="small"
+                onClick={() => setIsAscEpisodes(!isAscEpisodes)}
+              >
                 Mayor o menor &nbsp;
-                <FontAwesomeIcon icon={faArrowDownShortWide} size="lg" />
+                <FontAwesomeIcon
+                  icon={
+                    isAscEpisodes ? faArrowDownShortWide : faArrowUpShortWide
+                  }
+                  size="lg"
+                />
               </Button>
             </li>
           </ul>
         </div>
       </WrapperHeader>
       <WrapperEpisodes>
-        {episodes.map((episode, index) => (
+        {episodesView().map((episode, index) => (
           <EpisodeItem
             key={index}
             title={episode.title || ""}

@@ -30,5 +30,5 @@ const Container = styled.section`
 `;
 
 const IconStyled = styled(FontAwesomeIcon)`
-  color: #000;
+  color: #d81f26;
 `;

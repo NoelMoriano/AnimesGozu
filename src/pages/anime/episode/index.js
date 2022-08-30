@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router";
-import { EpisodeList } from "../../../components";
-import { defaultTo, orderBy } from "lodash";
+import { EpisodeList, Spinner } from "../../../components";
+import { defaultTo, isEmpty, orderBy } from "lodash";
 import { currentConfig } from "../../../firebase";
 
 export const Episode = () => {
@@ -15,8 +15,10 @@ export const Episode = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchEpisode();
-    fetchEpisodes();
+    (async () => {
+      await fetchEpisode();
+      await fetchEpisodes();
+    })();
   }, [episodeId]);
 
   const fetchEpisode = async () => {
@@ -30,13 +32,11 @@ export const Episode = () => {
         (server) => server.server === "sb"
       );
 
-      console.log("serverDefault", serverDefault);
-
       setServers(episodeData.servers["SUB"]);
       setEpisode(episodeData);
       setServerView(serverDefault.url);
     } catch (error) {
-      console.error("errorFetchEpisode->", error);
+      console.error("errorFetchEpisode:", error);
     } finally {
       setLoading(false);
     }
@@ -49,19 +49,20 @@ export const Episode = () => {
 
   const fetchEpisodes = async () => {
     try {
+      setLoading(true);
       const url = `${currentConfig.animeServerApi}/episodes/${animeId}`;
       const response = await fetch(url);
       const result = await response.json();
       setEspisodes(result);
     } catch (error) {
-      console.error("errorFetchEpisodes->", error);
+      console.error("errorFetchEpisodes:", error);
     } finally {
       setLoading(false);
     }
   };
 
-  // console.log("serverView=>", serverView);
-  if (loading) return "loading...";
+  if (loading) return <Spinner fullscreen />;
+
   return (
     <Container>
       <WrapperHomeBanner bgBanner={episode?.episodeImage?.url || ""}>
@@ -98,21 +99,27 @@ export const Episode = () => {
           </div>
         </div>
       </WrapperHomeBanner>
-      <div className="wrapper-servers">
-        <div className="item-servers">
-          <ul>
-            {servers.map((server, index) => (
-              <li
-                key={index}
-                onClick={() => viewEpisode(server.url || server.code)}
-              >
-                {server.title}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <EpisodeList episodes={orderBy(episodes, ["episodeNumber"], ["asc"])} />
+      {isEmpty(episodes) ? (
+        <h1>No se encontraron episodios</h1>
+      ) : (
+        <>
+          <div className="wrapper-servers">
+            <div className="item-servers">
+              <ul>
+                {servers.map((server, index) => (
+                  <li
+                    key={index}
+                    onClick={() => viewEpisode(server.url || server.code)}
+                  >
+                    {server.title}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <EpisodeList episodes={episodes} />
+        </>
+      )}
     </Container>
   );
 };

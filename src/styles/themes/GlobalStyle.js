@@ -30,47 +30,43 @@ const global = css`
   }
 
   h1 {
-    font-size: 2.2rem;
+    font-size: 3em;
     font-weight: bold;
-  }
-
-  ${mediaQuery.minTablet} {
-    font-size: 2.5rem;
   }
 
   h2 {
-    font-size: 1.8rem;
+    font-size: 2.3em;
     font-weight: bold;
 
     ${mediaQuery.minTablet} {
-      font-size: 2rem;
+      font-size: 2.2em;
     }
   }
 
   h3 {
-    font-size: 1.5rem;
+    font-size: 2em;
     font-weight: bold;
   }
 
   h4 {
-    font-size: 1.2rem;
+    font-size: 1.2em;
     font-weight: bold;
   }
 
   h5 {
-    font-size: 1.1rem;
+    font-size: 1.1em;
     font-weight: bold;
   }
 
   h5 {
-    font-size: 1rem;
+    font-size: 1em;
     font-weight: bold;
   }
 
   h1,
   h2,
   h3 {
-    line-height: 2.7rem;
+    line-height: 2.7em;
   }
 
   .item-link {

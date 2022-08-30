@@ -8,6 +8,7 @@ import {
   Register,
   SearchResult,
   Page404,
+  Profile,
 } from "../pages";
 
 export const Router = () => (
@@ -45,6 +46,15 @@ export const Router = () => (
       element={
         <Layout>
           <SearchResult />
+        </Layout>
+      }
+    />
+    <Route
+      exact
+      path="/profile"
+      element={
+        <Layout>
+          <Profile />
         </Layout>
       }
     />

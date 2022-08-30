@@ -24,6 +24,9 @@ export const Drawer = () => {
             <Link to="/" className="link-section">
               <h3>Inicio</h3>
             </Link>
+            <Link to="/profile" className="link-section">
+              <h3>Perfil</h3>
+            </Link>
             <Link to="/search" className="link-section">
               <h3>Animes</h3>
             </Link>

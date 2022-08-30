@@ -3,12 +3,12 @@ import styled from "styled-components";
 import { Button, EpisodeList, Spinner } from "../../components";
 import { Imalogo } from "../../images";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft, faPlay } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, useParams } from "react-router";
 import { useAnimes } from "../../providers/Animes";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { currentConfig } from "../../firebase";
-import { orderBy } from "lodash";
+import { isEmpty } from "lodash";
 
 export const Anime = () => {
   const { animeId } = useParams();
@@ -50,7 +50,7 @@ export const Anime = () => {
             <div className="content-banner">
               <div className="anime-gender">
                 <img src={Imalogo} alt="Imalogo" />
-                <span>SERIE</span>
+                <span>{anime.category.toUpperCase()}</span>
               </div>
               <div className="anime-title">
                 <h1>{anime.name.toUpperCase()}</h1>
@@ -58,20 +58,36 @@ export const Anime = () => {
               <div className="synopsis-anime">
                 <p>{anime.synopsis}</p>
               </div>
-              <div className="content-button">
-                <Button
-                  size="medium"
-                  borderRadius="7rem"
-                  onClick={() => navigate(`/animes/${animeId}/1`)}
-                >
-                  <FontAwesomeIcon icon={faPlay} size="lg" /> &nbsp; REPRODUCIR
-                </Button>
-              </div>
+              {
+                <div className="content-button">
+                  <Button
+                    size="medium"
+                    borderRadius="7rem"
+                    onClick={() =>
+                      isEmpty(episodes)
+                        ? navigate(-1)
+                        : navigate(`/animes/${animeId}/1`)
+                    }
+                  >
+                    <FontAwesomeIcon
+                      icon={isEmpty(episodes) ? faChevronLeft : faPlay}
+                      size="lg"
+                    />{" "}
+                    &nbsp; {isEmpty(episodes) ? "REGRESAR" : "REPRODUCIR"}
+                  </Button>
+                </div>
+              }
             </div>
           </div>
         </div>
       </WrapperHomeBanner>
-      <EpisodeList episodes={orderBy(episodes, ["episodeNumber"], ["asc"])} />
+      {isEmpty(episodes) ? (
+        <div>
+          <h1>No se encontraron episodios</h1>
+        </div>
+      ) : (
+        <EpisodeList episodes={episodes} />
+      )}
     </Container>
   );
 };
@@ -93,7 +109,7 @@ const WrapperHomeBanner = styled.div`
     height: 70vh;
     max-height: 40em;
     background: #000 url(${({ bgBanner }) => bgBanner || "transparent"})
-      no-repeat;
+      no-repeat center center;
     background-size: cover;
     color: #fff;
     display: flex;
@@ -111,7 +127,7 @@ const WrapperHomeBanner = styled.div`
         color-stop(#e66aa800),
         to(#070707)
       );
-      background-image: linear-gradient(#070707, #e66aa800, #070707);
+      background-image: linear-gradient(#00000003 0%, #070707 98%);
 
       .content-banner {
         width: 100%;
@@ -143,11 +159,21 @@ const WrapperHomeBanner = styled.div`
         .synopsis-anime {
           padding-bottom: 1rem;
           p {
-            width: 100%;
-            max-width: 40em;
-            max-height: 7rem;
             font-weight: 300;
-            text-overflow: ellipsis;
+            font-size: 0.9em;
+            width: auto;
+            height: auto;
+            line-height: 1.1rem;
+            word-break: break-all;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -moz-box-orient: vertical;
+            -ms-box-orient: vertical;
+            box-orient: vertical;
+            -webkit-line-clamp: 11;
+            -moz-line-clamp: 11;
+            -ms-line-clamp: 11;
+            line-clamp: 11;
             overflow: hidden;
           }
         }

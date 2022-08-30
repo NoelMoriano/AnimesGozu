@@ -42,6 +42,12 @@ export const DrawerMobile = ({ visibleDrawer, onSetVisibleDrawer }) => {
               className="link-section"
               onClick={() => onHiddenDrawerMobile()}
             />
+            <MenuList
+              title="Perfil"
+              linkTo="/profile"
+              className="link-section"
+              onClick={() => onHiddenDrawerMobile()}
+            />
             <a
               className="link-section"
               onClick={() => {

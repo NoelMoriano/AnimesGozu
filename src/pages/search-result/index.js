@@ -2,12 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import { faFilter, faList } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  Button,
-  CardAnime,
-  CardAnimeSecondary,
-  Select,
-} from "../../components";
+import { Button, CardAnime, Select } from "../../components";
 import { useAnimes } from "../../providers/Animes";
 import { useNavigate } from "react-router";
 import { includes } from "lodash";
