@@ -30,6 +30,7 @@ export const AuthenticationProvider = ({ children }) => {
   const [authUser, setAuthUser] = useState(null);
   const [firebaseUser, setFirebaseUser] = useState(null);
   const [loginLoading, setLoginLoading] = useState(false);
+  const [registerAuthUserData, setRegisterAuthUserData] = useState(null);
 
   const [userSnapshot, loadingUser, errorUser] = useDocument(
     firebaseUser ? firestore.collection("users").doc(firebaseUser.uid) : null
@@ -59,7 +60,11 @@ export const AuthenticationProvider = ({ children }) => {
       .set(
         assign(
           {},
-          { id: firebaseUser.uid, providerData: mapProviderData(providerData) }
+          {
+            id: firebaseUser.uid,
+            providerData: mapProviderData(providerData),
+            ...(registerAuthUserData && registerAuthUserData),
+          }
         ),
         { merge: true }
       );
@@ -171,17 +176,12 @@ export const AuthenticationProvider = ({ children }) => {
 
       await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 
-      const response = await auth.createUserWithEmailAndPassword(
+      await auth.createUserWithEmailAndPassword(
         formData.email,
         formData.password
       );
 
-      console.log("response->", response);
-
-      // await firestore
-      //   .collection("users")
-      //   .doc(firebaseUser.uid)
-      //   .set(assign({}, formData, { id: firebaseUser.uid }));
+      setRegisterAuthUserData(formData || null);
     } catch (e) {
       const error = isError(e) ? e : undefined;
 
