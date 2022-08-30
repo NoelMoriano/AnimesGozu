@@ -20,7 +20,7 @@ export const Home = () => {
     <Container>
       <WrapperHomeBanner>
         <div className="banner-wrapper">
-          <video src={videoBanner} autoPlay loop muted type="Video/mp4" />
+          <video src={videoBanner} autoPlay loop muted type="video/mp4" />
           <div className="gradient">
             <div className="description-banner">
               <div className="description">
