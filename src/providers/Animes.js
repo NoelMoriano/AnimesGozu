@@ -9,7 +9,9 @@ export const AnimesProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    animesFetch();
+    (async () => {
+      await animesFetch();
+    })();
   }, []);
 
   const animesFetch = async () => {

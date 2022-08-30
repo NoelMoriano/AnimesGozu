@@ -15,8 +15,9 @@ const global = css`
 
   body {
     font-size: 16px;
-    font-family: "MontserratRegular", sans-serif;
     overflow-x: hidden;
+    font-family: "MontserratRegular", sans-serif;
+    background: ${({ theme }) => theme.colors.secondary};
   }
 
   h1,

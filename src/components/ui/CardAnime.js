@@ -35,6 +35,7 @@ const Container = styled.div`
     border-radius: 1rem;
     overflow: hidden;
     cursor: pointer;
+    transition: transform ease-in-out 0.5s;
 
     img {
       width: 100%;
@@ -51,7 +52,6 @@ const Container = styled.div`
       right: 0;
       bottom: 0;
       transform: translateY(100%);
-      -webkit-transition: transform ease-in-out 0.5s;
       transition: transform ease-in-out 0.5s;
       display: flex;
       align-items: flex-end;
@@ -65,7 +65,6 @@ const Container = styled.div`
         width: auto;
         height: auto;
         line-height: 1rem;
-        word-break: break-all;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -moz-box-orient: vertical;
@@ -80,6 +79,7 @@ const Container = styled.div`
     }
 
     &:hover {
+      transition: transform ease-in-out 0.5s;
       .hover-effect {
         opacity: 5;
         background: rgb(0, 0, 0);

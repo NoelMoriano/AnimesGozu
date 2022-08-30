@@ -164,7 +164,6 @@ const WrapperHomeBanner = styled.div`
             width: auto;
             height: auto;
             line-height: 1.1rem;
-            word-break: break-all;
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -moz-box-orient: vertical;
