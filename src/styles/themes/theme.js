@@ -29,7 +29,7 @@ export const theme = {
   font_sizes: {
     xxx_small: ".6em",
     xx_small: ".7em",
-    x_small: ".9em",
+    x_small: ".8em",
     small: "1em",
     medium: "1.1em",
     large: "1.3em",
