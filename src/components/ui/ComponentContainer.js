@@ -21,7 +21,7 @@ export const ComponentContainer = ({
     >
       {label && <div className="label-item">{label}</div>}
       <div className="element-item">{children}</div>
-      {error && (
+      {helperText && (
         <div className="error-item">
           <ErrorItem
             fontColor={(theme) => (error ? theme.colors.error : undefined)}
@@ -41,6 +41,8 @@ const Container = styled.div`
     height: auto;
     display: grid;
     gap: 0.3em;
+    animation: ${error && keyframes.shake} 340ms
+      cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 
     ${disabled &&
     css`
