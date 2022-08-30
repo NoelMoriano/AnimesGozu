@@ -26,24 +26,21 @@ export const Login = () => {
 
   const googleLogin = () => loginWithGoogle();
 
-  const onSubmitLogin = ({ email, password }) => login(email, password);
+  const onSubmitLogin = ({ email, password }) => {
+    return console.log("formData->", email, password);
+    /*return login(email, password);*/
+  };
 
   return (
     <Container BgLogin={BgLogin}>
       <div className="wrapper-login">
         <h1>AnimeGozu</h1>
         <Form onSubmit={handleSubmit(onSubmitLogin)}>
-          <Input
-            label="Usuario"
-            required
-            placeHolder="Ingrese usuario"
-            register={{ ...register("email") }}
-          />
+          <Input label="Usuario" placeHolder="Ingrese usuario" required />
           <InputPassword
             label="Contraseña"
-            required
             placeHolder="Ingrese usuario"
-            register={{ ...register("password") }}
+            required
           />
 
           <div className="link-wrapper">
