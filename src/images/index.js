@@ -1,6 +1,7 @@
 export { default as ImgLogo } from "./others/logo-temp.png";
 export { default as NarutoBanner } from "./others/naruto-banner.jpg";
 export { default as BgLogin } from "./others/bg1.gif";
+export { default as videoBanner } from "./others/videoAnime.mp4";
 export { default as Imalogo } from "./svgs/imalogo.svg";
 export { default as ImgCardOnePiece } from "./home/animes/aventura/image 13.png";
 export { default as AvatarDefault } from "./resources/user_default.png";
