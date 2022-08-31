@@ -73,7 +73,7 @@ export const Anime = () => {
                       icon={isEmpty(episodes) ? faChevronLeft : faPlay}
                       size="lg"
                     />{" "}
-                    &nbsp; {isEmpty(episodes) ? "REGRESAR" : "REPRODUCIR"}
+                    &nbsp; {isEmpty(episodes) ? "REGRESAR" : "VER ANIME"}
                   </Button>
                 </div>
               }
