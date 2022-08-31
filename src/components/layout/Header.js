@@ -24,7 +24,7 @@ export const Header = ({ onSetVisibleDrawer }) => {
         />
       </div>
       <div className="content-right">
-        <InputSearch>
+        {/*<InputSearch>
           <FontAwesomeIcon className="icon-search" icon={faMagnifyingGlass} />
           <input
             type="text"
@@ -32,7 +32,7 @@ export const Header = ({ onSetVisibleDrawer }) => {
             onClick={() => onNavigate("/search")}
           />
           <FontAwesomeIcon className="icon-clear" icon={faXmark} />
-        </InputSearch>
+        </InputSearch>*/}
         <div className="item-open-drawer">
           <FontAwesomeIcon
             className="icon-clear"
