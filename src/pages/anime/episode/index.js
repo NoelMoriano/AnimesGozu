@@ -12,7 +12,7 @@ export const Episode = () => {
   const [servers, setServers] = useState([]);
   const [serverView, setServerView] = useState(null);
   const [episode, setEpisode] = useState(null);
-  const [episodes, setEspisodes] = useState([]);
+  const [episodes, setEpisodes] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -60,7 +60,7 @@ export const Episode = () => {
       const url = `${currentConfig.animeServerApi}/episodes/${animeId}`;
       const response = await fetch(url);
       const result = await response.json();
-      setEspisodes(result);
+      setEpisodes(result);
     } catch (error) {
       console.error("errorFetchEpisodes:", error);
     } finally {
