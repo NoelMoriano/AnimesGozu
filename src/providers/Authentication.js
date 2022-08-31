@@ -43,35 +43,42 @@ export const AuthenticationProvider = ({ children }) => {
   }, []);
 
   const previusAuthenticationUser = async (currentUser) => {
-    const uid = currentUser.uid;
-    const [providerData] = currentUser.providerData;
+    try {
+      setLoginLoading(true);
+      const uid = currentUser.uid;
+      const [providerData] = currentUser.providerData;
 
-    const userExists = (
-      await firestore.collection("users").doc(uid).get()
-    ).data();
+      const userExists = (
+        await firestore.collection("users").doc(uid).get()
+      ).data();
 
-    await timeoutPromise(1000);
+      await timeoutPromise(1000);
 
-    if (userExists) return setFirebaseUser(currentUser);
+      if (userExists) return setFirebaseUser(currentUser);
 
-    await firestore
-      .collection("users")
-      .doc(uid)
-      .set(
-        assign(
-          {},
-          {
-            id: uid,
-            providerData: mapProviderData(providerData),
-            ...(registerAuthUserData && registerAuthUserData),
-          }
-        ),
-        { merge: true }
-      );
+      await firestore
+        .collection("users")
+        .doc(uid)
+        .set(
+          assign(
+            {},
+            {
+              id: uid,
+              providerData: mapProviderData(providerData),
+              ...(registerAuthUserData && registerAuthUserData),
+            }
+          ),
+          { merge: true }
+        );
 
-    await timeoutPromise(2000);
+      await timeoutPromise(2000);
 
-    return setFirebaseUser(currentUser);
+      return setFirebaseUser(currentUser);
+    } catch (e) {
+      console.error("previusAuthenticationUser:", e);
+    } finally {
+      setLoginLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -101,7 +108,6 @@ export const AuthenticationProvider = ({ children }) => {
       if (!user) throw new Error("User doesn't exists");
 
       setAuthUser(user);
-      setLoginLoading(false);
       setAuthenticating(false);
     } catch (error) {
       console.error("Login", error);
@@ -117,6 +123,8 @@ export const AuthenticationProvider = ({ children }) => {
       }
 
       await logout();
+    } finally {
+      setLoginLoading(false);
     }
   };
 
