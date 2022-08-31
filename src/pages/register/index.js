@@ -18,8 +18,13 @@ import { assign, toNumber } from "lodash";
 export const Register = () => {
   const navigate = useNavigate();
 
-  const { authUser, registerAuthUser, loginWithGoogle, loginLoading } =
-    useAuthentication();
+  const {
+    authUser,
+    registerAuthUser,
+    loginWithGoogle,
+    loginLoading,
+    googleLoginLoading,
+  } = useAuthentication();
 
   const schema = yup.object({
     firstName: yup.string().required(),
@@ -166,7 +171,7 @@ export const Register = () => {
             <Button
               block
               loading={loginLoading}
-              disabled={loginLoading}
+              disabled={loginLoading || googleLoginLoading}
               margin=".5em 0 0 0"
               htmlType="submit"
             >
@@ -177,7 +182,8 @@ export const Register = () => {
             </Button>
             <Button
               block
-              disabled={loginLoading}
+              loading={googleLoginLoading}
+              disabled={loginLoading || googleLoginLoading}
               margin=".2em 0 0 0"
               onClick={() => registerGoogle()}
             >

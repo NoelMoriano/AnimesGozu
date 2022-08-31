@@ -18,7 +18,7 @@ export const Drawer = () => {
         <>
           <Avatar
             ImgAvatar={authUser.providerData?.photoURL}
-            fullName={authUser.providerData?.displayName || authUser?.firstName}
+            nickName={authUser?.nickName || authUser?.firstName}
           />
           <div className="menu-list">
             <Link to="/" className="link-section">

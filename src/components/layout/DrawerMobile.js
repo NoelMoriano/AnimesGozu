@@ -30,7 +30,10 @@ export const DrawerMobile = ({ visibleDrawer, onSetVisibleDrawer }) => {
 
       {authUser ? (
         <>
-          <Avatar />
+          <Avatar
+            ImgAvatar={authUser.providerData?.photoURL}
+            nickName={authUser?.nickName || authUser?.firstName}
+          />
           <div className="menu-mobile-list">
             <MenuList
               title="Inicio"

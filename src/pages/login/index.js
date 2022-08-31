@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { Button, Form, Input, InputPassword } from "../../components";
 import styled from "styled-components";
 import { useForm, Controller } from "react-hook-form";
@@ -16,7 +16,7 @@ import { useFormUtils } from "../../hooks";
 export const Login = () => {
   const navigate = useNavigate();
 
-  const { authUser, login, loginWithGoogle, loginLoading } =
+  const { authUser, login, loginWithGoogle, loginLoading, googleLoginLoading } =
     useAuthentication();
 
   const onNavigateTo = (url) => navigate(url);
@@ -24,6 +24,10 @@ export const Login = () => {
   useMemo(() => {
     authUser && onNavigateTo("/");
   }, [authUser]);
+
+  useEffect(() => {
+    console.log("loginLoading->", loginLoading);
+  }, [loginLoading]);
 
   const schema = yup.object({
     email: yup.string().required().email(),
@@ -93,7 +97,7 @@ export const Login = () => {
           <Button
             block
             loading={loginLoading}
-            disabled={loginLoading}
+            disabled={loginLoading || googleLoginLoading}
             margin="0"
             htmlType="submit"
           >
@@ -104,7 +108,8 @@ export const Login = () => {
           </Button>
           <Button
             block
-            disabled={loginLoading}
+            loading={googleLoginLoading}
+            disabled={loginLoading || googleLoginLoading}
             margin=".2em 0 0 0"
             onClick={() => googleLogin()}
           >

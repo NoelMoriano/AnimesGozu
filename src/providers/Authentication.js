@@ -21,6 +21,7 @@ const AuthenticationContext = createContext({
     Promise.reject("Unable to find AuthenticationProvider."),
   logout: () => Promise.reject("Unable to find AuthenticationProvider."),
   loginLoading: false,
+  googleLoginLoading: false,
 });
 
 export const useAuthentication = () => useContext(AuthenticationContext);
@@ -30,6 +31,7 @@ export const AuthenticationProvider = ({ children }) => {
   const [authUser, setAuthUser] = useState(null);
   const [firebaseUser, setFirebaseUser] = useState(null);
   const [loginLoading, setLoginLoading] = useState(false);
+  const [googleLoginLoading, setGoogleLoginLoading] = useState(false);
   const [registerAuthUserData, setRegisterAuthUserData] = useState(null);
 
   const [userSnapshot, loadingUser, errorUser] = useDocument(
@@ -37,14 +39,13 @@ export const AuthenticationProvider = ({ children }) => {
   );
 
   useMemo(() => {
-    auth.onAuthStateChanged(async (currentUser) =>
+    auth.onAuthStateChanged((currentUser) =>
       currentUser ? previusAuthenticationUser(currentUser) : onLogout()
     );
   }, []);
 
   const previusAuthenticationUser = async (currentUser) => {
     try {
-      setLoginLoading(true);
       const uid = currentUser.uid;
       const [providerData] = currentUser.providerData;
 
@@ -63,6 +64,10 @@ export const AuthenticationProvider = ({ children }) => {
             {
               id: uid,
               providerData: mapProviderData(providerData),
+              ...(providerData?.displayName && {
+                nickName: providerData.displayName,
+              }),
+              ...(providerData?.email && { email: providerData.email }),
               ...registerAuthUserData,
               createAt: new Date(),
             }
@@ -70,13 +75,14 @@ export const AuthenticationProvider = ({ children }) => {
           { merge: true }
         );
 
-      await timeoutPromise(1000);
+      setFirebaseUser(currentUser);
 
-      return setFirebaseUser(currentUser);
+      await timeoutPromise(2000);
+      setLoginLoading(false);
+      setGoogleLoginLoading(false);
+      setFirebaseUser(null);
     } catch (e) {
       console.error("previusAuthenticationUser:", e);
-    } finally {
-      setLoginLoading(false);
     }
   };
 
@@ -104,6 +110,8 @@ export const AuthenticationProvider = ({ children }) => {
 
   const onLogin = async (user) => {
     try {
+      setLoginLoading(true);
+
       if (!user) throw new Error("User doesn't exists");
 
       setAuthUser(user);
@@ -122,8 +130,6 @@ export const AuthenticationProvider = ({ children }) => {
       }
 
       await logout();
-    } finally {
-      setLoginLoading(false);
     }
   };
 
@@ -146,14 +152,14 @@ export const AuthenticationProvider = ({ children }) => {
           description: error?.message,
         })
       );
-    } finally {
+
       setLoginLoading(false);
     }
   };
 
   const loginWithGoogle = async () => {
     try {
-      setLoginLoading(true);
+      setGoogleLoginLoading(true);
 
       await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
       const provider = new firebase.auth.GoogleAuthProvider();
@@ -172,15 +178,14 @@ export const AuthenticationProvider = ({ children }) => {
           description: error?.message,
         })
       );
-    } finally {
-      setLoginLoading(false);
+
+      setGoogleLoginLoading(false);
     }
   };
 
   const registerAuthUser = async (formData) => {
     try {
       setLoginLoading(true);
-
       await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 
       await auth.createUserWithEmailAndPassword(
@@ -201,8 +206,6 @@ export const AuthenticationProvider = ({ children }) => {
           description: error?.message,
         })
       );
-    } finally {
-      setLoginLoading(false);
     }
   };
 
@@ -224,6 +227,7 @@ export const AuthenticationProvider = ({ children }) => {
         loginWithGoogle,
         logout,
         loginLoading,
+        googleLoginLoading,
       }}
     >
       {children}
