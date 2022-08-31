@@ -41,12 +41,13 @@
   "production": {
     "version": "0.0.1",
     "firebaseApp": {
-      "apiKey": "AIzaSyDcUy6vQ0owB5jmpqZZnW6O9V61NdBtC8s",
-      "authDomain": "animes-dev.firebaseapp.com",
-      "projectId": "animes-dev",
-      "storageBucket": "animes-dev.appspot.com",
-      "messagingSenderId": "781421769413",
-      "appId": "1:781421769413:web:0c88ab11860dd589b676ac"
+      "apiKey": "AIzaSyCDeMRGyMhc6yxNY_P6UTneMkS3938nmJg",
+      "authDomain": "anime-gozu.firebaseapp.com",
+      "projectId": "anime-gozu",
+      "storageBucket": "anime-gozu.appspot.com",
+      "messagingSenderId": "22675356001",
+      "appId": "1:22675356001:web:f41c96b99f69f554346d20",
+      "measurementId": "G-2XQWXC0NNH"
     },
     "buckets": {},
     "animeServerApi": "https://us-central1-animes-dev.cloudfunctions.net/api"
