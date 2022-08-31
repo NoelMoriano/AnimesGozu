@@ -15,14 +15,14 @@ import { useFormUtils } from "../../hooks";
 
 export const Login = () => {
   const navigate = useNavigate();
-  const onNavigate = (url) => navigate(url);
+
   const { authUser, login, loginWithGoogle, loginLoading } =
     useAuthentication();
 
-  const onChangeAuthUser = () => navigate("/");
+  const onNavigateTo = (url) => navigate(url);
 
   useMemo(() => {
-    authUser && onChangeAuthUser(authUser);
+    authUser && onNavigateTo("/");
   }, [authUser]);
 
   const schema = yup.object({
@@ -49,7 +49,7 @@ export const Login = () => {
           <img
             src={ImgLogoAnimeGozu}
             alt="Anime Gozu"
-            onClick={() => onNavigate("/")}
+            onClick={() => onNavigateTo("/")}
           />
         </div>
         <Form onSubmit={handleSubmit(onSubmitLogin)}>
@@ -106,7 +106,7 @@ export const Login = () => {
             block
             disabled={loginLoading}
             margin=".2em 0 0 0"
-            onClick={googleLogin}
+            onClick={() => googleLogin()}
           >
             <div className="content-button">
               <FontAwesomeIcon icon={faGoogle} className="item-icon" />

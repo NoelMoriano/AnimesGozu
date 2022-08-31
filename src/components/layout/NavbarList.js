@@ -6,6 +6,9 @@ import React from "react";
 
 export const NavbarList = () => {
   const navigate = useNavigate();
+
+  const onNavigateTo = (param) => navigate(param);
+
   return (
     <Container>
       <Avatar />
@@ -13,13 +16,13 @@ export const NavbarList = () => {
       <MenuList title="Animes" linkTo="./" />
       <MenuList title="En Emisión" linkTo="./" />
       <div className="wrapper-buttons">
-        <Button size="medium" onClick={() => navigate("/login")}>
+        <Button size="medium" onClick={() => onNavigateTo("/login")}>
           Iniciar sesion
         </Button>
         <Button
           size="medium"
           type="tertiary"
-          onClick={() => navigate("/register")}
+          onClick={() => onNavigateTo("/register")}
         >
           Registrarse
         </Button>

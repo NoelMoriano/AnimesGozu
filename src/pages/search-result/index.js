@@ -9,15 +9,15 @@ import { includes } from "lodash";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 
 export const SearchResult = () => {
+  const navigate = useNavigate();
+  const { animes } = useAnimes();
+
   const [animesData, setAnimesData] = useState([]);
   const [category, setCategory] = useState("all");
   const [animeState, setAnimeState] = useState("all");
   const [gender, setGender] = useState("all");
 
-  const navigate = useNavigate();
-  const { animes } = useAnimes();
-
-  const navigateAnime = (animeId) => navigate(`/animes/${animeId}`);
+  const onNavigateTo = (param) => navigate(param);
 
   useEffect(() => {
     filterAnimes();
@@ -86,7 +86,7 @@ export const SearchResult = () => {
         {animesData.map((anime, index) => (
           <CardAnime
             key={index}
-            onNavigateAnime={() => navigateAnime(anime.id)}
+            onNavigateAnime={() => onNavigateTo(`/ver/${anime.id}`)}
             title={anime.name}
             image={anime.animePicture.url}
             synopsis={anime.synopsis}

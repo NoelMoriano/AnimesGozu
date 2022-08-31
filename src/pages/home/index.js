@@ -11,10 +11,10 @@ export const Home = () => {
 
   const { animes } = useAnimes();
 
+  const onNavigateTo = (param) => navigate(param);
+
   const animesCategory = animes.filter((anime) => anime.category === "anime");
   const ovasCategory = animes.filter((anime) => anime.category === "ova");
-
-  const navigateAnime = (animeId) => navigate(`/animes/${animeId}`);
 
   return (
     <Container>
@@ -39,7 +39,7 @@ export const Home = () => {
             {animesCategory.map((anime, index) => (
               <CardAnime
                 key={index}
-                onNavigateAnime={() => navigateAnime(anime.id)}
+                onNavigateAnime={() => onNavigateTo(`/ver/${anime.id}`)}
                 title={anime.name}
                 image={anime.animePicture.url}
                 synopsis={anime.synopsis}
@@ -53,7 +53,7 @@ export const Home = () => {
             {ovasCategory.map((anime, index) => (
               <CardAnime
                 key={index}
-                onNavigateAnime={() => navigateAnime(anime.id)}
+                onNavigateAnime={() => onNavigateTo(`/ver/${anime.id}`)}
                 title={anime.name}
                 image={anime.animePicture.url}
                 synopsis={anime.synopsis}

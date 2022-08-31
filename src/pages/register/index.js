@@ -37,10 +37,10 @@ export const Register = () => {
 
   const { required, error, errorMessage } = useFormUtils({ errors, schema });
 
-  const onChangeAuthUser = () => navigate("/");
+  const onNavigateTo = (param) => navigate(param);
 
   useMemo(() => {
-    authUser && onChangeAuthUser(authUser);
+    authUser && onNavigateTo("/");
   }, [authUser]);
 
   const registerGoogle = () => loginWithGoogle();

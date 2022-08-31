@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useParams } from "react-router";
-import { EpisodeList, Spinner } from "../../../components";
-import { defaultTo, isEmpty, orderBy } from "lodash";
+import { useNavigate, useParams } from "react-router";
+import { EpisodeList, Servers, Spinner } from "../../../components";
+import { defaultTo, isEmpty } from "lodash";
 import { currentConfig } from "../../../firebase";
 
 export const Episode = () => {
   const { animeId, episodeId } = useParams();
+  const navigate = useNavigate();
 
   const [servers, setServers] = useState([]);
   const [serverView, setServerView] = useState(null);
@@ -21,20 +22,26 @@ export const Episode = () => {
     })();
   }, [episodeId]);
 
+  const onNavigateTo = (param) => navigate(param);
+
   const fetchEpisode = async () => {
     try {
       const url = `${currentConfig.animeServerApi}/episode/${animeId}/${episodeId}`;
       const response = await fetch(url);
+
       const result = await response.json();
-      const episodeData = result[0];
 
-      const serverDefault = episodeData.servers["SUB"].find(
-        (server) => server.server === "sb"
-      );
+      if (isEmpty(result)) return onNavigateTo(`/ver/${animeId}`);
 
-      setServers(episodeData.servers["SUB"]);
+      const episodeData = result[0] || null;
+
+      const serverDefault =
+        episodeData.servers["SUB"].find((server) => server.server === "sb") ||
+        null;
+
       setEpisode(episodeData);
-      setServerView(serverDefault.url);
+      setServers(episodeData.servers || []);
+      setServerView(serverDefault);
     } catch (error) {
       console.error("errorFetchEpisode:", error);
     } finally {
@@ -42,9 +49,9 @@ export const Episode = () => {
     }
   };
 
-  const viewEpisode = (url) => {
+  const onSetServerEpisode = (server) => {
     setServerView(null);
-    setServerView(url);
+    setServerView(server);
   };
 
   const fetchEpisodes = async () => {
@@ -69,11 +76,11 @@ export const Episode = () => {
         <div className="banner-wrapper">
           <div className="gradient">
             <div className="content-banner">
-              {episodeId && (
+              {serverView && (
                 <iframe
-                  key={episodeId}
+                  key={serverView.code || episodeId}
                   className="iframe-episode"
-                  src={defaultTo(serverView, "")}
+                  src={defaultTo(serverView.url || serverView.code, "")}
                   frameBorder="0"
                   scrolling="no"
                   allowFullScreen
@@ -81,10 +88,8 @@ export const Episode = () => {
                   marginWidth="0"
                   width="100%"
                   height="100%"
-                  scrolling="auto"
-                ></iframe>
+                />
               )}
-
               {/*<div className="item-play">*/}
               {/*  <Button*/}
               {/*    size="medium"*/}
@@ -103,20 +108,11 @@ export const Episode = () => {
         <h1>No se encontraron episodios</h1>
       ) : (
         <>
-          <div className="wrapper-servers">
-            <div className="item-servers">
-              <ul>
-                {servers.map((server, index) => (
-                  <li
-                    key={index}
-                    onClick={() => viewEpisode(server.url || server.code)}
-                  >
-                    {server.title}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <Servers
+            servers={servers}
+            serverView={serverView}
+            onSetServerEpisode={onSetServerEpisode}
+          />
           <EpisodeList episodes={episodes} />
         </>
       )}
@@ -129,35 +125,6 @@ const Container = styled.div`
   height: auto;
   background: ${({ theme }) => theme.colors.secondary};
   color: ${({ theme }) => theme.colors.font1};
-
-  .wrapper-servers {
-    width: 100%;
-    max-width: 100%;
-    background: ${({ theme }) => theme.colors.tertiary};
-    .item-servers {
-      position: relative;
-      width: 100%;
-      max-width: 100%;
-      overflow: hidden;
-      ul {
-        width: 100%;
-        //overflow-x: scroll;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        list-style: none;
-        li {
-          cursor: pointer;
-          width: auto;
-          min-width: 7rem;
-          padding: 0.5em 1em;
-          &:first-child {
-            border-bottom: 3px solid ${({ theme }) => theme.colors.primary};
-          }
-        }
-      }
-    }
-  }
 `;
 
 const WrapperHomeBanner = styled.div`

@@ -11,11 +11,12 @@ import { useNavigate, useParams } from "react-router";
 import { orderBy } from "lodash";
 
 export const EpisodeList = ({ episodes = [] }) => {
+  const { animeId } = useParams();
   const navigate = useNavigate();
 
   const [isAscEpisodes, setIsAscEpisodes] = useState(false);
 
-  const { animeId } = useParams();
+  const onNavigateTo = (param) => navigate(param);
 
   const episodesView = () =>
     orderBy(episodes, ["episodeNumber"], [isAscEpisodes ? "asc" : "desc"]);
@@ -60,7 +61,7 @@ export const EpisodeList = ({ episodes = [] }) => {
               "https://storage.googleapis.com/animes-dev-animes/animes/dumucB9YLN054VySLlu6/episodes/mUmBShtFWxSiskrJNOa2/episodeImage.jpeg"
             }
             onClick={() =>
-              navigate(`/animes/${animeId}/${episode.episodeNumber}`)
+              onNavigateTo(`/ver/${animeId}/${episode.episodeNumber}`)
             }
           />
         ))}

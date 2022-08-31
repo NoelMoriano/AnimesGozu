@@ -12,7 +12,7 @@ import { useNavigate } from "react-router";
 export const Header = ({ onSetVisibleDrawer }) => {
   const navigate = useNavigate();
 
-  const onNavigate = (url) => navigate(url);
+  const onNavigateTo = (url) => navigate(url);
 
   return (
     <Container>
@@ -20,7 +20,7 @@ export const Header = ({ onSetVisibleDrawer }) => {
         <img
           src={ImgLogoAnimeGozu}
           alt="Anime Gozu"
-          onClick={() => onNavigate("/")}
+          onClick={() => onNavigateTo("/")}
         />
       </div>
       <div className="content-right">
@@ -29,7 +29,7 @@ export const Header = ({ onSetVisibleDrawer }) => {
           <input
             type="text"
             placeholder="¿Que quieres ver hoy?"
-            onClick={() => onNavigate("/search")}
+            onClick={() => onNavigateTo("/search")}
           />
           <FontAwesomeIcon className="icon-clear" icon={faXmark} />
         </InputSearch>*/}

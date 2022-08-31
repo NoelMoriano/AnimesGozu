@@ -21,7 +21,7 @@ export const AnimesProvider = ({ children }) => {
 
       const result = await response.json();
 
-      setAnimes(result);
+      setAnimes(result || []);
     } catch (error) {
       console.log("Error fetch animes: ", error);
     } finally {

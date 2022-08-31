@@ -21,10 +21,11 @@ export const Anime = () => {
 
   const anime = animes.find((anime) => anime.id === animeId);
 
+  const onNavigateTo = (param) => navigate(param);
+
   useEffect(() => {
     window.scroll(0, 0);
-
-    fetchEpisodes();
+    (async () => await fetchEpisodes())();
   }, []);
 
   const fetchEpisodes = async () => {
@@ -34,7 +35,7 @@ export const Anime = () => {
       const result = await response.json();
       setEspisodes(result);
     } catch (error) {
-      console.log("error->", error);
+      console.error("errorFetchEpisodes:", error);
     } finally {
       setLoading(false);
     }
@@ -65,8 +66,8 @@ export const Anime = () => {
                     borderRadius="7rem"
                     onClick={() =>
                       isEmpty(episodes)
-                        ? navigate(-1)
-                        : navigate(`/animes/${animeId}/1`)
+                        ? onNavigateTo(-1)
+                        : onNavigateTo(`/ver/${animeId}/1`)
                     }
                   >
                     <FontAwesomeIcon

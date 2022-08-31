@@ -10,7 +10,7 @@ export const Drawer = () => {
 
   const { authUser, logout } = useAuthentication();
 
-  console.log("authUser->", authUser);
+  const onNavigateTo = (param) => navigate(param);
 
   return (
     <Container>
@@ -37,13 +37,13 @@ export const Drawer = () => {
         </>
       ) : (
         <div className="wrapper-buttons">
-          <Button size="medium" onClick={() => navigate("/login")}>
+          <Button size="medium" onClick={() => onNavigateTo("/login")}>
             Iniciar sesion
           </Button>
           <Button
             size="medium"
             type="tertiary"
-            onClick={() => navigate("/register")}
+            onClick={() => onNavigateTo("/register")}
           >
             Registrarse
           </Button>

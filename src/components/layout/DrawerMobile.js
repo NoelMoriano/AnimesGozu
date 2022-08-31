@@ -12,6 +12,8 @@ export const DrawerMobile = ({ visibleDrawer, onSetVisibleDrawer }) => {
 
   const { authUser, logout } = useAuthentication();
 
+  const onNavigateTo = (param) => navigate(param);
+
   const onHiddenDrawerMobile = () => onSetVisibleDrawer(!visibleDrawer);
 
   return (
@@ -61,13 +63,13 @@ export const DrawerMobile = ({ visibleDrawer, onSetVisibleDrawer }) => {
         </>
       ) : (
         <div className="wrapper-buttons">
-          <Button size="medium" onClick={() => navigate("/login")}>
+          <Button size="medium" onClick={() => onNavigateTo("/login")}>
             Iniciar sesion
           </Button>
           <Button
             size="medium"
             type="tertiary"
-            onClick={() => navigate("/register")}
+            onClick={() => onNavigateTo("/register")}
           >
             Registrarse
           </Button>

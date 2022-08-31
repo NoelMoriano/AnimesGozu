@@ -24,7 +24,7 @@ export const Router = () => (
     />
     <Route
       exact
-      path="/animes/:animeId"
+      path="/ver/:animeId"
       element={
         <Layout>
           <Anime />
@@ -33,7 +33,7 @@ export const Router = () => (
     />
     <Route
       exact
-      path="/animes/:animeId/:episodeId"
+      path="/ver/:animeId/:episodeId"
       element={
         <Layout>
           <Episode />
