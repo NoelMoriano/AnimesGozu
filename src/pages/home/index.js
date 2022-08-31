@@ -24,8 +24,8 @@ export const Home = () => {
           <div className="gradient">
             <div className="description-banner">
               <div className="description">
-                <h1>ANIME FOREVER</h1>
-                <h3>"Tenemos todo tipos de animes para todo tipo de gustos"</h3>
+                <h1>BIENVENIDO, NOS ENCANTA TENER AQUI!</h1>
+                <h2>Tenemos los mejores animes para ti</h2>
               </div>
             </div>
           </div>
@@ -103,16 +103,7 @@ const WrapperHomeBanner = styled.div`
       bottom: 0;
       right: 0;
       z-index: 500;
-      background-image: -webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        from(#070707),
-        color-stop(#e66aa800),
-        to(#070707)
-      );
-      background-image: linear-gradient(#070707, #e66aa800, #070707);
-
+      background: linear-gradient(#070707, rgb(29 29 29 / 26%), #070707);
       .description-banner {
         position: absolute;
         top: 0;
@@ -126,6 +117,14 @@ const WrapperHomeBanner = styled.div`
         width: 100%;
         height: 100%;
         z-index: 700;
+
+        .description {
+          font-size: 1.3em;
+
+          h2 {
+            margin-top: 0.5em;
+          }
+        }
       }
 
       .banner {

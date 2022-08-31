@@ -18,8 +18,8 @@ export const App = () => {
     <AuthenticationProvider>
       <BrowserRouter>
         <AnimesProvider>
+          <GlobalStyles />
           <ThemeProvider theme={theme}>
-            <GlobalStyles />
             <Router />
           </ThemeProvider>
         </AnimesProvider>
