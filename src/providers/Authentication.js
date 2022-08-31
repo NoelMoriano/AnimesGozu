@@ -53,7 +53,12 @@ export const AuthenticationProvider = ({ children }) => {
         await firestore.collection("users").doc(uid).get()
       ).data();
 
-      if (userExists) return setFirebaseUser(currentUser);
+      if (userExists) {
+        setFirebaseUser(currentUser);
+        await timeoutPromise(1700);
+        setLoginLoading(false);
+        return setGoogleLoginLoading(false);
+      }
 
       await firestore
         .collection("users")
@@ -77,7 +82,7 @@ export const AuthenticationProvider = ({ children }) => {
 
       setFirebaseUser(currentUser);
 
-      await timeoutPromise(2000);
+      await timeoutPromise(1700);
       setLoginLoading(false);
       setGoogleLoginLoading(false);
       setFirebaseUser(null);
