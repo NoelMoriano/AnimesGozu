@@ -63,7 +63,7 @@ export const AuthenticationProvider = ({ children }) => {
             {
               id: uid,
               providerData: mapProviderData(providerData),
-              ...(registerAuthUserData && registerAuthUserData),
+              ...registerAuthUserData,
               createAt: new Date(),
             }
           ),
@@ -188,9 +188,7 @@ export const AuthenticationProvider = ({ children }) => {
         formData.password
       );
 
-      console.log("formData->", formData);
-
-      setRegisterAuthUserData(formData || null);
+      await setRegisterAuthUserData(formData);
     } catch (e) {
       const error = isError(e) ? e : undefined;
 
