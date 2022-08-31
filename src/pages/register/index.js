@@ -219,6 +219,10 @@ const Container = styled.section`
     background-position: center bottom;
     background-attachment: scroll;
     width: 100%;
+    display: none;
+    ${mediaQuery.minTablet} {
+      display: inherit;
+    }
   }
   .title-item {
     padding: 1rem;
