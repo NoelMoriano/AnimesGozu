@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { animeServerApi } from "../firebase";
+import { animeServerApi } from "../firebase/index";
 import { Spinner } from "../components";
 
 export const AnimesContext = createContext({ animes: [] });

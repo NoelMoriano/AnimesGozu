@@ -7,7 +7,7 @@ import { faChevronLeft, faPlay } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, useParams } from "react-router";
 import { useAnimes } from "../../providers/Animes";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
-import { currentConfig } from "../../firebase";
+import { currentConfig } from "../../firebase/index";
 import { isEmpty } from "lodash";
 
 export const Anime = () => {

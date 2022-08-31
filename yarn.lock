@@ -8027,13 +8027,6 @@ react@^18.2.0:
   dependencies:
     loose-envify "^1.1.0"
 
-reactn@^2.2.7:
-  version "2.2.7"
-  resolved "https://registry.yarnpkg.com/reactn/-/reactn-2.2.7.tgz#4d9a94ab0d8a540062666408e4bf1fae6892cecc"
-  integrity sha512-cqnt23kWN/ABqEZhW3OlpqI1DgTaaNDeHpSHtyd81qk0H1jd32zPTzJ69Hpzti2WakwNYveGFPIgI6i7E7nXOA==
-  dependencies:
-    use-force-update "^1.0.5"
-
 read-cache@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/read-cache/-/read-cache-1.0.0.tgz#e664ef31161166c9751cdbe8dbcf86b5fb58f774"
@@ -9202,11 +9195,6 @@ url-parse@^1.5.3:
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
-
-use-force-update@^1.0.5:
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/use-force-update/-/use-force-update-1.0.10.tgz#c59d93e1f600df93a3ffee4fe001373ff3eeef67"
-  integrity sha512-lDCSS6OQKqzAWhbavL1UWw1g5xHWUDaUDpY26zKsfCszi2RNjdzFxUVtA6M/43dgA/e6Si1AX2Qhb+hzdRuCeg==
 
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"

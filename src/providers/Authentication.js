@@ -5,7 +5,7 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { auth, firestore } from "../firebase";
+import { auth, firestore } from "../firebase/index";
 import { firebase } from "../firebase/config";
 import { assign, isError } from "lodash";
 import { useDocument } from "react-firebase-hooks/firestore";

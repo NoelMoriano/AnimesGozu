@@ -26,14 +26,6 @@ const { version, animeServerApi } = currentConfig;
 
 console.log(currentEnvironment, ":", version);
 
-let pageLoaded = false;
-firestore.doc("settings/default").onSnapshot(() => {
-  pageLoaded && document.location.reload();
-  pageLoaded = true;
-});
-
-console.log("currentConfig->", currentConfig);
-
 export {
   currentConfig,
   firebase,

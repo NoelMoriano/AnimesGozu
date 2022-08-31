@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useNavigate, useParams } from "react-router";
 import { EpisodeList, Servers, Spinner } from "../../../components";
 import { defaultTo, isEmpty } from "lodash";
-import { currentConfig } from "../../../firebase";
+import { currentConfig } from "../../../firebase/index";
 
 export const Episode = () => {
   const { animeId, episodeId } = useParams();
