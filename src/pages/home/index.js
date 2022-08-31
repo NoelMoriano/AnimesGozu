@@ -24,7 +24,7 @@ export const Home = () => {
           <div className="gradient">
             <div className="description-banner">
               <div className="description">
-                <h1>BIENVENIDO, NOS ENCANTA TENER AQUI!</h1>
+                <h1>BIENVENIDO</h1>
                 <h2>Tenemos los mejores animes para ti</h2>
               </div>
             </div>
@@ -119,10 +119,16 @@ const WrapperHomeBanner = styled.div`
         z-index: 700;
 
         .description {
-          font-size: 1.3em;
-
+          font-size: 0.7em;
+          ${mediaQuery.minTablet} {
+            font-size: 1.3em;
+          }
+          h1 {
+            font-size: 3.8em;
+          }
           h2 {
-            margin-top: 0.5em;
+            font-size: 1.3em;
+            margin-top: 0.3em;
           }
         }
       }
