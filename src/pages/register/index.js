@@ -167,7 +167,7 @@ export const Register = () => {
               block
               loading={loginLoading}
               disabled={loginLoading}
-              margin="0"
+              margin=".5em 0 0 0"
               htmlType="submit"
             >
               <div className="content-button">
