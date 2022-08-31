@@ -52,9 +52,10 @@ export const Button = ({
 }) => {
   const btnType = buttonsType[type];
   const btnSize = buttonsSize[size];
+
   return (
     <Container
-      onClick={() => onClick()}
+      onClick={onClick}
       width={width}
       height={height}
       background={btnType.background}

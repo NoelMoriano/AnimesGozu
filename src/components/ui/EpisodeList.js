@@ -34,7 +34,7 @@ export const EpisodeList = ({ episodes = [] }) => {
           <ul>
             <li>
               <Button
-                size="small "
+                size="small"
                 onClick={() => setIsAscEpisodes(!isAscEpisodes)}
               >
                 Mayor o menor &nbsp;
