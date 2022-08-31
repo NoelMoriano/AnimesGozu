@@ -1,6 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
-import "firebase/storage";
+import "firebase/auth";
 import configs from "./configs.json";
 import { includes } from "lodash";
 
@@ -16,8 +16,8 @@ const currentConfig = configs[currentEnvironment];
 
 firebase.initializeApp(currentConfig.firebaseApp);
 
-const auth = firebase.auth();
 const firestore = firebase.firestore();
+const auth = firebase.auth();
 
 const common = configs.common;
 const contactData = configs.common.contactData;
@@ -25,6 +25,14 @@ const contactData = configs.common.contactData;
 const { version, animeServerApi } = currentConfig;
 
 console.log(currentEnvironment, ":", version);
+
+let pageLoaded = false;
+firestore.doc("settings/default").onSnapshot(() => {
+  pageLoaded && document.location.reload();
+  pageLoaded = true;
+});
+
+console.log("currentConfig->", currentConfig);
 
 export {
   currentConfig,

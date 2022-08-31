@@ -8,11 +8,14 @@ import { setLocale } from "yup";
 import { theme } from "./styles";
 import { AnimesProvider } from "./providers/Animes";
 import { AuthenticationProvider } from "./providers/Authentication";
+import { currentConfig } from "./firebase";
 
 export const App = () => {
   useEffect(() => {
     setLocale(yup["es"]);
   }, []);
+
+  console.log("currentConfig2->", currentConfig);
 
   return (
     <AuthenticationProvider>
