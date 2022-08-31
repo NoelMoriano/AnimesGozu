@@ -52,8 +52,6 @@ export const AuthenticationProvider = ({ children }) => {
         await firestore.collection("users").doc(uid).get()
       ).data();
 
-      await timeoutPromise(1000);
-
       if (userExists) return setFirebaseUser(currentUser);
 
       await firestore
@@ -66,12 +64,13 @@ export const AuthenticationProvider = ({ children }) => {
               id: uid,
               providerData: mapProviderData(providerData),
               ...(registerAuthUserData && registerAuthUserData),
+              createAt: new Date(),
             }
           ),
           { merge: true }
         );
 
-      await timeoutPromise(2000);
+      await timeoutPromise(1000);
 
       return setFirebaseUser(currentUser);
     } catch (e) {
@@ -188,6 +187,8 @@ export const AuthenticationProvider = ({ children }) => {
         formData.email,
         formData.password
       );
+
+      console.log("formData->", formData);
 
       setRegisterAuthUserData(formData || null);
     } catch (e) {
