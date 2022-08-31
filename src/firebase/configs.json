@@ -1,9 +1,9 @@
 {
   "common": {
     "app-data": {
-      "name": "Cobiene app",
+      "name": "AnimeGozu",
       "emails": {
-        "contact": "info@cobiene-app.com"
+        "contact": "contact@animegozu.com"
       },
       "numbers": {
         "phone": ["950 425 945", "931 981 314"],
@@ -20,8 +20,8 @@
         "local2": "Av. Huaylas 2691 – Chorrillos"
       },
       "poweredBy": {
-        "name": "Cobiene app",
-        "webUrl": "https://cobiene.app"
+        "name": "AnimeGozu",
+        "webUrl": "https://animegozu.app"
       }
     }
   },

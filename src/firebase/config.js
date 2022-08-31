@@ -1,4 +1,6 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/storage";
 import configs from "./configs.json";
 import { includes } from "lodash";
 
@@ -25,10 +27,10 @@ const { version, animeServerApi } = currentConfig;
 console.log(currentEnvironment, ":", version);
 
 export {
+  currentConfig,
   firebase,
   version,
   animeServerApi,
-  currentConfig,
   common,
   contactData,
   auth,

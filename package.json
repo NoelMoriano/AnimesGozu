@@ -34,9 +34,19 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "yarn build && gh-pages -d build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "yarn run build && firebase deploy",
+    "deploy:hosting": " yarn run build && firebase deploy --only hosting",
+    "deploy:indexes": "firebase deploy --only firestore:indexes",
+    "deploy:functions": "firebase deploy --only functions",
+    "deploy:api": "firebase deploy --only functions:api",
+    "firebase:emulators": "firebase emulators:start",
+    "cypress:open": "cypress open",
+    "cypress:check": "cypress run --browser chrome --spec 'cypress/integration/*'",
+    "eslint:check": "eslint src",
+    "type:check": "tsc --noEmit",
+    "prettier:check": "prettier . --check"
   },
   "eslintConfig": {
     "extends": [
