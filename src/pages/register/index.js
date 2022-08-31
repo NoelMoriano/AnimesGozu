@@ -201,9 +201,8 @@ const Container = styled.section`
   color: #fff;
   display: grid;
   grid-template-columns: 1fr;
-  padding: 1em 0;
   ${mediaQuery.minTablet} {
-    grid-template-columns: 60% 1fr;
+    grid-template-columns: 55% 1fr;
     padding-bottom: 0;
   }
   .background-section {

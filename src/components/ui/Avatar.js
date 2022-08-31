@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { AvatarDefault } from "../../images";
+import { capitalize } from "lodash";
 
 export const Avatar = ({ ImgAvatar, fullName = "User" }) => {
-  console.log("ImgAvatar->", ImgAvatar);
   return (
     <Container>
       <div className="profile">
@@ -15,7 +15,7 @@ export const Avatar = ({ ImgAvatar, fullName = "User" }) => {
           />
         </div>
         <div className="name-profile">
-          <h4>{fullName}</h4>
+          <h4>{capitalize(fullName)}</h4>
         </div>
       </div>
     </Container>
