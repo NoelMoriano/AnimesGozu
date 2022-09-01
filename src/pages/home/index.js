@@ -85,7 +85,7 @@ const WrapperHomeBanner = styled.div`
   .banner-wrapper {
     z-index: 3;
     width: 100%;
-    height: 70vh;
+    height: 40vh;
     max-height: 40em;
     color: #fff;
     display: flex;
@@ -93,6 +93,9 @@ const WrapperHomeBanner = styled.div`
     align-items: center;
     flex-direction: column;
     position: relative;
+    ${mediaQuery.minTablet} {
+      height: 60vh;
+    }
 
     video {
       width: 100%;
