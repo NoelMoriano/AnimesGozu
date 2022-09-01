@@ -30,10 +30,10 @@ export const Servers = ({
         </div>
         <div className="pagination-buttons">
           <div className="item-prev">
-            <FontAwesomeIcon icon={faArrowLeft} size="lg" />
+            <FontAwesomeIcon icon={faArrowLeft} />
           </div>
           <div className="item-next">
-            <FontAwesomeIcon icon={faArrowRight} size="lg" />
+            <FontAwesomeIcon icon={faArrowRight} />
           </div>
         </div>
       </div>
@@ -98,11 +98,14 @@ const Container = styled.div`
       .item-next {
         cursor: pointer;
         width: auto;
-        padding: 0.5em 2em;
+        padding: 0 2em;
         text-align: center;
         color: ${({ theme }) => theme.colors.light};
         background: ${({ theme }) => theme.colors.dark};
         font-size: 1.5em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         &:hover {
           color: ${({ theme }) => theme.colors.primary};
         }
