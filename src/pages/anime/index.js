@@ -83,8 +83,8 @@ export const Anime = () => {
         </div>
       </WrapperHomeBanner>
       {isEmpty(episodes) ? (
-        <div>
-          <h1>No se encontraron episodios</h1>
+        <div className="wrapper-episodes-no-found">
+          <h3>No se encontraron episodios</h3>
         </div>
       ) : (
         <EpisodeList episodes={episodes} />
@@ -98,6 +98,11 @@ const Container = styled.div`
   height: auto;
   background: ${({ theme }) => theme.colors.secondary};
   color: ${({ theme }) => theme.colors.font1};
+
+  .wrapper-episodes-no-found {
+    padding: 1.5em;
+    text-align: center;
+  }
 `;
 
 const WrapperHomeBanner = styled.div`
