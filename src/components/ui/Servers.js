@@ -1,15 +1,23 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { darken } from "polished";
+import { darken, lighten } from "polished";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 export const Servers = ({
   servers = [],
   serverView = null,
   onSetServerEpisode,
+  anime,
+  episode,
+  onNavigateTo,
 }) => {
   const [serverType, setServerType] = useState("SUB");
+
+  const disabledButtonChangeEpisodePrev = () => episode.episodeNumber <= 1;
+
+  const disabledButtonChangeEpisodeNext = () =>
+    episode.episodeNumber >= anime.totalEpisodes;
 
   return (
     <Container>
@@ -29,12 +37,26 @@ export const Servers = ({
           ))}
         </div>
         <div className="pagination-buttons">
-          <div className="item-prev">
+          <ItemButtonChangeEpisode
+            disabledButtonChangeEpisode={!!disabledButtonChangeEpisodePrev()}
+            disabled={!!disabledButtonChangeEpisodePrev()}
+            onClick={() =>
+              !disabledButtonChangeEpisodePrev() &&
+              onNavigateTo(`/ver/${anime.id}/${episode.episodeNumber - 1}`)
+            }
+          >
             <FontAwesomeIcon icon={faArrowLeft} />
-          </div>
-          <div className="item-next">
+          </ItemButtonChangeEpisode>
+          <ItemButtonChangeEpisode
+            disabledButtonChangeEpisode={!!disabledButtonChangeEpisodeNext()}
+            disabled={!!disabledButtonChangeEpisodeNext()}
+            onClick={() =>
+              !disabledButtonChangeEpisodeNext() &&
+              onNavigateTo(`/ver/${anime.id}/${episode.episodeNumber + 1}`)
+            }
+          >
             <FontAwesomeIcon icon={faArrowRight} />
-          </div>
+          </ItemButtonChangeEpisode>
         </div>
       </div>
       <div className="wrapper-servers">
@@ -94,27 +116,6 @@ const Container = styled.div`
     }
     .pagination-buttons {
       display: flex;
-      .item-prev,
-      .item-next {
-        cursor: pointer;
-        width: auto;
-        padding: 0 2em;
-        text-align: center;
-        color: ${({ theme }) => theme.colors.light};
-        background: ${({ theme }) => theme.colors.dark};
-        font-size: 1.5em;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all ease-in-out 0.2s;
-        &:hover {
-          transition: all ease-in-out 0.2s;
-          background: ${({ theme }) => theme.colors.primary};
-          color: ${({ theme }) => theme.colors.white};
-        }
-      }
-      .item-next {
-      }
     }
   }
 
@@ -138,4 +139,39 @@ const Container = styled.div`
       }
     }
   }
+`;
+
+const ItemButtonChangeEpisode = styled.button`
+  ${({ theme, disabledButtonChangeEpisode = false }) => css`
+    cursor: pointer;
+    border: none;
+    width: auto;
+    padding: 0 2em;
+    text-align: center;
+    color: ${theme.colors.light};
+    background: ${theme.colors.dark};
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all ease-in-out 0.2s;
+
+    ${disabledButtonChangeEpisode
+      ? css`
+          &:disabled,
+          &[disabled] {
+            background: ${lighten(0.02, theme.colors.black)};
+            cursor: not-allowed;
+            color: ${lighten(0.02, theme.colors.gray)};
+          }
+        `
+      : css`
+          &:hover,
+          &:active {
+            transition: all ease-in-out 0.2s;
+            background: ${theme.colors.primary};
+            color: ${theme.colors.white};
+          }
+        `}
+  `};
 `;

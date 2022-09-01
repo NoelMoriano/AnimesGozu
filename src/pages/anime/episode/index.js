@@ -113,6 +113,9 @@ export const Episode = () => {
             servers={servers}
             serverView={serverView}
             onSetServerEpisode={onSetServerEpisode}
+            anime={anime}
+            episode={episode}
+            onNavigateTo={onNavigateTo}
           />
 
           {(anime || episode) && (
