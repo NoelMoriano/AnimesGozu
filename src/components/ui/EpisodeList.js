@@ -75,7 +75,7 @@ const Container = styled.div`
   width: 100%;
   height: auto;
   margin: 1rem 0;
-  padding: 1rem 0.7rem;
+  padding: 1em;
   position: relative;
   background: ${({ theme }) => theme.colors.tertiary};
   transition: all 0.2s ease-in-out;

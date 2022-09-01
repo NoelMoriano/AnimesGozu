@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router";
 import { EpisodeList, Servers, Spinner } from "../../../components";
 import { defaultTo, isEmpty } from "lodash";
 import { currentConfig } from "../../../firebase/index";
+import { mediaQuery } from "../../../styles/constants/mediaQuery";
 
 export const Episode = () => {
   const { animeId, episodeId } = useParams();
@@ -90,31 +91,31 @@ export const Episode = () => {
                   height="100%"
                 />
               )}
-              {/*<div className="item-play">*/}
-              {/*  <Button*/}
-              {/*    size="medium"*/}
-              {/*    borderRadius="50%"*/}
-              {/*    width="4rem"*/}
-              {/*    height="4rem"*/}
-              {/*  >*/}
-              {/*    <FontAwesomeIcon icon={faPlay} size="2x" />*/}
-              {/*  </Button>*/}
-              {/*</div>*/}
             </div>
           </div>
         </div>
       </WrapperHomeBanner>
       {isEmpty(episodes) ? (
-        <h1>No se encontraron episodios</h1>
+        <h3>No se encontraron episodios</h3>
       ) : (
-        <>
+        <WrapperDetail>
           <Servers
             servers={servers}
             serverView={serverView}
             onSetServerEpisode={onSetServerEpisode}
           />
+
+          <div className="episode-detail">
+            <div className="sub-title">
+              <h4>One Piece </h4>
+            </div>
+            <div className="title">
+              <h1>Episodio 968</h1>
+            </div>
+          </div>
+
           <EpisodeList episodes={episodes} />
-        </>
+        </WrapperDetail>
       )}
     </Container>
   );
@@ -127,15 +128,34 @@ const Container = styled.div`
   color: ${({ theme }) => theme.colors.font1};
 `;
 
+const WrapperDetail = styled.div`
+  width: 100%;
+  height: auto;
+  .episode-detail {
+    width: 100%;
+    padding: 1.7em 1em;
+    .sub-title {
+      margin-bottom: 0.7em;
+    }
+    .title {
+      font-size: 0.5em;
+      ${({ theme }) => theme.colors.white}
+    }
+  }
+`;
+
 const WrapperHomeBanner = styled.div`
   width: 100%;
-  height: 70vh;
-  max-height: 40em;
+  height: 50vh;
+  max-height: 20em;
   position: relative;
+  ${mediaQuery.minTablet} {
+    height: 65vh;
+    max-height: 31em;
+  }
   .banner-wrapper {
     width: 100%;
-    height: 70vh;
-    max-height: 40em;
+    height: 100%;
     background: #000 url(${({ bgBanner }) => bgBanner}) no-repeat;
     background-size: cover;
     color: #fff;
