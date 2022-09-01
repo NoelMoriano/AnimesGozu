@@ -42,7 +42,7 @@ export const Episode = () => {
 
       const result = await response.json();
 
-      if (isEmpty(result)) return onNavigateTo(`/ver/${animeId}`);
+      if (isEmpty(result)) return onNavigateTo(`/anime/${animeId}`);
 
       const episodeData = result[0] || null;
 

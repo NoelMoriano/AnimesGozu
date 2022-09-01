@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, CardAnime, Select } from "../../components";
 import { useAnimes } from "../../providers/Animes";
 import { useNavigate } from "react-router";
-import { includes } from "lodash";
+import { capitalize, includes, orderBy } from "lodash";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 
 export const SearchResult = () => {
@@ -35,8 +35,11 @@ export const SearchResult = () => {
         animeState === "all" ? true : includes(anime.state, animeState)
       );
 
-    setAnimesData(filterAnime);
+    setAnimesData(orderAnimes(filterAnime));
   };
+
+  const orderAnimes = (animes) =>
+    orderBy(animes, (anime) => capitalize(anime.name), ["asc"]);
 
   return (
     <Container>
