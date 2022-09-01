@@ -9,6 +9,7 @@ import {
 import { Button } from "./Button";
 import { useNavigate, useParams } from "react-router";
 import { orderBy } from "lodash";
+import { mediaQuery } from "../../styles/constants/mediaQuery";
 
 export const EpisodeList = ({ episodes = [] }) => {
   const { animeId } = useParams();
@@ -74,7 +75,7 @@ const Container = styled.div`
   width: 100%;
   height: auto;
   margin: 1rem 0;
-  padding: 1rem;
+  padding: 1rem 0.7rem;
   position: relative;
   background: ${({ theme }) => theme.colors.tertiary};
   transition: all 0.2s ease-in-out;
@@ -97,7 +98,11 @@ const WrapperHeader = styled.div`
   height: auto;
   margin-bottom: 1rem;
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  ${mediaQuery.minMobile} {
+    grid-template-columns: 1fr auto;
+  }
   .item-title {
     display: flex;
     align-items: center;

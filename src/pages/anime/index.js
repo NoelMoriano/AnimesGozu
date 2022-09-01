@@ -82,13 +82,13 @@ export const Anime = () => {
           </div>
         </div>
       </WrapperHomeBanner>
-      {isEmpty(episodes) ? (
-        <div className="wrapper-episodes-no-found">
+      <div className="wrapper-episodes">
+        {isEmpty(episodes) ? (
           <h3>No se encontraron episodios</h3>
-        </div>
-      ) : (
-        <EpisodeList episodes={episodes} />
-      )}
+        ) : (
+          <EpisodeList episodes={episodes} />
+        )}
+      </div>
     </Container>
   );
 };
@@ -98,9 +98,8 @@ const Container = styled.div`
   height: auto;
   background: ${({ theme }) => theme.colors.secondary};
   color: ${({ theme }) => theme.colors.font1};
-
-  .wrapper-episodes-no-found {
-    padding: 1.5em;
+  .wrapper-episodes {
+    padding: 1.5em 0.9em;
     text-align: center;
   }
 `;
@@ -138,7 +137,7 @@ const WrapperHomeBanner = styled.div`
       .content-banner {
         width: 100%;
         height: 100%;
-        padding: 2rem;
+        padding: 1.5em 0.9em;
         display: flex;
         justify-content: end;
         align-items: start;

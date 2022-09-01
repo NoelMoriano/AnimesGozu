@@ -135,14 +135,13 @@ const WrapperHomeBanner = styled.div`
 const WrapperAnimesContent = styled.div`
   width: 100%;
   height: auto;
-  padding-top: 2em;
+  padding: 2em 1.7em;
   position: relative;
   .category-card {
     position: relative;
     width: 100%;
     height: auto;
     margin-bottom: 3em;
-    padding: 1em;
     ${mediaQuery.minTablet} {
       margin-bottom: 5em;
     }
@@ -154,7 +153,7 @@ const WrapperAnimesContent = styled.div`
     }
     .category {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(10em, auto));
+      grid-template-columns: repeat(auto-fit, minmax(9em, auto));
       gap: 2em;
       justify-content: center;
       ${mediaQuery.minMobile} {
