@@ -14,7 +14,7 @@ export const Avatar = ({ ImgAvatar, nickName = "User" }) => {
           />
         </div>
         <div className="name-profile">
-          <h4>{nickName}</h4>
+          <h5>{nickName}</h5>
         </div>
       </div>
     </Container>
@@ -29,14 +29,15 @@ const Container = styled.div`
     justify-content: center;
     flex-direction: column;
     .img-avatar {
-      width: 7rem;
-      height: 7rem;
+      width: 6.5em;
+      height: 6.5em;
       object-fit: cover;
       margin: 0.5rem 0;
       border-radius: 50%;
     }
     .name-profile {
       text-transform: capitalize;
+      text-align: center;
     }
   }
 `;

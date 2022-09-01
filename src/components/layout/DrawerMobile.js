@@ -1,11 +1,11 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { Avatar, Button } from "../ui";
-import { MenuList } from "./MenuList";
+import { Button } from "../ui";
 import { useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { useAuthentication } from "../../providers/Authentication";
+import { UserMenu } from "./UserMenu";
 
 export const DrawerMobile = ({ visibleDrawer, onSetVisibleDrawer }) => {
   const navigate = useNavigate();
@@ -29,41 +29,11 @@ export const DrawerMobile = ({ visibleDrawer, onSetVisibleDrawer }) => {
       </div>
 
       {authUser ? (
-        <>
-          <Avatar
-            ImgAvatar={authUser.providerData?.photoURL}
-            nickName={authUser?.nickName || authUser?.firstName}
-          />
-          <div className="menu-mobile-list">
-            <MenuList
-              title="Inicio"
-              linkTo="/"
-              className="link-section"
-              onClick={() => onHiddenDrawerMobile()}
-            />
-            <MenuList
-              title="Animes"
-              linkTo="/search"
-              className="link-section"
-              onClick={() => onHiddenDrawerMobile()}
-            />
-            <MenuList
-              title="Perfil"
-              linkTo="/profile"
-              className="link-section"
-              onClick={() => onHiddenDrawerMobile()}
-            />
-            <a
-              className="link-section"
-              onClick={() => {
-                onHiddenDrawerMobile();
-                return logout();
-              }}
-            >
-              <h3>Logout</h3>
-            </a>
-          </div>
-        </>
+        <UserMenu
+          authUser={authUser}
+          onLogout={logout}
+          onHiddenDrawerMobile={onHiddenDrawerMobile}
+        />
       ) : (
         <div className="wrapper-buttons">
           <Button size="medium" onClick={() => onNavigateTo("/login")}>
@@ -105,21 +75,6 @@ const Container = styled.div`
     justify-content: end;
     .item-close {
       color: ${({ theme }) => theme.colors.white};
-    }
-  }
-  .menu-mobile-list {
-    margin: 1.5rem 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    .link-section {
-      text-decoration: none;
-      text-transform: uppercase;
-      color: #fff;
-      font-size: 0.9rem;
-      cursor: pointer;
     }
   }
   .wrapper-buttons {

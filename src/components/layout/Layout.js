@@ -45,14 +45,12 @@ const LayoutContent = styled.div`
   background: inherit;
 
   .navbar {
+    position: relative;
     grid-column: span 1;
-    grid-row: span 1;
+    grid-row: span 2;
     width: 100%;
     height: 100%;
     display: none;
-    position: sticky;
-    top: 10vh;
-
     ${mediaQuery.minTablet} {
       display: block;
     }
