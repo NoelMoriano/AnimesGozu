@@ -43,6 +43,12 @@ const Container = styled.div`
     transition: all 0.2s ease-in-out;
     background: rgba(14, 14, 14, 0.7);
   }
+
+  &:active {
+    transition: all 0.1s ease-in-out;
+    background: ${({ theme }) => theme.colors.primary};
+  }
+
   .item-left {
     display: flex;
     align-items: center;

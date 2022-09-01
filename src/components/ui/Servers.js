@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { darken, lighten } from "polished";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { capitalize, orderBy } from "lodash";
 
 export const Servers = ({
   servers = [],
@@ -11,30 +12,40 @@ export const Servers = ({
   anime,
   episode,
   onNavigateTo,
+  serverType,
+  onSetServerType,
 }) => {
-  const [serverType, setServerType] = useState("SUB");
-
   const disabledButtonChangeEpisodePrev = () => episode.episodeNumber <= 1;
 
   const disabledButtonChangeEpisodeNext = () =>
     episode.episodeNumber >= anime.totalEpisodes;
 
+  const orderServersTypesBy = (serversTypes = []) =>
+    orderBy(serversTypes || [], (serverType) => capitalize(serverType), [
+      "asc",
+    ]);
+
+  const orderServersBy = (servers = []) =>
+    orderBy(servers || [], (server) => capitalize(server.server), ["asc"]);
+
   return (
     <Container>
       <div className="wrapper-types">
         <div className="server-types">
-          {Object.keys(servers).map((serverType_, index) => (
-            <ItemServersType
-              key={index}
-              isActive={serverType_ === serverType}
-              onClick={() => {
-                setServerType(serverType_);
-                onSetServerEpisode(null);
-              }}
-            >
-              {serverType_}
-            </ItemServersType>
-          ))}
+          {orderServersTypesBy(Object.keys(servers)).map(
+            (serverType_, index) => (
+              <ItemServersType
+                key={index}
+                isActive={serverType_ === serverType}
+                onClick={() => {
+                  onSetServerType(serverType_);
+                  onSetServerEpisode(null);
+                }}
+              >
+                {serverType_}
+              </ItemServersType>
+            )
+          )}
         </div>
         <div className="pagination-buttons">
           <ItemButtonChangeEpisode
@@ -62,7 +73,7 @@ export const Servers = ({
       <div className="wrapper-servers">
         <div className="item-servers">
           <ul>
-            {servers[serverType].map((server, index) => (
+            {orderServersBy(servers[serverType]).map((server, index) => (
               <ItemServer
                 key={index}
                 isActive={server.server === serverView?.server}

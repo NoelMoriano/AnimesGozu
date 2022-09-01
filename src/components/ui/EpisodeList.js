@@ -17,6 +17,8 @@ export const EpisodeList = ({ episodes = [] }) => {
 
   const [isAscEpisodes, setIsAscEpisodes] = useState(false);
 
+  const onWindowScrollTop = () => window.scrollTo(0, 0);
+
   const onNavigateTo = (param) => navigate(param);
 
   const episodesView = () =>
@@ -61,9 +63,10 @@ export const EpisodeList = ({ episodes = [] }) => {
               episode.episodeImage.url ||
               "https://storage.googleapis.com/animes-dev-animes/animes/dumucB9YLN054VySLlu6/episodes/mUmBShtFWxSiskrJNOa2/episodeImage.jpeg"
             }
-            onClick={() =>
-              onNavigateTo(`/ver/${animeId}/${episode.episodeNumber}`)
-            }
+            onClick={() => {
+              onNavigateTo(`/ver/${animeId}/${episode.episodeNumber}`);
+              onWindowScrollTop();
+            }}
           />
         ))}
       </WrapperEpisodes>

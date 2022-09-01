@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router";
 import { EpisodeList, Servers, Spinner } from "../../../components";
-import { capitalize, defaultTo, isEmpty } from "lodash";
+import { capitalize, defaultTo, isEmpty, orderBy } from "lodash";
 import { currentConfig } from "../../../firebase/index";
 import { mediaQuery } from "../../../styles/constants/mediaQuery";
 import { useAnimes } from "../../../providers/Animes";
@@ -14,19 +14,26 @@ export const Episode = () => {
   const { animes } = useAnimes();
 
   const [anime, setAnime] = useState(null);
-  const [episode, setEpisode] = useState(null);
   const [episodes, setEpisodes] = useState([]);
+  const [episode, setEpisode] = useState(null);
   const [servers, setServers] = useState([]);
   const [serverView, setServerView] = useState(null);
+  const [serverType, setServerType] = useState("SUB");
+  const [loadingEpisodes, setLoadingEpisodes] = useState(true);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    (async () => {
+      await fetchEpisodes();
+    })();
+  }, []);
 
   useEffect(() => {
     (async () => {
       await findAnime();
       await fetchEpisode();
-      await fetchEpisodes();
     })();
-  }, [episodeId]);
+  }, [animeId, episodeId, serverType]);
 
   const onNavigateTo = (param) => navigate(param);
 
@@ -44,15 +51,16 @@ export const Episode = () => {
 
       if (isEmpty(result)) return onNavigateTo(`/anime/${animeId}`);
 
-      const episodeData = result[0] || null;
+      const episodeData = result[0] || [];
 
       const serverDefault =
-        episodeData.servers["SUB"].find((server) => server.server === "sb") ||
-        null;
+        episodeData.servers[serverType].find(
+          (server) => server.server === "sb" || server.server === "okru"
+        ) || null;
 
-      setEpisode(episodeData);
+      setEpisode(episodeData || null);
       setServers(episodeData.servers || []);
-      setServerView(serverDefault);
+      setServerView(serverDefault || null);
     } catch (error) {
       console.error("errorFetchEpisode:", error);
     } finally {
@@ -67,7 +75,7 @@ export const Episode = () => {
 
   const fetchEpisodes = async () => {
     try {
-      setLoading(true);
+      setLoadingEpisodes(true);
       const url = `${currentConfig.animeServerApi}/episodes/${animeId}`;
       const response = await fetch(url);
       const result = await response.json();
@@ -75,33 +83,37 @@ export const Episode = () => {
     } catch (error) {
       console.error("errorFetchEpisodes:", error);
     } finally {
-      setLoading(false);
+      setLoadingEpisodes(false);
     }
   };
 
-  if (loading) return <Spinner fullscreen />;
-
   return (
     <Container>
-      <WrapperHomeBanner bgBanner={episode?.episodeImage?.url || ""}>
+      <WrapperHomeBanner
+        bgBanner={loading ? "" : episode?.episodeImage?.url || ""}
+      >
         <div className="banner-wrapper">
           <div className="gradient">
-            <div className="content-banner">
-              {serverView && (
-                <iframe
-                  key={serverView.code || episodeId}
-                  className="iframe-episode"
-                  src={defaultTo(serverView.url || serverView.code, "")}
-                  frameBorder="0"
-                  scrolling="no"
-                  allowFullScreen
-                  marginHeight="0"
-                  marginWidth="0"
-                  width="100%"
-                  height="100%"
-                />
-              )}
-            </div>
+            {loading ? (
+              <Spinner fullscreen />
+            ) : (
+              <div className="content-banner">
+                {serverView && (
+                  <iframe
+                    key={serverView.code || episodeId}
+                    className="iframe-episode"
+                    src={defaultTo(serverView.url || serverView.code, "")}
+                    frameBorder="0"
+                    scrolling="no"
+                    allowFullScreen
+                    marginHeight="0"
+                    marginWidth="0"
+                    width="100%"
+                    height="100%"
+                  />
+                )}
+              </div>
+            )}
           </div>
         </div>
       </WrapperHomeBanner>
@@ -116,6 +128,8 @@ export const Episode = () => {
             anime={anime}
             episode={episode}
             onNavigateTo={onNavigateTo}
+            serverType={serverType}
+            onSetServerType={setServerType}
           />
 
           {(anime || episode) && (
@@ -133,7 +147,11 @@ export const Episode = () => {
             </div>
           )}
 
-          <EpisodeList episodes={episodes} />
+          {loadingEpisodes ? (
+            <Spinner fullscreen />
+          ) : (
+            <EpisodeList episodes={episodes} />
+          )}
         </WrapperDetail>
       )}
     </Container>
