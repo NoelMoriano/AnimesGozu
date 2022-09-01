@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ImgAnime } from "../../images";
 import { capitalize } from "lodash";
+import { mediaQuery } from "../../styles/constants/mediaQuery";
 
 export const CardAnime = ({
   onNavigateAnime,
@@ -12,7 +13,7 @@ export const CardAnime = ({
 }) => (
   <Container onClick={() => onNavigateAnime()}>
     <div className="item-anime">
-      <img src={image || imgAnime} alt={`${title} - AnimeGozu`} />
+      <img src={image || imgAnime} alt={`${title} animes gozu`} />
       <div className="hover-effect">
         <div className="synopsis">{synopsis}</div>
       </div>
@@ -26,8 +27,14 @@ const Container = styled.div`
   transform: scale(1);
   transition: transform 0.5s cubic-bezier(0.34, 1.61, 0.7, 1);
 
-  &:hover {
+  &:active {
     transform: scale(1.1);
+  }
+
+  ${mediaQuery.minMobile} {
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   .item-anime {
@@ -78,18 +85,20 @@ const Container = styled.div`
       }
     }
 
-    &:hover {
-      transition: transform ease-in-out 0.5s;
-      .hover-effect {
-        opacity: 5;
-        background: rgb(0, 0, 0);
-        background: linear-gradient(
-          2deg,
-          rgba(0, 0, 0, 1) 0%,
-          rgb(25 25 42 / 57%) 66%,
-          rgba(0, 0, 0, 0) 90%
-        );
-        transform: translateY(0%);
+    ${mediaQuery.minMobile} {
+      &:hover {
+        transition: transform ease-in-out 0.5s;
+        .hover-effect {
+          opacity: 5;
+          background: rgb(0, 0, 0);
+          background: linear-gradient(
+            2deg,
+            rgba(0, 0, 0, 1) 0%,
+            rgb(25 25 42 / 57%) 66%,
+            rgba(0, 0, 0, 0) 90%
+          );
+          transform: translateY(0%);
+        }
       }
     }
   }

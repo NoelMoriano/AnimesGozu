@@ -132,6 +132,7 @@ const Container = styled.div`
     linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
