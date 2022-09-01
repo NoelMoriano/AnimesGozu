@@ -89,7 +89,7 @@ export const SearchResult = () => {
         {animesData.map((anime, index) => (
           <CardAnime
             key={index}
-            onNavigateAnime={() => onNavigateTo(`/ver/${anime.id}`)}
+            onNavigateAnime={() => onNavigateTo(`/anime/${anime.id}`)}
             title={anime.name}
             image={anime.animePicture.url}
             synopsis={anime.synopsis}
