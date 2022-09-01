@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { ImgAnime } from "../../images";
-import { capitalize } from "lodash";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 
 export const CardAnime = ({
@@ -18,7 +17,7 @@ export const CardAnime = ({
         <div className="synopsis">{synopsis}</div>
       </div>
     </div>
-    <h5 className="title-anime">{capitalize(title)}</h5>
+    <h5 className="title-anime">{title}</h5>
   </Container>
 );
 
@@ -106,5 +105,6 @@ const Container = styled.div`
   .title-anime {
     margin: 1em auto;
     text-align: center;
+    text-transform: capitalize;
   }
 `;

@@ -5,6 +5,7 @@ import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { useNavigate } from "react-router";
 import { useAnimes } from "../../providers/Animes";
 import { videoBanner } from "../../images";
+import { capitalize, orderBy } from "lodash";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -13,8 +14,15 @@ export const Home = () => {
 
   const onNavigateTo = (param) => navigate(param);
 
-  const animesCategory = animes.filter((anime) => anime.category === "anime");
-  const ovasCategory = animes.filter((anime) => anime.category === "ova");
+  const orderAnimes = (animes) =>
+    orderBy(animes, (anime) => capitalize(anime.name), ["asc"]);
+
+  const animesCategory = orderAnimes(
+    animes.filter((anime) => anime.category === "anime")
+  );
+  const ovasCategory = orderAnimes(
+    animes.filter((anime) => anime.category === "ova")
+  );
 
   return (
     <Container>
@@ -120,6 +128,7 @@ const WrapperHomeBanner = styled.div`
 
         .description {
           font-size: 0.7em;
+          padding: 0 3em;
           ${mediaQuery.minTablet} {
             font-size: 1.2em;
           }

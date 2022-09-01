@@ -81,8 +81,6 @@ export const Episode = () => {
 
   if (loading) return <Spinner fullscreen />;
 
-  console.log("anime->", anime);
-
   return (
     <Container>
       <WrapperHomeBanner bgBanner={episode?.episodeImage?.url || ""}>
@@ -119,14 +117,14 @@ export const Episode = () => {
 
           {(anime || episode) && (
             <div className="episode-detail">
-              {anime && (
+              {episode?.episodeNumber && (
                 <div className="sub-title">
-                  <h4>{capitalize(anime.name)}</h4>
+                  <h4>Episodio {episode.episodeNumber}</h4>
                 </div>
               )}
-              {episode?.episodeNumber && (
+              {anime && (
                 <div className="title">
-                  <h1>Episodio {episode.episodeNumber}</h1>
+                  <h1>{anime.name}</h1>
                 </div>
               )}
             </div>
@@ -151,12 +149,17 @@ const WrapperDetail = styled.div`
   height: auto;
   .episode-detail {
     width: 100%;
-    padding: 1.7em 1em;
+    padding: 1.9em 1em;
+    font-size: 0.9em;
+    ${mediaQuery.minTablet} {
+      font-size: 1em;
+    }
     .sub-title {
       margin-bottom: 0.7em;
     }
     .title {
       font-size: 0.5em;
+      text-transform: capitalize;
       ${({ theme }) => theme.colors.white}
     }
   }
@@ -168,8 +171,8 @@ const WrapperHomeBanner = styled.div`
   max-height: 20em;
   position: relative;
   ${mediaQuery.minTablet} {
-    height: 65vh;
-    max-height: 31em;
+    height: 68vh;
+    max-height: 35em;
   }
   .banner-wrapper {
     width: 100%;

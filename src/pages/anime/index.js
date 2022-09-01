@@ -137,7 +137,7 @@ const WrapperHomeBanner = styled.div`
       .content-banner {
         width: 100%;
         height: 100%;
-        padding: 1.5em 0.9em;
+        padding: 1.3em;
         display: flex;
         justify-content: end;
         align-items: start;
