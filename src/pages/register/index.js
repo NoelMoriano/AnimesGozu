@@ -72,16 +72,14 @@ export const Register = () => {
       <div className="background-section" />
       <div className="form-section">
         <div className="title-item">
-          <h2>
-            <Link to="/login">
-              <FontAwesomeIcon
-                icon={faArrowLeft}
-                className="item-icon"
-                size="lg"
-              />
-              <span>Login</span>
-            </Link>
-          </h2>
+          <Link to="/login">
+            <FontAwesomeIcon
+              icon={faArrowLeft}
+              className="item-icon"
+              size="lg"
+            />
+            <span>Login</span>
+          </Link>
         </div>
         <div className="form-item">
           <h2>Bienvenido</h2>
@@ -232,12 +230,12 @@ const Container = styled.section`
     padding: 1rem;
     display: flex;
     justify-content: end;
+    font-size: 1.5em;
     a {
       color: #fff;
       text-decoration: none;
       span {
         margin-left: 0.3rem;
-        font-size: 1.4rem;
       }
     }
   }
