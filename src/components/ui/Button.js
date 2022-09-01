@@ -115,23 +115,24 @@ const Container = styled.button`
     outline: none;
     transition: all ease-in-out 0.2s;
 
-    &:hover {
-      transition: all ease-in-out 0.2s;
-      background: ${background};
-      box-shadow: 1px 3px 30px -8px ${background};
-    }
-
     ${({ disabled }) =>
-      disabled &&
-      css`
-        &:disabled,
-        &[disabled] {
-          border: #999999;
-          background-color: #cccccc;
-          cursor: not-allowed;
-          color: #666666;
-        }
-      `}
+      disabled
+        ? css`
+            &:disabled,
+            &[disabled] {
+              border: #999999;
+              background-color: #cccccc;
+              cursor: not-allowed;
+              color: #666666;
+            }
+          `
+        : css`
+            &:hover {
+              transition: all ease-in-out 0.2s;
+              background: ${background};
+              box-shadow: 1px 3px 30px -8px ${background};
+            }
+          `}
 
     .content-button {
       display: flex;

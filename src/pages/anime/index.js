@@ -34,8 +34,6 @@ export const Anime = () => {
       const response = await fetch(url);
       const result = await response.json();
 
-      if (isEmpty(result)) return onNavigateTo(`/`);
-
       setEspisodes(result);
     } catch (error) {
       console.error("errorFetchEpisodes:", error);
