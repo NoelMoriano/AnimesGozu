@@ -154,7 +154,8 @@ const Container = styled.div`
     .wrapper-logo {
       text-align: center;
       img {
-        width: 50%;
+        width: 60%;
+        margin-bottom: 1em;
       }
     }
 
