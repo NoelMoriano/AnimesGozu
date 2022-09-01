@@ -29,7 +29,7 @@ export const EpisodeList = ({ episodes = [] }) => {
     <Container>
       <WrapperHeader>
         <div className="item-title">
-          <h2>Lista de episodios</h2>
+          <h4>Lista de episodios</h4>
         </div>
         <div className="item-filters">
           <ul>

@@ -15,13 +15,13 @@ export const EpisodeItem = ({
     </div>
     <div className="item-center">
       <div className="titles" onClick={() => onClick()}>
-        <h4>{title}</h4>
-        <h3>Episodio {number}</h3>
+        <h6>{title}</h6>
+        <h5>Episodio {number}</h5>
       </div>
     </div>
     <div className="item-right">
       <FontAwesomeIcon
-        className="icon-search"
+        className="icon-play"
         icon={faCirclePlay}
         size="2x"
         onClick={() => onClick()}
@@ -58,14 +58,21 @@ const Container = styled.div`
     align-items: center;
     justify-content: start;
     .titles {
-      h3 {
-        font-size: 1.3rem;
-      }
+      font-size: 1.1em;
+      padding-left: 0.5em;
     }
   }
   .item-right {
     display: flex;
     align-items: center;
     justify-content: center;
+    .icon-play {
+      transition: all ease-in-out 0.3s;
+      &:hover,
+      &:active {
+        transition: all ease-in-out 0.3s;
+        color: ${({ theme }) => theme.colors.primary};
+      }
+    }
   }
 `;
