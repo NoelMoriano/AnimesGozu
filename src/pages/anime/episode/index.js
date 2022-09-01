@@ -117,7 +117,7 @@ export const Episode = () => {
           </div>
         </div>
       </WrapperHomeBanner>
-      {isEmpty(episodes) ? (
+      {isEmpty(episodes) || isEmpty(episode) ? (
         <h3>No se encontraron episodios</h3>
       ) : (
         <WrapperDetail>
