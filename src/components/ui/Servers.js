@@ -106,8 +106,11 @@ const Container = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: all ease-in-out 0.2s;
         &:hover {
-          color: ${({ theme }) => theme.colors.primary};
+          transition: all ease-in-out 0.2s;
+          background: ${({ theme }) => theme.colors.primary};
+          color: ${({ theme }) => theme.colors.white};
         }
       }
       .item-next {
