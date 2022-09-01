@@ -32,7 +32,7 @@ export const AnimesProvider = ({ children }) => {
   if (loading) return <Spinner height="90vh" />;
 
   return (
-    <AnimesContext.Provider value={{ animes: animes }}>
+    <AnimesContext.Provider value={{ animes }}>
       {children}
     </AnimesContext.Provider>
   );

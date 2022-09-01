@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { darken } from "polished";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 export const Servers = ({
   servers = [],
@@ -12,18 +14,28 @@ export const Servers = ({
   return (
     <Container>
       <div className="wrapper-types">
-        {Object.keys(servers).map((serverType_, index) => (
-          <ItemServersType
-            key={index}
-            isActive={serverType_ === serverType}
-            onClick={() => {
-              setServerType(serverType_);
-              onSetServerEpisode(null);
-            }}
-          >
-            {serverType_}
-          </ItemServersType>
-        ))}
+        <div className="server-types">
+          {Object.keys(servers).map((serverType_, index) => (
+            <ItemServersType
+              key={index}
+              isActive={serverType_ === serverType}
+              onClick={() => {
+                setServerType(serverType_);
+                onSetServerEpisode(null);
+              }}
+            >
+              {serverType_}
+            </ItemServersType>
+          ))}
+        </div>
+        <div className="pagination-buttons">
+          <div className="item-prev">
+            <FontAwesomeIcon icon={faArrowLeft} size="lg" />
+          </div>
+          <div className="item-next">
+            <FontAwesomeIcon icon={faArrowRight} size="lg" />
+          </div>
+        </div>
       </div>
       <div className="wrapper-servers">
         <div className="item-servers">
@@ -74,8 +86,30 @@ const Container = styled.div`
   height: auto;
   font-size: 0.9em;
   .wrapper-types {
-    display: flex;
-    grid-gap: 1em;
+    display: grid;
+    grid-template-columns: 1fr auto;
+
+    .server-types {
+      display: flex;
+    }
+    .pagination-buttons {
+      display: flex;
+      .item-prev,
+      .item-next {
+        cursor: pointer;
+        width: auto;
+        padding: 0.5em 2em;
+        text-align: center;
+        color: ${({ theme }) => theme.colors.light};
+        background: ${({ theme }) => theme.colors.dark};
+        font-size: 1.5em;
+        &:hover {
+          color: ${({ theme }) => theme.colors.primary};
+        }
+      }
+      .item-next {
+      }
+    }
   }
 
   .wrapper-servers {

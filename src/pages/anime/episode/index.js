@@ -2,28 +2,38 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router";
 import { EpisodeList, Servers, Spinner } from "../../../components";
-import { defaultTo, isEmpty } from "lodash";
+import { capitalize, defaultTo, isEmpty } from "lodash";
 import { currentConfig } from "../../../firebase/index";
 import { mediaQuery } from "../../../styles/constants/mediaQuery";
+import { useAnimes } from "../../../providers/Animes";
 
 export const Episode = () => {
   const { animeId, episodeId } = useParams();
   const navigate = useNavigate();
 
-  const [servers, setServers] = useState([]);
-  const [serverView, setServerView] = useState(null);
+  const { animes } = useAnimes();
+
+  const [anime, setAnime] = useState(null);
   const [episode, setEpisode] = useState(null);
   const [episodes, setEpisodes] = useState([]);
+  const [servers, setServers] = useState([]);
+  const [serverView, setServerView] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
+      await findAnime();
       await fetchEpisode();
       await fetchEpisodes();
     })();
   }, [episodeId]);
 
   const onNavigateTo = (param) => navigate(param);
+
+  const findAnime = () => {
+    const anime_ = animes.find((anime) => anime.id === animeId);
+    setAnime(anime_);
+  };
 
   const fetchEpisode = async () => {
     try {
@@ -71,6 +81,8 @@ export const Episode = () => {
 
   if (loading) return <Spinner fullscreen />;
 
+  console.log("anime->", anime);
+
   return (
     <Container>
       <WrapperHomeBanner bgBanner={episode?.episodeImage?.url || ""}>
@@ -105,14 +117,20 @@ export const Episode = () => {
             onSetServerEpisode={onSetServerEpisode}
           />
 
-          <div className="episode-detail">
-            <div className="sub-title">
-              <h4>One Piece </h4>
+          {(anime || episode) && (
+            <div className="episode-detail">
+              {anime && (
+                <div className="sub-title">
+                  <h4>{capitalize(anime.name)}</h4>
+                </div>
+              )}
+              {episode?.episodeNumber && (
+                <div className="title">
+                  <h1>Episodio {episode.episodeNumber}</h1>
+                </div>
+              )}
             </div>
-            <div className="title">
-              <h1>Episodio 968</h1>
-            </div>
-          </div>
+          )}
 
           <EpisodeList episodes={episodes} />
         </WrapperDetail>
