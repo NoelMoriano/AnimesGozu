@@ -74,7 +74,11 @@ export const Register = () => {
         <div className="title-item">
           <h2>
             <Link to="/login">
-              <FontAwesomeIcon icon={faArrowLeft} className="item-icon" />
+              <FontAwesomeIcon
+                icon={faArrowLeft}
+                className="item-icon"
+                size="lg"
+              />
               <span>Login</span>
             </Link>
           </h2>

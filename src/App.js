@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Router } from "./router";
 import { BrowserRouter } from "react-router-dom";
-import { GlobalStyles } from "./styles/themes/GlobalStyle";
+import { GlobalStyle } from "./styles";
 import { ThemeProvider } from "styled-components";
 import { yup } from "./config";
 import { setLocale } from "yup";
@@ -15,15 +15,17 @@ export const App = () => {
   }, []);
 
   return (
-    <AuthenticationProvider>
-      <BrowserRouter>
-        <AnimesProvider>
-          <GlobalStyles />
-          <ThemeProvider theme={theme}>
-            <Router />
-          </ThemeProvider>
-        </AnimesProvider>
-      </BrowserRouter>
-    </AuthenticationProvider>
+    <>
+      <AuthenticationProvider>
+        <BrowserRouter>
+          <AnimesProvider>
+            <ThemeProvider theme={theme}>
+              <GlobalStyle />
+              <Router />
+            </ThemeProvider>
+          </AnimesProvider>
+        </BrowserRouter>
+      </AuthenticationProvider>
+    </>
   );
 };

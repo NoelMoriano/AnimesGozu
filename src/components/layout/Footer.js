@@ -26,7 +26,9 @@ export const Footer = () => {
         </div>
         <div>
           Desarrollado con
-          <FontAwesomeIcon icon={faHeart} color="red" className="item-icon" />
+          <span className="item-icon">
+            <FontAwesomeIcon icon={faHeart} />
+          </span>
           para el mundo
         </div>
       </div>
@@ -80,18 +82,19 @@ const Container = styled.div`
       color: ${({ theme }) => theme.colors.font2};
       .item-icon {
         margin: 0 0.3rem;
+        color: red;
       }
     }
-    div:last-child {
+    div:first-child {
       text-align: center;
-      margin-top: 0.4rem;
+      margin-top: 0.5rem;
       ${mediaQuery.minTablet} {
         text-align: left;
       }
     }
     div:last-child {
       text-align: center;
-      margin-top: 0.4rem;
+      margin-top: 0.7rem;
       ${mediaQuery.minTablet} {
         text-align: right;
       }

@@ -25,7 +25,7 @@ export const Home = () => {
             <div className="description-banner">
               <div className="description">
                 <h1>BIENVENIDO</h1>
-                <h2>Tenemos los mejores animes para ti</h2>
+                <h3>Tenemos los mejores animes para ti</h3>
               </div>
             </div>
           </div>
@@ -34,7 +34,7 @@ export const Home = () => {
 
       <WrapperAnimesContent>
         <div className="category-card">
-          <h2>ANIMES:</h2>
+          <h3>ANIMES:</h3>
           <div className="category">
             {animesCategory.map((anime, index) => (
               <CardAnime
@@ -48,7 +48,7 @@ export const Home = () => {
           </div>
         </div>
         <div className="category-card">
-          <h2>OVAS:</h2>
+          <h3>OVAS:</h3>
           <div className="category ">
             {ovasCategory.map((anime, index) => (
               <CardAnime
@@ -121,29 +121,11 @@ const WrapperHomeBanner = styled.div`
         .description {
           font-size: 0.7em;
           ${mediaQuery.minTablet} {
-            font-size: 1.3em;
-          }
-          h1 {
-            font-size: 3.8em;
+            font-size: 1.2em;
           }
           h2 {
-            font-size: 1.3em;
             margin-top: 0.3em;
           }
-        }
-      }
-
-      .banner {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        flex-direction: column;
-
-        h2 {
-          margin: 2% 10%;
         }
       }
     }
@@ -164,19 +146,20 @@ const WrapperAnimesContent = styled.div`
     ${mediaQuery.minTablet} {
       margin-bottom: 5em;
     }
-    h2 {
-      margin: 1rem 1.2rem 2.6rem 1.2rem;
+    h3 {
+      margin: 1rem 1.2rem 2.6rem 0;
       ${mediaQuery.minTablet} {
-        margin: 1em 1.2em 1.5em 0;
+        margin: 1em 1.2em 1em 0;
       }
     }
     .category {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(11em, auto));
+      grid-template-columns: repeat(auto-fit, minmax(10em, auto));
       gap: 2em;
       justify-content: center;
-      ${mediaQuery.minTablet} {
+      ${mediaQuery.minMobile} {
         justify-content: start;
+        grid-template-columns: repeat(auto-fit, minmax(11em, auto));
       }
     }
   }

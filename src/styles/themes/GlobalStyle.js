@@ -6,7 +6,6 @@ const global = css`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: ${({ theme }) => theme.colors.font1};
   }
 
   html {
@@ -18,6 +17,7 @@ const global = css`
     overflow-x: hidden;
     font-family: "MontserratRegular", sans-serif;
     background: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.font1};
   }
 
   h1,
@@ -31,17 +31,13 @@ const global = css`
   }
 
   h1 {
-    font-size: 3em;
+    font-size: 4em;
     font-weight: bold;
   }
 
   h2 {
-    font-size: 2.3em;
+    font-size: 3em;
     font-weight: bold;
-
-    ${mediaQuery.minTablet} {
-      font-size: 2.2em;
-    }
   }
 
   h3 {
@@ -50,7 +46,7 @@ const global = css`
   }
 
   h4 {
-    font-size: 1.2em;
+    font-size: 1.5em;
     font-weight: bold;
   }
 
@@ -59,7 +55,7 @@ const global = css`
     font-weight: bold;
   }
 
-  h5 {
+  h6 {
     font-size: 1em;
     font-weight: bold;
   }
@@ -67,7 +63,7 @@ const global = css`
   h1,
   h2,
   h3 {
-    line-height: 2.7em;
+    line-height: 1.2em;
   }
 
   .item-link {
@@ -77,4 +73,6 @@ const global = css`
   }
 `;
 
-export const GlobalStyles = createGlobalStyle(global);
+export const GlobalStyle = createGlobalStyle`
+  ${global}
+`;

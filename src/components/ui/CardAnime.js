@@ -17,7 +17,7 @@ export const CardAnime = ({
         <div className="synopsis">{synopsis}</div>
       </div>
     </div>
-    <h4 className="title-anime">{capitalize(title)}</h4>
+    <h5 className="title-anime">{capitalize(title)}</h5>
   </Container>
 );
 
