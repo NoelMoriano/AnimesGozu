@@ -15,9 +15,9 @@ export const Servers = ({
   serverType,
   onSetServerType,
 }) => {
-  const disabledButtonChangeEpisodePrev = () => episode.episodeNumber <= 1;
+  const disabledButtonChangeEpisodePrev = episode.episodeNumber <= 1;
 
-  const disabledButtonChangeEpisodeNext = () =>
+  const disabledButtonChangeEpisodeNext =
     episode.episodeNumber >= anime.totalEpisodes;
 
   const orderServersTypesBy = (serversTypes = []) =>
@@ -49,20 +49,20 @@ export const Servers = ({
         </div>
         <div className="pagination-buttons">
           <ItemButtonChangeEpisode
-            disabledButtonChangeEpisode={!!disabledButtonChangeEpisodePrev()}
-            disabled={!!disabledButtonChangeEpisodePrev()}
+            disabledButtonChangeEpisode={!!disabledButtonChangeEpisodePrev}
+            disabled={!!disabledButtonChangeEpisodePrev}
             onClick={() =>
-              !disabledButtonChangeEpisodePrev() &&
+              !disabledButtonChangeEpisodePrev &&
               onNavigateTo(`/ver/${anime.id}/${episode.episodeNumber - 1}`)
             }
           >
             <FontAwesomeIcon icon={faArrowLeft} />
           </ItemButtonChangeEpisode>
           <ItemButtonChangeEpisode
-            disabledButtonChangeEpisode={!!disabledButtonChangeEpisodeNext()}
-            disabled={!!disabledButtonChangeEpisodeNext()}
+            disabledButtonChangeEpisode={!!disabledButtonChangeEpisodeNext}
+            disabled={!!disabledButtonChangeEpisodeNext}
             onClick={() =>
-              !disabledButtonChangeEpisodeNext() &&
+              !disabledButtonChangeEpisodeNext &&
               onNavigateTo(`/ver/${anime.id}/${episode.episodeNumber + 1}`)
             }
           >
