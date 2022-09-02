@@ -62,6 +62,7 @@ export const Button = ({
       color={btnType.color}
       border={btnType.border}
       disabled={disabled}
+      loading={loading}
       block={block}
       padding={btnSize.padding}
       fontSize={btnSize.fontSize}
@@ -95,6 +96,8 @@ const Container = styled.button`
     fontSize,
     borderRadius,
     margin,
+    disabled,
+    loading,
   }) => css`
     width: ${block ? "100%" : width};
     height: ${block ? "auto" : height};
@@ -115,24 +118,23 @@ const Container = styled.button`
     outline: none;
     transition: all ease-in-out 0.2s;
 
-    ${({ disabled }) =>
-      disabled
-        ? css`
-            &:disabled,
-            &[disabled] {
-              border: #999999;
-              background-color: #cccccc;
-              cursor: not-allowed;
-              color: #666666;
-            }
-          `
-        : css`
-            &:hover {
-              transition: all ease-in-out 0.2s;
-              background: ${background};
-              box-shadow: 1px 3px 30px -8px ${background};
-            }
-          `}
+    ${disabled || loading
+      ? css`
+          &:disabled,
+          &[disabled] {
+            border: #999999;
+            background-color: #cccccc;
+            cursor: not-allowed;
+            color: #666666;
+          }
+        `
+      : css`
+          &:hover {
+            transition: all ease-in-out 0.2s;
+            background: ${background};
+            box-shadow: 1px 3px 30px -8px ${background};
+          }
+        `}
 
     .content-button {
       display: flex;
