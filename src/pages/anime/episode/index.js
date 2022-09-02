@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router";
 import { EpisodeList, Servers, Spinner } from "../../../components";
-import { capitalize, defaultTo, isEmpty, orderBy } from "lodash";
+import { defaultTo, isEmpty } from "lodash";
 import { currentConfig } from "../../../firebase/index";
 import { mediaQuery } from "../../../styles/constants/mediaQuery";
 import { useAnimes } from "../../../providers/Animes";
@@ -87,6 +87,8 @@ export const Episode = () => {
     }
   };
 
+  if (loadingEpisodes) return <Spinner fullscreen />;
+
   return (
     <Container>
       <WrapperHomeBanner
@@ -117,42 +119,44 @@ export const Episode = () => {
           </div>
         </div>
       </WrapperHomeBanner>
-      {isEmpty(episodes) || isEmpty(episode) ? (
+      {isEmpty(episodes) ? (
         <h3>No se encontraron episodios</h3>
       ) : (
-        <WrapperDetail>
-          <Servers
-            servers={servers}
-            serverView={serverView}
-            onSetServerEpisode={onSetServerEpisode}
-            anime={anime}
-            episode={episode}
-            onNavigateTo={onNavigateTo}
-            serverType={serverType}
-            onSetServerType={setServerType}
-          />
+        !isEmpty(episode) && (
+          <WrapperDetail>
+            <Servers
+              servers={servers}
+              serverView={serverView}
+              onSetServerEpisode={onSetServerEpisode}
+              anime={anime}
+              episode={episode}
+              onNavigateTo={onNavigateTo}
+              serverType={serverType}
+              onSetServerType={setServerType}
+            />
 
-          {(anime || episode) && (
-            <div className="episode-detail">
-              {episode?.episodeNumber && (
-                <div className="sub-title">
-                  <h4>Episodio {episode.episodeNumber}</h4>
-                </div>
-              )}
-              {anime && (
-                <div className="title">
-                  <h1>{anime.name}</h1>
-                </div>
-              )}
-            </div>
-          )}
+            {(anime || episode) && (
+              <div className="episode-detail">
+                {episode?.episodeNumber && (
+                  <div className="sub-title">
+                    <h4>Episodio {episode.episodeNumber}</h4>
+                  </div>
+                )}
+                {anime && (
+                  <div className="title">
+                    <h1>{anime.name}</h1>
+                  </div>
+                )}
+              </div>
+            )}
 
-          {loadingEpisodes ? (
-            <Spinner fullscreen />
-          ) : (
-            <EpisodeList episodes={episodes} />
-          )}
-        </WrapperDetail>
+            {loadingEpisodes ? (
+              <Spinner fullscreen />
+            ) : (
+              <EpisodeList episodes={episodes} />
+            )}
+          </WrapperDetail>
+        )
       )}
     </Container>
   );
