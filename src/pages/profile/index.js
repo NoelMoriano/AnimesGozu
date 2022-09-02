@@ -88,7 +88,7 @@ export const Profile = () => {
       nickName: userSnapshot?.nickName || "",
       firstName: userSnapshot?.firstName || "",
       lastName: userSnapshot?.lastName || "",
-      phoneNumber: userSnapshot?.phone.number || "",
+      phoneNumber: userSnapshot?.phone?.number || "",
       email: userSnapshot?.email || "",
     });
   }, [userSnapshot]);
