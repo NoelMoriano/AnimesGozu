@@ -189,6 +189,7 @@ export const Profile = () => {
                   onChange={onChange}
                   value={value}
                   name={name}
+                  disabled
                   error={error(name)}
                   helperText={errorMessage(name)}
                   required={required(name)}
