@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect } from "react";
 import { Button, Form, Input, Spinner } from "../../components";
 import { Controller, useForm } from "react-hook-form";
-import { useAuthentication } from "../../providers/Authentication";
+import { useAuthentication } from "../../providers";
 import { useNavigate } from "react-router";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -19,8 +19,6 @@ export const Profile = () => {
 
   const { authUser } = useAuthentication();
   const { assignUpdateProps } = useDefaultFirestoreProps();
-
-  console.log("authUser->", authUser);
 
   const [userSnapshot, loadingUser, errorUser] = useDocumentData(
     authUser ? firestore.collection("users").doc(authUser.id) : null

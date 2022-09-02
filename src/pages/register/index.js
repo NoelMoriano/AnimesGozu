@@ -7,7 +7,7 @@ import { Button, Form, Input, InputPassword } from "../../components";
 import { ImgBackground } from "../../images";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { Controller, useForm } from "react-hook-form";
-import { useAuthentication } from "../../providers/Authentication";
+import { useAuthentication } from "../../providers";
 import { useNavigate } from "react-router";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import * as yup from "yup";
