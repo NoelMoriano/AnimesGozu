@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { darken, lighten } from "polished";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { capitalize, orderBy } from "lodash";
+import { mediaQuery } from "../../styles/constants/mediaQuery";
 
 export const Servers = ({
   servers = [],
@@ -171,17 +172,23 @@ const ItemButtonChangeEpisode = styled.button`
       ? css`
           &:disabled,
           &[disabled] {
-            background: ${lighten(0.02, theme.colors.black)};
+            background: ${lighten(0.02, theme.colors.secondary)};
             cursor: not-allowed;
             color: ${lighten(0.02, theme.colors.gray)};
           }
         `
       : css`
-          &:hover,
           &:active {
             transition: all ease-in-out 0.2s;
             background: ${theme.colors.primary};
             color: ${theme.colors.white};
+          }
+          ${mediaQuery.minTablet} {
+            &:hover {
+              transition: all ease-in-out 0.2s;
+              background: ${theme.colors.primary};
+              color: ${theme.colors.white};
+            }
           }
         `}
   `};
