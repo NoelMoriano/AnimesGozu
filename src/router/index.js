@@ -1,14 +1,14 @@
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Layout } from "../components";
 import {
   Anime,
   Episode,
   Home,
   Login,
-  Register,
-  SearchResult,
   Page404,
   Profile,
+  Register,
+  SearchResult,
 } from "../pages";
 
 export const Router = () => (
