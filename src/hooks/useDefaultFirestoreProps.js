@@ -1,6 +1,7 @@
 import { assign } from "lodash";
 import { now } from "../firebase";
-import { useAuthentication } from "../providers/Authentication";
+import { useAuthentication } from "../providers";
+import { useNavigate } from "react-router";
 
 // interface DocumentCreate {
 //   createAt: firebase.firestore.Timestamp;
@@ -27,15 +28,19 @@ import { useAuthentication } from "../providers/Authentication";
 // }
 
 export const useDefaultFirestoreProps = (isSoftDelete = true) => {
+  const navigate = useNavigate();
   const { authUser } = useAuthentication();
 
-  if (!authUser) return alert("Missing global user");
+  if (!authUser) {
+    console.error("Missing authUser");
+    return navigate("/");
+  }
 
   const assignCreateProps = (document) => {
     const CREATE = {
       createAt: now(),
       updateAt: now(),
-      updateBy: authUser.email,
+      ...(authUser?.email && { updateBy: authUser.email }),
     };
 
     if (isSoftDelete) CREATE.isDeleted = false;
@@ -46,7 +51,7 @@ export const useDefaultFirestoreProps = (isSoftDelete = true) => {
   const assignUpdateProps = (document) => {
     const UPDATE = {
       updateAt: now(),
-      updateBy: authUser.email,
+      ...(authUser?.email && { updateBy: authUser.email }),
     };
 
     return assign({}, document, UPDATE);
@@ -55,7 +60,7 @@ export const useDefaultFirestoreProps = (isSoftDelete = true) => {
   const assignDeleteProps = (document) => {
     const DELETE = {
       updateAt: now(),
-      updateBy: authUser.email,
+      ...(authUser?.email && { updateBy: authUser.email }),
     };
 
     if (isSoftDelete) DELETE.isDeleted = true;

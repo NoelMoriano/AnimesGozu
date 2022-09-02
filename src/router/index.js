@@ -50,7 +50,6 @@ export const Router = () => (
       }
     />
     <Route
-      exact
       path="/profile"
       element={
         <Layout>

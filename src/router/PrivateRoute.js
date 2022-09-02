@@ -15,6 +15,6 @@ export const PrivateRoute = ({ path, element }) => {
   const { userAuth } = useAuthentication();
 
   return (
-    <Route exact path={path} element={userAuth ? element() : navigate("/")} />
+    <Route exact path={path} element={userAuth ? element : navigate("/")} />
   );
 };

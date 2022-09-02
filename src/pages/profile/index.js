@@ -18,6 +18,11 @@ export const Profile = () => {
   const navigate = useNavigate();
 
   const { authUser } = useAuthentication();
+
+  useEffect(() => {
+    if (!authUser) return onNavigateTo("/");
+  }, [authUser]);
+
   const { assignUpdateProps } = useDefaultFirestoreProps();
 
   const [userSnapshot, loadingUser, errorUser] = useDocumentData(
