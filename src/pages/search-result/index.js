@@ -121,11 +121,11 @@ const Container = styled.main`
     }
     .section-anime {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(11em, auto));
-      gap: 1.5em;
-      justify-content: center;
       text-align: center;
+      justify-content: center;
       margin: auto;
+      gap: 2em;
+      grid-template-columns: repeat(auto-fit, minmax(9em, auto));
       ${mediaQuery.minTablet} {
         justify-content: start;
       }

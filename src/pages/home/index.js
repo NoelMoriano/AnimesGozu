@@ -165,9 +165,9 @@ const WrapperAnimesContent = styled.div`
     }
     .category {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(9em, auto));
-      gap: 2em;
       justify-content: center;
+      gap: 2em;
+      grid-template-columns: repeat(auto-fit, minmax(9em, auto));
       ${mediaQuery.minMobile} {
         justify-content: start;
         grid-template-columns: repeat(auto-fit, minmax(11em, auto));
