@@ -65,7 +65,7 @@ export const AuthenticationProvider = ({ children }) => {
         .doc(uid)
         .set(
           assign(
-            {},
+            { registerAuthUserData },
             {
               id: uid,
               providerData: mapProviderData(providerData),
