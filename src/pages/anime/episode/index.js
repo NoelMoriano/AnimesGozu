@@ -5,7 +5,7 @@ import { EpisodeList, Servers, Spinner } from "../../../components";
 import { defaultTo, isEmpty } from "lodash";
 import { currentConfig } from "../../../firebase/index";
 import { mediaQuery } from "../../../styles/constants/mediaQuery";
-import { useAnimes } from "../../../providers/Animes";
+import { useAnimes } from "../../../providers";
 
 export const Episode = () => {
   const { animeId, episodeId } = useParams();

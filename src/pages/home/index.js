@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { CardAnime } from "../../components";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { useNavigate } from "react-router";
-import { useAnimes } from "../../providers/Animes";
+import { useAnimes } from "../../providers";
 import { videoBanner } from "../../images";
 import { capitalize, orderBy } from "lodash";
 

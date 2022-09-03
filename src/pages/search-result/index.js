@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { faFilter, faList } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, CardAnime, Select } from "../../components";
-import { useAnimes } from "../../providers/Animes";
+import { useAnimes } from "../../providers";
 import { useNavigate } from "react-router";
 import { capitalize, includes, orderBy } from "lodash";
 import { mediaQuery } from "../../styles/constants/mediaQuery";

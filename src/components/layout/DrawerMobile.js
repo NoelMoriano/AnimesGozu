@@ -4,7 +4,7 @@ import { Button } from "../ui";
 import { useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
-import { useAuthentication } from "../../providers/Authentication";
+import { useAuthentication } from "../../providers";
 import { UserMenu } from "./UserMenu";
 
 export const DrawerMobile = ({ visibleDrawer, onSetVisibleDrawer }) => {
