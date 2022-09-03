@@ -1,0 +1,71 @@
+{
+  "name": "anime-gozu",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.1.1",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-brands-svg-icons": "^6.1.1",
+    "@fortawesome/free-regular-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@hookform/resolvers": "^2.9.3",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^14.2.1",
+    "firebase": "^8.4.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "polished": "^4.2.2",
+    "query-string": "^7.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-firebase-hooks": "^3.0.4",
+    "react-hook-form": "^7.33.1",
+    "react-router": "^6.3.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "styled-components": "^5.3.5",
+    "url-assembler": "^2.1.1",
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "deploy": "yarn run build && firebase deploy",
+    "deploy:hosting": " yarn run build && firebase deploy --only hosting",
+    "deploy:indexes": "firebase deploy --only firestore:indexes",
+    "deploy:functions": "firebase deploy --only functions",
+    "deploy:api": "firebase deploy --only functions:api",
+    "firebase:emulators": "firebase emulators:start",
+    "cypress:open": "cypress open",
+    "cypress:check": "cypress run --browser chrome --spec 'cypress/integration/*'",
+    "eslint:check": "eslint src",
+    "type:check": "tsc --noEmit",
+    "prettier:check": "prettier . --check"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1"
+  }
+}

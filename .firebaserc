@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "anime-gozu",
+    "dev": "animes-dev"
+  }
+}

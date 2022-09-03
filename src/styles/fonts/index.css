@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "AudiowideRegular";
+  src: url(Audiowide-Regular.ttf) format("ttf"),
+    url(Audiowide-Regular.ttf) format("truetype");
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MontserratRegular";
+  src: url(Montserrat-Regular.ttf) format("ttf"),
+    url(Montserrat-Regular.ttf) format("truetype");
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "MontserratRegular", sans-serif;
+  background: rgba(24,24,24,1);
+}
