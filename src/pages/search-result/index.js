@@ -121,7 +121,7 @@ const Container = styled.main`
     }
     .section-anime {
       display: grid;
-      text-align: center;
+      text-align: left;
       justify-content: center;
       margin: auto;
       gap: 2em;
