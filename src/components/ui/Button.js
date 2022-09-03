@@ -47,6 +47,7 @@ export const Button = ({
   loading = false,
   disabled = false,
   block = false,
+  animate = false,
   borderRadius = "1em",
   margin = "0.7rem 0",
 }) => {
@@ -64,6 +65,7 @@ export const Button = ({
       disabled={disabled}
       loading={loading}
       block={block}
+      animate={animate}
       padding={btnSize.padding}
       fontSize={btnSize.fontSize}
       borderRadius={borderRadius}
@@ -92,6 +94,7 @@ const Container = styled.button`
     width,
     height,
     block,
+    animate,
     padding,
     fontSize,
     borderRadius,
@@ -117,6 +120,7 @@ const Container = styled.button`
     letter-spacing: 0.5px;
     outline: none;
     transition: all ease-in-out 0.2s;
+    transform: scale(1);
 
     ${disabled || loading
       ? css`
@@ -132,7 +136,11 @@ const Container = styled.button`
           &:hover {
             transition: all ease-in-out 0.2s;
             background: ${background};
-            box-shadow: 1px 3px 30px -8px ${background};
+            box-shadow: 0 3px 34px -4px ${background};
+            ${animate &&
+            css`
+              transform: scale(1.06);
+            `}
           }
         `}
 

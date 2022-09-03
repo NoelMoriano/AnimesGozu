@@ -51,7 +51,7 @@ export const Anime = () => {
           <div className="gradient">
             <div className="content-banner">
               <div className="anime-gender">
-                <img src={Imalogo} alt="Imalogo" />
+                <img src={Imalogo} alt="Imalogo animes gozu" />
                 <span>{anime.category.toUpperCase()}</span>
               </div>
               <div className="anime-title">
@@ -63,6 +63,7 @@ export const Anime = () => {
               {
                 <div className="content-button">
                   <Button
+                    animate
                     size="medium"
                     borderRadius="7rem"
                     onClick={() =>
