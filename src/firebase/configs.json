@@ -1,0 +1,55 @@
+{
+  "common": {
+    "app-data": {
+      "name": "AnimeGozu",
+      "emails": {
+        "contact": "contact@animegozu.com"
+      },
+      "numbers": {
+        "phone": ["950 425 945", "931 981 314"],
+        "wsp": ["950 425 945", "931 981 314"]
+      },
+      "socialLinks": {
+        "facebook": "https://www.facebook.com/cobiene-app",
+        "instagram": "https://www.instagram.com/cobiene-app/",
+        "whatsapp": "https://api.whatsapp.com/send/?phone=+51950425945&text=Estoy+interesado+en+su+producto+%2F+servicio&app_absent=0",
+        "messenger": "https://m.me/GamontLlantas"
+      },
+      "directions": {
+        "local1": "Av. Guardia Civil 257 – Chorrillos",
+        "local2": "Av. Huaylas 2691 – Chorrillos"
+      },
+      "poweredBy": {
+        "name": "AnimeGozu",
+        "webUrl": "https://animegozu.app"
+      }
+    }
+  },
+  "development": {
+    "version": "0.0.1",
+    "firebaseApp": {
+      "apiKey": "AIzaSyDcUy6vQ0owB5jmpqZZnW6O9V61NdBtC8s",
+      "authDomain": "animes-dev.firebaseapp.com",
+      "projectId": "animes-dev",
+      "storageBucket": "animes-dev.appspot.com",
+      "messagingSenderId": "781421769413",
+      "appId": "1:781421769413:web:0c88ab11860dd589b676ac"
+    },
+    "buckets": {},
+    "animeServerApi": "https://us-central1-animes-dev.cloudfunctions.net/api"
+  },
+  "production": {
+    "version": "0.0.1",
+    "firebaseApp": {
+      "apiKey": "AIzaSyCDeMRGyMhc6yxNY_P6UTneMkS3938nmJg",
+      "authDomain": "anime-gozu.firebaseapp.com",
+      "projectId": "anime-gozu",
+      "storageBucket": "anime-gozu.appspot.com",
+      "messagingSenderId": "22675356001",
+      "appId": "1:22675356001:web:f41c96b99f69f554346d20",
+      "measurementId": "G-2XQWXC0NNH"
+    },
+    "buckets": {},
+    "animeServerApi": "https://us-central1-animes-dev.cloudfunctions.net/api"
+  }
+}

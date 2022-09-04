@@ -1,0 +1,142 @@
+[ {
+  "animeId": "naruto",
+  "episodes": [ { "title":"naruto-episode-1", "number": 1,
+    "servers":[{
+      "name": "mega",
+      "url": "https://mega.nz/#!IZlkQCCK!qzMpIJnPRKosS8cuccdseZCMYZG1ZFrdBCjswtQydgo"
+    }]
+  },{ "title":"naruto-episode-2", "number": 2,
+    "servers": [{
+      "name" :  "mega",
+      "url" : "https://mega.nz/#!ZEswnIhA!mSnmZYPgN4HrvLL7ABaviNaOQOKlZ18A4HWCYkxdKnw"
+    }]
+  }]
+},{
+  "animeId": "one-piece",
+  "episodes": [{"title":  "one-piece-episode-1", "number": 1,
+    "servers": [{
+      "name" : "SB",
+      "url" : "https://embedsb.com/e/rvsx846f2747.html"
+    }]
+  },{ "title" : "one-piece-episode-2", "number": 2,
+    "servers": [{
+      "name": "SB",
+      "url": "https://embedsb.com/e/i968cqblto1d.html"
+    }]
+
+  }]
+},{
+  "animeId": "86-eighty-six",
+  "episodes": [{"title":  "86-eighty-six-episode-1", "number": 1,
+    "servers": [{
+      "name" : "mega",
+      "url" : "https://mega.nz/#!5Vh1zJaI!thc8xCHtWm42LbLe0HHRtR1PSM_fBS8yeNeH9csCvBk"
+    }]
+  },{ "title" : "86-eighty-six-episode-2", "number": 2,
+    "servers": [{
+      "name": "mega",
+      "url": "https://mega.nz/#!BdJkhCTD!BM_8K3OHLpum5-JTdlYG-dHLioKYcrjEGsMRtwSd04w"
+    }]
+
+  }]
+},{
+  "animeId": "dragon-ball-super-latino",
+  "episodes": [{"title":  "dragon-ball-super-latino-episode-1", "number": 1,
+    "servers": [{
+      "name" : "mega",
+      "url" : "https://mega.nz/#!fzAhwKoI!JbqFvr2a_Sdoh8OpfiqowtzgWBeMi9IEbsRkahXMO5M"
+    }]
+  },{ "title" : "dragon-ball-super-latino-episode-2", "number": 2,
+    "servers": [{
+      "name": "mega",
+      "url": "https://mega.nz/#!z2IDHIbC!T9VBZm-3Ll_yTkGjpfoh7RL_C_C0YfSTLI_UFn0IYUw"
+    }]
+  }]
+},{
+  "animeId": "naruto-shippuden-hd",
+  "episodes": [{"title":  "naruto-shippuden-hd-episode-1", "number": 1,
+    "servers": [{
+      "name" : "mega",
+      "url" : "https://mega.nz/#!4QcSlArS!LilI9ePHfE9OEhtN5qDwIdBGPq8-j_zUCeIgYOQBfg8"
+    }]
+  },{ "title" : "naruto-shippuden-hd-episode-2", "number": 2,
+    "servers": [{
+      "name": "mega",
+      "url": "https://mega.nz/#!MRUQRKZR!t6PuetHk1y1OkSl9ptXyTrN798jHdTFfI-RdHpDIQ5s"
+    }]
+
+  }]
+},{
+  "animeId": "overlord",
+  "episodes": [{"title":  "overlord-episode-1", "number": 1,
+    "servers": [{
+      "name" : "mega",
+      "url" : "https://mega.nz/#!Qd5kWabQ!79vJhQpVVW62etY4jkpNpUgZvToq66cTqVSaGCyHhYM"
+    }]
+  },{
+    "title" : "overlord-episode-2", "number": 2,
+    "servers": [{
+      "name": "mega",
+      "url": "https://mega.nz/#!FVoERYgD!MiXm_Opm6z3ssUDI5KTU5HX2hzkEEeHZw1ZPPMDw8Vo"
+    }]
+
+  }]
+},{
+  "animeId": "death-note",
+  "episodes": [{"title":  "death-note-1", "number": 1,
+    "servers": [{
+      "name" : "mega",
+      "url" : "https://mega.nz/#!i2pGxITT!xdcuXRNmWy1zDzjHwBPjETrgJh8625u3ZDjtvCeJzCs"
+    }]
+  },{ "title" : "death-note-2", "number": 2,
+    "servers": [{
+      "name": "mega",
+      "url": "https://mega.nz/#!3yx2DQQS!L763AK4vkf3_STL3BxFZnzAq2JAc1klom9z2tRCjEDE"
+    }
+      ]
+
+  }]
+},{
+  "animeId": "spy-x-family",
+  "episodes": [{"title":  "spy-x-family-1", "number": 1,
+    "servers": [{
+      "name" : "mega",
+      "url" : "https://mega.nz/#!NhlTzKRT!NjS6tRdUwaWVvsx3dK1w26VEXfQuWpvnR097IUYWOw4"
+    }]
+  },{ "title" : "spy-x-family-2", "number": 2,
+    "servers": [{
+      "name": "mega",
+      "url": "https://mega.nz/#!ts0FmCgC!5iqYfa5eKYwPiShce4iQjD9ZkB562eYkMObWcApJKFY"
+    }]
+
+  }]
+},{
+  "animeId": "another",
+  "episodes": [{"title":  "another-1", "number": 1,
+    "servers": [{
+      "name" : "mega",
+      "url" : "https://mega.nz/#!VsVyXRBC!F0QBJFEJKjBT0-OiKq9NemXpGWZNtZY0ypV5k3qBB1k"
+    }]
+  },{ "title" : "another-2", "number": 2,
+    "servers": [{
+      "name": "mega",
+      "url": "https://mega.nz/#!Al1jDYZb!wQWa13UAGmOh_v0r14JfLr5wcKCMm9AjMyXU5Bm3sXM"
+    }]
+
+  }]
+},{
+  "animeId": "date-a-live-iv",
+  "episodes": [{"title":  "date-a-live-iv-1", "number": 1,
+    "servers": [{
+      "name" : "mega",
+      "url" : "https://mega.nz/#!wdoAXYyS!vb67y3RjIpTLIElGmyCOkgvNFEU4nwikPGBlt7UyEFI"
+    }]
+  },{ "title" : "date-a-live-iv-2", "number": 2,
+    "servers": [{
+      "name": "mega",
+      "url": "https://mega.nz/#!p4MVDIQZ!VvNxDtZDIxLkTkfk3EilRdaPY4A0EWsnyjXgu_5VK2M"
+    }]
+
+  }]
+}
+]
