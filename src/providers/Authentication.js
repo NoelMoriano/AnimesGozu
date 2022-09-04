@@ -60,6 +60,8 @@ export const AuthenticationProvider = ({ children }) => {
         return setGoogleLoginLoading(false);
       }
 
+      console.log("registerAuthUserData->", registerAuthUserData);
+
       await firestore
         .collection("users")
         .doc(uid)
@@ -197,6 +199,10 @@ export const AuthenticationProvider = ({ children }) => {
         formData.email,
         formData.password
       );
+
+      await timeoutPromise(1000);
+
+      console.log("formData->", formData);
 
       await setRegisterAuthUserData(formData);
     } catch (e) {
