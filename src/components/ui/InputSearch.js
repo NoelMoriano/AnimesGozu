@@ -10,7 +10,6 @@ import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { useFormUtils } from "../../hooks";
 import { lighten } from "polished";
-import { ImgHomeBanner } from "../../images";
 import { useAnimes } from "../../providers";
 import { capitalize, includes } from "lodash";
 
@@ -35,11 +34,13 @@ export const InputSearch = () => {
   const { required, error } = useFormUtils({ errors, schema });
 
   const viewAnimes = () =>
-    animes.filter((anime) =>
-      anime.searchData.some((searchData) =>
-        includes(searchData, watch("search"))
+    animes
+      .filter((anime) =>
+        anime.searchData.some((searchData) =>
+          includes(searchData, watch("search"))
+        )
       )
-    );
+      .filter((anime, index) => index < 6);
 
   const onSubmitSearch = ({ search }) => console.log("search->", search);
 
@@ -80,7 +81,13 @@ export const InputSearch = () => {
           <div className="wrapper-result-search">
             <ul>
               {viewAnimes().map((anime, index) => (
-                <li key={index}>
+                <li
+                  key={index}
+                  onClick={() => {
+                    onNavigateTo(`/anime/${anime.id}`);
+                    resetForm();
+                  }}
+                >
                   <div className="img-anime">
                     <img
                       src={anime?.animeCoverImage?.thumbUrl}
