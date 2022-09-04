@@ -88,20 +88,30 @@ export const InputSearch = () => {
                     resetForm();
                   }}
                 >
-                  <div className="img-anime">
-                    <img
-                      src={anime?.animeCoverImage?.thumbUrl}
-                      alt="anime image"
-                    />
-                  </div>
-                  <div className="description">
-                    <div className="title">{capitalize(anime?.name)}</div>
-                    <div className="sub-title">
-                      <span>{capitalize(anime?.category)}</span>
+                  <div className="items-list">
+                    <div className="img-anime">
+                      <img
+                        src={anime?.animePicture?.thumbUrl}
+                        alt="anime image"
+                      />
+                    </div>
+                    <div className="description">
+                      <div className="title">{capitalize(anime?.name)}</div>
+                      <div className="sub-title">
+                        <span>{capitalize(anime?.category)}</span>
+                      </div>
                     </div>
                   </div>
                 </li>
               ))}
+              <li
+                onClick={() => {
+                  onNavigateTo(`/search`);
+                  resetForm();
+                }}
+              >
+                <div className="content-show-more">Ver más</div>
+              </li>
             </ul>
           </div>
         </ContentSearch>
@@ -184,11 +194,12 @@ const ContentSearch = styled.div`
         display: grid;
         padding: 0.5em;
         ul {
-          li {
+          li .items-list {
             display: grid;
             grid-template-columns: 2.7em 1fr;
-            padding: 0.2em;
-            gap: 1em;
+            padding: 0.3em;
+            gap: 0.7em;
+            margin-bottom: 0.3em;
             &:hover {
               cursor: pointer;
               background: ${lighten(0.04, theme.colors.secondary)};
@@ -197,6 +208,7 @@ const ContentSearch = styled.div`
               width: 100%;
               max-width: 2.7em;
               height: 3.2em;
+
               img {
                 width: 100%;
                 height: 100%;
@@ -208,17 +220,26 @@ const ContentSearch = styled.div`
               display: grid;
               gap: 0;
               .title {
-                font-size: 0.9em;
+                font-size: 0.8em;
               }
               .sub-title {
                 span {
                   font-size: 0.7em;
                   border-radius: 7em;
-                  padding: 0.4em 0.7em;
+                  padding: 0.2em 0.7em;
                   background: ${lighten(0.08, theme.colors.secondary)};
                 }
               }
             }
+          }
+
+          li .content-show-more {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            padding: 0.5em;
+            background: ${lighten(0.04, theme.colors.secondary)};
+            cursor: pointer;
           }
         }
       }
