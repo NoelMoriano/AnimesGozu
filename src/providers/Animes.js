@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { animeServerApi } from "../firebase/index";
 import { Spinner } from "../components";
+import { spinLoaderFixed } from "../utils/loader";
 
 export const AnimesContext = createContext({ animes: [] });
 
@@ -29,7 +30,7 @@ export const AnimesProvider = ({ children }) => {
     }
   };
 
-  if (loading) return <Spinner height="90vh" />;
+  if (!loading) return spinLoaderFixed();
 
   return (
     <AnimesContext.Provider value={{ animes }}>

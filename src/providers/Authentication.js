@@ -11,6 +11,7 @@ import { assign, isError } from "lodash";
 import { useDocument } from "react-firebase-hooks/firestore";
 import { Spinner } from "../components";
 import { timeoutPromise } from "../utils";
+import { spinLoaderFixed } from "../utils/loader";
 
 const AuthenticationContext = createContext({
   authUser: null,
@@ -227,7 +228,7 @@ export const AuthenticationProvider = ({ children }) => {
     return auth.signOut();
   };
 
-  if (authenticating) return <Spinner height="90vh" />;
+  if (authenticating) return spinLoaderFixed();
 
   return (
     <AuthenticationContext.Provider
