@@ -80,10 +80,10 @@ export const SearchResult = () => {
         {/*    { label: "Ova", value: "ova" },*/}
         {/*  ]}*/}
         {/*/>*/}
-        <Button type="primary" size="small" borderRadius=".5em">
-          <FontAwesomeIcon icon={faFilter} className="item-icon" />
-          Filtrar
-        </Button>
+        {/*<Button type="primary" size="small" borderRadius=".5em">*/}
+        {/*  <FontAwesomeIcon icon={faFilter} className="item-icon" />*/}
+        {/*  Filtrar*/}
+        {/*</Button>*/}
       </div>
       <div className="section-anime">
         {animesData.map((anime, index) => (

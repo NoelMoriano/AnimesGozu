@@ -11,3 +11,4 @@ export * from "./Select";
 export * from "./Spinner";
 export * from "./ComponentContainer";
 export * from "./Servers";
+export * from "./InputSearch";

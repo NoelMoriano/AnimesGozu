@@ -1,13 +1,10 @@
 import styled from "styled-components";
 import { ImgLogoAnimeGozu } from "../../images";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBars,
-  faMagnifyingGlass,
-  faXmark,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { useNavigate } from "react-router";
+import { InputSearch } from "../ui";
 
 export const Header = ({ onSetVisibleDrawer }) => {
   const navigate = useNavigate();
@@ -24,15 +21,7 @@ export const Header = ({ onSetVisibleDrawer }) => {
         />
       </div>
       <div className="content-right">
-        {/*<InputSearch>
-          <FontAwesomeIcon className="icon-search" icon={faMagnifyingGlass} />
-          <input
-            type="text"
-            placeholder="¿Que quieres ver hoy?"
-            onClick={() => onNavigateTo("/search")}
-          />
-          <FontAwesomeIcon className="icon-clear" icon={faXmark} />
-        </InputSearch>*/}
+        <InputSearch />
         <div className="item-open-drawer">
           <FontAwesomeIcon
             className="icon-clear"
@@ -93,46 +82,5 @@ const Container = styled.div`
         display: none;
       }
     }
-  }
-`;
-
-const InputSearch = styled.div`
-  display: none;
-  align-items: center;
-  max-width: 25em;
-  width: 70%;
-  color: ${({ theme }) => theme.colors.font1};
-  background: ${({ theme }) => theme.colors.dark};
-  border: ${({ theme }) => `2px solid ${theme.colors.quaternary}`};
-  border-radius: 1em;
-  padding: 0.5em;
-  box-sizing: border-box;
-
-  ${mediaQuery.minTablet} {
-    display: grid;
-    grid-template-columns: 7% 1fr 5%;
-  }
-
-  input {
-    width: 100%;
-    color: inherit;
-    padding: 0.2em;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: ${({ theme }) => theme.font_sizes.small};
-  }
-
-  .icon-search,
-  .icon-clear {
-    margin: auto;
-  }
-
-  .icon-clear {
-    display: none;
-  }
-
-  input:focus ~ .icon-clear {
-    display: flex;
   }
 `;

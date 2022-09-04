@@ -94,7 +94,7 @@ const WrapperHomeBanner = styled.div`
     flex-direction: column;
     position: relative;
     ${mediaQuery.minTablet} {
-      height: 65vh;
+      height: 64vh;
     }
 
     video {
