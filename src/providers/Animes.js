@@ -30,7 +30,7 @@ export const AnimesProvider = ({ children }) => {
     }
   };
 
-  if (!loading) return spinLoaderFixed();
+  if (loading) return spinLoaderFixed();
 
   return (
     <AnimesContext.Provider value={{ animes }}>
