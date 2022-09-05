@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { auth, firestore } from "../firebase/index";
 import { firebase } from "../firebase/config";
-import { assign, isError } from "lodash";
+import { isError } from "lodash";
 import { useDocument } from "react-firebase-hooks/firestore";
 import { timeoutPromise } from "../utils";
 import { spinLoaderFixed } from "../utils/loader";
@@ -38,6 +38,8 @@ export const AuthenticationProvider = ({ children }) => {
     firebaseUser ? firestore.collection("users").doc(firebaseUser.uid) : null
   );
 
+  console.log("registerAuthUserData->", registerAuthUserData);
+
   useMemo(() => {
     auth.onAuthStateChanged((currentUser) =>
       currentUser ? previusAuthenticationUser(currentUser) : onLogout()
@@ -64,15 +66,20 @@ export const AuthenticationProvider = ({ children }) => {
         .collection("users")
         .doc(uid)
         .set(
-          assign({}, registerAuthUserData, {
+          {
             id: uid,
+            ...registerAuthUserData,
+            nickName:
+              registerAuthUserData.displayName ||
+              registerAuthUserData.firstName ||
+              null,
             providerData: mapProviderData(providerData),
             ...(providerData?.displayName && {
               nickName: providerData.displayName,
             }),
             ...(providerData?.email && { email: providerData.email }),
             createAt: new Date(),
-          }),
+          },
           { merge: true }
         );
 
@@ -82,6 +89,7 @@ export const AuthenticationProvider = ({ children }) => {
       setLoginLoading(false);
       setGoogleLoginLoading(false);
       setFirebaseUser(null);
+      setRegisterAuthUserData(null);
     } catch (e) {
       console.error("previusAuthenticationUser:", e);
     }
@@ -189,9 +197,9 @@ export const AuthenticationProvider = ({ children }) => {
   const registerAuthUser = async (formData) => {
     try {
       setLoginLoading(true);
-      await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-
       await setRegisterAuthUserData(formData);
+
+      await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 
       await auth.createUserWithEmailAndPassword(
         formData.email,
