@@ -70,8 +70,8 @@ export const AuthenticationProvider = ({ children }) => {
             id: uid,
             ...registerAuthUserData,
             nickName:
-              providerData.displayName ||
-              registerAuthUserData.firstName ||
+              providerData?.displayName ||
+              registerAuthUserData?.firstName ||
               null,
             providerData: mapProviderData(providerData),
             ...(providerData?.displayName && {
