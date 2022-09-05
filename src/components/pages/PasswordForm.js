@@ -63,8 +63,9 @@ export const PasswordForm = () => {
                 />
               )}
             />
-            <Button htmlType="submit">Actualizar</Button>
-            {/*<button type="submit">enviar</button>*/}
+            <Button htmlType="submit" block>
+              Actualizar
+            </Button>
           </Form>
         </div>
       </div>
