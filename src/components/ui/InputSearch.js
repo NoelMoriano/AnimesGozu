@@ -190,66 +190,64 @@ const ContentSearch = styled.div`
       }
     }
 
-    &:focus-within {
-      ${hasValueSearch &&
-      css`
-        .wrapper-result-search {
-          display: grid;
-          padding: 0.5em;
-          ul {
-            li {
-              outline: none;
-            }
-            li .items-list {
-              display: grid;
-              grid-template-columns: 2.7em 1fr;
-              padding: 0.3em;
-              gap: 0.7em;
-              margin-bottom: 0.3em;
-              &:hover {
-                cursor: pointer;
-                background: ${lighten(0.04, theme.colors.secondary)};
-              }
-              .img-anime {
-                width: 100%;
-                max-width: 2.7em;
-                height: 3.2em;
-
-                img {
-                  width: 100%;
-                  height: 100%;
-                  max-height: 3.2em;
-                  object-fit: cover;
-                }
-              }
-              .description {
-                display: grid;
-                gap: 0;
-                .title {
-                  font-size: 0.8em;
-                }
-                .sub-title {
-                  span {
-                    font-size: 0.7em;
-                    border-radius: 7em;
-                    padding: 0.2em 0.7em;
-                    background: ${lighten(0.08, theme.colors.secondary)};
-                  }
-                }
-              }
-            }
-
-            li .content-show-more {
-              display: flex;
-              justify-content: center;
-              text-align: center;
-              padding: 0.5em;
-              background: ${lighten(0.04, theme.colors.secondary)};
+    ${hasValueSearch &&
+    css`
+      .wrapper-result-search {
+        display: grid;
+        padding: 0.5em;
+        ul {
+          li {
+            outline: none;
+          }
+          li .items-list {
+            display: grid;
+            grid-template-columns: 2.7em 1fr;
+            padding: 0.3em;
+            gap: 0.7em;
+            margin-bottom: 0.3em;
+            &:hover {
               cursor: pointer;
+              background: ${lighten(0.04, theme.colors.secondary)};
+            }
+            .img-anime {
+              width: 100%;
+              max-width: 2.7em;
+              height: 3.2em;
+
+              img {
+                width: 100%;
+                height: 100%;
+                max-height: 3.2em;
+                object-fit: cover;
+              }
+            }
+            .description {
+              display: grid;
+              gap: 0;
+              .title {
+                font-size: 0.8em;
+              }
+              .sub-title {
+                span {
+                  font-size: 0.7em;
+                  border-radius: 7em;
+                  padding: 0.2em 0.7em;
+                  background: ${lighten(0.08, theme.colors.secondary)};
+                }
+              }
             }
           }
+
+          li .content-show-more {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            padding: 0.5em;
+            background: ${lighten(0.04, theme.colors.secondary)};
+            cursor: pointer;
+          }
         }
-      `}
-    }
+      }
+    `}
   `}
 `;
