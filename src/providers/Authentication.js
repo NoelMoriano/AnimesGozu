@@ -61,14 +61,13 @@ export const AuthenticationProvider = ({ children }) => {
         return setGoogleLoginLoading(false);
       }
 
-      console.log("registerAuthUserData->", registerAuthUserData);
-
       await firestore
         .collection("users")
         .doc(uid)
         .set(
           assign(
-            { registerAuthUserData },
+            {},
+            { ...registerAuthUserData },
             {
               id: uid,
               providerData: mapProviderData(providerData),
@@ -76,7 +75,6 @@ export const AuthenticationProvider = ({ children }) => {
                 nickName: providerData.displayName,
               }),
               ...(providerData?.email && { email: providerData.email }),
-              ...registerAuthUserData,
               createAt: new Date(),
             }
           ),
@@ -201,11 +199,9 @@ export const AuthenticationProvider = ({ children }) => {
         formData.password
       );
 
+      setRegisterAuthUserData(formData);
+
       await timeoutPromise(1000);
-
-      console.log("formData->", formData);
-
-      await setRegisterAuthUserData(formData);
     } catch (e) {
       const error = isError(e) ? e : undefined;
 
