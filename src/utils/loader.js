@@ -2,10 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { SpinnerLogo } from "../images";
 
-export const spinLoader = (message) => {
+export const spinLoader = () => {
   return (
     <ContainerSpinLoader type="relative">
-      <img src={SpinnerLogo} className="spin-version-icon" />
+      <img
+        src={SpinnerLogo}
+        className="spin-version-icon"
+        alt="animes gozu spinner"
+      />
     </ContainerSpinLoader>
   );
 };
@@ -13,7 +17,11 @@ export const spinLoader = (message) => {
 export const spinLoaderFixed = () => {
   return (
     <ContainerSpinLoader type="fixed">
-      <img src={SpinnerLogo} className="spin-version-icon" />
+      <img
+        src={SpinnerLogo}
+        className="spin-version-icon"
+        alt="animes gozu spinner"
+      />
     </ContainerSpinLoader>
   );
 };

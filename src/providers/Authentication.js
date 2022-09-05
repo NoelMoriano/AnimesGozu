@@ -9,7 +9,6 @@ import { auth, firestore } from "../firebase/index";
 import { firebase } from "../firebase/config";
 import { assign, isError } from "lodash";
 import { useDocument } from "react-firebase-hooks/firestore";
-import { Spinner } from "../components";
 import { timeoutPromise } from "../utils";
 import { spinLoaderFixed } from "../utils/loader";
 
