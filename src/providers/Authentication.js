@@ -64,19 +64,22 @@ export const AuthenticationProvider = ({ children }) => {
         .collection("users")
         .doc(uid)
         .set(
-          assign(
-            {},
-            { ...registerAuthUserData },
-            {
-              id: uid,
-              providerData: mapProviderData(providerData),
-              ...(providerData?.displayName && {
-                nickName: providerData.displayName,
-              }),
-              ...(providerData?.email && { email: providerData.email }),
-              createAt: new Date(),
-            }
-          ),
+          assign({}, registerAuthUserData, {
+            id: uid,
+            nickName: registerAuthUserData.firstName,
+            firstName: registerAuthUserData.firstName,
+            lastName: registerAuthUserData.lastName,
+            phone: {
+              countryCode: "+51",
+              number: registerAuthUserData.phone.number,
+            },
+            providerData: mapProviderData(providerData),
+            ...(providerData?.displayName && {
+              nickName: providerData.displayName,
+            }),
+            ...(providerData?.email && { email: providerData.email }),
+            createAt: new Date(),
+          }),
           { merge: true }
         );
 
@@ -215,6 +218,8 @@ export const AuthenticationProvider = ({ children }) => {
           description: error?.message,
         })
       );
+
+      setLoginLoading(false);
     }
   };
 
