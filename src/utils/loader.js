@@ -28,7 +28,7 @@ export const spinLoaderFixed = () => {
 
 const ContainerSpinLoader = styled.div`
   width: ${({ type }) => (type === "fixed" ? "100%" : "100vw")};
-  height: ${({ type }) => (type === "fixed" ? "100%" : "100vw")};
+  height: ${({ type }) => (type === "fixed" ? "100%" : "100vh")};
   display: flex;
   justify-content: center;
   align-items: center;
