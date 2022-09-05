@@ -9,8 +9,8 @@ import { auth, firestore } from "../firebase/index";
 import { firebase } from "../firebase/config";
 import { assign, isError } from "lodash";
 import { useDocument } from "react-firebase-hooks/firestore";
-import { Spinner } from "../components";
 import { timeoutPromise } from "../utils";
+import { spinLoaderFixed } from "../utils/loader";
 
 const AuthenticationContext = createContext({
   authUser: null,
@@ -60,14 +60,13 @@ export const AuthenticationProvider = ({ children }) => {
         return setGoogleLoginLoading(false);
       }
 
-      console.log("registerAuthUserData->", registerAuthUserData);
-
       await firestore
         .collection("users")
         .doc(uid)
         .set(
           assign(
-            { registerAuthUserData },
+            {},
+            { ...registerAuthUserData },
             {
               id: uid,
               providerData: mapProviderData(providerData),
@@ -75,7 +74,6 @@ export const AuthenticationProvider = ({ children }) => {
                 nickName: providerData.displayName,
               }),
               ...(providerData?.email && { email: providerData.email }),
-              ...registerAuthUserData,
               createAt: new Date(),
             }
           ),
@@ -113,6 +111,8 @@ export const AuthenticationProvider = ({ children }) => {
     setFirebaseUser(null);
     setAuthenticating(false);
     setLoginLoading(false);
+    setGoogleLoginLoading(false);
+    setRegisterAuthUserData(null);
   };
 
   const onLogin = async (user) => {
@@ -200,11 +200,9 @@ export const AuthenticationProvider = ({ children }) => {
         formData.password
       );
 
+      setRegisterAuthUserData(formData);
+
       await timeoutPromise(1000);
-
-      console.log("formData->", formData);
-
-      await setRegisterAuthUserData(formData);
     } catch (e) {
       const error = isError(e) ? e : undefined;
 
@@ -227,7 +225,7 @@ export const AuthenticationProvider = ({ children }) => {
     return auth.signOut();
   };
 
-  if (authenticating) return <Spinner height="90vh" />;
+  if (authenticating) return spinLoaderFixed();
 
   return (
     <AuthenticationContext.Provider

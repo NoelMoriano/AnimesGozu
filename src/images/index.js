@@ -11,3 +11,4 @@ export { default as ImgAvatar } from "./webp/avatar.webp";
 export { default as ImgAnime } from "./webp/anime-image.webp";
 export { default as ImgBackground } from "./webp/bg6.webp";
 export { default as ImgLogoAnimeGozu } from "./svgs/logotipo.svg";
+export { default as SpinnerLogo } from "./svgs/SpinerLogo.svg";
