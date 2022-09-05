@@ -89,7 +89,6 @@ export const AuthenticationProvider = ({ children }) => {
       setLoginLoading(false);
       setGoogleLoginLoading(false);
       setFirebaseUser(null);
-      setRegisterAuthUserData(null);
     } catch (e) {
       console.error("previusAuthenticationUser:", e);
     }
@@ -197,7 +196,7 @@ export const AuthenticationProvider = ({ children }) => {
   const registerAuthUser = async (formData) => {
     try {
       setLoginLoading(true);
-      await setRegisterAuthUserData(formData);
+      setRegisterAuthUserData({ ...formData });
 
       await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 
