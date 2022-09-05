@@ -112,6 +112,8 @@ export const AuthenticationProvider = ({ children }) => {
     setFirebaseUser(null);
     setAuthenticating(false);
     setLoginLoading(false);
+    setGoogleLoginLoading(false);
+    setRegisterAuthUserData(null);
   };
 
   const onLogin = async (user) => {
