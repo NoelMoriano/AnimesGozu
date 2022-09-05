@@ -66,13 +66,6 @@ export const AuthenticationProvider = ({ children }) => {
         .set(
           assign({}, registerAuthUserData, {
             id: uid,
-            nickName: registerAuthUserData.firstName,
-            firstName: registerAuthUserData.firstName,
-            lastName: registerAuthUserData.lastName,
-            phone: {
-              countryCode: "+51",
-              number: registerAuthUserData.phone.number,
-            },
             providerData: mapProviderData(providerData),
             ...(providerData?.displayName && {
               nickName: providerData.displayName,
@@ -198,14 +191,12 @@ export const AuthenticationProvider = ({ children }) => {
       setLoginLoading(true);
       await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 
+      await setRegisterAuthUserData(formData);
+
       await auth.createUserWithEmailAndPassword(
         formData.email,
         formData.password
       );
-
-      setRegisterAuthUserData(formData);
-
-      await timeoutPromise(1000);
     } catch (e) {
       const error = isError(e) ? e : undefined;
 
