@@ -12,8 +12,9 @@ export const InputPassword = ({
   required = false,
   hidden = false,
   onChange,
+  visiblePassword = false,
 }) => {
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(visiblePassword);
   return (
     <>
       <ComponentContainer
