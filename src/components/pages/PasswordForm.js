@@ -15,7 +15,6 @@ export const PasswordForm = () => {
   const {
     handleSubmit,
     control,
-    reset,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
