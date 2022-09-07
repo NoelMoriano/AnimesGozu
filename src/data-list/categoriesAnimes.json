@@ -1,0 +1,18 @@
+[
+  {
+    "code": "anime",
+    "name": "Animes"
+  },
+  {
+    "code": "ova",
+    "name": "Ovas"
+  },
+  {
+    "code": "película",
+    "name": "Películas"
+  },
+  {
+    "code": "especial",
+    "name": "Especial"
+  }
+]

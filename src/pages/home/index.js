@@ -5,7 +5,8 @@ import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { useNavigate } from "react-router";
 import { useAnimes } from "../../providers";
 import { videoBanner } from "../../images";
-import { capitalize, orderBy } from "lodash";
+import { capitalize, includes, orderBy } from "lodash";
+import { categoriesAnimes } from "../../data-list";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -17,12 +18,8 @@ export const Home = () => {
   const orderAnimes = (animes) =>
     orderBy(animes, (anime) => capitalize(anime.name), ["asc"]);
 
-  const animesCategory = orderAnimes(
-    animes.filter((anime) => anime.category === "anime")
-  );
-  const ovasCategory = orderAnimes(
-    animes.filter((anime) => anime.category === "ova")
-  );
+  const viewAnimes = (category) =>
+    animes.filter((anime) => includes(anime.category, category.code));
 
   return (
     <Container>
@@ -41,34 +38,22 @@ export const Home = () => {
       </WrapperHomeBanner>
 
       <WrapperAnimesContent>
-        <div className="category-card">
-          <h3>ANIMES:</h3>
-          <div className="category">
-            {animesCategory.map((anime, index) => (
-              <CardAnime
-                key={index}
-                onNavigateAnime={() => onNavigateTo(`/anime/${anime.id}`)}
-                title={anime.name}
-                image={anime.animePicture.url}
-                synopsis={anime.synopsis}
-              />
-            ))}
+        {categoriesAnimes.map((category, index) => (
+          <div className="category-card" key={index}>
+            <h3>{category.name.toUpperCase()}:</h3>
+            <div className="category">
+              {orderAnimes(viewAnimes(category)).map((anime, index) => (
+                <CardAnime
+                  key={index}
+                  onNavigateAnime={() => onNavigateTo(`/anime/${anime.id}`)}
+                  title={anime.name}
+                  image={anime.animePicture.url}
+                  synopsis={anime.synopsis}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="category-card">
-          <h3>OVAS:</h3>
-          <div className="category ">
-            {ovasCategory.map((anime, index) => (
-              <CardAnime
-                key={index}
-                onNavigateAnime={() => onNavigateTo(`/anime/${anime.id}`)}
-                title={anime.name}
-                image={anime.animePicture.url}
-                synopsis={anime.synopsis}
-              />
-            ))}
-          </div>
-        </div>
+        ))}
       </WrapperAnimesContent>
     </Container>
   );

@@ -35,3 +35,4 @@ yarn-error.log*
 /.eslintcache
 /*.log
 /src/react-app-env.d.ts
+/.firebase
