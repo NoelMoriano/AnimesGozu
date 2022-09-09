@@ -33,14 +33,23 @@ export const InputSearch = () => {
 
   const { required, error } = useFormUtils({ errors, schema });
 
-  const viewAnimes = () =>
-    animes
-      .filter((anime) =>
-        anime.searchData.some((searchData) =>
+  const viewAnimes = () => {
+    const wordsSearch = watch("search") && watch("search").split(" ");
+
+    return animes
+      .filter((anime) => {
+        if (wordsSearch.length > 1) {
+          return anime.searchData.some((searchData) =>
+            includes(wordsSearch, searchData)
+          );
+        }
+
+        return anime.searchData.some((searchData) =>
           includes(searchData, watch("search"))
-        )
-      )
+        );
+      })
       .filter((anime, index) => index < 6);
+  };
 
   const onSubmitSearch = ({ search }) => console.log("search->", search);
 
