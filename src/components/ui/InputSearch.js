@@ -101,7 +101,7 @@ export const InputSearch = () => {
                     <div className="img-anime">
                       <img
                         src={anime?.animePicture?.thumbUrl}
-                        alt="anime image"
+                        alt={`${anime.name} - animes gozu`}
                       />
                     </div>
                     <div className="description">
