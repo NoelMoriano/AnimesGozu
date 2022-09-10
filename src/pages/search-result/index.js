@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
-import { faFilter, faList } from "@fortawesome/free-solid-svg-icons";
+import { faList } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, CardAnime, Select } from "../../components";
+import { CardAnime, Select } from "../../components";
 import { useAnimes } from "../../providers";
 import { useNavigate } from "react-router";
 import { capitalize, includes, orderBy } from "lodash";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
+import { categories, genders, statusAnime } from "../../data-list";
+import { removeAccents } from "../../utils";
 
 export const SearchResult = () => {
   const navigate = useNavigate();
@@ -21,18 +23,28 @@ export const SearchResult = () => {
 
   useEffect(() => {
     filterAnimes();
+    console.log("gender->", gender);
   }, [category, gender, animeState]);
 
   const filterAnimes = () => {
     const filterAnime = animes
       .filter((anime) =>
-        category === "all" ? true : anime.category === category
+        category === "all"
+          ? true
+          : removeAccents(anime.category) === removeAccents(category)
       )
       .filter((anime) =>
-        gender === "all" ? true : includes(anime.gender, gender)
+        gender === "all"
+          ? true
+          : includes(
+              anime.gender.map((gender) => removeAccents(gender)),
+              removeAccents(gender)
+            )
       )
       .filter((anime) =>
-        animeState === "all" ? true : includes(anime.state, animeState)
+        animeState === "all"
+          ? true
+          : includes(removeAccents(anime.state), removeAccents(animeState))
       );
 
     setAnimesData(orderAnimes(filterAnime));
@@ -49,41 +61,20 @@ export const SearchResult = () => {
       </h1>
       <div className="section-select">
         <Select
-          title="Genero: Todos"
-          onFilterAnimes={setGender}
-          options={[
-            { label: "Shounen", value: "shounen" },
-            { label: "Comedia", value: "comedia" },
-          ]}
-        />
-        <Select
           title="Categoria: Todos"
           onFilterAnimes={setCategory}
-          options={[
-            { label: "Anime", value: "anime" },
-            { label: "Ova", value: "ova" },
-          ]}
+          options={categories}
+        />
+        <Select
+          title="Genero: Todos"
+          onFilterAnimes={setGender}
+          options={genders}
         />
         <Select
           title="Estado: Todos"
           onFilterAnimes={setAnimeState}
-          options={[
-            { label: "Finalizado", value: "finalizado" },
-            { label: "Emisión", value: "emision" },
-          ]}
+          options={statusAnime}
         />
-        {/*<Select*/}
-        {/*  title="Año: Todos"*/}
-        {/*  onFilterAnimes={setCategory}*/}
-        {/*  options={[*/}
-        {/*    { label: "Anime", value: "anime" },*/}
-        {/*    { label: "Ova", value: "ova" },*/}
-        {/*  ]}*/}
-        {/*/>*/}
-        {/*<Button type="primary" size="small" borderRadius=".5em">*/}
-        {/*  <FontAwesomeIcon icon={faFilter} className="item-icon" />*/}
-        {/*  Filtrar*/}
-        {/*</Button>*/}
       </div>
       <div className="section-anime">
         {animesData.map((anime, index) => (

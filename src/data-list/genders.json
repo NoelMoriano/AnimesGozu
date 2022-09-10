@@ -1,0 +1,162 @@
+[
+  {
+    "id": "accion",
+    "name": "Acción"
+  },
+  {
+    "id": "artes-marciales",
+    "name": "Artes Marciales"
+  },
+  {
+    "id": "aventuras",
+    "name": "Aventuras"
+  },
+  {
+    "id": "carreras",
+    "name": "Carreras"
+  },
+  {
+    "id": "ciencia-ficcion",
+    "name": "Ciencia Ficción"
+  },
+  {
+    "id": "comedia",
+    "name": "Comedia"
+  },
+  {
+    "id": "demencia",
+    "name": "Demencia"
+  },
+  {
+    "id": "demonios",
+    "name": "Demonios"
+  },
+  {
+    "id": "deportes",
+    "name": "Deportes"
+  },
+  {
+    "id": "drama",
+    "name": "Drama"
+  },
+  {
+    "id": "ecchi",
+    "name": "Ecchi"
+  },
+  {
+    "id": "escolares",
+    "name": "Escolares"
+  },
+  {
+    "id": "espacial",
+    "name": "Espacial"
+  },
+  {
+    "id": "fantasia",
+    "name": "Fantasia"
+  },
+  {
+    "id": "harem",
+    "name": "Harem"
+  },
+  {
+    "id": "historico",
+    "name": "Historico"
+  },
+  {
+    "id": "infantil",
+    "name": "Infantil"
+  },
+  {
+    "id": "josei",
+    "name": "Josei"
+  },
+  {
+    "id": "juegos",
+    "name": "Juegos"
+  },
+  {
+    "id": "magia",
+    "name": "Magia"
+  },
+  {
+    "id": "mecha",
+    "name": "Mecha"
+  },
+  {
+    "id": "militar",
+    "name": "Militar"
+  },
+  {
+    "id": "misterio",
+    "name": "Misterio"
+  },
+  {
+    "id": "musica",
+    "name": "Música"
+  },
+  {
+    "id": "parodia",
+    "name": "Parodia"
+  },
+  {
+    "id": "policia",
+    "name": "Policía"
+  },
+  {
+    "id": "psicologico",
+    "name": "Psicológico"
+  },
+  {
+    "id": "recuentos-de-la-vida",
+    "name": "Recuentos de la vida"
+  },
+  {
+    "id": "romance",
+    "name": "Romance"
+  },
+  {
+    "id": "samurai",
+    "name": "Samurai"
+  },
+  {
+    "id": "seinen",
+    "name": "Seinen"
+  },
+  {
+    "id": "shoujo",
+    "name": "Shoujo"
+  },
+  {
+    "id": "ounen",
+    "name": "Shounen"
+  },
+  {
+    "id": "sobrenatural",
+    "name": "Sobrenatural"
+  },
+  {
+    "id": "superpoderes",
+    "name": "Superpoderes"
+  },
+  {
+    "id": "suspenso",
+    "name": "Suspenso"
+  },
+  {
+    "id": "terror",
+    "name": "Terror"
+  },
+  {
+    "id": "ampiros",
+    "name": "Vampiros"
+  },
+  {
+    "id": "yaoi",
+    "name": "Yaoi"
+  },
+  {
+    "id": "uri",
+    "name": "Yuri"
+  }
+]

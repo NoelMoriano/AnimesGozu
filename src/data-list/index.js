@@ -1,3 +1,4 @@
-export { default as AnimesData } from "./animes.json";
-export { default as EpisodesData } from "./episodes.json";
-export { default as categoriesAnimes } from "./categoriesAnimes.json";
+export { default as categories } from "./categories.json";
+export { default as genders } from "./genders.json";
+export { default as statusAnime } from "./status.json";
+export { default as orders } from "./orders.json";

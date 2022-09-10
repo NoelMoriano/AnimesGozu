@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 import { useAnimes } from "../../providers";
 import { videoBanner } from "../../images";
 import { capitalize, includes, orderBy } from "lodash";
-import { categoriesAnimes } from "../../data-list";
+import { categories } from "../../data-list";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ export const Home = () => {
       </WrapperHomeBanner>
 
       <WrapperAnimesContent>
-        {categoriesAnimes.map((category, index) => (
+        {categories.map((category, index) => (
           <div className="category-card" key={index}>
             <h3>{category.name.toUpperCase()}:</h3>
             <div className="category">

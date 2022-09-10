@@ -1,0 +1,22 @@
+[
+  {
+    "id": "default",
+    "name": "Por Defecto"
+  },
+  {
+    "id": "updated",
+    "name": "Recientemente Actualizados"
+  },
+  {
+    "id": "added",
+    "name": "Recientemente Agregados"
+  },
+  {
+    "id": "title",
+    "name": "Nombre A-Z"
+  },
+  {
+    "id": "rating",
+    "name": "Calificación"
+  }
+]

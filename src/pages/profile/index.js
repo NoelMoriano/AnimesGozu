@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import React, { useState } from "react";
-import { PasswordForm, ProfileForm } from "../../components";
+import { ProfileForm } from "../../components";
 import { darken } from "polished";
 
 export const Profile = () => {
@@ -17,17 +17,16 @@ export const Profile = () => {
         >
           Información
         </div>
-        <div
+        {/*<div
           className="item-tab tab-password"
           onClick={() => changeTabType("password")}
         >
           Contraseña
-        </div>
+        </div>*/}
       </WrapperTabs>
-
-      {tabType === "password" && <PasswordForm />}
-
       {tabType === "information" && <ProfileForm />}
+
+      {/*{tabType === "password" && <PasswordForm />}*/}
     </Container>
   );
 };

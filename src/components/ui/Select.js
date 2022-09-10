@@ -6,8 +6,8 @@ export const Select = ({ title, onFilterAnimes, options = [] }) => {
       <select onChange={(e) => onFilterAnimes(e.target.value)}>
         <option value="all">{title}</option>
         {options.map((option, index) => (
-          <option key={index} value={option.value}>
-            {option.label}
+          <option key={index} value={option.id}>
+            {option.name}
           </option>
         ))}
       </select>
@@ -23,6 +23,7 @@ const Container = styled.div`
       background: ${theme.colors.quaternary};
       padding: 0.5rem;
       border-radius: 0.5em;
+      box-sizing: border-box;
     }
   `}
 `;
