@@ -16,7 +16,7 @@ export const Header = ({ onSetVisibleDrawer }) => {
       <div className="content-left">
         <img
           src={ImgLogoAnimeGozu}
-          alt="Anime Gozu"
+          alt="Animes Gozu"
           onClick={() => onNavigateTo("/")}
         />
       </div>

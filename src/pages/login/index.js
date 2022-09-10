@@ -52,7 +52,7 @@ export const Login = () => {
         <div className="wrapper-logo">
           <img
             src={ImgLogoAnimeGozu}
-            alt="Anime Gozu"
+            alt="Animes Gozu"
             onClick={() => onNavigateTo("/")}
           />
         </div>
