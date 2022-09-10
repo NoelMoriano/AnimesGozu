@@ -23,7 +23,6 @@ export const SearchResult = () => {
 
   useEffect(() => {
     filterAnimes();
-    console.log("gender->", gender);
   }, [category, gender, animeState]);
 
   const filterAnimes = () => {
@@ -61,12 +60,12 @@ export const SearchResult = () => {
       </h1>
       <div className="section-select">
         <Select
-          title="Categoria: Todos"
+          title="Categoría: Todos"
           onFilterAnimes={setCategory}
           options={categories}
         />
         <Select
-          title="Genero: Todos"
+          title="Género: Todos"
           onFilterAnimes={setGender}
           options={genders}
         />
@@ -106,7 +105,7 @@ const Container = styled.main`
     .section-select {
       padding: 2rem 0;
       display: flex;
-      grid-column-gap: 1em;
+      gap: 1rem;
       flex-wrap: wrap;
       align-items: center;
     }

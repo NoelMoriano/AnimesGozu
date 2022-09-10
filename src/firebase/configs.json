@@ -1,7 +1,7 @@
 {
   "common": {
     "app-data": {
-      "name": "AnimeGozu",
+      "name": "AnimesGozu",
       "emails": {
         "contact": "contact@animegozu.com"
       },
@@ -20,7 +20,7 @@
         "local2": "Av. Huaylas 2691 – Chorrillos"
       },
       "poweredBy": {
-        "name": "AnimeGozu",
+        "name": "AnimesGozu",
         "webUrl": "https://animegozu.app"
       }
     }
