@@ -34,7 +34,6 @@ export const DrawerMobile = ({ visibleDrawer, onSetVisibleDrawer }) => {
             <InputSearch />
           </div>
           <UserMenu
-            authUser={authUser}
             onLogout={logout}
             onHiddenDrawerMobile={onHiddenDrawerMobile}
           />

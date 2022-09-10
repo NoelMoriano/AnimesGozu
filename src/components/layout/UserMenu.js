@@ -1,10 +1,9 @@
 import React from "react";
-import { Avatar, InputSearch } from "../ui";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useDevice } from "../../hooks";
 
-export const UserMenu = ({ authUser, onHiddenDrawerMobile, onLogout }) => {
+export const UserMenu = ({ onHiddenDrawerMobile, onLogout }) => {
   const { isMobile } = useDevice();
 
   return (
@@ -31,9 +30,9 @@ export const UserMenu = ({ authUser, onHiddenDrawerMobile, onLogout }) => {
         >
           <h4>Animes</h4>
         </Link>
-        <a className="link-section" onClick={() => onLogout()}>
+        <span className="link-section" onClick={() => onLogout()}>
           <h4>Cerrar session</h4>
-        </a>
+        </span>
       </div>
     </Container>
   );

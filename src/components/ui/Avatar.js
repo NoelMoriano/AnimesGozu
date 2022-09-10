@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { AvatarDefault } from "../../images";
-import { mediaQuery } from "../../styles/constants/mediaQuery";
 
 export const Avatar = ({ ImgAvatar, nickName = "User", onClick }) => {
   return (
@@ -13,7 +12,7 @@ export const Avatar = ({ ImgAvatar, nickName = "User", onClick }) => {
         <div className="img-profile">
           <img
             src={ImgAvatar || AvatarDefault}
-            alt="Avatar image"
+            alt="Avatar"
             className="img-avatar"
           />
         </div>

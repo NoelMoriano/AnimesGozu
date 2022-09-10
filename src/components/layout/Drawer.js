@@ -15,7 +15,7 @@ export const Drawer = () => {
   return (
     <Container>
       {authUser ? (
-        <UserMenu authUser={authUser} onLogout={logout} />
+        <UserMenu onLogout={logout} />
       ) : (
         <div className="wrapper-buttons">
           <Button size="medium" onClick={() => onNavigateTo("/login")}>
