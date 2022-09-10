@@ -22,7 +22,7 @@ export const Footer = () => {
       </div>
       <div className="wrapper-content">
         <div>
-          AnimeGozu - Ningun vídeo se encuentra alojado en nuestros servidores.
+          AnimesGozu - Ningun vídeo se encuentra alojado en nuestros servidores.
         </div>
         <div>
           Desarrollado con

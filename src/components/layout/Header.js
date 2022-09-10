@@ -4,10 +4,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { useNavigate } from "react-router";
-import { InputSearch } from "../ui";
+import { Avatar, InputSearch } from "../ui";
+import React from "react";
+import { useAuthentication } from "../../providers";
+import { useDevice } from "../../hooks";
 
 export const Header = ({ onSetVisibleDrawer }) => {
   const navigate = useNavigate();
+  const { isMobile } = useDevice();
+  const { authUser } = useAuthentication();
 
   const onNavigateTo = (url) => navigate(url);
 
@@ -21,13 +26,27 @@ export const Header = ({ onSetVisibleDrawer }) => {
         />
       </div>
       <div className="content-right">
-        <InputSearch />
-        <div className="item-open-drawer">
-          <FontAwesomeIcon
-            className="icon-clear"
-            icon={faBars}
-            onClick={() => onSetVisibleDrawer(true)}
-          />
+        <div className="wrapper-search">
+          <InputSearch />
+        </div>
+        <div className="item-avatar-contain">
+          {authUser ? (
+            <Avatar
+              ImgAvatar={authUser.providerData?.photoURL}
+              nickName={authUser?.nickName || authUser?.firstName}
+              onClick={() => isMobile && onSetVisibleDrawer(true)}
+            />
+          ) : (
+            isMobile && (
+              <div className="item-icon-open">
+                <FontAwesomeIcon
+                  className="icon-clear"
+                  icon={faBars}
+                  onClick={() => isMobile && onSetVisibleDrawer(true)}
+                />
+              </div>
+            )
+          )}
         </div>
       </div>
     </Container>
@@ -61,8 +80,17 @@ const Container = styled.div`
     }
     img {
       width: auto;
-      height: 2.7em;
+      height: 2.3em;
       cursor: pointer;
+      ${mediaQuery.minTablet} {
+        height: 2.5em;
+      }
+    }
+  }
+  .wrapper-search {
+    display: none;
+    ${mediaQuery.minTablet} {
+      display: flex;
     }
   }
   .content-right {
@@ -70,16 +98,16 @@ const Container = styled.div`
       display: flex;
       justify-content: flex-end;
       align-items: center;
+      gap: 1em;
     }
-    .item-open-drawer {
+    .item-avatar-contain {
       height: 100%;
       display: flex;
       justify-content: flex-end;
       align-items: center;
       color: ${({ theme }) => theme.colors.font1};
-      font-size: ${({ theme }) => theme.font_sizes.xxx_large};
-      ${mediaQuery.minTablet} {
-        display: none;
+      .item-icon-open {
+        font-size: ${({ theme }) => theme.font_sizes.xxx_large};
       }
     }
   }

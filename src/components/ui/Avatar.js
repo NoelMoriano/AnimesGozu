@@ -1,20 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import { AvatarDefault } from "../../images";
+import { mediaQuery } from "../../styles/constants/mediaQuery";
 
-export const Avatar = ({ ImgAvatar, nickName = "User" }) => {
+export const Avatar = ({ ImgAvatar, nickName = "User", onClick }) => {
   return (
-    <Container>
+    <Container onClick={onClick}>
       <div className="profile">
+        <div className="name-profile">
+          <h6>{nickName}</h6>
+        </div>
         <div className="img-profile">
           <img
             src={ImgAvatar || AvatarDefault}
             alt="Avatar image"
             className="img-avatar"
           />
-        </div>
-        <div className="name-profile">
-          <h5>{nickName}</h5>
         </div>
       </div>
     </Container>
@@ -26,14 +27,13 @@ const Container = styled.div`
   .profile {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: end;
     .img-avatar {
-      width: 6.5em;
-      height: 6.5em;
+      width: 2.7em;
+      height: 2.7em;
       object-fit: cover;
-      margin: 0.5rem 0;
       border-radius: 50%;
+      margin-left: 1em;
     }
     .name-profile {
       text-transform: capitalize;

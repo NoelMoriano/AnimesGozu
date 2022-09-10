@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar } from "../ui";
+import { Avatar, InputSearch } from "../ui";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useDevice } from "../../hooks";
@@ -9,10 +9,6 @@ export const UserMenu = ({ authUser, onHiddenDrawerMobile, onLogout }) => {
 
   return (
     <Container>
-      <Avatar
-        ImgAvatar={authUser.providerData?.photoURL}
-        nickName={authUser?.nickName || authUser?.firstName}
-      />
       <div className="menu-list">
         <Link
           to="/"

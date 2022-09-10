@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { Button } from "../ui";
+import { Button, InputSearch } from "../ui";
 import { useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
@@ -29,11 +29,16 @@ export const DrawerMobile = ({ visibleDrawer, onSetVisibleDrawer }) => {
       </div>
 
       {authUser ? (
-        <UserMenu
-          authUser={authUser}
-          onLogout={logout}
-          onHiddenDrawerMobile={onHiddenDrawerMobile}
-        />
+        <>
+          <div className="wrapper-input-search">
+            <InputSearch />
+          </div>
+          <UserMenu
+            authUser={authUser}
+            onLogout={logout}
+            onHiddenDrawerMobile={onHiddenDrawerMobile}
+          />
+        </>
       ) : (
         <div className="wrapper-buttons">
           <Button size="medium" onClick={() => onNavigateTo("/login")}>
@@ -61,6 +66,7 @@ const Container = styled.div`
   bottom: 0;
   background: rgba(0, 0, 0, 0.9);
   transition: all ease-in-out 0.3s;
+  padding: 1em;
   ${({ visibleDrawer }) =>
     visibleDrawer
       ? css`
@@ -76,6 +82,10 @@ const Container = styled.div`
     .item-close {
       color: ${({ theme }) => theme.colors.white};
     }
+  }
+  .wrapper-input-search {
+    display: flex;
+    justify-content: center;
   }
   .wrapper-buttons {
     display: flex;

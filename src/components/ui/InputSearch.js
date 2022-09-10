@@ -131,10 +131,7 @@ export const InputSearch = () => {
 
 const Container = styled.div`
   position: relative;
-  display: none;
-  ${mediaQuery.minTablet} {
-    display: grid;
-  }
+  display: grid;
 `;
 
 const InputSearchElement = styled.input`
@@ -155,7 +152,7 @@ const ContentSearch = styled.div`
     max-width: 20em;
     .wrapper-input-element {
       position: relative;
-      display: none;
+      display: flex;
       align-items: center;
       width: 100%;
       color: ${({ theme }) => theme.colors.font1};
