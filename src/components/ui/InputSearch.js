@@ -38,7 +38,7 @@ export const InputSearch = () => {
 
     return animes
       .filter((anime) => {
-        if (wordsSearch.length > 1) {
+        if (wordsSearch?.length > 1) {
           return anime.searchData.some((searchData) =>
             includes(wordsSearch, searchData)
           );
