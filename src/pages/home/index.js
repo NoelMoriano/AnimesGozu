@@ -19,7 +19,7 @@ export const Home = () => {
     orderBy(animes, (anime) => capitalize(anime.name), ["asc"]);
 
   const viewAnimes = (category) =>
-    animes.filter((anime) => includes(anime.category, category.code));
+    animes.filter((anime) => includes(anime.category, category.id));
 
   return (
     <Container>
