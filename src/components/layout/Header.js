@@ -20,6 +20,7 @@ export const Header = ({ onSetVisibleDrawer }) => {
     <Container>
       <div className="content-left">
         <img
+          loading="lazy"
           src={ImgLogoAnimeGozu}
           alt="Animes Gozu"
           onClick={() => onNavigateTo("/")}

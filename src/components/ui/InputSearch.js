@@ -101,6 +101,7 @@ export const InputSearch = () => {
                   <div className="items-list">
                     <div className="img-anime">
                       <img
+                        loading="lazy"
                         src={anime?.animePicture?.thumbUrl}
                         alt={`${anime.name} - animes gozu`}
                       />

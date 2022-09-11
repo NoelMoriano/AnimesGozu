@@ -11,7 +11,7 @@ export const EpisodeItem = ({
 }) => (
   <Container>
     <div className="item-left" onClick={() => onClick()}>
-      <img src={image} alt={`episode ${number}`} />
+      <img loading="lazy" src={image} alt={`episode ${number}`} />
     </div>
     <div className="item-center">
       <div className="titles" onClick={() => onClick()}>
@@ -32,7 +32,7 @@ export const EpisodeItem = ({
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: auto 1fr 10%;
+  grid-template-columns: auto 1fr auto;
   grid-gap: 0.7rem;
   padding: 0.8rem 0.4rem;
   background: #0e0e0e;
@@ -54,8 +54,9 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     img {
-      width: 7rem;
-      height: 3.5rem;
+      width: 100%;
+      max-width: 5.5rem;
+      height: 3.1rem;
       object-fit: cover;
     }
   }
@@ -64,7 +65,7 @@ const Container = styled.div`
     align-items: center;
     justify-content: start;
     .titles {
-      font-size: 1.1em;
+      font-size: 1em;
       padding-left: 0.5em;
     }
   }
@@ -72,6 +73,7 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 0.3em;
     .icon-play {
       transition: all ease-in-out 0.3s;
       &:hover,

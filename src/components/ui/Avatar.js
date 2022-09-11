@@ -11,6 +11,7 @@ export const Avatar = ({ ImgAvatar, nickName = "User", onClick }) => {
         </div>
         <div className="img-profile">
           <img
+            loading="lazy"
             src={ImgAvatar || AvatarDefault}
             alt="Avatar"
             className="img-avatar"

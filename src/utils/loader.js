@@ -6,6 +6,7 @@ export const spinLoader = () => {
   return (
     <ContainerSpinLoader type="relative">
       <img
+        loading="lazy"
         src={SpinnerLogo}
         className="spin-version-icon"
         alt="animes gozu spinner"
@@ -18,6 +19,7 @@ export const spinLoaderFixed = () => {
   return (
     <ContainerSpinLoader type="fixed">
       <img
+        loading="lazy"
         src={SpinnerLogo}
         className="spin-version-icon"
         alt="animes gozu spinner"

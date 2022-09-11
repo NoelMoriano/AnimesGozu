@@ -1,7 +1,7 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import { Button, Form, Input, InputPassword } from "../../components";
 import styled from "styled-components";
-import { useForm, Controller } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAuthentication } from "../../providers";
@@ -25,10 +25,6 @@ export const Login = () => {
     authUser && onNavigateTo("/");
   }, [authUser]);
 
-  useEffect(() => {
-    console.log("loginLoading->", loginLoading);
-  }, [loginLoading]);
-
   const schema = yup.object({
     email: yup.string().required().email(),
     password: yup.string().required(),
@@ -51,6 +47,7 @@ export const Login = () => {
       <div className="wrapper-login">
         <div className="wrapper-logo">
           <img
+            loading="lazy"
             src={ImgLogoAnimeGozu}
             alt="Animes Gozu"
             onClick={() => onNavigateTo("/")}
