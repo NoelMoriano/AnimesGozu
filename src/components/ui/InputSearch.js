@@ -11,7 +11,8 @@ import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { useFormUtils } from "../../hooks";
 import { lighten } from "polished";
 import { useAnimes } from "../../providers";
-import { capitalize, includes } from "lodash";
+import { capitalize, includes, toLower } from "lodash";
+import { removeAccents } from "../../utils";
 
 export const InputSearch = () => {
   const { animes } = useAnimes();
@@ -33,25 +34,25 @@ export const InputSearch = () => {
 
   const { required, error } = useFormUtils({ errors, schema });
 
-  const viewAnimes = () => {
-    const wordsSearch = watch("search") && watch("search").split(" ");
+  const viewAnimes = (searchWord = "") => {
+    const wordsSearch = (watch("search") || searchWord).split(" ");
 
     return animes
       .filter((anime) => {
-        if (wordsSearch?.length > 1) {
-          return anime.searchData.some((searchData) =>
-            includes(wordsSearch, searchData)
-          );
-        }
-
         return anime.searchData.some((searchData) =>
-          includes(searchData, watch("search"))
+          wordsSearch?.length > 1
+            ? includes(formatWords(wordsSearch), formatWord(searchData))
+            : includes(formatWord(searchData), formatWord(searchWord))
         );
       })
       .filter((anime, index) => index < 6);
   };
 
-  const onSubmitSearch = ({ search }) => console.log("search->", search);
+  const formatWord = (word = "") => removeAccents(toLower(word));
+  const formatWords = (words = []) =>
+    words.map((word) => removeAccents(toLower(word)));
+
+  const onSubmitSearch = ({ search }) => viewAnimes(search);
 
   const resetForm = () => reset({ search: "" });
 
