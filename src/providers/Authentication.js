@@ -55,10 +55,12 @@ export const AuthenticationProvider = ({ children }) => {
 
       if (userExists) {
         setFirebaseUser(currentUser);
-        await timeoutPromise(1700);
+        await timeoutPromise(900);
         setLoginLoading(false);
         return setGoogleLoginLoading(false);
       }
+
+      await timeoutPromise(1000);
 
       await firestore
         .collection("users")
@@ -66,7 +68,10 @@ export const AuthenticationProvider = ({ children }) => {
         .set(
           {
             id: uid,
-            ...registerAuthUserData,
+            ...(registerAuthUserData?.firstName && { firstName: registerAuthUserData.firstName }),
+            ...(registerAuthUserData?.lastName && { lastName: registerAuthUserData.lastName }),
+            ...(registerAuthUserData?.email && { firstName: registerAuthUserData.email }),
+            ...(registerAuthUserData?.phone && { phone: registerAuthUserData.phone }),
             nickName:
               providerData?.displayName ||
               registerAuthUserData?.firstName ||
@@ -83,7 +88,8 @@ export const AuthenticationProvider = ({ children }) => {
 
       setFirebaseUser(currentUser);
 
-      await timeoutPromise(1700);
+      await timeoutPromise(900);
+
       setLoginLoading(false);
       setGoogleLoginLoading(false);
       setFirebaseUser(null);
@@ -194,6 +200,9 @@ export const AuthenticationProvider = ({ children }) => {
   const registerAuthUser = async (formData) => {
     try {
       setLoginLoading(true);
+
+      await timeoutPromise(1000);
+
       setRegisterAuthUserData(formData);
 
       await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
