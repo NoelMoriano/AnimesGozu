@@ -31,7 +31,7 @@ export const DrawerMobile = ({ visibleDrawer, onSetVisibleDrawer }) => {
       {authUser ? (
         <>
           <div className="wrapper-input-search">
-            <InputSearch />
+            <InputSearch onVisibleDrawerMobile={() => onHiddenDrawerMobile()} />
           </div>
           <UserMenu
             onLogout={logout}

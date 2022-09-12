@@ -13,7 +13,7 @@ import { lighten } from "polished";
 import { useAnimes } from "../../providers";
 import { capitalize, includes } from "lodash";
 
-export const InputSearch = () => {
+export const InputSearch = ({ onVisibleDrawerMobile }) => {
   const { animes } = useAnimes();
   const navigate = useNavigate();
 
@@ -94,6 +94,7 @@ export const InputSearch = () => {
                   key={index}
                   onClick={() => {
                     onNavigateTo(`/anime/${anime.id}`);
+                    onVisibleDrawerMobile();
                     resetForm();
                   }}
                 >
