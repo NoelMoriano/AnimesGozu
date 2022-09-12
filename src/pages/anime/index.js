@@ -51,7 +51,7 @@ export const Anime = () => {
           <div className="gradient">
             <div className="content-banner">
               <div className="anime-gender">
-                <img src={Imalogo} alt="Imalogo animes gozu" />
+                <img loading="lazy" src={Imalogo} alt="Imalogo animes gozu" />
                 <span>{anime.category.toUpperCase()}</span>
               </div>
               <div className="anime-title">

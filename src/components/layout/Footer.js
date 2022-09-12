@@ -13,12 +13,12 @@ export const Footer = () => {
   return (
     <Container>
       <div className="social-container">
-        <h3>Siguenos en:</h3>
+        {/*<h3>Siguenos en:</h3>
         <div className="socials-list">
           <FontAwesomeIcon icon={faFacebook} size="2x" />
           <FontAwesomeIcon icon={faTiktok} size="2x" />
           <FontAwesomeIcon icon={faInstagram} size="2x" />
-        </div>
+        </div>*/}
       </div>
       <div className="wrapper-content">
         <div>

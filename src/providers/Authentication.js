@@ -38,8 +38,6 @@ export const AuthenticationProvider = ({ children }) => {
     firebaseUser ? firestore.collection("users").doc(firebaseUser.uid) : null
   );
 
-  console.log("registerAuthUserData->", registerAuthUserData);
-
   useMemo(() => {
     auth.onAuthStateChanged((currentUser) =>
       currentUser ? previusAuthenticationUser(currentUser) : onLogout()
@@ -196,7 +194,7 @@ export const AuthenticationProvider = ({ children }) => {
   const registerAuthUser = async (formData) => {
     try {
       setLoginLoading(true);
-      setRegisterAuthUserData({ ...formData });
+      setRegisterAuthUserData(formData);
 
       await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 
@@ -207,7 +205,7 @@ export const AuthenticationProvider = ({ children }) => {
     } catch (e) {
       const error = isError(e) ? e : undefined;
 
-      console.error("singUpUser:", e);
+      console.error("registerAuthUser:", e);
 
       alert(
         JSON.stringify({

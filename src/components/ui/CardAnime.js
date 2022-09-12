@@ -12,7 +12,11 @@ export const CardAnime = ({
 }) => (
   <Container onClick={() => onNavigateAnime()}>
     <div className="item-anime">
-      <img src={image || imgAnime} alt={`${title} animes gozu`} />
+      <img
+        loading="lazy"
+        src={image || imgAnime}
+        alt={`${title} animes gozu`}
+      />
       <div className="hover-effect">
         <div className="synopsis">{synopsis}</div>
       </div>
