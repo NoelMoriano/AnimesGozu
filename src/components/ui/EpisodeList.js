@@ -61,7 +61,7 @@ export const EpisodeList = ({ episodes = [] }) => {
             number={episode.episodeNumber || index + 1}
             image={
               episode.episodeImage.url ||
-              "https://storage.googleapis.com/animes-dev-animes/animes/dumucB9YLN054VySLlu6/episodes/mUmBShtFWxSiskrJNOa2/episodeImage.jpeg"
+              "https://storage.googleapis.com/animesgozu-dev.appspot.com/resources/image-no-found.jpeg"
             }
             onClick={() => {
               onNavigateTo(`/ver/${animeId}/${episode.episodeNumber}`);
