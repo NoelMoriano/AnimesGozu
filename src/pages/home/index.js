@@ -5,7 +5,7 @@ import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { useNavigate } from "react-router";
 import { useAnimes } from "../../providers";
 import { videoBanner } from "../../images";
-import { capitalize, includes, orderBy } from "lodash";
+import { capitalize, isEmpty, orderBy } from "lodash";
 import { categories } from "../../data-list";
 
 export const Home = () => {
@@ -18,8 +18,16 @@ export const Home = () => {
   const orderAnimes = (animes) =>
     orderBy(animes, (anime) => capitalize(anime.name), ["asc"]);
 
-  const viewAnimes = (category) =>
-    animes.filter((anime) => includes(anime.category, category.id));
+  const animesExists = (category) =>
+    animes.filter((anime) => category === anime.category);
+
+  const animesView = () =>
+    categories.map((category) => ({
+      category: category,
+      animesList: !isEmpty(animesExists(category.id))
+        ? orderAnimes(animesExists(category.id))
+        : null,
+    }));
 
   return (
     <Container>
@@ -38,22 +46,25 @@ export const Home = () => {
       </WrapperHomeBanner>
 
       <WrapperAnimesContent>
-        {categories.map((category, index) => (
-          <div className="category-card" key={index}>
-            <h3>{category.name.toUpperCase()}:</h3>
-            <div className="category">
-              {orderAnimes(viewAnimes(category)).map((anime, index) => (
-                <CardAnime
-                  key={index}
-                  onNavigateAnime={() => onNavigateTo(`/anime/${anime.id}`)}
-                  title={anime.name}
-                  image={anime.animePicture.url}
-                  synopsis={anime.synopsis}
-                />
-              ))}
-            </div>
-          </div>
-        ))}
+        {animesView().map(
+          (animesView_, index) =>
+            animesView_.animesList && (
+              <div className="category-card" key={index}>
+                <h3>{animesView_.category.name.toUpperCase()}:</h3>
+                <div className="category">
+                  {animesView_.animesList.map((anime, index) => (
+                    <CardAnime
+                      key={index}
+                      onNavigateAnime={() => onNavigateTo(`/anime/${anime.id}`)}
+                      title={anime.name}
+                      image={anime.animePicture.url}
+                      synopsis={anime.synopsis}
+                    />
+                  ))}
+                </div>
+              </div>
+            )
+        )}
       </WrapperAnimesContent>
     </Container>
   );
@@ -78,6 +89,7 @@ const WrapperHomeBanner = styled.div`
     align-items: center;
     flex-direction: column;
     position: relative;
+
     ${mediaQuery.minTablet} {
       height: 64vh;
     }
@@ -100,6 +112,7 @@ const WrapperHomeBanner = styled.div`
       right: 0;
       z-index: 500;
       background: linear-gradient(#070707, rgb(29 29 29 / 26%), #070707);
+
       .description-banner {
         position: absolute;
         top: 0;
@@ -117,9 +130,11 @@ const WrapperHomeBanner = styled.div`
         .description {
           font-size: 0.7em;
           padding: 0 3em;
+
           ${mediaQuery.minTablet} {
             font-size: 1.2em;
           }
+
           h2 {
             margin-top: 0.3em;
           }
@@ -134,25 +149,31 @@ const WrapperAnimesContent = styled.div`
   height: auto;
   padding: 2em 1.7em;
   position: relative;
+
   .category-card {
     position: relative;
     width: 100%;
     height: auto;
     margin-bottom: 3em;
+
     ${mediaQuery.minTablet} {
       margin-bottom: 5em;
     }
+
     h3 {
       margin: 1rem 1.2rem 2.6rem 0;
+
       ${mediaQuery.minTablet} {
         margin: 1em 1.2em 1em 0;
       }
     }
+
     .category {
       display: grid;
       justify-content: center;
       gap: 2em;
       grid-template-columns: repeat(auto-fit, minmax(9em, auto));
+
       ${mediaQuery.minMobile} {
         justify-content: start;
         grid-template-columns: repeat(auto-fit, minmax(11em, auto));
