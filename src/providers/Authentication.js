@@ -40,11 +40,11 @@ export const AuthenticationProvider = ({ children }) => {
 
   useMemo(() => {
     auth.onAuthStateChanged((currentUser) =>
-      currentUser ? previusAuthenticationUser(currentUser) : onLogout()
+      currentUser ? previousAuthenticationUser(currentUser) : onLogout()
     );
   }, []);
 
-  const previusAuthenticationUser = async (currentUser) => {
+  const previousAuthenticationUser = async (currentUser) => {
     try {
       const uid = currentUser.uid;
       const [providerData] = currentUser.providerData;
@@ -68,10 +68,18 @@ export const AuthenticationProvider = ({ children }) => {
         .set(
           {
             id: uid,
-            ...(registerAuthUserData?.firstName && { firstName: registerAuthUserData.firstName }),
-            ...(registerAuthUserData?.lastName && { lastName: registerAuthUserData.lastName }),
-            ...(registerAuthUserData?.email && { firstName: registerAuthUserData.email }),
-            ...(registerAuthUserData?.phone && { phone: registerAuthUserData.phone }),
+            ...(registerAuthUserData?.firstName && {
+              firstName: registerAuthUserData.firstName,
+            }),
+            ...(registerAuthUserData?.lastName && {
+              lastName: registerAuthUserData.lastName,
+            }),
+            ...(registerAuthUserData?.email && {
+              firstName: registerAuthUserData.email,
+            }),
+            ...(registerAuthUserData?.phone && {
+              phone: registerAuthUserData.phone,
+            }),
             nickName:
               providerData?.displayName ||
               registerAuthUserData?.firstName ||
@@ -94,7 +102,7 @@ export const AuthenticationProvider = ({ children }) => {
       setGoogleLoginLoading(false);
       setFirebaseUser(null);
     } catch (e) {
-      console.error("previusAuthenticationUser:", e);
+      console.error("previousAuthenticationUser:", e);
     }
   };
 
