@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { auth, firestore } from "../firebase/index";
 import { firebase } from "../firebase/config";
-import { isError } from "lodash";
+import { isError, assign } from "lodash";
 import { useDocument } from "react-firebase-hooks/firestore";
 import { timeoutPromise } from "../utils";
 import { spinLoaderFixed } from "../utils/loader";
@@ -60,26 +60,12 @@ export const AuthenticationProvider = ({ children }) => {
         return setGoogleLoginLoading(false);
       }
 
-      await timeoutPromise(1000);
-
       await firestore
         .collection("users")
         .doc(uid)
         .set(
-          {
+          assign({}, registerAuthUserData, {
             id: uid,
-            ...(registerAuthUserData?.firstName && {
-              firstName: registerAuthUserData.firstName,
-            }),
-            ...(registerAuthUserData?.lastName && {
-              lastName: registerAuthUserData.lastName,
-            }),
-            ...(registerAuthUserData?.email && {
-              firstName: registerAuthUserData.email,
-            }),
-            ...(registerAuthUserData?.phone && {
-              phone: registerAuthUserData.phone,
-            }),
             nickName:
               providerData?.displayName ||
               registerAuthUserData?.firstName ||
@@ -90,13 +76,13 @@ export const AuthenticationProvider = ({ children }) => {
             }),
             ...(providerData?.email && { email: providerData.email }),
             createAt: new Date(),
-          },
+          }),
           { merge: true }
         );
 
       setFirebaseUser(currentUser);
 
-      await timeoutPromise(900);
+      await timeoutPromise(1000);
 
       setLoginLoading(false);
       setGoogleLoginLoading(false);
