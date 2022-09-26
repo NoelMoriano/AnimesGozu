@@ -80,15 +80,16 @@ export const AuthenticationProvider = ({ children }) => {
           { merge: true }
         );
 
-      setFirebaseUser(currentUser);
+      await timeoutPromise(4000);
 
-      await timeoutPromise(1000);
+      await setFirebaseUser(currentUser);
 
       setLoginLoading(false);
       setGoogleLoginLoading(false);
-      setFirebaseUser(null);
     } catch (e) {
       console.error("previousAuthenticationUser:", e);
+    } finally {
+      setRegisterAuthUserData(null);
     }
   };
 
@@ -194,6 +195,7 @@ export const AuthenticationProvider = ({ children }) => {
   const registerAuthUser = async (formData) => {
     try {
       setLoginLoading(true);
+      setRegisterAuthUserData(null);
 
       await timeoutPromise(1000);
 
@@ -225,6 +227,8 @@ export const AuthenticationProvider = ({ children }) => {
   const logout = async () => {
     sessionStorage.clear();
     localStorage.clear();
+
+    setRegisterAuthUserData(null);
 
     return auth.signOut();
   };
