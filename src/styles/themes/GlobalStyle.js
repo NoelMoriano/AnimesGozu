@@ -11,6 +11,11 @@ const global = css`
     scroll-behavior: smooth;
   }
 
+  #root-portal {
+    z-index: 99999;
+    position: relative;
+  }
+
   body {
     font-size: 16px;
     overflow-x: hidden;
