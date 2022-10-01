@@ -1,6 +1,7 @@
+export * from "./Form";
 export * from "./Button";
 export * from "./Input";
-export * from "./Form";
+export * from "./TextArea";
 export * from "./InputPassword";
 export * from "./Avatar";
 export * from "./CardAnime";
@@ -12,3 +13,5 @@ export * from "./Spinner";
 export * from "./ComponentContainer";
 export * from "./Servers";
 export * from "./InputSearch";
+export { ModalIntegration as Modal } from "./Modal";
+export * from "./FormAnimeRequest";

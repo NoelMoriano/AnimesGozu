@@ -39,6 +39,7 @@ const Container = styled.div`
   ${({ theme, disabled, required, hidden, error }) => css`
     width: auto;
     height: auto;
+    box-sizing: border-box;
     display: grid;
     gap: 0.3em;
     animation: ${error && keyframes.shake} 340ms
