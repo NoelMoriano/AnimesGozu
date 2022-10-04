@@ -210,6 +210,7 @@ const ContentSearch = styled.div`
       background: ${theme.colors.secondary};
       color: ${theme.colors.font1};
       border-radius: 0.7em;
+      z-index: 999;
       ul {
         list-style: none;
       }
@@ -220,6 +221,7 @@ const ContentSearch = styled.div`
       .wrapper-result-search {
         display: grid;
         padding: 0.5em;
+        z-index: 999;
         ul {
           li {
             outline: none;
