@@ -13,7 +13,7 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useFormUtils } from "../../hooks";
-import { assign, toNumber } from "lodash";
+import { assign } from "lodash";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -27,9 +27,9 @@ export const Register = () => {
   } = useAuthentication();
 
   const schema = yup.object({
-    firstName: yup.string().required(),
+    /*firstName: yup.string().required(),
     lastName: yup.string().required(),
-    phoneNumber: yup.string().required(),
+    phoneNumber: yup.string().required(),*/
     email: yup.string().required().email(),
     password: yup.string().required(),
   });
@@ -45,7 +45,7 @@ export const Register = () => {
   const onNavigateTo = (param) => navigate(param);
 
   useMemo(() => {
-    authUser && onNavigateTo("/");
+    authUser && onNavigateTo("/profile");
   }, [authUser]);
 
   const registerGoogle = () => loginWithGoogle();
@@ -56,12 +56,12 @@ export const Register = () => {
     assign(
       {},
       {
-        firstName: formData.firstName.toLowerCase(),
+        /*firstName: formData.firstName.toLowerCase(),
         lastName: formData.lastName.toLowerCase(),
         phone: {
           countryCode: "+51",
           number: toNumber(formData.phoneNumber),
-        },
+        },*/
         email: formData.email.toLowerCase(),
         password: formData.password,
       }
@@ -84,7 +84,7 @@ export const Register = () => {
         <div className="form-item">
           <h2>Bienvenido</h2>
           <Form onSubmit={handleSubmit(onSubmitRegister)}>
-            <Controller
+            {/*            <Controller
               name="firstName"
               control={control}
               defaultValue=""
@@ -135,7 +135,7 @@ export const Register = () => {
                   required={required(name)}
                 />
               )}
-            />
+            />*/}
             <Controller
               name="email"
               control={control}

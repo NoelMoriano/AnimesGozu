@@ -49,7 +49,7 @@ export const ProfileForm = () => {
   );
 
   const schema = yup.object({
-    nickName: yup.string().required(),
+    nickName: yup.string(),
     firstName: yup.string().required(),
     lastName: yup.string().required(),
     phoneNumber: yup.string().required(),
