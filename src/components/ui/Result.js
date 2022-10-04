@@ -30,7 +30,7 @@ const Container = styled.div`
     width: auto;
     li {
       display: block;
-      color: #fff;
+      color: ${({ theme }) => theme.colors.white};
     }
   }
 `;

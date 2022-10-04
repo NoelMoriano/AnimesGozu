@@ -34,10 +34,6 @@ export const VersionProvider = ({ children }) => {
 
   const isLastVersion = version === settingDefault?.version;
 
-  console.log("version->", version);
-  console.log("settingDefault?.version->", settingDefault?.version);
-  console.log("isLastVersion->", isLastVersion);
-
   return (
     <VersionContext.Provider
       value={{
@@ -78,8 +74,8 @@ export const VersionContainer = styled.section`
   height: 100vh;
   flex-direction: column;
   div {
-    h1 {
-      color: #fff;
+    h2 {
+      color: ${({ theme }) => theme.colors.white};
     }
   }
 `;
