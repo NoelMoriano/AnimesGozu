@@ -86,7 +86,7 @@ const Container = styled.div`
       left: 0;
       overflow: auto;
       z-index: 888;
-      background: ${isVisibleBg ? "rgba(0, 0, 0, 0.4)" : "transparent"};
+      background: ${isVisibleBg ? "rgba(0, 0, 0, 0.7)" : "transparent"};
     }
     .modal-container {
       width: 95%;

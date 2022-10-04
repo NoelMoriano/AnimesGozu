@@ -57,8 +57,13 @@ export const InputSearch = ({ onVisibleDrawerMobile }) => {
   const resetForm = () => reset({ search: "" });
 
   return (
-    <Container>
+    <Container hasValueSearch={!!watch("search")}>
       <Form onSubmit={handleSubmit(onSubmitSearch)}>
+        <ContentBgFxSearch
+          hasValueSearch={!!watch("search")}
+          className="content-bg-fx-search"
+          onClick={() => resetForm()}
+        />
         <ContentSearch hasValueSearch={!!watch("search")}>
           <div className="wrapper-input-element">
             <FontAwesomeIcon className="icon-search" icon={faMagnifyingGlass} />
@@ -78,7 +83,6 @@ export const InputSearch = ({ onVisibleDrawerMobile }) => {
                 />
               )}
             />
-
             {watch("search") && (
               <FontAwesomeIcon
                 className="icon-clear"
@@ -87,7 +91,6 @@ export const InputSearch = ({ onVisibleDrawerMobile }) => {
               />
             )}
           </div>
-
           <div className="wrapper-result-search">
             <ul>
               {viewAnimes().map((anime, index) => (
@@ -95,8 +98,8 @@ export const InputSearch = ({ onVisibleDrawerMobile }) => {
                   key={index}
                   onClick={() => {
                     onNavigateTo(`/anime/${anime.id}`);
-                    onVisibleDrawerMobile();
                     resetForm();
+                    onVisibleDrawerMobile();
                   }}
                 >
                   <div className="items-list">
@@ -135,6 +138,19 @@ export const InputSearch = ({ onVisibleDrawerMobile }) => {
 const Container = styled.div`
   position: relative;
   display: grid;
+`;
+
+const ContentBgFxSearch = styled.div`
+  ${({ hasValueSearch }) =>
+    hasValueSearch &&
+    css`
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+    `}
 `;
 
 const InputSearchElement = styled.input`
