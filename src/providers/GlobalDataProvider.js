@@ -2,9 +2,9 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { animeServerApi } from "../firebase/index";
 import { spinLoaderFixed } from "../utils/loader";
 
-export const AnimesContext = createContext({ animes: [] });
+export const GlobalDataContext = createContext({ animes: [] });
 
-export const AnimesProvider = ({ children }) => {
+export const GlobalDataProvider = ({ children }) => {
   const [animes, setAnimes] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -32,10 +32,10 @@ export const AnimesProvider = ({ children }) => {
   if (loading) return spinLoaderFixed();
 
   return (
-    <AnimesContext.Provider value={{ animes }}>
+    <GlobalDataContext.Provider value={{ animes }}>
       {children}
-    </AnimesContext.Provider>
+    </GlobalDataContext.Provider>
   );
 };
 
-export const useAnimes = () => useContext(AnimesContext);
+export const useAnimes = () => useContext(GlobalDataContext);

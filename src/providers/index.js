@@ -1,2 +1,3 @@
 export * from "./Authentication";
-export * from "./Animes";
+export * from "./GlobalDataProvider";
+export * from "./VersionProvider";
