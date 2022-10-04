@@ -27,6 +27,7 @@ export const FormAnimeRequest = ({ onCloseModal }) => {
   const {
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
@@ -36,7 +37,7 @@ export const FormAnimeRequest = ({ onCloseModal }) => {
     try {
       setIsSendingAnimeRequest(true);
 
-      const response = await fetch(`${animeServerApi}/request-anime`, {
+      const response = await fetch(`${animeServerApi}/anime-request`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,6 +47,8 @@ export const FormAnimeRequest = ({ onCloseModal }) => {
       });
 
       if (!response.ok) throw new Error("Error fetch animes");
+
+      resetFormFields();
 
       onCloseModal();
     } catch (error) {
@@ -57,6 +60,13 @@ export const FormAnimeRequest = ({ onCloseModal }) => {
 
   const mapAnimeRequests = (formData) =>
     assign({}, formData, { user: authUser });
+
+  const resetFormFields = () =>
+    reset({
+      name: "",
+      linkReference: "",
+      feedback: "",
+    });
 
   return (
     <Container>
