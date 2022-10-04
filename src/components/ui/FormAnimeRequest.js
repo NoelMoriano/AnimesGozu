@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Controller, useForm } from "react-hook-form";
 import { Input } from "./Input";
@@ -10,8 +10,14 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { useFormUtils } from "../../hooks";
 import { TextArea } from "./TextArea";
+import { animeServerApi } from "../../firebase";
+import { assign } from "lodash";
+import { useAuthentication } from "../../providers";
 
 export const FormAnimeRequest = ({ onCloseModal }) => {
+  const { authUser } = useAuthentication();
+  const [isSendingAnimeRequest, setIsSendingAnimeRequest] = useState(false);
+
   const schema = yup.object({
     name: yup.string().required(),
     linkReference: yup.string(),
@@ -26,10 +32,31 @@ export const FormAnimeRequest = ({ onCloseModal }) => {
 
   const { required, error, errorMessage } = useFormUtils({ errors, schema });
 
-  const onSubmitSendAnimeRequest = (formData) => {
-    console.log("formData->", formData);
-    onCloseModal();
+  const onSubmitSendAnimeRequest = async (formData) => {
+    try {
+      setIsSendingAnimeRequest(true);
+
+      const response = await fetch(`${animeServerApi}/request-anime`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(mapAnimeRequests(formData)),
+      });
+
+      if (!response.ok) throw new Error("Error fetch animes");
+
+      onCloseModal();
+    } catch (error) {
+      console.log("Error fetch animes: ", error);
+    } finally {
+      setIsSendingAnimeRequest(false);
+    }
   };
+
+  const mapAnimeRequests = (formData) =>
+    assign({}, formData, { user: authUser });
 
   return (
     <Container>
@@ -85,7 +112,14 @@ export const FormAnimeRequest = ({ onCloseModal }) => {
             />
           )}
         />
-        <Button block margin=".5em 0 0 0" size="medium" htmlType="submit">
+        <Button
+          block
+          margin=".5em 0 0 0"
+          size="medium"
+          htmlType="submit"
+          loading={isSendingAnimeRequest}
+          disabled={isSendingAnimeRequest}
+        >
           <div className="content-button">
             <FontAwesomeIcon icon={faEnvelope} className="item-icon" />
             Enviar solicitud de mi anime
