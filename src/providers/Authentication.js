@@ -99,7 +99,7 @@ export const AuthenticationProvider = ({ children }) => {
 
   const mapProviderData = (providerData) => ({
     displayName: providerData?.displayName || null,
-    email: providerData?.email || null,
+    email: providerData.email,
     phoneNumber: providerData?.phoneNumber || null,
     photoURL: providerData?.photoURL || null,
     providerId: providerData.providerId,
