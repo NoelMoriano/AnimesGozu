@@ -38,17 +38,21 @@ export const TextArea = ({
 
 const Container = styled.div`
   box-sizing: border-box;
+  height: auto;
   ${({ theme, disabled }) => css`
     textarea {
-      width: 100% !important;
-      font-family: inherit;
+      width: 100%;
+      min-width: 100%;
+      max-width: 100%;
+      height: auto;
+      min-height: 90px;
       box-sizing: border-box;
       border: none;
-      padding: 1.1rem 1.3rem !important;
+      padding: 1.1rem 1.3rem;
       font-size: 1em;
       font-weight: 600;
       outline: none;
-      color: ${theme.colors.dark};
+      border-radius: ${theme.border_radius.large};
       ${disabled &&
       css`
         pointer-events: none;

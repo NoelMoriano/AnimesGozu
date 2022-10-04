@@ -74,7 +74,7 @@ export const FormAnimeRequest = ({ onCloseModal }) => {
           defaultValue=""
           render={({ field: { onChange, value, name } }) => (
             <TextArea
-              label="Alguna sugerencia para poder seguir mejorando?"
+              label="Tienes algunas sugerencias para poder mejorar la plataforma?"
               placeHolder="Ingrese feedback"
               onChange={onChange}
               value={value}

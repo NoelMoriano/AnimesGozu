@@ -97,12 +97,14 @@ const Container = styled.div`
       grid-template-rows: auto 1fr auto;
       position: relative;
       z-index: 99999;
+      box-sizing: border-box;
 
       ${mediaQuery.minTablet} {
         width: 50vw;
       }
       .content-header {
         padding: 1.7rem 1.7rem 1rem 1.7rem;
+        box-sizing: border-box;
         .title {
           display: flex;
           align-items: center;
@@ -125,6 +127,7 @@ const Container = styled.div`
 
       .body {
         padding: 1rem 1.7rem;
+        box-sizing: border-box;
       }
       .footer {
         padding: 1rem;
