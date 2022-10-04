@@ -22,6 +22,8 @@ export const Episode = () => {
   const [loadingEpisodes, setLoadingEpisodes] = useState(true);
   const [loading, setLoading] = useState(true);
 
+  const onGoBack = () => navigate(-1);
+
   useEffect(() => {
     (async () => {
       await fetchEpisodes();
@@ -39,6 +41,8 @@ export const Episode = () => {
 
   const findAnime = () => {
     const anime_ = animes.find((anime) => anime.id === animeId);
+    if (!anime_) return onGoBack();
+
     setAnime(anime_);
   };
 

@@ -22,16 +22,22 @@ export const Anime = () => {
   const anime = animes.find((anime) => anime.id === animeId);
 
   const onNavigateTo = (param) => navigate(param);
+  const onGoBack = () => navigate(-1);
 
   useEffect(() => {
     window.scroll(0, 0);
+    if (!anime) return onGoBack();
+
     (async () => await fetchEpisodes())();
-  }, []);
+  }, [animeId]);
 
   const fetchEpisodes = async () => {
     try {
       const url = `${currentConfig.animeServerApi}/episodes/${animeId}`;
       const response = await fetch(url);
+
+      if (!response.ok) throw new Error("no found anime");
+
       const result = await response.json();
 
       setEspisodes(result);
