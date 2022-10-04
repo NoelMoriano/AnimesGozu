@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { Button, FormAnimeRequest, Modal } from "../ui";
+import { Button } from "../ui";
 import { useAuthentication } from "../../providers";
 import { useNavigate } from "react-router";
 import { UserMenu } from "./UserMenu";
 
 export const Drawer = () => {
   const navigate = useNavigate();
-  const [isVisibleModalAnimeRequest, setIsVisibleModalAnimeRequest] =
-    useState(false);
 
   const { authUser, logout } = useAuthentication();
 
@@ -32,25 +30,6 @@ export const Drawer = () => {
           </Button>
         </div>
       )}
-      <br />
-
-      <div className="wrapper-buttons">
-        <Button
-          onClick={() => setIsVisibleModalAnimeRequest(true)}
-          size="medium"
-        >
-          Solicitar mi anime
-        </Button>
-      </div>
-      <Modal
-        title={<h4>Solicitud de anime</h4>}
-        visible={isVisibleModalAnimeRequest}
-        onClose={() => setIsVisibleModalAnimeRequest(false)}
-      >
-        <FormAnimeRequest
-          onCloseModal={() => setIsVisibleModalAnimeRequest(false)}
-        />
-      </Modal>
     </Container>
   );
 };

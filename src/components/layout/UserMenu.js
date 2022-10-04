@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useDevice } from "../../hooks";
+import { Button, FormAnimeRequest, Modal } from "../ui";
 
 export const UserMenu = ({ onHiddenDrawerMobile, onLogout }) => {
   const { isMobile } = useDevice();
+
+  const [isVisibleModalAnimeRequest, setIsVisibleModalAnimeRequest] =
+    useState(false);
 
   return (
     <Container>
@@ -33,7 +37,26 @@ export const UserMenu = ({ onHiddenDrawerMobile, onLogout }) => {
         <span className="link-section" onClick={() => onLogout()}>
           <h4>Cerrar session</h4>
         </span>
+
+        <span>
+          <Button
+            onClick={() => setIsVisibleModalAnimeRequest(true)}
+            size="medium"
+          >
+            Solicitar mi anime
+          </Button>
+        </span>
       </div>
+
+      <Modal
+        title={<h4>Solicitud de anime</h4>}
+        visible={isVisibleModalAnimeRequest}
+        onClose={() => setIsVisibleModalAnimeRequest(false)}
+      >
+        <FormAnimeRequest
+          onCloseModal={() => setIsVisibleModalAnimeRequest(false)}
+        />
+      </Modal>
     </Container>
   );
 };
