@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
-import {
+/*import {
   faFacebook,
   faInstagram,
   faTiktok,
-} from "@fortawesome/free-brands-svg-icons";
+} from "@fortawesome/free-brands-svg-icons";*/
 
 export const Footer = () => {
   return (
@@ -40,7 +40,6 @@ const Container = styled.div`
   grid-column: span 2;
   grid-row: span 3;
   background: #0e0e0e;
-  z-index: 9999;
   color: #fff;
 
   .social-container {

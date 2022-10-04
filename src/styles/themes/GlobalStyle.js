@@ -17,6 +17,7 @@ const global = css`
   }
 
   body {
+    position: relative;
     font-size: 16px;
     overflow-x: hidden;
     font-family: "MontserratRegular", sans-serif;
