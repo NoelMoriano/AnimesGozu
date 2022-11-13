@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router";
-import { EpisodeList, Servers, Spinner } from "../../../components";
+import {
+  CommentsAnime,
+  EpisodeList,
+  Servers,
+  Spinner,
+} from "../../../components";
 import { defaultTo, isEmpty } from "lodash";
 import { currentConfig } from "../../../firebase/index";
 import { mediaQuery } from "../../../styles/constants/mediaQuery";
@@ -161,6 +166,16 @@ export const Episode = () => {
             )}
           </WrapperDetail>
         )
+      )}
+
+      {(anime || episode) && (
+        <CommentsAnime
+          article={{
+            url: `${window.location.origin}${window.location.pathname}`,
+            identifier: anime.id,
+            title: `${anime.name}-episodio-${episode?.episodeNumber}`,
+          }}
+        />
       )}
     </Container>
   );
