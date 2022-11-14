@@ -8,17 +8,17 @@ import { Drawer } from "./Drawer";
 import { DrawerMobile } from "./DrawerMobile";
 
 export const Layout = ({ children }) => {
-  const [visibleDrawer, setvisibleDrawer] = useState(false);
+  const [visibleDrawer, setVisibleDrawer] = useState(false);
 
   return (
     <LayoutContainer>
       <DrawerMobile
-        onSetVisibleDrawer={setvisibleDrawer}
+        onSetVisibleDrawer={setVisibleDrawer}
         visibleDrawer={visibleDrawer}
       />
       <WrapperContainer>
         <LayoutContent>
-          <Header onSetVisibleDrawer={setvisibleDrawer} />
+          <Header onSetVisibleDrawer={setVisibleDrawer} />
           <div className="navbar">
             <Drawer />
           </div>

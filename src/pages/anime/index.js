@@ -14,7 +14,7 @@ export const Anime = () => {
   const { animeId } = useParams();
   const navigate = useNavigate();
 
-  const [episodes, setEspisodes] = useState([]);
+  const [episodes, setEpisodes] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const { animes } = useAnimes();
@@ -40,7 +40,7 @@ export const Anime = () => {
 
       const result = await response.json();
 
-      setEspisodes(result);
+      setEpisodes(result);
     } catch (error) {
       console.error("errorFetchEpisodes:", error);
     } finally {
