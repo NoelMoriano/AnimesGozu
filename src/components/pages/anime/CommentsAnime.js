@@ -19,5 +19,5 @@ export const CommentsAnime = ({ article }) => {
 };
 
 const ContainerComments = styled.div`
-  margin: 1rem 0;
+  margin: 2em 1.2em;
 `;
