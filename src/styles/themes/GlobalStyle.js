@@ -56,12 +56,12 @@ const global = css`
   }
 
   h5 {
-    font-size: 1.1em;
+    font-size: 1.2em;
     font-weight: bold;
   }
 
   h6 {
-    font-size: 1em;
+    font-size: 1.1em;
     font-weight: bold;
   }
 

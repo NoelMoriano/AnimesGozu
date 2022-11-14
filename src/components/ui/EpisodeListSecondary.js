@@ -31,7 +31,7 @@ export const EpisodeListSecondary = ({ episodes = [] }) => {
     <Container>
       <WrapperHeader>
         <div className="item-title">
-          <h4>Episodios</h4>
+          <h5>Episodios</h5>
         </div>
         <div className="item-filters">
           <ul>
@@ -65,6 +65,7 @@ export const EpisodeListSecondary = ({ episodes = [] }) => {
               onNavigateTo(`/ver/${animeId}/${episode.episodeNumber}`);
               onWindowScrollTop();
             }}
+            fontSize="13px"
           />
         ))}
       </WrapperEpisodes>
@@ -76,7 +77,6 @@ const Container = styled.div`
   width: 100%;
   height: auto;
   margin: 0;
-  padding: 1em;
   position: relative;
   transition: all 0.2s ease-in-out;
   border-radius: 0.7rem;
@@ -88,8 +88,9 @@ const Container = styled.div`
 
 const WrapperEpisodes = styled.div`
   width: 100%;
-  height: auto;
-  max-height: 25em;
+  height: 100%;
+  min-height: 25em;
+  max-height: 70vh;
   overflow-y: auto;
 
   /* width */
@@ -116,13 +117,13 @@ const WrapperEpisodes = styled.div`
 const WrapperHeader = styled.div`
   width: 100%;
   height: auto;
-  margin-bottom: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  padding: 0 0.8em;
   .item-title {
     display: flex;
     align-items: center;
-    h2 {
+    h5 {
       margin: 0;
     }
   }

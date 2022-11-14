@@ -80,9 +80,9 @@ const ComponentLogout = ({ authUser, logout, onNavigateTo }) => {
   );
 };
 const Container = styled.div`
-  padding: 0.5rem 0;
+  padding-bottom: 0.5rem;
   position: sticky;
-  top: 1px;
+  top: 57px;
   .wrapper-buttons {
     margin-top: 1em;
     display: flex;

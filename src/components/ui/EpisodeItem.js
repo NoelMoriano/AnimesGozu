@@ -4,19 +4,18 @@ import React from "react";
 import { faCirclePlay } from "@fortawesome/free-regular-svg-icons";
 
 export const EpisodeItem = ({
-  title = "Naruto",
   number,
   image = "https://storage.googleapis.com/animes-dev-animes/animes/dumucB9YLN054VySLlu6/episodes/mUmBShtFWxSiskrJNOa2/episodeImage.jpeg",
   onClick,
+  fontSize = "16px",
 }) => (
-  <Container>
-    <div className="item-left" onClick={() => onClick()}>
+  <Container fontSize={fontSize} onClick={() => onClick()}>
+    <div className="item-left">
       <img loading="lazy" src={image} alt={`episode ${number}`} />
     </div>
     <div className="item-center">
-      <div className="titles" onClick={() => onClick()}>
-        <h6>{title}</h6>
-        <h5>Episodio {number}</h5>
+      <div className="titles">
+        <h6>Episodio {number}</h6>
       </div>
     </div>
     <div className="item-right">
@@ -39,6 +38,7 @@ const Container = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.tertiary};
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  font-size: ${({ fontSize }) => fontSize};
   &:hover {
     transition: all 0.2s ease-in-out;
     background: rgba(14, 14, 14, 0.7);
@@ -55,8 +55,8 @@ const Container = styled.div`
     justify-content: center;
     img {
       width: 100%;
-      max-width: 5.5rem;
-      height: 3.1rem;
+      max-width: 5.2em;
+      height: 3em;
       object-fit: cover;
     }
   }
