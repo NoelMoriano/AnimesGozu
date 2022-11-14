@@ -11,11 +11,12 @@ import { defaultTo, isEmpty } from "lodash";
 import { currentConfig } from "../../../firebase/index";
 import { mediaQuery } from "../../../styles/constants/mediaQuery";
 import { useAnimes } from "../../../providers";
+import { useDevice } from "../../../hooks";
 
 export const Episode = () => {
   const { animeId, episodeId } = useParams();
   const navigate = useNavigate();
-
+  const { isMobile } = useDevice();
   const { animes } = useAnimes();
 
   const [anime, setAnime] = useState(null);
@@ -159,10 +160,10 @@ export const Episode = () => {
               </div>
             )}
 
-            {loadingEpisodes ? (
+            {loadingEpisodes && isMobile ? (
               <Spinner fullscreen />
             ) : (
-              <EpisodeList episodes={episodes} />
+              isMobile && <EpisodeList episodes={episodes} />
             )}
           </WrapperDetail>
         )
