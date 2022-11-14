@@ -6,7 +6,7 @@ export const CommentsAnime = ({ article }) => {
   return (
     <ContainerComments>
       <DiscussionEmbed
-        shortname="AnimesGozu"
+        shortname="https-animesgozu-com"
         config={{
           url: article.url,
           identifier: article.id,
