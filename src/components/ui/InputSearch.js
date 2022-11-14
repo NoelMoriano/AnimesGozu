@@ -4,7 +4,6 @@ import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import styled, { css } from "styled-components";
-import { Form } from "./Form";
 import * as yup from "yup";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
@@ -58,7 +57,11 @@ export const InputSearch = ({ onVisibleDrawerMobile }) => {
 
   return (
     <Container hasValueSearch={!!watch("search")}>
-      <Form onSubmit={handleSubmit(onSubmitSearch)}>
+      <form
+        noValidate
+        autoComplete="off"
+        onSubmit={handleSubmit(onSubmitSearch)}
+      >
         <ContentBgFxSearch
           hasValueSearch={!!watch("search")}
           className="content-bg-fx-search"
@@ -130,7 +133,7 @@ export const InputSearch = ({ onVisibleDrawerMobile }) => {
             </ul>
           </div>
         </ContentSearch>
-      </Form>
+      </form>
     </Container>
   );
 };

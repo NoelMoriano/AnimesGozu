@@ -16,3 +16,4 @@ export * from "./InputSearch";
 export { ModalIntegration as Modal } from "./Modal";
 export * from "./FormAnimeRequest";
 export * from "./Result";
+export * from "./EpisodeListSecondary";

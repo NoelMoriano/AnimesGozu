@@ -57,12 +57,17 @@ export const Header = ({ onSetVisibleDrawer }) => {
 const Container = styled.div`
   position: sticky;
   top: 0;
+  right: 0;
   grid-column: span 2;
   display: grid;
   grid-template-columns: 1fr auto;
   background: ${({ theme }) => theme.colors.tertiary};
   border-bottom: 2px solid ${({ theme }) => theme.colors.tertiary};
   box-sizing: border-box;
+  color: #fff;
+  font-size: 13px;
+  height: 57px;
+  width: 100%;
   z-index: 900;
   ${mediaQuery.minTablet} {
     grid-template-columns: 17em 1fr;
@@ -92,13 +97,14 @@ const Container = styled.div`
     display: none;
     ${mediaQuery.minTablet} {
       display: flex;
+      align-items: center;
     }
   }
   .content-right {
     ${mediaQuery.minTablet} {
       display: flex;
-      justify-content: flex-end;
       align-items: center;
+      justify-content: flex-end;
       gap: 1em;
     }
     .item-avatar-contain {

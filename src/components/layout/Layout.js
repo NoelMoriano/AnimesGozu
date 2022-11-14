@@ -32,6 +32,7 @@ export const Layout = ({ children }) => {
 
 const LayoutContainer = styled.div`
   width: 100vw;
+  height: auto;
   background: ${({ theme }) => theme.colors.secondary};
 `;
 

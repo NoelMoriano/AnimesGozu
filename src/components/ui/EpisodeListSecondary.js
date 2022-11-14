@@ -9,9 +9,8 @@ import {
 import { Button } from "./Button";
 import { useNavigate, useParams } from "react-router";
 import { orderBy } from "lodash";
-import { mediaQuery } from "../../styles/constants/mediaQuery";
 
-export const EpisodeList = ({ episodes = [] }) => {
+export const EpisodeListSecondary = ({ episodes = [] }) => {
   const { animeId } = useParams();
   const navigate = useNavigate();
 
@@ -32,7 +31,7 @@ export const EpisodeList = ({ episodes = [] }) => {
     <Container>
       <WrapperHeader>
         <div className="item-title">
-          <h4>Lista de episodios</h4>
+          <h4>Episodios</h4>
         </div>
         <div className="item-filters">
           <ul>
@@ -41,7 +40,6 @@ export const EpisodeList = ({ episodes = [] }) => {
                 size="small"
                 onClick={() => setIsAscEpisodes(!isAscEpisodes)}
               >
-                Mayor o menor &nbsp;
                 <FontAwesomeIcon
                   icon={
                     isAscEpisodes ? faArrowDownShortWide : faArrowUpShortWide
@@ -77,10 +75,9 @@ export const EpisodeList = ({ episodes = [] }) => {
 const Container = styled.div`
   width: 100%;
   height: auto;
-  margin: 1rem 0;
+  margin: 0;
   padding: 1em;
   position: relative;
-  background: ${({ theme }) => theme.colors.tertiary};
   transition: all 0.2s ease-in-out;
   border-radius: 0.7rem;
 
@@ -92,7 +89,7 @@ const Container = styled.div`
 const WrapperEpisodes = styled.div`
   width: 100%;
   height: auto;
-  max-height: 40em;
+  max-height: 25em;
   overflow-y: auto;
 
   /* width */
@@ -121,11 +118,7 @@ const WrapperHeader = styled.div`
   height: auto;
   margin-bottom: 1rem;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto;
-  ${mediaQuery.minMobile} {
-    grid-template-columns: 1fr auto;
-  }
+  grid-template-columns: 1fr 1fr;
   .item-title {
     display: flex;
     align-items: center;

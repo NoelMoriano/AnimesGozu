@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Button, EpisodeList, Spinner } from "../ui";
+import { Button, EpisodeListSecondary, Spinner } from "../ui";
 import { useAuthentication } from "../../providers";
 import { useNavigate, useParams } from "react-router";
 import { UserMenu } from "./UserMenu";
@@ -45,7 +45,7 @@ export const Drawer = () => {
   ) : (
     <Container>
       {isAnimePageView ? (
-        <EpisodeList episodes={episodes} />
+        <EpisodeListSecondary episodes={episodes} />
       ) : (
         <ComponentLogout
           authUser={authUser}
@@ -82,7 +82,7 @@ const ComponentLogout = ({ authUser, logout, onNavigateTo }) => {
 const Container = styled.div`
   padding: 0.5rem 0;
   position: sticky;
-  top: 15vh;
+  top: 1px;
   .wrapper-buttons {
     margin-top: 1em;
     display: flex;
