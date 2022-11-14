@@ -2,33 +2,39 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { faCirclePlay } from "@fortawesome/free-regular-svg-icons";
+import { useDevice } from "../../hooks";
 
 export const EpisodeItem = ({
   title = "Naruto",
   number,
   image = "https://storage.googleapis.com/animes-dev-animes/animes/dumucB9YLN054VySLlu6/episodes/mUmBShtFWxSiskrJNOa2/episodeImage.jpeg",
   onClick,
-}) => (
-  <Container>
-    <div className="item-left" onClick={() => onClick()}>
-      <img loading="lazy" src={image} alt={`episode ${number}`} />
-    </div>
-    <div className="item-center">
-      <div className="titles" onClick={() => onClick()}>
-        <h6>{title}</h6>
-        <h5>Episodio {number}</h5>
+}) => {
+  const { isMobile } = useDevice();
+
+  return (
+    <Container>
+      <div className="item-left" onClick={() => onClick()}>
+        <img loading="lazy" src={image} alt={`episode ${number}`} />
       </div>
-    </div>
-    <div className="item-right">
-      <FontAwesomeIcon
-        className="icon-play"
-        icon={faCirclePlay}
-        size="2x"
-        onClick={() => onClick()}
-      />
-    </div>
-  </Container>
-);
+      <div className="item-center">
+        <div className="titles" onClick={() => onClick()}>
+          <h5>Episodio {number}</h5>
+        </div>
+      </div>
+      {isMobile && (
+        <div className="item-right">
+          <FontAwesomeIcon
+            className="icon-play"
+            icon={faCirclePlay}
+            size="2x"
+            onClick={() => onClick()}
+          />
+        </div>
+      )}
+    </Container>
+  );
+};
 
 const Container = styled.div`
   display: grid;
@@ -55,8 +61,8 @@ const Container = styled.div`
     justify-content: center;
     img {
       width: 100%;
-      max-width: 5.5rem;
-      height: 3.1rem;
+      max-width: 4.8em;
+      height: 2.8em;
       object-fit: cover;
     }
   }
@@ -65,8 +71,8 @@ const Container = styled.div`
     align-items: center;
     justify-content: start;
     .titles {
-      font-size: 1em;
-      padding-left: 0.5em;
+      font-size: 0.9em;
+      padding-left: 0.3em;
     }
   }
   .item-right {

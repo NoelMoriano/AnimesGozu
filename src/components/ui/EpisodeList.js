@@ -32,7 +32,7 @@ export const EpisodeList = ({ episodes = [] }) => {
     <Container>
       <WrapperHeader>
         <div className="item-title">
-          <h4>Lista de episodios</h4>
+          <h4>Episodios</h4>
         </div>
         <div className="item-filters">
           <ul>
@@ -92,8 +92,28 @@ const Container = styled.div`
 const WrapperEpisodes = styled.div`
   width: 100%;
   height: auto;
-  max-height: 40em;
+  max-height: 25em;
   overflow-y: auto;
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: ${({ theme }) => theme.colors.dark};
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.colors.primary};
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 `;
 
 const WrapperHeader = styled.div`
@@ -103,9 +123,7 @@ const WrapperHeader = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto;
-  ${mediaQuery.minMobile} {
-    grid-template-columns: 1fr auto;
-  }
+
   .item-title {
     display: flex;
     align-items: center;
