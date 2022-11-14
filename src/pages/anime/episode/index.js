@@ -172,8 +172,8 @@ export const Episode = () => {
         <CommentsAnime
           article={{
             url: `${window.location.origin}${window.location.pathname}`,
-            identifier: anime.id,
-            title: `${anime.name}-episodio-${episode?.episodeNumber}`,
+            identifier: `episode_${anime.id}`,
+            title: `${anime.name} - episodio ${episode?.episodeNumber}`,
           }}
         />
       )}
