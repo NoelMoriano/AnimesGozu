@@ -12,7 +12,7 @@ import { orderBy } from "lodash";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 
 export const EpisodeList = ({ episodes = [] }) => {
-  const { animeId } = useParams();
+  const { animeId, episodeId } = useParams();
   const navigate = useNavigate();
 
   const [isAscEpisodes, setIsAscEpisodes] = useState(false);
@@ -97,7 +97,7 @@ const WrapperEpisodes = styled.div`
 
   /* width */
   ::-webkit-scrollbar {
-    width: 7px;
+    width: 4px;
   }
 
   /* Track */

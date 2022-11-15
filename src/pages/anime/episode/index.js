@@ -4,6 +4,8 @@ import { useNavigate, useParams } from "react-router";
 import {
   CommentsAnime,
   EpisodeList,
+  EpisodeListSecondary,
+  Header,
   Servers,
   Spinner,
 } from "../../../components";
@@ -101,105 +103,159 @@ export const Episode = () => {
 
   return (
     <Container>
-      <div className="left-content">
-        <WrapperHomeBanner
-          bgBanner={loading ? "" : episode?.episodeImage?.url || ""}
-        >
-          <div className="banner-wrapper">
-            <div className="gradient">
-              {loading ? (
-                <Spinner fullscreen />
-              ) : (
-                <div className="content-banner">
-                  {serverView && (
-                    <iframe
-                      key={serverView.code || episodeId}
-                      className="iframe-episode"
-                      src={defaultTo(serverView.url || serverView.code, "")}
-                      frameBorder="0"
-                      scrolling="no"
-                      allowFullScreen
-                      marginHeight="0"
-                      marginWidth="0"
-                      width="100%"
-                      height="100%"
-                    />
-                  )}
-                </div>
-              )}
-            </div>
+      <Header />
+      <div className="body-content">
+        <div className="left-content">
+          <div className="content">
+            <EpisodeListSecondary episodes={episodes} />
           </div>
-        </WrapperHomeBanner>
-        {isEmpty(episodes) ? (
-          <h3>No se encontraron episodios</h3>
-        ) : (
-          !isEmpty(episode) && (
-            <WrapperDetail>
-              <Servers
-                servers={servers}
-                serverView={serverView}
-                onSetServerEpisode={onSetServerEpisode}
-                anime={anime}
-                episode={episode}
-                onNavigateTo={onNavigateTo}
-                serverType={serverType}
-                onSetServerType={setServerType}
-              />
-
-              {(anime || episode) && (
-                <div className="episode-detail">
-                  {episode?.episodeNumber && (
-                    <div className="sub-title">
-                      <h4>Episodio {episode.episodeNumber}</h4>
-                    </div>
-                  )}
-                  {anime && (
-                    <div className="title">
-                      <h1>{anime.name}</h1>
+        </div>
+        <div className="center-content">
+          <div className="content">
+            <WrapperHomeBanner
+              bgBanner={loading ? "" : episode?.episodeImage?.url || ""}
+            >
+              <div className="banner-wrapper">
+                <div className="gradient">
+                  {loading ? (
+                    <Spinner fullscreen />
+                  ) : (
+                    <div className="content-banner">
+                      {/*{serverView && (*/}
+                      {/*  <iframe*/}
+                      {/*    key={serverView.code || episodeId}*/}
+                      {/*    className="iframe-episode"*/}
+                      {/*    src={defaultTo(serverView.url || serverView.code, "")}*/}
+                      {/*    frameBorder="0"*/}
+                      {/*    scrolling="no"*/}
+                      {/*    allowFullScreen*/}
+                      {/*    marginHeight="0"*/}
+                      {/*    marginWidth="0"*/}
+                      {/*    width="100%"*/}
+                      {/*    height="100%"*/}
+                      {/*  />*/}
+                      {/*)}*/}
                     </div>
                   )}
                 </div>
-              )}
+              </div>
+            </WrapperHomeBanner>
+            {isEmpty(episodes) ? (
+              <h3>No se encontraron episodios</h3>
+            ) : (
+              !isEmpty(episode) && (
+                <WrapperDetail>
+                  <Servers
+                    servers={servers}
+                    serverView={serverView}
+                    onSetServerEpisode={onSetServerEpisode}
+                    anime={anime}
+                    episode={episode}
+                    onNavigateTo={onNavigateTo}
+                    serverType={serverType}
+                    onSetServerType={setServerType}
+                  />
+                  {(anime || episode) && (
+                    <div className="episode-detail">
+                      {episode?.episodeNumber && (
+                        <div className="sub-title">
+                          <h4>Episodio {episode.episodeNumber}</h4>
+                        </div>
+                      )}
+                      {anime && (
+                        <div className="title">
+                          <h1>{anime.name}</h1>
+                        </div>
+                      )}
+                    </div>
+                  )}
 
-              {loadingEpisodes && isMobile ? (
-                <Spinner fullscreen />
-              ) : (
-                isMobile && <EpisodeList episodes={episodes} />
-              )}
-            </WrapperDetail>
-          )
-        )}
-      </div>
-      <div className="right-content">
-        {(anime || episode) && (
-          <CommentsAnime
-            article={{
-              url: `${window.location.origin}${window.location.pathname}`,
-              identifier: `episode_${anime.id}`,
-              title: `${anime.name} - episodio ${episode?.episodeNumber}`,
-            }}
-          />
-        )}
+                  {loadingEpisodes && isMobile ? (
+                    <Spinner fullscreen />
+                  ) : (
+                    isMobile && <EpisodeList episodes={episodes} />
+                  )}
+                </WrapperDetail>
+              )
+            )}
+          </div>
+        </div>
+        <div className="right-content">
+          <div className="content">
+            {(anime || episode) && (
+              <CommentsAnime
+                article={{
+                  url: `${window.location.origin}${window.location.pathname}`,
+                  identifier: `episode_${anime.id}`,
+                  title: `${anime.name} - episodio ${episode?.episodeNumber}`,
+                }}
+              />
+            )}
+          </div>
+        </div>
       </div>
     </Container>
   );
 };
 
 const Container = styled.div`
-  width: 100%;
+  width: 100vw;
   height: auto;
   background: ${({ theme }) => theme.colors.secondary};
   color: ${({ theme }) => theme.colors.font1};
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto;
-  ${mediaQuery.minTablet} {
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 30em;
+  overflow: hidden;
+  ${mediaQuery.minDesktop} {
+    height: 100vh;
   }
-  .right-content {
-    width: 100%;
-    box-sizing: border-box;
+  .body-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    ${mediaQuery.minDesktop} {
+      grid-template-columns: auto 1fr 28em;
+      grid-template-rows: auto 1fr;
+    }
+    .left-content,
+    .center-content,
+    .right-content {
+      width: 100%;
+      height: 100%;
+      .content {
+        width: 100%;
+        height: calc(100vh - 52px);
+        box-sizing: border-box;
+        max-height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        transition: all 0.2s ease;
+        position: relative;
+
+        /* width */
+        ::-webkit-scrollbar {
+          width: 4px;
+          height: 20px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        /* Handle */
+        &:hover {
+          ::-webkit-scrollbar-thumb {
+            background: ${({ theme }) => theme.colors.primary};
+          }
+        }
+
+        /* Handle on hover */
+        &:hover {
+          ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+          }
+        }
+      }
+    }
   }
 `;
 
@@ -210,7 +266,7 @@ const WrapperDetail = styled.div`
     width: 100%;
     padding: 1.9em 1em;
     font-size: 0.9em;
-    ${mediaQuery.minTablet} {
+    ${mediaQuery.minDesktop} {
       font-size: 1em;
     }
     .sub-title {
@@ -229,8 +285,8 @@ const WrapperHomeBanner = styled.div`
   height: 50vh;
   max-height: 20em;
   position: relative;
-  ${mediaQuery.minTablet} {
-    height: 68vh;
+  ${mediaQuery.minDesktop} {
+    height: 60vh;
     max-height: 35em;
   }
   .banner-wrapper {

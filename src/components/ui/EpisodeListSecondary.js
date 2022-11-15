@@ -8,10 +8,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "./Button";
 import { useNavigate, useParams } from "react-router";
-import { orderBy } from "lodash";
+import { orderBy, toNumber } from "lodash";
 
 export const EpisodeListSecondary = ({ episodes = [] }) => {
-  const { animeId } = useParams();
+  const { animeId, episodeId } = useParams();
   const navigate = useNavigate();
 
   const [isAscEpisodes, setIsAscEpisodes] = useState(false);
@@ -51,68 +51,31 @@ export const EpisodeListSecondary = ({ episodes = [] }) => {
           </ul>
         </div>
       </WrapperHeader>
-      <WrapperEpisodes>
-        {episodesView().map((episode, index) => (
-          <EpisodeItem
-            key={index}
-            title={episode.title || ""}
-            number={episode.episodeNumber || index + 1}
-            image={
-              episode.episodeImage.url ||
-              "https://storage.googleapis.com/animesgozu-dev.appspot.com/resources/image-no-found.jpeg"
-            }
-            onClick={() => {
-              onNavigateTo(`/ver/${animeId}/${episode.episodeNumber}`);
-              onWindowScrollTop();
-            }}
-            fontSize="13px"
-          />
-        ))}
-      </WrapperEpisodes>
+      {episodesView().map((episode, index) => (
+        <EpisodeItem
+          key={index}
+          title={episode.title || ""}
+          number={episode.episodeNumber || index + 1}
+          image={
+            episode.episodeImage.url ||
+            "https://storage.googleapis.com/animesgozu-dev.appspot.com/resources/image-no-found.jpeg"
+          }
+          onClick={() => {
+            onNavigateTo(`/ver/${animeId}/${episode.episodeNumber}`);
+            onWindowScrollTop();
+          }}
+          isSelected={toNumber(episodeId) === episode.episodeNumber}
+          fontSize="12px"
+        />
+      ))}
     </Container>
   );
 };
 
 const Container = styled.div`
-  width: 100%;
-  height: auto;
-  margin: 0;
-  position: relative;
-  transition: all 0.2s ease-in-out;
-  border-radius: 0.7rem;
-
-  h2 {
-    margin-bottom: 1rem;
-  }
-`;
-
-const WrapperEpisodes = styled.div`
-  width: 100%;
+  width: 12em;
   height: 100%;
-  min-height: 25em;
-  max-height: 70vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-
-  /* width */
-  ::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.colors.dark};
-  }
-
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.colors.primary};
-  }
-
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
+  max-height: 100%;
 `;
 
 const WrapperHeader = styled.div`
