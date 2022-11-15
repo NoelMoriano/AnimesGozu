@@ -35,9 +35,7 @@ export const Router = () => (
       exact
       path="/ver/:animeId/:episodeId"
       element={
-        <Layout>
           <Episode />
-        </Layout>
       }
     />
     <Route
