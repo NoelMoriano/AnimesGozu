@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { darken, lighten } from "polished";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { capitalize, orderBy } from "lodash";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
+import { ScrollStyle } from "../../styles/constants/mixins";
 
 export const Servers = ({
   servers = [],
@@ -102,8 +103,9 @@ const ItemServersType = styled.div`
     `}
 `;
 
-const ItemServer = styled.div`
+const ItemServer = styled.li`
   cursor: pointer;
+  min-width: 8em;
   width: auto;
   padding: 0.5em 1em;
   text-align: center;
@@ -137,16 +139,16 @@ const Container = styled.div`
     background: ${({ theme }) => theme.colors.tertiary};
     .item-servers {
       position: relative;
-      width: 100%;
       max-width: 100%;
-      overflow: hidden;
+      width: 100%;
+      overflow-x: auto;
+      ${ScrollStyle({ width: "auto", height: "4px" })};
       ul {
-        width: 100%;
+        width: 7em;
         margin: 0;
         padding: 0;
         list-style: none;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(6em, auto));
+        display: flex;
         grid-gap: 1em;
       }
     }

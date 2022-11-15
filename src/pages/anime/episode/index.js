@@ -9,11 +9,12 @@ import {
   Servers,
   Spinner,
 } from "../../../components";
-import { defaultTo, isEmpty } from "lodash";
+import { isEmpty } from "lodash";
 import { currentConfig } from "../../../firebase/index";
 import { mediaQuery } from "../../../styles/constants/mediaQuery";
 import { useAnimes } from "../../../providers";
 import { useDevice } from "../../../hooks";
+import { ScrollStyle } from "../../../styles/constants/mixins";
 
 export const Episode = () => {
   const { animeId, episodeId } = useParams();
@@ -230,30 +231,7 @@ const Container = styled.div`
         transition: all 0.2s ease;
         position: relative;
 
-        /* width */
-        ::-webkit-scrollbar {
-          width: 4px;
-          height: 20px;
-        }
-
-        /* Track */
-        ::-webkit-scrollbar-track {
-          background: transparent;
-        }
-
-        /* Handle */
-        &:hover {
-          ::-webkit-scrollbar-thumb {
-            background: ${({ theme }) => theme.colors.primary};
-          }
-        }
-
-        /* Handle on hover */
-        &:hover {
-          ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-          }
-        }
+        ${ScrollStyle};
       }
     }
   }

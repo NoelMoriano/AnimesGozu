@@ -10,9 +10,10 @@ import { Button } from "./Button";
 import { useNavigate, useParams } from "react-router";
 import { orderBy } from "lodash";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
+import { ScrollStyle } from "../../styles/constants/mixins";
 
 export const EpisodeList = ({ episodes = [] }) => {
-  const { animeId, episodeId } = useParams();
+  const { animeId } = useParams();
   const navigate = useNavigate();
 
   const [isAscEpisodes, setIsAscEpisodes] = useState(false);
@@ -95,25 +96,7 @@ const WrapperEpisodes = styled.div`
   max-height: 40em;
   overflow-y: auto;
 
-  /* width */
-  ::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.colors.dark};
-  }
-
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.colors.primary};
-  }
-
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
+  ${ScrollStyle};
 `;
 
 const WrapperHeader = styled.div`
