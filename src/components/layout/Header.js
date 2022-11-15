@@ -34,7 +34,13 @@ export const Header = ({ onSetVisibleDrawer }) => {
           {authUser ? (
             <Avatar
               ImgAvatar={authUser.providerData?.photoURL}
-              nickName={authUser?.nickName || authUser?.firstName}
+              nickName={
+                authUser?.nickName
+                  ? authUser.nickName
+                  : authUser?.firstName
+                  ? authUser.firstName.split(" ")[0]
+                  : undefined
+              }
               onClick={() => isMobile && onSetVisibleDrawer(true)}
             />
           ) : (
