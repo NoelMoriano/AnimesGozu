@@ -86,6 +86,7 @@ const Container = styled.div`
       .titles {
         font-size: 1em;
         padding-left: 0.5em;
+        text-align: left;
 
         span {
           font-size: 0.9em;
@@ -103,11 +104,14 @@ const Container = styled.div`
         transition: all ease-in-out 0.3s;
         font-size: 1.7em;
 
-        &:hover,
-        &:active {
-          transition: all ease-in-out 0.3s;
-          color: ${theme.colors.primary};
-        }
+        ${!isSelected &&
+        css`
+          &:hover,
+          &:active {
+            transition: all ease-in-out 0.3s;
+            color: ${theme.colors.primary};
+          }
+        `}
       }
     }
   `}

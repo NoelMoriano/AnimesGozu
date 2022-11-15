@@ -4,11 +4,10 @@ import { useNavigate, useParams } from "react-router";
 import {
   CommentsAnime,
   EpisodeListSecondary,
-  Header,
   Servers,
   Spinner,
 } from "../../../components";
-import { isEmpty } from "lodash";
+import { isEmpty, defaultTo } from "lodash";
 import { currentConfig } from "../../../firebase/index";
 import { mediaQuery } from "../../../styles/constants/mediaQuery";
 import { useAnimes } from "../../../providers";
@@ -97,93 +96,90 @@ export const Episode = () => {
     }
   };
 
-  if (loadingEpisodes) return <Spinner fullscreen />;
+  if (loadingEpisodes) return <Spinner height="100vh" />;
 
   return (
     <Container>
-      <Header />
-      <div className="body-content">
-        <div className="left-content">
-          <div className="content">
-            <EpisodeListSecondary episodes={episodes} />
-          </div>
+      <div className="left-content">
+        <div className="content">
+          <EpisodeListSecondary episodes={episodes} />
         </div>
-        <div className="center-content">
-          <div className="content">
-            <WrapperHomeBanner
-              bgBanner={loading ? "" : episode?.episodeImage?.url || ""}
-            >
-              <div className="banner-wrapper">
-                <div className="gradient">
-                  {loading ? (
-                    <Spinner fullscreen />
-                  ) : (
-                    <div className="content-banner">
-                      {/*{serverView && (*/}
-                      {/*  <iframe*/}
-                      {/*    key={serverView.code || episodeId}*/}
-                      {/*    className="iframe-episode"*/}
-                      {/*    src={defaultTo(serverView.url || serverView.code, "")}*/}
-                      {/*    frameBorder="0"*/}
-                      {/*    scrolling="no"*/}
-                      {/*    allowFullScreen*/}
-                      {/*    marginHeight="0"*/}
-                      {/*    marginWidth="0"*/}
-                      {/*    width="100%"*/}
-                      {/*    height="100%"*/}
-                      {/*  />*/}
-                      {/*)}*/}
-                    </div>
-                  )}
-                </div>
+      </div>
+      <div className="center-content">
+        <div className="content">
+          <WrapperHomeBanner
+            bgBanner={loading ? "" : episode?.episodeImage?.url || ""}
+          >
+            <div className="banner-wrapper">
+              <div className="gradient">
+                {loading ? (
+                  <Spinner fullscreen />
+                ) : (
+                  <div className="content-banner">
+                    {serverView && (
+                      <iframe
+                        key={serverView.code || episodeId}
+                        className="iframe-episode"
+                        src={defaultTo(serverView.url || serverView.code, "")}
+                        frameBorder="0"
+                        scrolling="no"
+                        allowFullScreen
+                        marginHeight="0"
+                        marginWidth="0"
+                        width="100%"
+                        height="100%"
+                      />
+                    )}
+                  </div>
+                )}
               </div>
-            </WrapperHomeBanner>
-            {isEmpty(episodes) ? (
-              <h3>No se encontraron episodios</h3>
-            ) : (
-              !isEmpty(episode) && (
-                <WrapperDetail>
-                  <Servers
-                    servers={servers}
-                    serverView={serverView}
-                    onSetServerEpisode={onSetServerEpisode}
-                    anime={anime}
-                    episode={episode}
-                    onNavigateTo={onNavigateTo}
-                    serverType={serverType}
-                    onSetServerType={setServerType}
-                  />
-                  {(anime || episode) && (
-                    <div className="episode-detail">
-                      {episode?.episodeNumber && (
-                        <div className="sub-title">
-                          <h4>Episodio {episode.episodeNumber}</h4>
-                        </div>
-                      )}
-                      {anime && (
-                        <div className="title">
-                          <h1>{anime.name}</h1>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </WrapperDetail>
-              )
-            )}
-          </div>
+            </div>
+          </WrapperHomeBanner>
+          {isEmpty(episodes) ? (
+            <h3>No se encontraron episodios</h3>
+          ) : (
+            !isEmpty(episode) && (
+              <WrapperDetail>
+                <Servers
+                  servers={servers}
+                  serverView={serverView}
+                  onSetServerEpisode={onSetServerEpisode}
+                  anime={anime}
+                  episode={episode}
+                  onNavigateTo={onNavigateTo}
+                  serverType={serverType}
+                  onSetServerType={setServerType}
+                />
+                {(anime || episode) && (
+                  <div className="episode-detail">
+                    {episode?.episodeNumber && (
+                      <div className="sub-title">
+                        <h4>Episodio {episode.episodeNumber}</h4>
+                      </div>
+                    )}
+                    {anime && (
+                      <div className="title">
+                        <h1>{anime.name}</h1>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </WrapperDetail>
+            )
+          )}
         </div>
-        <div className="right-content">
-          <div className="content">
-            {(anime || episode) && (
-              <CommentsAnime
-                article={{
-                  url: `${window.location.origin}${window.location.pathname}`,
-                  identifier: `episode_${anime.id}`,
-                  title: `${anime.name} - episodio ${episode?.episodeNumber}`,
-                }}
-              />
-            )}
-          </div>
+      </div>
+      <div className="right-content">
+        <div className="content">
+          {(anime || episode) && (
+            <CommentsAnime
+              article={{
+                url: `${window.location.origin}${window.location.pathname}`,
+                identifier: `episode_${anime.id}`,
+                title: `${anime.name} - episodio ${episode?.episodeNumber}`,
+              }}
+            />
+          )}
         </div>
       </div>
     </Container>
@@ -191,58 +187,48 @@ export const Episode = () => {
 };
 
 const Container = styled.div`
-  width: 100vw;
-  height: auto;
-  background: ${({ theme }) => theme.colors.secondary};
-  color: ${({ theme }) => theme.colors.font1};
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
   ${mediaQuery.minDesktop} {
-    height: 100vh;
+    grid-template-columns: auto 1fr 28em;
+    grid-template-rows: auto 1fr;
   }
-  .body-content {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    ${mediaQuery.minDesktop} {
-      grid-template-columns: auto 1fr 28em;
-      grid-template-rows: auto 1fr;
-    }
 
-    .left-content,
-    .center-content,
-    .right-content {
+  .left-content,
+  .center-content,
+  .right-content {
+    width: 100%;
+    height: 100%;
+    .content {
       width: 100%;
-      height: 100%;
-      .content {
-        width: 100%;
-        height: auto;
-        box-sizing: border-box;
-        max-height: 100%;
-        overflow-y: auto;
-        overflow-x: hidden;
-        transition: all 0.2s ease;
-        position: relative;
-        ${ScrollStyle};
+      height: auto;
+      box-sizing: border-box;
+      max-height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      transition: all 0.2s ease;
+      position: relative;
+      ${ScrollStyle};
 
-        ${mediaQuery.minDesktop} {
-          height: calc(100vh - 52px);
-        }
+      ${mediaQuery.minDesktop} {
+        height: calc(100vh - 52px);
       }
     }
+  }
 
-    ${mediaQuery.maxTablet} {
-      .left-content {
-        order: 2;
-        .content {
-          height: calc(70vh - 52px);
-        }
+  ${mediaQuery.maxTablet} {
+    .left-content {
+      order: 2;
+      .content {
+        height: calc(70vh - 52px);
       }
-      .center-content {
-        order: 1;
-      }
-      .right-content {
-        order: 3;
-      }
+    }
+    .center-content {
+      order: 1;
+    }
+    .right-content {
+      order: 3;
     }
   }
 `;

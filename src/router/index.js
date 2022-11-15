@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Layout } from "../components";
+import { Layout, LayoutSecondary } from "../components";
 import {
   Anime,
   Episode,
@@ -35,7 +35,9 @@ export const Router = () => (
       exact
       path="/ver/:animeId/:episodeId"
       element={
+        <LayoutSecondary>
           <Episode />
+        </LayoutSecondary>
       }
     />
     <Route
