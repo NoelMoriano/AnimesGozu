@@ -52,33 +52,39 @@ export const EpisodeListSecondary = ({ episodes = [] }) => {
           </ul>
         </div>
       </WrapperHeader>
-      {episodesView().map((episode, index) => (
-        <EpisodeItem
-          key={index}
-          title={episode.title || ""}
-          number={episode.episodeNumber || index + 1}
-          image={
-            episode.episodeImage.url ||
-            "https://storage.googleapis.com/animesgozu-dev.appspot.com/resources/image-no-found.jpeg"
-          }
-          onClick={() => {
-            onNavigateTo(`/ver/${animeId}/${episode.episodeNumber}`);
-            onWindowScrollTop();
-          }}
-          isSelected={toNumber(episodeId) === episode.episodeNumber}
-          fontSize="12px"
-        />
-      ))}
+      <div className="wrapper-episodes">
+        {episodesView().map((episode, index) => (
+          <EpisodeItem
+            key={index}
+            title={episode.title || ""}
+            number={episode.episodeNumber || index + 1}
+            image={
+              episode.episodeImage.url ||
+              "https://storage.googleapis.com/animesgozu-dev.appspot.com/resources/image-no-found.jpeg"
+            }
+            onClick={() => {
+              onNavigateTo(`/ver/${animeId}/${episode.episodeNumber}`);
+              onWindowScrollTop();
+            }}
+            isSelected={toNumber(episodeId) === episode.episodeNumber}
+            fontSize="12px"
+          />
+        ))}
+      </div>
     </Container>
   );
 };
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
-  max-height: 100%;
+  height: auto;
+  position: relative;
   ${mediaQuery.minDesktop} {
     width: 12em;
+  }
+  .wrapper-episodes {
+    height: 100%;
+    max-height: 100%;
   }
 `;
 
@@ -88,6 +94,12 @@ const WrapperHeader = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 0 0.8em;
+  background: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.font1};
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
   .item-title {
     display: flex;
     align-items: center;
