@@ -9,6 +9,7 @@ import {
 import { Button } from "./Button";
 import { useNavigate, useParams } from "react-router";
 import { orderBy, toNumber } from "lodash";
+import { mediaQuery } from "../../styles/constants/mediaQuery";
 
 export const EpisodeListSecondary = ({ episodes = [] }) => {
   const { animeId, episodeId } = useParams();
@@ -73,9 +74,12 @@ export const EpisodeListSecondary = ({ episodes = [] }) => {
 };
 
 const Container = styled.div`
-  width: 12em;
+  width: 100%;
   height: 100%;
   max-height: 100%;
+  ${mediaQuery.minDesktop} {
+    width: 12em;
+  }
 `;
 
 const WrapperHeader = styled.div`

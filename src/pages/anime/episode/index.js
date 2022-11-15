@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { useNavigate, useParams } from "react-router";
 import {
   CommentsAnime,
-  EpisodeList,
   EpisodeListSecondary,
   Header,
   Servers,
@@ -13,13 +12,11 @@ import { isEmpty } from "lodash";
 import { currentConfig } from "../../../firebase/index";
 import { mediaQuery } from "../../../styles/constants/mediaQuery";
 import { useAnimes } from "../../../providers";
-import { useDevice } from "../../../hooks";
 import { ScrollStyle } from "../../../styles/constants/mixins";
 
 export const Episode = () => {
   const { animeId, episodeId } = useParams();
   const navigate = useNavigate();
-  const { isMobile } = useDevice();
   const { animes } = useAnimes();
 
   const [anime, setAnime] = useState(null);
@@ -170,12 +167,6 @@ export const Episode = () => {
                       )}
                     </div>
                   )}
-
-                  {loadingEpisodes && isMobile ? (
-                    <Spinner fullscreen />
-                  ) : (
-                    isMobile && <EpisodeList episodes={episodes} />
-                  )}
                 </WrapperDetail>
               )
             )}
@@ -216,6 +207,7 @@ const Container = styled.div`
       grid-template-columns: auto 1fr 28em;
       grid-template-rows: auto 1fr;
     }
+
     .left-content,
     .center-content,
     .right-content {
@@ -223,15 +215,33 @@ const Container = styled.div`
       height: 100%;
       .content {
         width: 100%;
-        height: calc(100vh - 52px);
+        height: auto;
         box-sizing: border-box;
         max-height: 100%;
         overflow-y: auto;
         overflow-x: hidden;
         transition: all 0.2s ease;
         position: relative;
-
         ${ScrollStyle};
+
+        ${mediaQuery.minDesktop} {
+          height: calc(100vh - 52px);
+        }
+      }
+    }
+
+    ${mediaQuery.maxTablet} {
+      .left-content {
+        order: 2;
+        .content {
+          height: calc(70vh - 52px);
+        }
+      }
+      .center-content {
+        order: 1;
+      }
+      .right-content {
+        order: 3;
       }
     }
   }
