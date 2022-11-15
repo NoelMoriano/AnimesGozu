@@ -92,10 +92,11 @@ const WrapperEpisodes = styled.div`
   min-height: 25em;
   max-height: 70vh;
   overflow-y: auto;
+  overflow-x: hidden;
 
   /* width */
   ::-webkit-scrollbar {
-    width: 7px;
+    width: 4px;
   }
 
   /* Track */

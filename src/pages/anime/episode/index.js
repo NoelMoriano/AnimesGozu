@@ -101,83 +101,86 @@ export const Episode = () => {
 
   return (
     <Container>
-      <WrapperHomeBanner
-        bgBanner={loading ? "" : episode?.episodeImage?.url || ""}
-      >
-        <div className="banner-wrapper">
-          <div className="gradient">
-            {loading ? (
-              <Spinner fullscreen />
-            ) : (
-              <div className="content-banner">
-                {serverView && (
-                  <iframe
-                    key={serverView.code || episodeId}
-                    className="iframe-episode"
-                    src={defaultTo(serverView.url || serverView.code, "")}
-                    frameBorder="0"
-                    scrolling="no"
-                    allowFullScreen
-                    marginHeight="0"
-                    marginWidth="0"
-                    width="100%"
-                    height="100%"
-                  />
-                )}
-              </div>
-            )}
+      <div className="left-content">
+        <WrapperHomeBanner
+          bgBanner={loading ? "" : episode?.episodeImage?.url || ""}
+        >
+          <div className="banner-wrapper">
+            <div className="gradient">
+              {loading ? (
+                <Spinner fullscreen />
+              ) : (
+                <div className="content-banner">
+                  {serverView && (
+                    <iframe
+                      key={serverView.code || episodeId}
+                      className="iframe-episode"
+                      src={defaultTo(serverView.url || serverView.code, "")}
+                      frameBorder="0"
+                      scrolling="no"
+                      allowFullScreen
+                      marginHeight="0"
+                      marginWidth="0"
+                      width="100%"
+                      height="100%"
+                    />
+                  )}
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      </WrapperHomeBanner>
-      {isEmpty(episodes) ? (
-        <h3>No se encontraron episodios</h3>
-      ) : (
-        !isEmpty(episode) && (
-          <WrapperDetail>
-            <Servers
-              servers={servers}
-              serverView={serverView}
-              onSetServerEpisode={onSetServerEpisode}
-              anime={anime}
-              episode={episode}
-              onNavigateTo={onNavigateTo}
-              serverType={serverType}
-              onSetServerType={setServerType}
-            />
+        </WrapperHomeBanner>
+        {isEmpty(episodes) ? (
+          <h3>No se encontraron episodios</h3>
+        ) : (
+          !isEmpty(episode) && (
+            <WrapperDetail>
+              <Servers
+                servers={servers}
+                serverView={serverView}
+                onSetServerEpisode={onSetServerEpisode}
+                anime={anime}
+                episode={episode}
+                onNavigateTo={onNavigateTo}
+                serverType={serverType}
+                onSetServerType={setServerType}
+              />
 
-            {(anime || episode) && (
-              <div className="episode-detail">
-                {episode?.episodeNumber && (
-                  <div className="sub-title">
-                    <h4>Episodio {episode.episodeNumber}</h4>
-                  </div>
-                )}
-                {anime && (
-                  <div className="title">
-                    <h1>{anime.name}</h1>
-                  </div>
-                )}
-              </div>
-            )}
+              {(anime || episode) && (
+                <div className="episode-detail">
+                  {episode?.episodeNumber && (
+                    <div className="sub-title">
+                      <h4>Episodio {episode.episodeNumber}</h4>
+                    </div>
+                  )}
+                  {anime && (
+                    <div className="title">
+                      <h1>{anime.name}</h1>
+                    </div>
+                  )}
+                </div>
+              )}
 
-            {loadingEpisodes && isMobile ? (
-              <Spinner fullscreen />
-            ) : (
-              isMobile && <EpisodeList episodes={episodes} />
-            )}
-          </WrapperDetail>
-        )
-      )}
-
-      {(anime || episode) && (
-        <CommentsAnime
-          article={{
-            url: `${window.location.origin}${window.location.pathname}`,
-            identifier: `episode_${anime.id}`,
-            title: `${anime.name} - episodio ${episode?.episodeNumber}`,
-          }}
-        />
-      )}
+              {loadingEpisodes && isMobile ? (
+                <Spinner fullscreen />
+              ) : (
+                isMobile && <EpisodeList episodes={episodes} />
+              )}
+            </WrapperDetail>
+          )
+        )}
+      </div>
+      <div className="right-content">
+        {(anime || episode) && (
+          <CommentsAnime
+            article={{
+              url: `${window.location.origin}${window.location.pathname}`,
+              identifier: `episode_${anime.id}`,
+              title: `${anime.name} - episodio ${episode?.episodeNumber}`,
+            }}
+          />
+        )}
+      </div>
     </Container>
   );
 };
@@ -187,6 +190,17 @@ const Container = styled.div`
   height: auto;
   background: ${({ theme }) => theme.colors.secondary};
   color: ${({ theme }) => theme.colors.font1};
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  ${mediaQuery.minTablet} {
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 30em;
+  }
+  .right-content {
+    width: 100%;
+    box-sizing: border-box;
+  }
 `;
 
 const WrapperDetail = styled.div`

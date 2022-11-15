@@ -19,5 +19,9 @@ export const CommentsAnime = ({ article }) => {
 };
 
 const ContainerComments = styled.div`
-  margin: 2em 1.2em;
+  margin: 2em 0;
+  padding: 0 1em;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
 `;

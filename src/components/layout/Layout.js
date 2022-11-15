@@ -41,15 +41,19 @@ const LayoutContent = styled.div`
   min-height: 100vh;
   height: auto;
   display: grid;
-  grid-template-columns: 15em 1fr;
-  grid-template-rows: auto 1fr 1fr auto;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto auto;
   background: inherit;
+  ${mediaQuery.minTablet} {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr 1fr auto;
+  }
 
   .navbar {
     position: relative;
     grid-column: span 1;
     grid-row: span 2;
-    width: 100%;
+    width: 13em;
     height: 100%;
     display: none;
     ${mediaQuery.minTablet} {
@@ -58,11 +62,7 @@ const LayoutContent = styled.div`
   }
 
   .body {
-    grid-column: span 2;
+    width: 100%;
     grid-row: span 2;
-
-    ${mediaQuery.minTablet} {
-      grid-column: span 1;
-    }
   }
 `;
