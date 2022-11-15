@@ -44,7 +44,7 @@ const LayoutContent = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: auto auto auto auto;
   background: inherit;
-  ${mediaQuery.minTablet} {
+  ${mediaQuery.minDesktop} {
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr 1fr auto;
   }
@@ -56,7 +56,7 @@ const LayoutContent = styled.div`
     width: 13em;
     height: 100%;
     display: none;
-    ${mediaQuery.minTablet} {
+    ${mediaQuery.minDesktop} {
       display: block;
     }
   }

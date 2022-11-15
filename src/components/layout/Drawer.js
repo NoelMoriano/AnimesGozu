@@ -1,58 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { Button, EpisodeListSecondary, Spinner } from "../ui";
-import { useAuthentication } from "../../providers";
-import { useNavigate, useParams } from "react-router";
-import { UserMenu } from "./UserMenu";
-import { currentConfig } from "../../firebase";
+import {Button} from "../ui";
+import {useAuthentication} from "../../providers";
+import {useNavigate} from "react-router";
+import {UserMenu} from "./UserMenu";
 
 export const Drawer = () => {
-  const { animeId } = useParams();
   const navigate = useNavigate();
   const { authUser, logout } = useAuthentication();
-  const [episodes, setEpisodes] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   const onNavigateTo = (param) => navigate(param);
 
-  const words = window.location.pathname.split("/");
-
-  const isAnimePageView = !!words.find((word) => word === "ver");
-
-  useEffect(() => {
-    (async () => await fetchEpisodes())();
-  }, [episodes]);
-
-  const fetchEpisodes = async () => {
-    try {
-      const url = `${currentConfig.animeServerApi}/episodes/${animeId}`;
-      const response = await fetch(url);
-
-      if (!response.ok) throw new Error("no found anime");
-
-      const result = await response.json();
-
-      setEpisodes(result);
-    } catch (error) {
-      console.error("errorFetchEpisodes:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return loading ? (
-    <Spinner />
-  ) : (
-    <Container>
-      {isAnimePageView ? (
-        <EpisodeListSecondary episodes={episodes} />
-      ) : (
+  return (<Container>
         <ComponentLogout
           authUser={authUser}
           logout={logout}
           onNavigateTo={onNavigateTo}
         />
-      )}
     </Container>
   );
 };
@@ -64,6 +28,7 @@ const ComponentLogout = ({ authUser, logout, onNavigateTo }) => {
         <UserMenu onLogout={logout} />
       ) : (
         <div className="wrapper-buttons">
+          <br/>
           <Button size="medium" onClick={() => onNavigateTo("/login")}>
             Iniciar sesion
           </Button>
@@ -80,11 +45,9 @@ const ComponentLogout = ({ authUser, logout, onNavigateTo }) => {
   );
 };
 const Container = styled.div`
-  padding-bottom: 0.5rem;
   position: sticky;
   top: 57px;
   .wrapper-buttons {
-    margin-top: 1em;
     display: flex;
     flex-direction: column;
     justify-content: center;

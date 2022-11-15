@@ -38,15 +38,13 @@ export const Header = ({ onSetVisibleDrawer }) => {
               onClick={() => isMobile && onSetVisibleDrawer(true)}
             />
           ) : (
-            isMobile && (
-              <div className="item-icon-open">
-                <FontAwesomeIcon
-                  className="icon-clear"
-                  icon={faBars}
-                  onClick={() => isMobile && onSetVisibleDrawer(true)}
-                />
-              </div>
-            )
+            <div className="item-icon-open">
+              <FontAwesomeIcon
+                className="icon-clear"
+                icon={faBars}
+                onClick={() => isMobile && onSetVisibleDrawer(true)}
+              />
+            </div>
           )}
         </div>
       </div>
@@ -69,7 +67,7 @@ const Container = styled.div`
   height: 57px;
   width: 100%;
   z-index: 900;
-  ${mediaQuery.minTablet} {
+  ${mediaQuery.minDesktop} {
     grid-template-columns: 17em 1fr;
   }
 
@@ -81,27 +79,27 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    ${mediaQuery.minTablet} {
+    ${mediaQuery.minDesktop} {
       justify-content: center;
     }
     img {
       width: auto;
       height: 2.3em;
       cursor: pointer;
-      ${mediaQuery.minTablet} {
+      ${mediaQuery.minDesktop} {
         height: 2.5em;
       }
     }
   }
   .wrapper-search {
     display: none;
-    ${mediaQuery.minTablet} {
+    ${mediaQuery.minDesktop} {
       display: flex;
       align-items: center;
     }
   }
   .content-right {
-    ${mediaQuery.minTablet} {
+    ${mediaQuery.minDesktop} {
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -115,6 +113,9 @@ const Container = styled.div`
       color: ${({ theme }) => theme.colors.font1};
       .item-icon-open {
         font-size: ${({ theme }) => theme.font_sizes.xxx_large};
+        ${mediaQuery.minDesktop} {
+          display: none;
+        }
       }
     }
   }
