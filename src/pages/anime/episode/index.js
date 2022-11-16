@@ -221,7 +221,7 @@ const Container = styled.div`
     .left-content {
       order: 2;
       .content {
-        height: calc(40vh - 52px);
+        height: calc(41vh - 52px);
       }
     }
     .center-content {
@@ -238,7 +238,7 @@ const WrapperDetail = styled.div`
   height: auto;
   .episode-detail {
     width: 100%;
-    padding: 1.5em 1em;
+    padding: 1.3em 1em;
     font-size: 0.9em;
     ${mediaQuery.minDesktop} {
       font-size: 1em;
