@@ -92,14 +92,21 @@ export const Servers = ({
 };
 
 const ItemServersType = styled.div`
-  cursor: pointer;
-  width: auto;
-  padding: 0.5em 1em;
-  text-align: center;
-  ${({ isActive }) =>
-    isActive &&
+  ${({ isActive, theme }) =>
     css`
-      background: ${({ theme }) => theme.colors.primary};
+      cursor: pointer;
+      width: auto;
+      padding: 0.5em 1em;
+      text-align: center;
+      &:hover {
+        background: ${!isActive && darken(0.01, theme.colors.secondary)};
+      }
+
+      ${isActive &&
+      css`
+        color: ${theme.colors.white};
+        background: ${theme.colors.primary};
+      `}
     `}
 `;
 
@@ -109,9 +116,15 @@ const ItemServer = styled.li`
   width: auto;
   padding: 0.5em 1em;
   text-align: center;
+
+  &:hover {
+    background: ${({ theme }) => darken(0.01, theme.colors.secondary)};
+  }
+
   ${({ isActive }) =>
     isActive &&
     css`
+      color: ${({ theme }) => theme.colors.white};
       border-bottom: 3px solid ${({ theme }) => theme.colors.primary};
       background: ${({ theme }) => darken(0.01, theme.colors.secondary)};
     `}
@@ -121,10 +134,13 @@ const Container = styled.div`
   width: 100%;
   height: auto;
   font-size: 0.9em;
+  color: ${({ theme }) => theme.colors.font2};
   .wrapper-types {
     display: grid;
     grid-template-columns: 1fr auto;
-
+    background: ${({ theme }) => theme.colors.tertiary};
+    border-bottom: ${({ theme }) =>
+      `1px solid ${lighten(0.05, theme.colors.tertiary)}`};
     .server-types {
       display: flex;
     }
@@ -149,7 +165,6 @@ const Container = styled.div`
         padding: 0;
         list-style: none;
         display: flex;
-        grid-gap: 1em;
       }
     }
   }
