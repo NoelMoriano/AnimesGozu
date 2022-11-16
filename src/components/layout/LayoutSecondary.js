@@ -31,7 +31,7 @@ const LayoutContainer = styled.div`
 `;
 
 const LayoutContent = styled.div`
-  width: 100vw;
+  width: 100%;
   height: auto;
   background: ${({ theme }) => theme.colors.secondary};
   color: ${({ theme }) => theme.colors.font1};
