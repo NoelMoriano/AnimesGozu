@@ -142,7 +142,7 @@ const Container = styled.div`
       max-width: 100%;
       width: 100%;
       overflow-x: auto;
-      ${ScrollStyle({ width: "auto", height: "4px" })};
+      ${ScrollStyle({ width: "auto", height: "5px" })};
       ul {
         width: 7em;
         margin: 0;

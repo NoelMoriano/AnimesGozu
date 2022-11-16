@@ -1,4 +1,5 @@
 import { css } from "styled-components";
+import { darken, lighten } from "polished";
 
 export const ScrollStyle = ({ width = "4px", height = "auto" }) => css`
   /* width */
@@ -15,14 +16,14 @@ export const ScrollStyle = ({ width = "4px", height = "auto" }) => css`
   /* Handle */
   &:hover {
     ::-webkit-scrollbar-thumb {
-      background: ${({ theme }) => theme.colors.primary};
+      background: ${({ theme }) => darken(0.02, theme.colors.primary)};
     }
   }
 
   /* Handle on hover */
   &:hover {
     ::-webkit-scrollbar-thumb:hover {
-      background: #555;
+      background: ${({ theme }) => lighten(0.03, theme.colors.primary)};
     }
   }
 `;
