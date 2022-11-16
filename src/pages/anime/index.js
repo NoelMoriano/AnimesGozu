@@ -185,10 +185,10 @@ const WrapperHomeBanner = styled.div`
             -moz-box-orient: vertical;
             -ms-box-orient: vertical;
             box-orient: vertical;
-            -webkit-line-clamp: 11;
-            -moz-line-clamp: 11;
-            -ms-line-clamp: 11;
-            line-clamp: 11;
+            -webkit-line-clamp: 30;
+            -moz-line-clamp: 30;
+            -ms-line-clamp: 30;
+            line-clamp: 30;
             overflow: hidden;
           }
         }

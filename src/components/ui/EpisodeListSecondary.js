@@ -93,7 +93,7 @@ const WrapperHeader = styled.div`
   height: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 0 0.8em;
+  padding: 0 1em;
   background: ${({ theme }) => theme.colors.secondary};
   color: ${({ theme }) => theme.colors.font1};
   position: sticky;

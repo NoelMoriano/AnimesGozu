@@ -93,7 +93,7 @@ const Container = styled.div`
 const WrapperEpisodes = styled.div`
   width: 100%;
   height: auto;
-  max-height: 40em;
+  max-height: 30em;
   overflow-y: auto;
 
   ${ScrollStyle};

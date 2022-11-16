@@ -40,7 +40,7 @@ const Container = styled.div`
     display: grid;
     grid-template-columns: auto 1fr auto;
     grid-gap: 0.9em;
-    padding: 0.9em 0.8em;
+    padding: 0.9em 1em;
     border-bottom: 1px solid ${theme.colors.tertiary};
     cursor: pointer;
     transition: all 0.2s ease-in-out;
