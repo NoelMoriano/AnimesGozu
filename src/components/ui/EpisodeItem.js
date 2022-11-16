@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { faCirclePlay } from "@fortawesome/free-regular-svg-icons";
+import { mediaQuery } from "../../styles/constants/mediaQuery";
 
 export const EpisodeItem = ({
   number,
@@ -38,14 +39,17 @@ const Container = styled.div`
   ${({ theme, fontSize, isSelected }) => css`
     display: grid;
     grid-template-columns: auto 1fr auto;
-    grid-gap: 0.7rem;
-    padding: 0.8rem 0.4rem;
+    grid-gap: 0.9em;
+    padding: 0.9em 0.8em;
     border-bottom: 1px solid ${theme.colors.tertiary};
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     font-size: ${fontSize};
     background: #0e0e0e;
     color: ${theme.colors.font2};
+    ${mediaQuery.minDesktop} {
+      padding: 0.5em 0.4em;
+    }
 
     ${isSelected &&
     css`

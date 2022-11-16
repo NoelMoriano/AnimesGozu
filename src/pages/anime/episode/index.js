@@ -257,7 +257,7 @@ const WrapperDetail = styled.div`
 const WrapperHomeBanner = styled.div`
   width: 100%;
   height: 50vh;
-  max-height: 20em;
+  max-height: 17em;
   position: relative;
   ${mediaQuery.minDesktop} {
     height: 60vh;
