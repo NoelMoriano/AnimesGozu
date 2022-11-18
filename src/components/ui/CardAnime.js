@@ -26,6 +26,7 @@ export const CardAnime = ({
 );
 
 const Container = styled.div`
+  max-width: 250px;
   cursor: pointer;
   transform: scale(1);
   transition: transform 0.5s cubic-bezier(0.34, 1.61, 0.7, 1);
@@ -42,7 +43,6 @@ const Container = styled.div`
 
   .item-anime {
     position: relative;
-    border-radius: 1rem;
     overflow: hidden;
     cursor: pointer;
     transition: transform ease-in-out 0.5s;
@@ -51,6 +51,7 @@ const Container = styled.div`
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-radius: 1rem;
     }
 
     .hover-effect {

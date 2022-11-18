@@ -152,16 +152,12 @@ export const Episode = () => {
                 />
                 {(anime || episode) && (
                   <div className="episode-detail">
-                    {episode?.episodeNumber && (
-                      <div className="sub-title">
-                        <h4>Episodio {episode.episodeNumber}</h4>
-                      </div>
-                    )}
-                    {anime && (
-                      <div className="title">
-                        <h1>{anime.name}</h1>
-                      </div>
-                    )}
+                    <div className="sub-title">
+                      <h4>Episodio {episode.episodeNumber}</h4>
+                    </div>
+                    <div className="title">
+                      <h1>{anime.name}</h1>
+                    </div>
                   </div>
                 )}
               </WrapperDetail>
