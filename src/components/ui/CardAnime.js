@@ -52,6 +52,7 @@ const Container = styled.div`
       height: 100%;
       object-fit: cover;
       border-radius: 1rem;
+      border: 1px solid rgba(238, 238, 238, 0.18);
     }
 
     .hover-effect {
@@ -92,6 +93,7 @@ const Container = styled.div`
     ${mediaQuery.minMobile} {
       &:hover {
         transition: transform ease-in-out 0.5s;
+
         .hover-effect {
           opacity: 5;
           background: rgb(0, 0, 0);
