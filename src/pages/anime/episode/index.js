@@ -45,7 +45,7 @@ export const Episode = () => {
   const onNavigateTo = (param) => navigate(param);
 
   const findAnime = () => {
-    const anime_ = animes.find((anime) => anime.id === animeId);
+    const anime_ = animes.find((anime) => anime.nameId === animeId);
     if (!anime_) return onGoBack();
 
     setAnime(anime_);

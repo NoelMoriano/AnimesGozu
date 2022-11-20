@@ -55,7 +55,9 @@ export const Home = () => {
                   {animesView_.animesList.map((anime, index) => (
                     <CardAnime
                       key={index}
-                      onNavigateAnime={() => onNavigateTo(`/anime/${anime.id}`)}
+                      onNavigateAnime={() =>
+                        onNavigateTo(`/anime/${anime.nameId}`)
+                      }
                       title={anime.name}
                       image={anime.animePicture.url}
                       synopsis={anime.synopsis}

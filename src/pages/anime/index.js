@@ -19,7 +19,7 @@ export const Anime = () => {
 
   const { animes } = useAnimes();
 
-  const anime = animes.find((anime) => anime.id === animeId);
+  const anime = animes.find((anime) => anime.nameId === animeId);
 
   const onNavigateTo = (param) => navigate(param);
   const onGoBack = () => navigate(-1);
