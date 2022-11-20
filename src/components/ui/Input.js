@@ -13,6 +13,7 @@ export const Input = ({
   hidden = false,
   type = "text",
   onChange,
+  fontSize = "16px",
 }) => {
   return (
     <ComponentContainer
@@ -23,7 +24,7 @@ export const Input = ({
       disabled={disabled}
       hidden={hidden}
     >
-      <Container disabled={disabled}>
+      <Container disabled={disabled} fontSize={fontSize}>
         <input
           type={type}
           className="item-input"
@@ -39,14 +40,14 @@ export const Input = ({
 };
 
 const Container = styled.div`
-  ${({ theme, disabled }) => css`
+  ${({ theme, disabled, fontSize }) => css`
     input {
       width: 100%;
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
       border: none;
-      padding: 1.1rem 1.3rem;
-      font-size: 1em;
+      padding: 1.1em 1.3em;
+      font-size: ${fontSize};
       font-weight: 600;
       outline: none;
       color: ${theme.colors.dark};

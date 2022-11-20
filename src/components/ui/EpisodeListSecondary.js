@@ -10,48 +10,69 @@ import { Button } from "./Button";
 import { useNavigate, useParams } from "react-router";
 import { orderBy, toNumber } from "lodash";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
+import { Input } from "./Input";
 
 export const EpisodeListSecondary = ({ episodes = [] }) => {
   const { animeId, episodeId } = useParams();
   const navigate = useNavigate();
 
   const [isAscEpisodes, setIsAscEpisodes] = useState(false);
+  const [episodeNumber, setEpisodeNumber] = useState(null);
 
   const onWindowScrollTop = () => window.scrollTo(0, 0);
 
   const onNavigateTo = (param) => navigate(param);
 
-  const episodesView = () =>
-    orderBy(episodes, ["episodeNumber"], [isAscEpisodes ? "asc" : "desc"]);
+  const episodesView = () => {
+    const episodes_ = episodes.filter((episode) =>
+      !episodeNumber ? true : episode.episodeNumber === episodeNumber
+    );
+    return orderBy(
+      episodes_,
+      ["episodeNumber"],
+      [isAscEpisodes ? "asc" : "desc"]
+    );
+  };
 
   useEffect(() => {
     episodesView();
-  }, [isAscEpisodes]);
+  }, [isAscEpisodes, episodeNumber]);
 
   return (
     <Container>
       <WrapperHeader>
-        <div className="item-title">
-          <h5>Episodios</h5>
+        <div className="wrapper-titles">
+          <div className="item-title">
+            <h5>Episodios</h5>
+          </div>
+          <div className="item-filters">
+            <ul>
+              <li>
+                <Button
+                  size="small"
+                  onClick={() => setIsAscEpisodes(!isAscEpisodes)}
+                >
+                  <FontAwesomeIcon
+                    icon={
+                      isAscEpisodes ? faArrowDownShortWide : faArrowUpShortWide
+                    }
+                    size="lg"
+                  />
+                </Button>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div className="item-filters">
-          <ul>
-            <li>
-              <Button
-                size="small"
-                onClick={() => setIsAscEpisodes(!isAscEpisodes)}
-              >
-                <FontAwesomeIcon
-                  icon={
-                    isAscEpisodes ? faArrowDownShortWide : faArrowUpShortWide
-                  }
-                  size="lg"
-                />
-              </Button>
-            </li>
-          </ul>
+        <div className="wrapper-episode-search">
+          <Input
+            fontSize="10px"
+            type="number"
+            placeHolder="Buscar episodio"
+            onChange={(e) => setEpisodeNumber(toNumber(e.target.value))}
+          />
         </div>
       </WrapperHeader>
+
       <div className="wrapper-episodes">
         {episodesView().map((episode, index) => (
           <EpisodeItem
@@ -89,34 +110,54 @@ const Container = styled.div`
 `;
 
 const WrapperHeader = styled.div`
-  width: 100%;
-  height: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 0 1em;
   background: ${({ theme }) => theme.colors.secondary};
   color: ${({ theme }) => theme.colors.font1};
+  padding: 1.3em 1em;
   position: sticky;
   top: 0;
   left: 0;
   right: 0;
-  .item-title {
-    display: flex;
-    align-items: center;
-    h5 {
-      margin: 0;
+  ${mediaQuery.minTablet} {
+    padding: 0 0.3em 0.4em 0.3em;
+  }
+
+  .wrapper-titles {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .item-title {
+      display: flex;
+      align-items: center;
+      h5 {
+        margin: 0;
+      }
+    }
+    .item-filters {
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: flex-end;
+        li {
+          display: block;
+        }
+      }
     }
   }
-  .item-filters {
-    ul {
-      list-style: none;
-      padding: 0;
+  .wrapper-episode-search {
+    width: 100%;
+    box-sizing: border-box;
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
       margin: 0;
-      display: flex;
-      justify-content: flex-end;
-      li {
-        display: block;
-      }
+    }
+
+    input[type="number"] {
+      -moz-appearance: textfield;
     }
   }
 `;
