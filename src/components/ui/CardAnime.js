@@ -9,8 +9,14 @@ export const CardAnime = ({
   image,
   imgAnime = ImgAnime,
   synopsis = "no found",
+  maxWidth = "250px",
+  fontSize = "1.2em",
 }) => (
-  <Container onClick={() => onNavigateAnime()}>
+  <Container
+    onClick={() => onNavigateAnime()}
+    maxWidth={maxWidth}
+    fontSize={fontSize}
+  >
     <div className="item-anime">
       <img
         loading="lazy"
@@ -26,7 +32,7 @@ export const CardAnime = ({
 );
 
 const Container = styled.div`
-  max-width: 250px;
+  max-width: ${({ maxWidth }) => maxWidth};
   cursor: pointer;
   transform: scale(1);
   transition: transform 0.5s cubic-bezier(0.34, 1.61, 0.7, 1);
@@ -110,6 +116,7 @@ const Container = styled.div`
   }
 
   .title-anime {
+    font-size: ${({ fontSize }) => fontSize};
     margin: 1em auto;
     text-align: center;
     text-transform: capitalize;
