@@ -55,7 +55,7 @@ export const Servers = ({
             disabled={!!disabledButtonChangeEpisodePrev}
             onClick={() =>
               !disabledButtonChangeEpisodePrev &&
-              onNavigateTo(`/ver/${anime.id}/${episode.episodeNumber - 1}`)
+              onNavigateTo(`/ver/${anime.nameId}/${episode.episodeNumber - 1}`)
             }
           >
             <FontAwesomeIcon icon={faArrowLeft} />
@@ -65,7 +65,7 @@ export const Servers = ({
             disabled={!!disabledButtonChangeEpisodeNext}
             onClick={() =>
               !disabledButtonChangeEpisodeNext &&
-              onNavigateTo(`/ver/${anime.id}/${episode.episodeNumber + 1}`)
+              onNavigateTo(`/ver/${anime.nameId}/${episode.episodeNumber + 1}`)
             }
           >
             <FontAwesomeIcon icon={faArrowRight} />

@@ -100,7 +100,7 @@ export const InputSearch = ({ onVisibleDrawerMobile }) => {
                 <li
                   key={index}
                   onClick={() => {
-                    onNavigateTo(`/anime/${anime.id}`);
+                    onNavigateTo(`/anime/${anime.nameId}`);
                     resetForm();
                     onVisibleDrawerMobile();
                   }}

@@ -54,13 +54,12 @@ export const Episode = () => {
   const fetchEpisode = async () => {
     try {
       const url = `${currentConfig.animeServerApi}/episode/${animeId}/${episodeId}`;
+
       const response = await fetch(url);
 
-      const result = await response.json();
+      const episodeData = await response.json();
 
-      if (isEmpty(result)) return onNavigateTo(`/anime/${animeId}`);
-
-      const episodeData = result[0] || [];
+      if (isEmpty(episodeData)) return onNavigateTo(`/anime/${animeId}`);
 
       const serverDefault =
         episodeData.servers[serverType].find(
