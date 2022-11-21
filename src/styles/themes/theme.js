@@ -39,9 +39,9 @@ export const theme = {
   },
   colors: {
     primary: "#d81f26",
-    secondary: "rgba(24,24,24,1)",
+    secondary: "rgb(24,24,24)",
     tertiary: "rgba(32,32,32,1)",
-    quaternary: "rgba(48,48,48,1)",
+    quaternary: "rgb(40,40,40)",
     quinary: "#047fd1",
 
     font1: "rgb(255,255,255)",
