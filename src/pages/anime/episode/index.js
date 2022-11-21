@@ -1,22 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router";
 import {
   CommentsAnime,
   EpisodeListSecondary,
   Servers,
+  SimilarAnimes,
   Spinner,
 } from "../../../components";
-import { isEmpty, defaultTo } from "lodash";
+import { defaultTo, isEmpty } from "lodash";
 import { currentConfig } from "../../../firebase/index";
 import { mediaQuery } from "../../../styles/constants/mediaQuery";
 import { useAnimes } from "../../../providers";
 import { ScrollStyle } from "../../../styles/constants/mixins";
+import { useDevice } from "../../../hooks";
 
 export const Episode = () => {
   const { animeId, episodeId } = useParams();
   const navigate = useNavigate();
   const { animes } = useAnimes();
+  const { isMobile } = useDevice();
+  const contentCenterRef = useRef(null);
 
   const [anime, setAnime] = useState(null);
   const [episodes, setEpisodes] = useState([]);
@@ -33,7 +37,7 @@ export const Episode = () => {
     (async () => {
       await fetchEpisodes();
     })();
-  }, []);
+  }, [animeId]);
 
   useEffect(() => {
     (async () => {
@@ -95,17 +99,23 @@ export const Episode = () => {
     }
   };
 
-  if (loadingEpisodes) return <Spinner height="100vh" />;
+  const scrollTop = () => (contentCenterRef.current.scrollTop = 0);
 
   return (
     <Container>
       <div className="left-content">
         <div className="content">
-          <EpisodeListSecondary episodes={episodes} />
+          {loadingEpisodes ? (
+            <div className="wrapper-episodes-spinner">
+              <Spinner fullscreen />
+            </div>
+          ) : (
+            <EpisodeListSecondary episodes={episodes} />
+          )}
         </div>
       </div>
       <div className="center-content">
-        <div className="content">
+        <div ref={contentCenterRef} className="content">
           <WrapperHomeBanner
             bgBanner={loading ? "" : episode?.episodeImage?.url || ""}
           >
@@ -159,6 +169,13 @@ export const Episode = () => {
                     </div>
                   </div>
                 )}
+                {!isMobile && (
+                  <SimilarAnimes
+                    anime={anime}
+                    animes={animes}
+                    onScrollTop={scrollTop}
+                  />
+                )}
               </WrapperDetail>
             )
           )}
@@ -208,6 +225,14 @@ const Container = styled.div`
 
       ${mediaQuery.minDesktop} {
         height: calc(100vh - 52px);
+      }
+      .wrapper-episodes-spinner {
+        width: 100%;
+        height: auto;
+        position: relative;
+        ${mediaQuery.minDesktop} {
+          width: 12em;
+        }
       }
     }
   }
