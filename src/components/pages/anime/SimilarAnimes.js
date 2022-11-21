@@ -18,7 +18,7 @@ export const SimilarAnimes = ({ anime = null, animes = [], onScrollTop }) => {
 
   return (
     <Container>
-      <h4>Animes Similares:</h4>
+      <h5>Animes Similares:</h5>
       <div className="wrapper-categories">
         {similarAnimes.map((similarAnime, index) => (
           <CardAnime
@@ -43,8 +43,8 @@ export const SimilarAnimes = ({ anime = null, animes = [], onScrollTop }) => {
 const Container = styled.div`
   padding: 1em;
   order: 5;
-  h4 {
-    margin: 1.5em 0;
+  h5 {
+    margin: 2em 0 1.2em 0;
   }
   .wrapper-categories {
     display: grid;
