@@ -39,7 +39,7 @@
     "animeServerApi": "https://us-central1-animes-dev.cloudfunctions.net/api"
   },
   "production": {
-    "version": "0.0.1",
+    "version": "0.0.2",
     "firebaseApp": {
       "apiKey": "AIzaSyD59BXmk8r_Z2rXUZiL7c2rRNhmMyxyZMM",
       "authDomain": "animesgozu.firebaseapp.com",
