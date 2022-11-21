@@ -78,10 +78,11 @@ const Container = styled.div`
       justify-content: flex-start;
       opacity: 0;
       padding: 0.7em;
+      border-radius: 1rem;
       color: ${({ theme }) => theme.colors.font1};
 
       .synopsis {
-        font-size: small;
+        font-size: 0.7em;
         width: auto;
         height: auto;
         line-height: 1rem;

@@ -2,7 +2,6 @@ import React, { createContext, useContext } from "react";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { firestore, version } from "../firebase";
 import { Button, Result } from "../components";
-/*import Result from "antd/lib/result";*/
 import styled from "styled-components";
 import { spinLoaderFixed } from "../utils/loader";
 
@@ -50,13 +49,13 @@ export const useVersion = () => useContext(VersionContext);
 export const Version = () => (
   <VersionContainer>
     <div>
-      <h2>
+      <h4>
         Actualice para obtener la última versión de la aplicación.
         <br />
-      </h2>
+      </h4>
       <Button
         type="primary"
-        size="large"
+        size="medium"
         onClick={() => document.location.reload()}
       >
         Actualizar

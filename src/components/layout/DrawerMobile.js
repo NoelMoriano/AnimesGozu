@@ -39,17 +39,27 @@ export const DrawerMobile = ({ visibleDrawer, onSetVisibleDrawer }) => {
           />
         </>
       ) : (
-        <div className="wrapper-buttons">
-          <Button size="medium" onClick={() => onNavigateTo("/login")}>
-            Iniciar sesion
-          </Button>
-          <Button
-            size="medium"
-            type="tertiary"
-            onClick={() => onNavigateTo("/register")}
-          >
-            Registrarse
-          </Button>
+        <div className="wrapper-no-auth-user">
+          <div className="wrapper-buttons">
+            <Button size="medium" onClick={() => onNavigateTo("/login")}>
+              Iniciar sesion
+            </Button>
+            <Button
+              size="medium"
+              type="tertiary"
+              onClick={() => onNavigateTo("/register")}
+            >
+              Registrarse
+            </Button>
+          </div>
+          <div className="wrapper-message">
+            <p>
+              Al registrarte podrás solicitar tus animes favoritos y nosotros te
+              lo enlistamos. Para nosotros es super importante su comodidad al
+              usar nuestra plataforma, te agradeceremos mucho tus sugerencias
+              para mejorar la plataforma ^^
+            </p>
+          </div>
         </div>
       )}
     </Container>
@@ -86,9 +96,15 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
   }
-  .wrapper-buttons {
-    display: flex;
-    flex-direction: column;
-    padding: 0.7rem 2rem;
+  .wrapper-no-auth-user {
+    .wrapper-buttons {
+      display: flex;
+      flex-direction: column;
+      padding: 0.7rem 0;
+    }
+    .wrapper-message {
+      text-align: center;
+      margin-top: 1em;
+    }
   }
 `;

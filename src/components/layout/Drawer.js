@@ -41,7 +41,7 @@ const ComponentLogout = ({ authUser, logout, onNavigateTo }) => (
             Registrarse
           </Button>
         </div>
-        <div className="wrapper-messaje">
+        <div className="wrapper-message">
           <p>
             Al registrarte podrás solicitar tus animes favoritos y nosotros te
             lo enlistamos. Para nosotros es super importante su comodidad al
@@ -66,7 +66,7 @@ const Container = styled.div`
       justify-content: center;
       align-items: center;
     }
-    .wrapper-messaje {
+    .wrapper-message {
       text-align: center;
       margin-top: 1em;
     }

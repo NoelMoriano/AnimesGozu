@@ -28,7 +28,7 @@ export const useDevice = () => {
   return {
     currentScreenHeight,
     currentScreenWidth,
-    isMobile: currentScreenWidth < breakPoints.tablet,
+    isMobile: currentScreenWidth < breakPoints.desktop,
     isDevice: { mobile: isDeviceMobile },
   };
 };

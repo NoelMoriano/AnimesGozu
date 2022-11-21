@@ -26,7 +26,7 @@
     }
   },
   "development": {
-    "version": "0.0.1",
+    "version": "0.0.2",
     "firebaseApp": {
       "apiKey": "AIzaSyA__iMBqX-vlL5l6hBfJkBKLK_XgXRO40M",
       "authDomain": "animesgozu-dev.firebaseapp.com",
