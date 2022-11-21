@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { ImgAnime } from "../../images";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 
@@ -11,11 +11,13 @@ export const CardAnime = ({
   synopsis = "no found",
   maxWidth = "250px",
   fontSize = "1.2em",
+  showSynopsis = true,
 }) => (
   <Container
     onClick={() => onNavigateAnime()}
     maxWidth={maxWidth}
     fontSize={fontSize}
+    showSynopsis={showSynopsis}
   >
     <div className="item-anime">
       <img
@@ -97,21 +99,25 @@ const Container = styled.div`
     }
 
     ${mediaQuery.minMobile} {
-      &:hover {
-        transition: transform ease-in-out 0.5s;
+      ${({ showSynopsis }) =>
+        showSynopsis &&
+        css`
+          &:hover {
+            transition: transform ease-in-out 0.5s;
 
-        .hover-effect {
-          opacity: 5;
-          background: rgb(0, 0, 0);
-          background: linear-gradient(
-            2deg,
-            rgba(0, 0, 0, 1) 0%,
-            rgb(25 25 42 / 57%) 66%,
-            rgba(0, 0, 0, 0) 90%
-          );
-          transform: translateY(0%);
-        }
-      }
+            .hover-effect {
+              opacity: 5;
+              background: rgb(0, 0, 0);
+              background: linear-gradient(
+                2deg,
+                rgba(0, 0, 0, 1) 0%,
+                rgb(25 25 42 / 57%) 66%,
+                rgba(0, 0, 0, 0) 90%
+              );
+              transform: translateY(0%);
+            }
+          }
+        `}
     }
   }
 

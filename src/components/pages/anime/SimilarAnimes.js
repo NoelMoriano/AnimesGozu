@@ -31,7 +31,8 @@ export const SimilarAnimes = ({ anime = null, animes = [], onScrollTop }) => {
             image={similarAnime.animePicture.url}
             synopsis={similarAnime.synopsis}
             maxWidth="150px"
-            fontSize="0.8em"
+            fontSize="0.7em"
+            showSynopsis={false}
           />
         ))}
       </div>
@@ -48,7 +49,7 @@ const Container = styled.div`
   .wrapper-categories {
     display: grid;
     justify-content: center;
-    gap: 2em;
+    gap: 1.5em;
     grid-template-columns: repeat(auto-fit, minmax(5em, auto));
 
     ${mediaQuery.minMobile} {
