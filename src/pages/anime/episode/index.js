@@ -68,7 +68,7 @@ export const Episode = () => {
       const serverDefault =
         episodeData.servers[serverType].find(
           (server) => server.server === "sb" || server.server === "okru"
-        ) || null;
+        ) || episodeData.servers[serverType][0];
 
       setEpisode(episodeData || null);
       setServers(episodeData.servers || []);
@@ -107,7 +107,7 @@ export const Episode = () => {
         <div className="content">
           {loadingEpisodes ? (
             <div className="wrapper-episodes-spinner">
-              <Spinner fullscreen />
+              <Spinner fullscreen size="3x" />
             </div>
           ) : (
             <EpisodeListSecondary episodes={episodes} />
@@ -144,7 +144,7 @@ export const Episode = () => {
               </div>
             </div>
           </WrapperHomeBanner>
-          {!isEmpty(episode) ? (
+          {!isEmpty(episode) && !loading ? (
             <WrapperDetail>
               <Servers
                 servers={servers}
@@ -228,6 +228,7 @@ const Container = styled.div`
         width: 100%;
         height: auto;
         position: relative;
+        padding: 1.3em 1em;
         ${mediaQuery.minDesktop} {
           width: 12em;
         }
