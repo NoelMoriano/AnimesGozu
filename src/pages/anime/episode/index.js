@@ -175,7 +175,7 @@ export const Episode = () => {
               )}
             </WrapperDetail>
           ) : (
-            <h3>No se encontraron episodios</h3>
+            <></>
           )}
         </div>
       </div>
