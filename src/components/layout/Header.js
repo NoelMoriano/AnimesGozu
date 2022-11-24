@@ -39,7 +39,7 @@ export const Header = ({ onSetVisibleDrawer }) => {
                   ? authUser.nickName
                   : authUser?.firstName
                   ? authUser.firstName.split(" ")[0]
-                  : undefined
+                  : null
               }
               onClick={() => isMobile && onSetVisibleDrawer(true)}
             />

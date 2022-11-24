@@ -141,6 +141,10 @@ export const InputSearch = ({ onVisibleDrawerMobile }) => {
 const Container = styled.div`
   position: relative;
   display: grid;
+  width: 100%;
+  ${mediaQuery.minTablet} {
+    width: auto;
+  }
 `;
 
 const ContentBgFxSearch = styled.div`
@@ -170,8 +174,12 @@ const InputSearchElement = styled.input`
 
 const ContentSearch = styled.div`
   ${({ theme, hasValueSearch }) => css`
-    width: 20em;
-    max-width: 20em;
+    width: 100%;
+    max-width: 100%;
+    ${mediaQuery.minTablet} {
+      width: 20em;
+      max-width: 20em;
+    }
     .wrapper-input-element {
       position: relative;
       display: flex;

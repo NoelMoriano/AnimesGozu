@@ -28,16 +28,14 @@ export const DrawerMobile = ({ visibleDrawer, onSetVisibleDrawer }) => {
         </div>
       </div>
 
+      <div className="wrapper-input-search">
+        <InputSearch onVisibleDrawerMobile={() => onHiddenDrawerMobile()} />
+      </div>
       {authUser ? (
-        <>
-          <div className="wrapper-input-search">
-            <InputSearch onVisibleDrawerMobile={() => onHiddenDrawerMobile()} />
-          </div>
-          <UserMenu
-            onLogout={logout}
-            onHiddenDrawerMobile={onHiddenDrawerMobile}
-          />
-        </>
+        <UserMenu
+          onLogout={logout}
+          onHiddenDrawerMobile={onHiddenDrawerMobile}
+        />
       ) : (
         <div className="wrapper-no-auth-user">
           <div className="wrapper-buttons">
@@ -95,6 +93,8 @@ const Container = styled.div`
   .wrapper-input-search {
     display: flex;
     justify-content: center;
+    margin-bottom: 1em;
+    width: 100%;
   }
   .wrapper-no-auth-user {
     .wrapper-buttons {
