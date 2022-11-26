@@ -1,7 +1,7 @@
 import React from "react";
 import { CardAnime } from "../../ui";
 import styled from "styled-components";
-import { includes } from "lodash";
+import { capitalize, includes, orderBy } from "lodash";
 import { useNavigate } from "react-router";
 import { mediaQuery } from "../../../styles/constants/mediaQuery";
 
@@ -16,11 +16,17 @@ export const SimilarAnimes = ({ anime = null, animes = [], onScrollTop }) => {
     )
     .filter((anime_) => anime_.nameId !== anime.nameId);
 
+  const similarAnimesView = orderBy(
+    similarAnimes,
+    (anime) => capitalize(anime.name),
+    ["asc"]
+  );
+
   return (
     <Container>
       <h5>Animes Similares:</h5>
       <div className="wrapper-categories">
-        {similarAnimes.map((similarAnime, index) => (
+        {similarAnimesView.map((similarAnime, index) => (
           <CardAnime
             key={index}
             onNavigateAnime={() => {
