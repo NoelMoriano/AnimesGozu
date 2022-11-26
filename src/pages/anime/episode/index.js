@@ -240,7 +240,7 @@ const Container = styled.div`
     .left-content {
       order: 2;
       .content {
-        height: calc(41vh - 52px);
+        height: calc(57vh - 52px);
       }
     }
     .center-content {

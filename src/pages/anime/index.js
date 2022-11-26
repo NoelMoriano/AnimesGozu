@@ -9,6 +9,8 @@ import { useAnimes } from "../../providers";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { currentConfig } from "../../firebase/index";
 import { isEmpty } from "lodash";
+import { keyframes } from "../../styles/constants/keyframes";
+import { ScrollStyle } from "../../styles/constants/mixins";
 
 export const Anime = () => {
   const { animeId } = useParams();
@@ -52,8 +54,13 @@ export const Anime = () => {
 
   return (
     <Container>
-      <WrapperHomeBanner bgBanner={anime?.animeCoverImage?.url}>
+      <WrapperHomeBanner>
         <div className="banner-wrapper">
+          <img
+            src={anime?.animeCoverImage?.url}
+            alt="banner anime"
+            className="banner-image"
+          />
           <div className="gradient">
             <div className="content-banner">
               <div className="anime-gender">
@@ -117,17 +124,29 @@ const WrapperHomeBanner = styled.div`
   height: 70vh;
   max-height: 40em;
   position: relative;
+  overflow: hidden;
   .banner-wrapper {
     width: 100%;
     height: 70vh;
     max-height: 40em;
-    background: #000 url(${({ bgBanner }) => bgBanner || "transparent"})
-      no-repeat center center;
-    background-size: cover;
     color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+
+    .banner-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      animation: ${keyframes.zoomOutZoomIn} 15s ease infinite;
+    }
 
     .gradient {
       width: 100%;
@@ -141,6 +160,7 @@ const WrapperHomeBanner = styled.div`
         to(#070707)
       );
       background-image: linear-gradient(#00000003 0%, #070707 98%);
+      z-index: 100;
 
       .content-banner {
         width: 100%;
@@ -151,6 +171,7 @@ const WrapperHomeBanner = styled.div`
         align-items: start;
         text-align: left;
         flex-direction: column;
+        z-index: 200;
         .anime-gender {
           display: flex;
           justify-content: start;
@@ -174,12 +195,15 @@ const WrapperHomeBanner = styled.div`
         }
         .synopsis-anime {
           padding-bottom: 1rem;
+          max-height: 17em;
+          overflow: auto;
+          ${ScrollStyle("3px")};
           p {
-            font-weight: 300;
+            font-weight: 400;
             font-size: 0.9em;
             width: auto;
             height: auto;
-            line-height: 1.1rem;
+            line-height: 1.2rem;
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -moz-box-orient: vertical;

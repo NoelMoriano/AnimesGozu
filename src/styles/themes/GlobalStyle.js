@@ -20,7 +20,7 @@ const global = css`
     position: relative;
     font-size: 16px;
     overflow-x: hidden;
-    font-family: "MontserratRegular", sans-serif;
+    font-family: Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif;
     background: ${({ theme }) => theme.colors.secondary};
     color: ${({ theme }) => theme.colors.font1};
   }
