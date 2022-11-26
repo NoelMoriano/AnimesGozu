@@ -2,20 +2,21 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { theme } from "../../styles";
 
 const buttonsType = {
   primary: {
-    background: "#d81f26",
+    background: theme.colors.primary,
     border: "transparent",
     color: "#fff",
   },
   secondary: {
-    background: "#1f1f1f",
+    background: theme.colors.tertiary,
     border: "transparent",
     color: "#fff",
   },
   tertiary: {
-    background: "#047fd1",
+    background: theme.colors.quinary,
     border: "transparent",
     color: "#fff",
   },

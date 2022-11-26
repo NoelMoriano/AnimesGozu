@@ -42,7 +42,7 @@ export const theme = {
     secondary: "rgb(24,24,24)",
     tertiary: "rgba(32,32,32,1)",
     quaternary: "rgb(40,40,40)",
-    quinary: "#047fd1",
+    quinary: "rgb(16 3 203)",
 
     font1: "rgb(255,255,255)",
     font2: "rgb(236,236,236)",

@@ -42,12 +42,12 @@ export const UserMenu = ({ onHiddenDrawerMobile, onLogout }) => {
           <Button
             onClick={() => setIsVisibleModalAnimeRequest(true)}
             size="medium"
+            type="tertiary"
           >
             Solicitar mi anime
           </Button>
         </span>
       </div>
-
       <Modal
         title={<h4>Solicitud de anime</h4>}
         visible={isVisibleModalAnimeRequest}
