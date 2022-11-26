@@ -29,11 +29,13 @@ const ComponentLogout = ({ authUser, logout, onNavigateTo }) => (
       <div className="wrapper-auth-user">
         <UserMenu onLogout={logout} />
         <div className="wrapper-item adblock-item">
-          <p>
-            Para una mejor experiencia, se recomienda usar un bloqueador de
-            anuncios como (AdBlock)
-          </p>
-          <img src={AdblockLogo} alt="AnimesGozu - adblock" />
+          <a href="https://chrome.google.com/webstore/detail/adblock-plus-free-ad-bloc/cfhdojbkjhnklbpkdaibdccddilifddb?hl=en-US">
+            <p>
+              Para una mejor experiencia, se recomienda usar un bloqueador de
+              anuncios como (AdBlock)
+            </p>
+            <img src={AdblockLogo} alt="AnimesGozu - adblock" />
+          </a>
         </div>
       </div>
     ) : (
@@ -87,11 +89,17 @@ const Container = styled.div`
     align-items: center;
     flex-direction: column;
     .adblock-item {
-      gap: 1em;
-      margin-bottom: 1em;
-      img {
-        width: 3em;
-        height: auto;
+      a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        p {
+          margin-bottom: 1em;
+        }
+        img {
+          width: 3em;
+          height: auto;
+        }
       }
     }
   }
