@@ -4,6 +4,7 @@ import { Button } from "../ui";
 import { useAuthentication } from "../../providers";
 import { useNavigate } from "react-router";
 import { UserMenu } from "./UserMenu";
+import { AdblockLogo } from "../../images";
 
 export const Drawer = () => {
   const navigate = useNavigate();
@@ -25,10 +26,19 @@ export const Drawer = () => {
 const ComponentLogout = ({ authUser, logout, onNavigateTo }) => (
   <>
     {authUser ? (
-      <UserMenu onLogout={logout} />
+      <div className="wrapper-auth-user">
+        <UserMenu onLogout={logout} />
+        <div className="wrapper-item adblock-item">
+          <p>
+            Para una mejor experiencia, se recomienda usar un bloqueador de
+            anuncios como (AdBlock)
+          </p>
+          <img src={AdblockLogo} alt="AnimesGozu - adblock" />
+        </div>
+      </div>
     ) : (
       <div className="wrapper-no-auth-user">
-        <div className="wrapper-buttons">
+        <div className="wrapper-item buttons">
           <br />
           <Button size="medium" onClick={() => onNavigateTo("/login")}>
             Iniciar sesion
@@ -41,12 +51,12 @@ const ComponentLogout = ({ authUser, logout, onNavigateTo }) => (
             Registrarse
           </Button>
         </div>
-        <div className="wrapper-message">
+        <div className="wrapper-item message">
           <p>
             Al registrarte podrás solicitar tus animes favoritos y nosotros te
-            lo enlistamos. Para nosotros es super importante su comodidad al
-            usar nuestra plataforma, te agradeceremos mucho tus sugerencias para
-            mejorar la plataforma ^^
+            lo enlistamos. Para nosotros es importante su comodidad al usar
+            nuestra plataforma. Te agradeceremos mucho tus sugerencias para
+            mejorar la plataforma.
           </p>
         </div>
       </div>
@@ -57,17 +67,37 @@ const Container = styled.div`
   width: 100%;
   height: auto;
   position: sticky;
-  top: 90px;
+  top: 57px;
+  .wrapper-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .wrapper-auth-user,
+  .wrapper-no-auth-user {
+    min-height: calc(100vh - 57px);
+    height: auto;
+  }
+
+  .wrapper-auth-user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    .adblock-item {
+      gap: 1em;
+      margin-bottom: 1em;
+      img {
+        width: 3em;
+        height: auto;
+      }
+    }
+  }
   .wrapper-no-auth-user {
     padding: 0 1em;
-    .wrapper-buttons {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .wrapper-message {
-      text-align: center;
+    .message {
       margin-top: 1em;
     }
   }

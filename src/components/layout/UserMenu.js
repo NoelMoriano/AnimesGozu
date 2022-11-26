@@ -35,7 +35,7 @@ export const UserMenu = ({ onHiddenDrawerMobile, onLogout }) => {
           <h4>Animes</h4>
         </Link>
         <span className="link-section" onClick={() => onLogout()}>
-          <h4>Cerrar session</h4>
+          <h4>cerrar sesión</h4>
         </span>
 
         <span>
