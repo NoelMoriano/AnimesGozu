@@ -10,7 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { useFormUtils } from "../../hooks";
 import { lighten } from "polished";
 import { useAnimes } from "../../providers";
-import { capitalize, includes } from "lodash";
+import { capitalize, includes, orderBy } from "lodash";
 import { formatWord, formatWords } from "../../utils";
 
 export const InputSearch = ({ onVisibleDrawerMobile }) => {
@@ -36,7 +36,7 @@ export const InputSearch = ({ onVisibleDrawerMobile }) => {
   const viewAnimes = (searchWord = "") => {
     const wordsSearch = (watch("search") || searchWord).split(" ");
 
-    return animes
+    const resultSearchAnime = animes
       .filter((anime) =>
         anime.searchData.some((searchData) => {
           return wordsSearch?.length > 1
@@ -45,6 +45,8 @@ export const InputSearch = ({ onVisibleDrawerMobile }) => {
         })
       )
       .filter((anime, index) => index < 6);
+
+    return orderBy(resultSearchAnime, ["name"], ["asc"]);
   };
 
   const onSubmitSearch = ({ search }) => viewAnimes(search);
