@@ -10,8 +10,8 @@ import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { useFormUtils } from "../../hooks";
 import { lighten } from "polished";
 import { useAnimes } from "../../providers";
-import { capitalize, includes, toLower } from "lodash";
-import { removeAccents } from "../../utils";
+import { capitalize, includes } from "lodash";
+import { formatWord, formatWords } from "../../utils";
 
 export const InputSearch = ({ onVisibleDrawerMobile }) => {
   const { animes } = useAnimes();
@@ -37,37 +37,35 @@ export const InputSearch = ({ onVisibleDrawerMobile }) => {
     const wordsSearch = (watch("search") || searchWord).split(" ");
 
     return animes
-      .filter((anime) => {
-        return anime.searchData.some((searchData) =>
-          wordsSearch?.length > 1
+      .filter((anime) =>
+        anime.searchData.some((searchData) => {
+          return wordsSearch?.length > 1
             ? includes(formatWords(wordsSearch), formatWord(searchData))
-            : includes(formatWord(searchData), formatWord(searchWord))
-        );
-      })
+            : formatWord(searchData).indexOf(formatWord(wordsSearch)) !== -1;
+        })
+      )
       .filter((anime, index) => index < 6);
   };
-
-  const formatWord = (word = "") => removeAccents(toLower(word));
-  const formatWords = (words = []) =>
-    words.map((word) => removeAccents(toLower(word)));
 
   const onSubmitSearch = ({ search }) => viewAnimes(search);
 
   const resetForm = () => reset({ search: "" });
 
+  const hasValueSearch = !!watch("search");
+
   return (
-    <Container hasValueSearch={!!watch("search")}>
+    <Container hasValueSearch={hasValueSearch}>
       <form
         noValidate
         autoComplete="off"
         onSubmit={handleSubmit(onSubmitSearch)}
       >
         <ContentBgFxSearch
-          hasValueSearch={!!watch("search")}
+          hasValueSearch={hasValueSearch}
           className="content-bg-fx-search"
           onClick={() => resetForm()}
         />
-        <ContentSearch hasValueSearch={!!watch("search")}>
+        <ContentSearch hasValueSearch={hasValueSearch}>
           <div className="wrapper-input-element">
             <FontAwesomeIcon className="icon-search" icon={faMagnifyingGlass} />
             <Controller
@@ -86,7 +84,7 @@ export const InputSearch = ({ onVisibleDrawerMobile }) => {
                 />
               )}
             />
-            {watch("search") && (
+            {hasValueSearch && (
               <FontAwesomeIcon
                 className="icon-clear"
                 icon={faXmark}
