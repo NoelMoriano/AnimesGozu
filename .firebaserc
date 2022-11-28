@@ -1,12 +1,12 @@
 {
   "projects": {
-    "default": "animes",
+    "default": "animes-362103",
     "dev": "animes-dev"
   },
   "targets": {
-    "animes": {
+    "animes-362103": {
       "hosting": {
-        "app": ["animes"]
+        "app": ["animes-362103"]
       }
     },
     "animes-dev": {

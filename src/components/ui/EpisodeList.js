@@ -11,7 +11,6 @@ import { useNavigate, useParams } from "react-router";
 import { orderBy } from "lodash";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { ScrollStyle } from "../../styles/constants/mixins";
-import { List } from "react-virtualized";
 
 export const EpisodeList = ({ episodes = [] }) => {
   const { animeId } = useParams();
