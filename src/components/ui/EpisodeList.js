@@ -11,6 +11,7 @@ import { useNavigate, useParams } from "react-router";
 import { orderBy } from "lodash";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { ScrollStyle } from "../../styles/constants/mixins";
+import { List } from "react-virtualized";
 
 export const EpisodeList = ({ episodes = [] }) => {
   const { animeId } = useParams();
@@ -28,6 +29,40 @@ export const EpisodeList = ({ episodes = [] }) => {
   useEffect(() => {
     episodesView();
   }, [isAscEpisodes]);
+
+  // const rowRenderer = ({
+  //   index, // Index of row
+  //   isScrolling, // The List is currently being scrolled
+  //   isVisible, // This row is visible within the List (eg it is not an overscanned row)
+  //   key, // Unique key within array of rendered rows
+  //   parent, // Reference to the parent List (instance)
+  //   style, // Style object to be applied to row (to position it);
+  //   // This must be passed through to the rendered row element.
+  // }) => {
+  //   const episode = episodesView()[index];
+  //
+  //   const content = (
+  //     <EpisodeItem
+  //       number={episode.episodeNumber || index + 1}
+  //       title={episode.title || ""}
+  //       image={
+  //         episode.episodeImage.url ||
+  //         "https://storage.googleapis.com/animesgozu-dev.appspot.com/resources/image-no-found.jpeg"
+  //       }
+  //       fontSize="12px"
+  //       onClick={() => {
+  //         onNavigateTo(`/ver/${animeId}/${episode.episodeNumber}`);
+  //         onWindowScrollTop();
+  //       }}
+  //     />
+  //   );
+  //
+  //   return (
+  //     <div key={key} style={style}>
+  //       {content}
+  //     </div>
+  //   );
+  // };
 
   return (
     <Container>
@@ -70,15 +105,22 @@ export const EpisodeList = ({ episodes = [] }) => {
             }}
           />
         ))}
+        {/*<List*/}
+        {/*  width={1000}*/}
+        {/*  height={400}*/}
+        {/*  rowCount={episodes.length}*/}
+        {/*  rowHeight={50}*/}
+        {/*  rowRenderer={rowRenderer}*/}
+        {/*/>*/}
       </WrapperEpisodes>
     </Container>
   );
 };
 
 const Container = styled.div`
-  width: 100%;
+  width: 87%;
   height: auto;
-  margin: 1rem 0;
+  margin: auto;
   padding: 1em;
   position: relative;
   background: ${({ theme }) => theme.colors.tertiary};
@@ -91,7 +133,7 @@ const Container = styled.div`
 `;
 
 const WrapperEpisodes = styled.div`
-  width: 100%;
+  width: auto;
   height: auto;
   max-height: 30em;
   overflow-y: auto;

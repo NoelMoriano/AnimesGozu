@@ -114,7 +114,7 @@ const Container = styled.div`
   background: ${({ theme }) => theme.colors.secondary};
   color: ${({ theme }) => theme.colors.font1};
   .wrapper-episodes {
-    padding: 1.5em 0.9em;
+    padding: 1.5em 0;
     text-align: center;
   }
 `;
