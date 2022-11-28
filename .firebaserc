@@ -1,6 +1,18 @@
 {
   "projects": {
-    "default": "animesgozu",
-    "dev": "animesgozu-dev"
+    "default": "animes",
+    "dev": "animes-dev"
+  },
+  "targets": {
+    "animes": {
+      "hosting": {
+        "app": ["animes"]
+      }
+    },
+    "animes-dev": {
+      "hosting": {
+        "app": ["animes-dev"]
+      }
+    }
   }
 }
