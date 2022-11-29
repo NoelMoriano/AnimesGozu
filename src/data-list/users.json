@@ -1,0 +1,131 @@
+[
+  {
+    "email": "user@gmail.com",
+    "id": "7BKXPK9pY5TD0CJhD4bYMkxVa6e2",
+    "providerData": {
+      "phoneNumber": null,
+      "providerId": "password",
+      "photoURL": null,
+      "uid": "user@gmail.com",
+      "displayName": null,
+      "email": "user@gmail.com"
+    },
+    "createAt": {
+      "seconds": 1668531022,
+      "nanoseconds": 997000000
+    },
+    "phone": {
+      "number": 123456789,
+      "countryCode": "+51"
+    },
+    "firstName": "noel moriano",
+    "updateBy": "user@gmail.com",
+    "nickName": "elPapucho",
+    "lastName": "moriano",
+    "updateAt": {
+      "seconds": 1668531570,
+      "nanoseconds": 608000000
+    }
+  },
+  {
+    "updateAt": {
+      "seconds": 1666928646,
+      "nanoseconds": 242000000
+    },
+    "email": "palaciosalex07@gmail.com",
+    "firstName": "palacios",
+    "phone": {
+      "number": 996248936,
+      "countryCode": "+51"
+    },
+    "id": "9ywBaZAMnpNqHsBZDG7ayXHyJ8x2",
+    "providerData": {
+      "phoneNumber": null,
+      "uid": "111770665952947815198",
+      "providerId": "google.com",
+      "email": "palaciosalex07@gmail.com",
+      "displayName": "alex palacios",
+      "photoURL": "https://lh3.googleusercontent.com/a/ALm5wu0Vie06Wq1kV0xdDmr7hEVX-clGF5GFhF64Ih6g=s96-c"
+    },
+    "nickName": "Alex",
+    "updateBy": "palaciosalex07@gmail.com",
+    "lastName": "gutierrez",
+    "createAt": {
+      "seconds": 1666928619,
+      "nanoseconds": 601000000
+    }
+  },
+  {
+    "nickName": "ALEX DAVID PALACIOS GUTIERREZ",
+    "email": "1813011518@untels.edu.pe",
+    "createAt": {
+      "seconds": 1668451132,
+      "nanoseconds": 843000000
+    },
+    "providerData": {
+      "photoURL": "https://lh3.googleusercontent.com/a/ALm5wu2rN05MoXjShdcBhPgazTzo21xY2ea7VrmcdzGoTQ=s96-c",
+      "displayName": "ALEX DAVID PALACIOS GUTIERREZ",
+      "providerId": "google.com",
+      "uid": "100201228375092240901",
+      "phoneNumber": null,
+      "email": "1813011518@untels.edu.pe"
+    },
+    "id": "LnWCOnSxrxb3FWT9GDtCq3Agat32"
+  },
+  {
+    "nickName": "ElPepe",
+    "firstName": "angel",
+    "phone": {
+      "number": 928319477,
+      "countryCode": "+51"
+    },
+    "createAt": {
+      "seconds": 1665792443,
+      "nanoseconds": 613000000
+    },
+    "providerData": {
+      "photoURL": "https://lh3.googleusercontent.com/a/ALm5wu2eliBc4zv7tfj2zj4pJDeomxzdzdr3QKSsz8Pp=s96-c",
+      "providerId": "google.com",
+      "phoneNumber": null,
+      "email": "angelgamonal.t@gmail.com",
+      "displayName": "Angel Gabriel Gamonal Tenorio",
+      "uid": "100018913537270826437"
+    },
+    "id": "P1GFMiJZvqbItl8AqpNU4xPJbye2",
+    "email": "angelgamonal.t@gmail.com",
+    "updateAt": {
+      "seconds": 1668538062,
+      "nanoseconds": 206000000
+    },
+    "lastName": "gt",
+    "updateBy": "angelgamonal.t@gmail.com"
+  },
+  {
+    "updateBy": "mariano260996@gmail.com",
+    "firstName": "noel",
+    "createAt": {
+      "seconds": 1663136483,
+      "nanoseconds": 9000000
+    },
+    "phone": {
+      "number": 931296582,
+      "countryCode": "+51"
+    },
+    "nickName": "ElPapus",
+    "email": "mariano260996@gmail.com",
+    "updateAt": {
+      "seconds": 1668753551,
+      "nanoseconds": 682000000
+    },
+    "providerData": {
+      "providerId": "google.com",
+      "photoURL": "https://lh3.googleusercontent.com/a/AItbvmkuushHeSHADwxmF1CTwYxPzk4ZEMZsNYkICxTbXg=s96-c",
+      "email": "mariano260996@gmail.com",
+      "uid": "114709191059149982017",
+      "displayName": "noeL moriano",
+      "phoneNumber": null
+    },
+    "id": "ZPEmSSkcqiWpd3JMmHtZ1rQgHaE3",
+    "lastName": "moriano"
+  }
+]
