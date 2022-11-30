@@ -5,16 +5,17 @@ import { Imalogo } from "../../images";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faPlay } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, useParams } from "react-router";
-import { useAnimes } from "../../providers";
+import { useAnimes, useHelmetConfig } from "../../providers";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { currentConfig } from "../../firebase/index";
-import { isEmpty } from "lodash";
+import { capitalize, isEmpty } from "lodash";
 import { keyframes } from "../../styles/constants/keyframes";
 import { ScrollStyle } from "../../styles/constants/mixins";
 
 export const Anime = () => {
   const { animeId } = useParams();
   const navigate = useNavigate();
+  const { onSetHelmetConfig } = useHelmetConfig();
 
   const [episodes, setEpisodes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -22,6 +23,16 @@ export const Anime = () => {
   const { animes } = useAnimes();
 
   const anime = animes.find((anime) => anime.nameId === animeId);
+
+  useEffect(() => {
+    anime &&
+      onSetHelmetConfig({
+        title: `${capitalize(anime.name)} - Ver en AnimesGozu`,
+        description: capitalize(anime.synopsis),
+        url: `https://animesgozu.com/anime/${anime.nameId}`,
+        image: anime.animePicture.thumbUrl,
+      });
+  }, [anime]);
 
   const onNavigateTo = (param) => navigate(param);
   const onGoBack = () => navigate(-1);

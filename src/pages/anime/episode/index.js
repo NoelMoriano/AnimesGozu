@@ -8,10 +8,10 @@ import {
   SimilarAnimes,
   Spinner,
 } from "../../../components";
-import { defaultTo, isEmpty } from "lodash";
+import { capitalize, defaultTo, isEmpty } from "lodash";
 import { currentConfig } from "../../../firebase/index";
 import { mediaQuery } from "../../../styles/constants/mediaQuery";
-import { useAnimes } from "../../../providers";
+import { useAnimes, useHelmetConfig } from "../../../providers";
 import { ScrollStyle } from "../../../styles/constants/mixins";
 import { useDevice } from "../../../hooks";
 
@@ -21,6 +21,7 @@ export const Episode = () => {
   const { animes } = useAnimes();
   const { isMobile } = useDevice();
   const contentCenterRef = useRef(null);
+  const { onSetHelmetConfig } = useHelmetConfig();
 
   const [anime, setAnime] = useState(null);
   const [episodes, setEpisodes] = useState([]);
@@ -31,7 +32,18 @@ export const Episode = () => {
   const [loadingEpisodes, setLoadingEpisodes] = useState(true);
   const [loading, setLoading] = useState(true);
 
-  const onGoBack = () => navigate(-1);
+  useEffect(() => {
+    anime &&
+      episode &&
+      onSetHelmetConfig({
+        title: `${capitalize(anime.name)} | Episodio ${episode.episodeNumber}`,
+        description: `Ver ${capitalize(anime.name)} Episodio ${
+          episode.episodeNumber
+        }, en AnimesGozu. ${capitalize(anime.synopsis)}`,
+        url: `https://animesgozu.com/ver/${anime.nameId}/${episode.episodeNumber}`,
+        image: episode?.episodeImage?.thumbUrl || anime.animePicture.thumbUrl,
+      });
+  }, [anime, episode]);
 
   useEffect(() => {
     (async () => {
@@ -45,6 +57,8 @@ export const Episode = () => {
       await fetchEpisode();
     })();
   }, [animeId, episodeId, serverType]);
+
+  const onGoBack = () => navigate(-1);
 
   const onNavigateTo = (param) => navigate(param);
 

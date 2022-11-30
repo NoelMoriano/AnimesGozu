@@ -6,7 +6,8 @@ const defaultConfig = {
   description:
     "Disfruta de los animes y series mas gozus, como Chainsaw man, My Hero Academia, Dragon Ball Super, Attack on Titan, Naruto Shippuden, One Piece y más.",
   url: "https://animesgozu.com",
-  image: "",
+  image:
+    "https://storage.googleapis.com/animes-362103.appspot.com/resources/banner.webp",
 };
 
 const HelmetConfigContext = createContext({
@@ -52,7 +53,7 @@ export const HelmetConfigProvider = ({ children }) => {
         />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta property="og:locale" content="en_US" data-react-helmet="true" />
+        <meta property="og:locale" content="es_ES" data-react-helmet="true" />
         <meta
           property="og:image:user_generated"
           content="false"
