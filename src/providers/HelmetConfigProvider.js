@@ -52,6 +52,8 @@ export const HelmetConfigProvider = ({ children }) => {
           data-react-helmet="true"
         />
 
+        <meta property="og:image" content={configHelmet.image} />
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="og:locale" content="es_ES" data-react-helmet="true" />
         <meta
