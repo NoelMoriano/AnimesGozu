@@ -29,40 +29,6 @@ export const EpisodeList = ({ episodes = [] }) => {
     episodesView();
   }, [isAscEpisodes]);
 
-  // const rowRenderer = ({
-  //   index, // Index of row
-  //   isScrolling, // The List is currently being scrolled
-  //   isVisible, // This row is visible within the List (eg it is not an overscanned row)
-  //   key, // Unique key within array of rendered rows
-  //   parent, // Reference to the parent List (instance)
-  //   style, // Style object to be applied to row (to position it);
-  //   // This must be passed through to the rendered row element.
-  // }) => {
-  //   const episode = episodesView()[index];
-  //
-  //   const content = (
-  //     <EpisodeItem
-  //       number={episode.episodeNumber || index + 1}
-  //       title={episode.title || ""}
-  //       image={
-  //         episode.episodeImage.url ||
-  //         "https://storage.googleapis.com/animesgozu-dev.appspot.com/resources/image-no-found.jpeg"
-  //       }
-  //       fontSize="12px"
-  //       onClick={() => {
-  //         onNavigateTo(`/ver/${animeId}/${episode.episodeNumber}`);
-  //         onWindowScrollTop();
-  //       }}
-  //     />
-  //   );
-  //
-  //   return (
-  //     <div key={key} style={style}>
-  //       {content}
-  //     </div>
-  //   );
-  // };
-
   return (
     <Container>
       <WrapperHeader>
@@ -104,13 +70,6 @@ export const EpisodeList = ({ episodes = [] }) => {
             }}
           />
         ))}
-        {/*<List*/}
-        {/*  width={1000}*/}
-        {/*  height={400}*/}
-        {/*  rowCount={episodes.length}*/}
-        {/*  rowHeight={50}*/}
-        {/*  rowRenderer={rowRenderer}*/}
-        {/*/>*/}
       </WrapperEpisodes>
     </Container>
   );
