@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { animeServerApi } from "../firebase/index";
 import { spinLoaderFixed } from "../utils/loader";
 
-export const GlobalDataContext = createContext({ animes: [] });
+const GlobalDataContext = createContext({ animes: [] });
 
 export const GlobalDataProvider = ({ children }) => {
   const [animes, setAnimes] = useState([]);

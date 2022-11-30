@@ -5,6 +5,7 @@ import { setLocale } from "yup";
 import {
   AuthenticationProvider,
   GlobalDataProvider,
+  HelmetConfigProvider,
   VersionProvider,
 } from "./providers";
 
@@ -15,11 +16,13 @@ const App = () => {
 
   return (
     <VersionProvider>
-      <AuthenticationProvider>
-        <GlobalDataProvider>
-          <Router />
-        </GlobalDataProvider>
-      </AuthenticationProvider>
+      <HelmetConfigProvider>
+        <AuthenticationProvider>
+          <GlobalDataProvider>
+            <Router />
+          </GlobalDataProvider>
+        </AuthenticationProvider>
+      </HelmetConfigProvider>
     </VersionProvider>
   );
 };
