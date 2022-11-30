@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 import { Helmet } from "react-helmet";
 
 const defaultConfig = {
-  title: "AnimesGozu - Disfruta de los anime más gozus",
+  title: "AnimesGozu - Disfruta de los animes más gozus",
   description:
     "Disfruta de los animes y series mas gozus, como Chainsaw man, My Hero Academia, Dragon Ball Super, Attack on Titan, Naruto Shippuden, One Piece y más.",
   url: "https://animesgozu.com",
