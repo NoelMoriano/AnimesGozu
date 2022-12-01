@@ -3,8 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { faCirclePlay } from "@fortawesome/free-regular-svg-icons";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
+import ReactGA from "react-ga4";
 
 export const EpisodeItem = ({
+  animeId,
   number,
   image = "https://storage.googleapis.com/animes-dev-animes/animes/dumucB9YLN054VySLlu6/episodes/mUmBShtFWxSiskrJNOa2/episodeImage.jpeg",
   onClick,
@@ -14,7 +16,14 @@ export const EpisodeItem = ({
   <Container
     fontSize={fontSize}
     isSelected={isSelected}
-    onClick={() => onClick()}
+    onClick={() => {
+      ReactGA.event({
+        category: "episodes",
+        action: "click-episode",
+        label: `Click episode: ${number} - ${animeId}`,
+      });
+      return onClick();
+    }}
   >
     <div className="item-left">
       <img loading="lazy" src={image} alt={`episode ${number}`} />

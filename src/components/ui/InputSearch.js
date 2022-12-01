@@ -12,6 +12,7 @@ import { lighten } from "polished";
 import { useAnimes } from "../../providers";
 import { capitalize, includes, orderBy } from "lodash";
 import { formatWord, formatWords } from "../../utils";
+import ReactGA from "react-ga4";
 
 export const InputSearch = ({ onVisibleDrawerMobile }) => {
   const { animes } = useAnimes();
@@ -35,6 +36,12 @@ export const InputSearch = ({ onVisibleDrawerMobile }) => {
 
   const viewAnimes = (searchWord = "") => {
     const wordsSearch = (watch("search") || searchWord).split(" ");
+
+    ReactGA.event({
+      category: "inputs",
+      action: "search-anime",
+      label: `Search anime ${watch("search") || searchWord}`,
+    });
 
     const resultSearchAnime = animes
       .filter((anime) =>

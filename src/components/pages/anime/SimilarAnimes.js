@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { capitalize, includes, orderBy } from "lodash";
 import { useNavigate } from "react-router";
 import { mediaQuery } from "../../../styles/constants/mediaQuery";
+import ReactGA from "react-ga4";
 
 export const SimilarAnimes = ({ anime = null, animes = [], onScrollTop }) => {
   const navigate = useNavigate();
@@ -30,6 +31,11 @@ export const SimilarAnimes = ({ anime = null, animes = [], onScrollTop }) => {
           <CardAnime
             key={index}
             onNavigateAnime={() => {
+              ReactGA.event({
+                category: "animes",
+                action: "click-anime",
+                label: `Click anime: ${similarAnime.name.toLowerCase()} - similar animes`,
+              });
               onNavigateTo(`/ver/${similarAnime.nameId}/1`);
               onScrollTop();
             }}

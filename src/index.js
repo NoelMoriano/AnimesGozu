@@ -7,18 +7,21 @@ import { GlobalStyle, theme } from "./styles";
 import { BrowserRouter } from "react-router-dom";
 import { ScrollTop } from "./ScrollTop";
 import { ThemeProvider } from "styled-components";
+import { GoogleAnalyticsProvider } from "./providers";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <ThemeProvider theme={theme}>
-    <GlobalStyle />
-    <BrowserRouter>
-      <ScrollTop>
-        <App />
-      </ScrollTop>
-    </BrowserRouter>
-  </ThemeProvider>
+  <GoogleAnalyticsProvider>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <BrowserRouter>
+        <ScrollTop>
+          <App />
+        </ScrollTop>
+      </BrowserRouter>
+    </ThemeProvider>
+  </GoogleAnalyticsProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

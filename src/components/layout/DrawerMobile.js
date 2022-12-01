@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { useAuthentication } from "../../providers";
 import { UserMenu } from "./UserMenu";
+import ReactGA from "react-ga4";
 
 export const DrawerMobile = ({ visibleDrawer, onSetVisibleDrawer }) => {
   const navigate = useNavigate();
@@ -39,13 +40,32 @@ export const DrawerMobile = ({ visibleDrawer, onSetVisibleDrawer }) => {
       ) : (
         <div className="wrapper-no-auth-user">
           <div className="wrapper-buttons">
-            <Button size="medium" onClick={() => onNavigateTo("/login")}>
+            <Button
+              size="medium"
+              onClick={() => {
+                ReactGA.event({
+                  category: "buttons",
+                  action: "click-button-sign-in-mb",
+                  label: "Click button sign in - mb",
+                });
+
+                onNavigateTo("/login");
+              }}
+            >
               Iniciar sesion
             </Button>
             <Button
               size="medium"
               type="tertiary"
-              onClick={() => onNavigateTo("/register")}
+              onClick={() => {
+                ReactGA.event({
+                  category: "buttons",
+                  action: "click-button-register-mb",
+                  label: "Click button register - mb",
+                });
+
+                onNavigateTo("/register");
+              }}
             >
               Registrarse
             </Button>

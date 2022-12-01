@@ -11,6 +11,7 @@ import { currentConfig } from "../../firebase/index";
 import { capitalize, isEmpty } from "lodash";
 import { keyframes } from "../../styles/constants/keyframes";
 import { ScrollStyle } from "../../styles/constants/mixins";
+import ReactGA from "react-ga4";
 
 export const Anime = () => {
   const { animeId } = useParams();
@@ -90,11 +91,17 @@ export const Anime = () => {
                     animate
                     size="medium"
                     borderRadius="7rem"
-                    onClick={() =>
+                    onClick={() => {
+                      ReactGA.event({
+                        category: "buttons",
+                        action: "click-button-watch-anime",
+                        label: `Click button watch anime: ${animeId}`,
+                      });
+
                       isEmpty(episodes)
                         ? onNavigateTo(-1)
-                        : onNavigateTo(`/ver/${animeId}/1`)
-                    }
+                        : onNavigateTo(`/ver/${animeId}/1`);
+                    }}
                   >
                     <FontAwesomeIcon
                       icon={isEmpty(episodes) ? faChevronLeft : faPlay}

@@ -13,6 +13,7 @@ import { TextArea } from "./TextArea";
 import { animeServerApi } from "../../firebase";
 import { assign } from "lodash";
 import { useAuthentication } from "../../providers";
+import ReactGA from "react-ga4";
 
 export const FormAnimeRequest = ({ onCloseModal }) => {
   const { authUser } = useAuthentication();
@@ -49,6 +50,14 @@ export const FormAnimeRequest = ({ onCloseModal }) => {
       if (!response.ok) throw new Error("Error fetch animes");
 
       resetFormFields();
+
+      ReactGA.event({
+        category: "send",
+        action: "send-anime-request",
+        label: `Send anime request: ${formData.name.toLowerCase()} - ${
+          authUser.id
+        }`,
+      });
 
       onCloseModal();
     } catch (error) {

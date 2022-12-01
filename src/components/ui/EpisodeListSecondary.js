@@ -11,6 +11,7 @@ import { useNavigate, useParams } from "react-router";
 import { orderBy, toNumber } from "lodash";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { Input } from "./Input";
+import ReactGA from "react-ga4";
 
 export const EpisodeListSecondary = ({ episodes = [] }) => {
   const { animeId, episodeId } = useParams();
@@ -27,6 +28,7 @@ export const EpisodeListSecondary = ({ episodes = [] }) => {
     const episodes_ = episodes.filter((episode) =>
       !episodeNumber ? true : episode.episodeNumber === episodeNumber
     );
+
     return orderBy(
       episodes_,
       ["episodeNumber"],
@@ -50,7 +52,14 @@ export const EpisodeListSecondary = ({ episodes = [] }) => {
               <li>
                 <Button
                   size="small"
-                  onClick={() => setIsAscEpisodes(!isAscEpisodes)}
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "buttons",
+                      action: "click-button-order-by-asc-or-desc-secondary",
+                      label: `Click order episodes mayor o minor - secondary`,
+                    });
+                    setIsAscEpisodes(!isAscEpisodes);
+                  }}
                 >
                   <FontAwesomeIcon
                     icon={
@@ -68,6 +77,13 @@ export const EpisodeListSecondary = ({ episodes = [] }) => {
             fontSize="10px"
             type="number"
             placeHolder="Buscar episodio"
+            onClick={() =>
+              ReactGA.event({
+                category: "inputs",
+                action: "click-search-episode",
+                label: `Click search episode: ${animeId}`,
+              })
+            }
             onChange={(e) => setEpisodeNumber(toNumber(e.target.value))}
           />
         </div>
@@ -77,7 +93,7 @@ export const EpisodeListSecondary = ({ episodes = [] }) => {
         {episodesView().map((episode, index) => (
           <EpisodeItem
             key={index}
-            title={episode.title || ""}
+            animeId={animeId || ""}
             number={episode.episodeNumber || index + 1}
             image={
               episode.episodeImage.url ||

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useDevice } from "../../hooks";
 import { Button, FormAnimeRequest, Modal } from "../ui";
+import ReactGA from "react-ga4";
 
 export const UserMenu = ({ onHiddenDrawerMobile, onLogout }) => {
   const { isMobile } = useDevice();
@@ -16,31 +17,69 @@ export const UserMenu = ({ onHiddenDrawerMobile, onLogout }) => {
         <Link
           to="/"
           className="link-section"
-          onClick={() => isMobile && onHiddenDrawerMobile()}
+          onClick={() => {
+            ReactGA.event({
+              category: "links",
+              action: "click-link-home",
+              label: `Click link: home`,
+            });
+            return isMobile && onHiddenDrawerMobile();
+          }}
         >
           <h4>Inicio</h4>
         </Link>
         <Link
           to="/profile"
           className="link-section"
-          onClick={() => isMobile && onHiddenDrawerMobile()}
+          onClick={() => {
+            ReactGA.event({
+              category: "links",
+              action: "click-link-profile",
+              label: `Click link: profile`,
+            });
+            return isMobile && onHiddenDrawerMobile();
+          }}
         >
           <h4>Perfil</h4>
         </Link>
         <Link
           to="/search"
           className="link-section"
-          onClick={() => isMobile && onHiddenDrawerMobile()}
+          onClick={() => {
+            ReactGA.event({
+              category: "links",
+              action: "click-link-animes",
+              label: `Click link: animes`,
+            });
+            return isMobile && onHiddenDrawerMobile();
+          }}
         >
           <h4>Animes</h4>
         </Link>
-        <span className="link-section" onClick={() => onLogout()}>
+        <span
+          className="link-section"
+          onClick={() => {
+            ReactGA.event({
+              category: "links",
+              action: "click-link-sign-out",
+              label: `Click link: sign out`,
+            });
+            return onLogout();
+          }}
+        >
           <h4>cerrar sesión</h4>
         </span>
 
         <span>
           <Button
-            onClick={() => setIsVisibleModalAnimeRequest(true)}
+            onClick={() => {
+              ReactGA.event({
+                category: "links",
+                action: "click-link-anime-request",
+                label: `Click link: anime request`,
+              });
+              setIsVisibleModalAnimeRequest(true);
+            }}
             size="medium"
             type="tertiary"
           >

@@ -8,6 +8,7 @@ import { Avatar, InputSearch } from "../ui";
 import React from "react";
 import { useAuthentication } from "../../providers";
 import { useDevice } from "../../hooks";
+import ReactGA from "react-ga4";
 
 export const Header = ({ onSetVisibleDrawer }) => {
   const navigate = useNavigate();
@@ -23,7 +24,15 @@ export const Header = ({ onSetVisibleDrawer }) => {
           loading="lazy"
           src={ImgLogoAnimeGozu}
           alt="Animes Gozu"
-          onClick={() => onNavigateTo("/")}
+          onClick={() => {
+            ReactGA.event({
+              category: "links",
+              action: "click-link-logo-animes-gozu",
+              label: "Click link logo animes gozu",
+            });
+
+            onNavigateTo("/");
+          }}
         />
       </div>
       <div className="content-right">
@@ -41,14 +50,30 @@ export const Header = ({ onSetVisibleDrawer }) => {
                   ? authUser.firstName.split(" ")[0]
                   : null
               }
-              onClick={() => isMobile && onSetVisibleDrawer(true)}
+              onClick={() => {
+                ReactGA.event({
+                  category: "links",
+                  action: "click-link-avatar-photo",
+                  label: "Click link avatar photo",
+                });
+
+                return isMobile && onSetVisibleDrawer(true);
+              }}
             />
           ) : (
             <div className="item-icon-open">
               <FontAwesomeIcon
                 className="icon-clear"
                 icon={faBars}
-                onClick={() => isMobile && onSetVisibleDrawer(true)}
+                onClick={() => {
+                  ReactGA.event({
+                    category: "links",
+                    action: "click-link-open-menu-mobile",
+                    label: "Click link open menu mobile",
+                  });
+
+                  return isMobile && onSetVisibleDrawer(true);
+                }}
               />
             </div>
           )}

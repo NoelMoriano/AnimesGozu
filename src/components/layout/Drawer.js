@@ -5,6 +5,7 @@ import { useAuthentication } from "../../providers";
 import { useNavigate } from "react-router";
 import { UserMenu } from "./UserMenu";
 import { AdblockLogo } from "../../images";
+import ReactGA from "react-ga4";
 
 export const Drawer = () => {
   const navigate = useNavigate();
@@ -28,7 +29,16 @@ const ComponentLogout = ({ authUser, logout, onNavigateTo }) => (
     {authUser ? (
       <div className="wrapper-auth-user">
         <UserMenu onLogout={logout} />
-        <div className="wrapper-item adblock-item">
+        <div
+          className="wrapper-item adblock-item"
+          onClick={() =>
+            ReactGA.event({
+              category: "links",
+              action: "click-link-adblock",
+              label: "Click link adblock",
+            })
+          }
+        >
           <a href="https://chrome.google.com/webstore/detail/adblock-plus-free-ad-bloc/cfhdojbkjhnklbpkdaibdccddilifddb?hl=en-US">
             <p>
               Para una mejor experiencia, se recomienda usar un bloqueador de
@@ -43,13 +53,31 @@ const ComponentLogout = ({ authUser, logout, onNavigateTo }) => (
         <div className="wrapper-item">
           <div className="buttons">
             <br />
-            <Button size="medium" onClick={() => onNavigateTo("/login")}>
+            <Button
+              size="medium"
+              onClick={() => {
+                ReactGA.event({
+                  category: "buttons",
+                  action: "click-button-sign-in-desk",
+                  label: "Click button sign in - desk",
+                });
+
+                return onNavigateTo("/login");
+              }}
+            >
               Iniciar sesion
             </Button>
             <Button
               size="medium"
               type="tertiary"
-              onClick={() => onNavigateTo("/register")}
+              onClick={() => {
+                ReactGA.event({
+                  category: "buttons",
+                  action: "click-button-register-desk",
+                  label: "Click button register - desk",
+                });
+                return onNavigateTo("/register");
+              }}
             >
               Registrarse
             </Button>
@@ -63,7 +91,16 @@ const ComponentLogout = ({ authUser, logout, onNavigateTo }) => (
             </p>
           </div>
         </div>
-        <div className="wrapper-item adblock-item">
+        <div
+          className="wrapper-item adblock-item"
+          onClick={() =>
+            ReactGA.event({
+              category: "links",
+              action: "click-link-adblock",
+              label: "Click link adblock",
+            })
+          }
+        >
           <a href="https://chrome.google.com/webstore/detail/adblock-plus-free-ad-bloc/cfhdojbkjhnklbpkdaibdccddilifddb?hl=en-US">
             <p>
               Para una mejor experiencia, se recomienda usar un bloqueador de

@@ -2,6 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { ImgAnime } from "../../images";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
+import ReactGA from "react-ga4";
 
 export const CardAnime = ({
   onNavigateAnime,
@@ -12,26 +13,35 @@ export const CardAnime = ({
   maxWidth = "250px",
   fontSize = "1.2em",
   showSynopsis = true,
-}) => (
-  <Container
-    onClick={() => onNavigateAnime()}
-    maxWidth={maxWidth}
-    fontSize={fontSize}
-    showSynopsis={showSynopsis}
-  >
-    <div className="item-anime">
-      <img
-        loading="lazy"
-        src={image || imgAnime}
-        alt={`${title} animes gozu`}
-      />
-      <div className="hover-effect">
-        <div className="synopsis">{synopsis}</div>
+}) => {
+  return (
+    <Container
+      onClick={() => {
+        ReactGA.event({
+          category: "animes",
+          action: "click-anime",
+          label: `Click anime: ${title.toLowerCase()}`,
+        });
+        return onNavigateAnime();
+      }}
+      maxWidth={maxWidth}
+      fontSize={fontSize}
+      showSynopsis={showSynopsis}
+    >
+      <div className="item-anime">
+        <img
+          loading="lazy"
+          src={image || imgAnime}
+          alt={`${title} animes gozu`}
+        />
+        <div className="hover-effect">
+          <div className="synopsis">{synopsis}</div>
+        </div>
       </div>
-    </div>
-    <h5 className="title-anime">{title}</h5>
-  </Container>
-);
+      <h5 className="title-anime">{title}</h5>
+    </Container>
+  );
+};
 
 const Container = styled.div`
   max-width: ${({ maxWidth }) => maxWidth};

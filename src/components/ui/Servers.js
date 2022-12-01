@@ -6,6 +6,7 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { capitalize, orderBy } from "lodash";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { ScrollStyle } from "../../styles/constants/mixins";
+import ReactGA from "react-ga4";
 
 export const Servers = ({
   servers = [],
@@ -40,6 +41,11 @@ export const Servers = ({
                 key={index}
                 isActive={serverType_ === serverType}
                 onClick={() => {
+                  ReactGA.event({
+                    category: "server-types",
+                    action: "click-server-type",
+                    label: `Click server type: ${serverType_.toLowerCase()}`,
+                  });
                   onSetServerType(serverType_);
                   onSetServerEpisode(null);
                 }}
@@ -53,20 +59,40 @@ export const Servers = ({
           <ItemButtonChangeEpisode
             disabledButtonChangeEpisode={!!disabledButtonChangeEpisodePrev}
             disabled={!!disabledButtonChangeEpisodePrev}
-            onClick={() =>
-              !disabledButtonChangeEpisodePrev &&
-              onNavigateTo(`/ver/${anime.nameId}/${episode.episodeNumber - 1}`)
-            }
+            onClick={() => {
+              ReactGA.event({
+                category: "buttons",
+                action: "click-button-prev",
+                label: `Click button prev: ${episode.episodeNumber - 1}`,
+              });
+
+              return (
+                !disabledButtonChangeEpisodePrev &&
+                onNavigateTo(
+                  `/ver/${anime.nameId}/${episode.episodeNumber - 1}`
+                )
+              );
+            }}
           >
             <FontAwesomeIcon icon={faArrowLeft} />
           </ItemButtonChangeEpisode>
           <ItemButtonChangeEpisode
             disabledButtonChangeEpisode={!!disabledButtonChangeEpisodeNext}
             disabled={!!disabledButtonChangeEpisodeNext}
-            onClick={() =>
-              !disabledButtonChangeEpisodeNext &&
-              onNavigateTo(`/ver/${anime.nameId}/${episode.episodeNumber + 1}`)
-            }
+            onClick={() => {
+              ReactGA.event({
+                category: "buttons",
+                action: "click-button-next",
+                label: `Click button next: ${episode.episodeNumber + 1}`,
+              });
+
+              return (
+                !disabledButtonChangeEpisodeNext &&
+                onNavigateTo(
+                  `/ver/${anime.nameId}/${episode.episodeNumber + 1}`
+                )
+              );
+            }}
           >
             <FontAwesomeIcon icon={faArrowRight} />
           </ItemButtonChangeEpisode>
@@ -79,7 +105,14 @@ export const Servers = ({
               <ItemServer
                 key={index}
                 isActive={server.server === serverView?.server}
-                onClick={() => onSetServerEpisode(server)}
+                onClick={() => {
+                  ReactGA.event({
+                    category: "buttons",
+                    action: "click-button-server",
+                    label: `Click button server: ${server}`,
+                  });
+                  return onSetServerEpisode(server);
+                }}
               >
                 {server.title}
               </ItemServer>

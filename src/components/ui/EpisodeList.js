@@ -11,6 +11,7 @@ import { useNavigate, useParams } from "react-router";
 import { orderBy } from "lodash";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { ScrollStyle } from "../../styles/constants/mixins";
+import ReactGA from "react-ga4";
 
 export const EpisodeList = ({ episodes = [] }) => {
   const { animeId } = useParams();
@@ -40,7 +41,14 @@ export const EpisodeList = ({ episodes = [] }) => {
             <li>
               <Button
                 size="small"
-                onClick={() => setIsAscEpisodes(!isAscEpisodes)}
+                onClick={() => {
+                  ReactGA.event({
+                    category: "buttons",
+                    action: "click-button-order-by-asc-or-desc",
+                    label: `Click order episodes mayor o minor`,
+                  });
+                  setIsAscEpisodes(!isAscEpisodes);
+                }}
               >
                 Mayor o menor &nbsp;
                 <FontAwesomeIcon
@@ -58,7 +66,7 @@ export const EpisodeList = ({ episodes = [] }) => {
         {episodesView().map((episode, index) => (
           <EpisodeItem
             key={index}
-            title={episode.title || ""}
+            animeId={animeId || ""}
             number={episode.episodeNumber || index + 1}
             image={
               episode.episodeImage.url ||

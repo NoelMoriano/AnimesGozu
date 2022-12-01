@@ -14,6 +14,7 @@ import { mediaQuery } from "../../../styles/constants/mediaQuery";
 import { useAnimes, useHelmetConfig } from "../../../providers";
 import { ScrollStyle } from "../../../styles/constants/mixins";
 import { useDevice } from "../../../hooks";
+import ReactGA from "react-ga4";
 
 export const Episode = () => {
   const { animeId, episodeId } = useParams();
@@ -142,6 +143,13 @@ export const Episode = () => {
                     {serverView && (
                       <iframe
                         key={serverView.code || episodeId}
+                        onClick={() => {
+                          ReactGA.event({
+                            category: "anime",
+                            action: "click-play-anime",
+                            label: `Click play: ${animeId.toLowerCase()}`,
+                          });
+                        }}
                         className="iframe-episode"
                         src={defaultTo(serverView.url || serverView.code, "")}
                         frameBorder="0"
