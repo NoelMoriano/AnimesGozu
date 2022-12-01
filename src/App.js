@@ -8,11 +8,16 @@ import {
   HelmetConfigProvider,
   VersionProvider,
 } from "./providers";
+import ReactGA from "react-ga4";
 
 const App = () => {
   useEffect(() => {
     setLocale(yup["es"]);
   }, []);
+
+  useEffect(() => {
+    ReactGA.send(window.location.pathname + window.location.search);
+  }, [window.location.pathname]);
 
   return (
     <VersionProvider>

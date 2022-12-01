@@ -15,10 +15,6 @@ export const GoogleAnalyticsProvider = ({ children }) => {
     gaOptions: { clientId: gaClientId },
   });
 
-  useEffect(() => {
-    ReactGA.send(window.location.pathname + window.location.search);
-  }, []);
-
   return (
     <GoogleAnalyticsContext.Provider value={{ gaClientId }}>
       {children}
