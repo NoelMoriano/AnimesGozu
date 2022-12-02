@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { CardAnime } from "../../components";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { useNavigate } from "react-router";
-import { useAnimes } from "../../providers";
+import { useAnimes, useHelmetConfig } from "../../providers";
 import { videoBanner } from "../../images";
 import { capitalize, isEmpty, orderBy } from "lodash";
 import { categories } from "../../data-list";
@@ -12,6 +12,11 @@ export const Home = () => {
   const navigate = useNavigate();
 
   const { animes } = useAnimes();
+  const { onSetHelmetConfig } = useHelmetConfig();
+
+  useEffect(() => {
+    onSetHelmetConfig();
+  }, []);
 
   const onNavigateTo = (param) => navigate(param);
 

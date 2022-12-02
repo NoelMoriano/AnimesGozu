@@ -17,7 +17,8 @@ const HelmetConfigContext = createContext({
 export const HelmetConfigProvider = ({ children }) => {
   const [configHelmet, setConfigHelmet] = useState(defaultConfig);
 
-  const onSetHelmetConfig = (config) => setConfigHelmet(config);
+  const onSetHelmetConfig = (config) =>
+    setConfigHelmet(config || defaultConfig);
 
   return (
     <HelmetConfigContext.Provider
