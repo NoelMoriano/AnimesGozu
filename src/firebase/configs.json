@@ -26,7 +26,7 @@
     }
   },
   "development": {
-    "version": "0.0.2",
+    "version": "0.0.3",
     "firebaseApp": {
       "apiKey": "AIzaSyDcUy6vQ0owB5jmpqZZnW6O9V61NdBtC8s",
       "authDomain": "animes-dev.firebaseapp.com",
@@ -39,7 +39,7 @@
     "animeServerApi": "https://us-central1-animes-dev.cloudfunctions.net/api"
   },
   "production": {
-    "version": "0.0.2",
+    "version": "0.0.3",
     "firebaseApp": {
       "apiKey": "AIzaSyCaV5KY3hX9b8k8hP9Bu87qe51WS179Gc0",
       "authDomain": "animes-362103.firebaseapp.com",
