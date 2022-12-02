@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { faArrowLeft, faSignIn } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useMemo } from "react";
+import React, { useEffect } from "react";
 import { Button, Form, Input, InputPassword } from "../../components";
 import { ImgBackground } from "../../images";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
@@ -44,7 +44,7 @@ export const Register = () => {
 
   const onNavigateTo = (param) => navigate(param);
 
-  useMemo(() => {
+  useEffect(() => {
     authUser && onNavigateTo("/profile");
   }, [authUser]);
 

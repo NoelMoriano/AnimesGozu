@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect } from "react";
 import { Button, Form, Input, InputPassword } from "../../components";
 import styled from "styled-components";
 import { Controller, useForm } from "react-hook-form";
@@ -21,7 +21,7 @@ export const Login = () => {
 
   const onNavigateTo = (url) => navigate(url);
 
-  useMemo(() => {
+  useEffect(() => {
     authUser && onNavigateTo("/");
   }, [authUser]);
 
