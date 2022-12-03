@@ -86,8 +86,8 @@ const ComponentLogout = ({ authUser, logout, onNavigateTo }) => (
             <p>
               Al registrarte podrás solicitar tus animes favoritos y nosotros te
               lo enlistamos. Para nosotros es importante su comodidad al usar
-              nuestra plataforma. Te agradeceremos mucho tus sugerencias para
-              mejorar la plataforma.
+              nuestra plataforma. Te agradeceremos mucho dejar tus sugerencias
+              para mejorar la plataforma.
             </p>
           </div>
         </div>
