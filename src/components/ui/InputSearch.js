@@ -37,12 +37,6 @@ export const InputSearch = ({ onVisibleDrawerMobile }) => {
   const viewAnimes = (searchWord = "") => {
     const wordsSearch = (watch("search") || searchWord).split(" ");
 
-    ReactGA.event({
-      category: "inputs",
-      action: "search-anime",
-      label: `Search anime ${watch("search") || searchWord}`,
-    });
-
     const resultSearchAnime = animes
       .filter((anime) =>
         anime.searchData.some((searchData) => {
@@ -56,7 +50,15 @@ export const InputSearch = ({ onVisibleDrawerMobile }) => {
     return orderBy(resultSearchAnime, ["name"], ["asc"]);
   };
 
-  const onSubmitSearch = ({ search }) => viewAnimes(search);
+  const onSubmitSearch = ({ search }) => {
+    ReactGA.event({
+      category: "inputs",
+      action: "search-anime",
+      label: `Search anime ${watch("search") || search}`,
+    });
+
+    return viewAnimes(search);
+  };
 
   const resetForm = () => reset({ search: "" });
 
