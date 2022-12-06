@@ -54,7 +54,7 @@ export const InputSearch = ({ onVisibleDrawerMobile }) => {
     ReactGA.event({
       category: "inputs",
       action: "search-anime",
-      label: `Search anime ${watch("search") || search}`,
+      label: `Search anime ${search || watch("search")}`,
     });
 
     return viewAnimes(search);
