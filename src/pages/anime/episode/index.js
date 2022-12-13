@@ -209,7 +209,7 @@ export const Episode = () => {
                 url: `${window.location.origin}${window.location.pathname}`,
                 identifier: `episode_${anime.id}`,
                 title: `${anime.name} - episodio ${
-                  episode?.episodeNumber || episodeId
+                  episodeId || episode?.episodeNumber
                 }`,
               }}
             />

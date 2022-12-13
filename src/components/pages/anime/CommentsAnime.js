@@ -3,17 +3,20 @@ import { DiscussionEmbed } from "disqus-react";
 import styled from "styled-components";
 
 export const CommentsAnime = ({ article }) => {
+  console.log("article.title->", article.title);
   return (
     <ContainerComments>
-      <DiscussionEmbed
-        shortname="https-animesgozu-com"
-        config={{
-          url: article.url,
-          identifier: article.id,
-          title: article.title,
-          language: "es_ES",
-        }}
-      />
+      {article && (
+        <DiscussionEmbed
+          shortname="https-animesgozu-com"
+          config={{
+            url: article.url,
+            identifier: article.id,
+            title: article.title,
+            language: "es_ES",
+          }}
+        />
+      )}
     </ContainerComments>
   );
 };
