@@ -4,12 +4,18 @@ import styled from "styled-components";
 import { useDevice } from "../../hooks";
 import { Button, FormAnimeRequest, Modal } from "../ui";
 import ReactGA from "react-ga4";
+import { faMessage } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router";
 
 export const UserMenu = ({ onHiddenDrawerMobile, onLogout }) => {
   const { isMobile } = useDevice();
+  const navigate = useNavigate();
 
   const [isVisibleModalAnimeRequest, setIsVisibleModalAnimeRequest] =
     useState(false);
+
+  const onNavigateTo = (param) => navigate(param);
 
   return (
     <Container>
@@ -70,6 +76,25 @@ export const UserMenu = ({ onHiddenDrawerMobile, onLogout }) => {
           <h4>cerrar sesión</h4>
         </span>
 
+        <span>
+          <Button
+            onClick={() => {
+              ReactGA.event({
+                category: "links",
+                action: "click-link-chat-gpt",
+                label: `Click link: chat gpt`,
+              });
+
+              isMobile && onHiddenDrawerMobile();
+
+              return onNavigateTo("/chat-ai");
+            }}
+            size="medium"
+            type="quaternary"
+          >
+            <FontAwesomeIcon icon={faMessage} className="item-icon" /> CHAT AI
+          </Button>
+        </span>
         <span>
           <Button
             onClick={() => {

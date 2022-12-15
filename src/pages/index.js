@@ -6,3 +6,4 @@ export * from "./profile";
 export * from "./anime";
 export * from "./anime/episode";
 export * from "./search-result";
+export * from "./chat-ai";

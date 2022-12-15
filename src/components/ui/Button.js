@@ -20,6 +20,11 @@ const buttonsType = {
     border: "transparent",
     color: "#fff",
   },
+  quaternary: {
+    background: "#fbe706",
+    border: "transparent",
+    color: "#1a1a1a",
+  },
 };
 
 const buttonsSize = {

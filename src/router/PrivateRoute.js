@@ -1,20 +1,8 @@
-import React from "react";
-import { Route } from "react-router-dom";
 import { useAuthentication } from "../providers";
-import { useNavigate } from "react-router";
+import { Navigate } from "react-router-dom";
 
-// interface Props {
-//   render: () => React.ReactNode;
-//   path: string;
-//   exact?: boolean;
-// }
+export const PrivateRoute = ({ path = "/", children }) => {
+  const { authUser } = useAuthentication();
 
-export const PrivateRoute = ({ path, element }) => {
-  const navigate = useNavigate();
-
-  const { userAuth } = useAuthentication();
-
-  return (
-    <Route exact path={path} element={userAuth ? element : navigate("/")} />
-  );
+  return !!authUser ? children : Navigate({ to: path });
 };

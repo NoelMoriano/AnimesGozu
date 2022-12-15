@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Layout, LayoutSecondary } from "../components";
 import {
   Anime,
+  ChatAi,
   Episode,
   Home,
   Login,
@@ -10,6 +11,7 @@ import {
   Register,
   SearchResult,
 } from "../pages";
+import { PrivateRoute } from "./PrivateRoute";
 
 export const Router = () => (
   <Routes>
@@ -55,6 +57,16 @@ export const Router = () => (
         <Layout>
           <Profile />
         </Layout>
+      }
+    />
+    <Route
+      path="/chat-ai"
+      element={
+        <PrivateRoute>
+          <Layout>
+            <ChatAi />
+          </Layout>
+        </PrivateRoute>
       }
     />
     <Route exact path="/login" element={<Login />} />
